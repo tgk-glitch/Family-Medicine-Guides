@@ -446,6 +446,154 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 </style>
 </head>
 <body>
+<style>
+  .fmg-nav{
+    --n-paper:#F4F6F2;
+    --n-ink:#1B2A28;
+    --n-ink-soft:#4B5D59;
+    --n-line:#D4DAD1;
+    --n-teal:#1F5C55;
+    --n-teal-deep:#123C38;
+    --n-amber:#C98A2C;
+    --n-card:#FFFFFF;
+    box-sizing:border-box;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(244,246,242,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--n-line);
+    padding:14px 20px;
+  }
+  .fmg-nav *{box-sizing:border-box;}
+  .fmg-nav-row{
+    max-width:860px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .fmg-wordmark{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:600;
+    font-size:1.02rem;
+    letter-spacing:-0.01em;
+    color:var(--n-teal-deep);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .fmg-wordmark:hover{color:var(--n-teal);}
+  .fmg-wordmark .fmg-tab{
+    width:8px;height:18px;
+    background:var(--n-amber);
+    border-radius:2px;
+    display:inline-block;
+    flex-shrink:0;
+  }
+  .fmg-nav-menu{position:relative;}
+  .fmg-nav-btn{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:0.85rem;
+    color:var(--n-teal-deep);
+    background:var(--n-card);
+    border:1px solid var(--n-line);
+    padding:8px 13px;
+    border-radius:9px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:7px;
+  }
+  .fmg-nav-btn:hover{border-color:var(--n-teal);}
+  .fmg-nav-btn svg{transition:transform .2s ease;flex-shrink:0;}
+  .fmg-nav-btn.fmg-open svg{transform:rotate(180deg);}
+  .fmg-dropdown{
+    position:absolute;
+    right:0;
+    top:calc(100% + 8px);
+    width:250px;
+    background:var(--n-card);
+    border:1px solid var(--n-line);
+    border-radius:12px;
+    box-shadow:0 12px 28px rgba(18,60,56,0.16);
+    padding:7px;
+    opacity:0;
+    transform:translateY(-6px);
+    pointer-events:none;
+    transition:opacity .16s ease, transform .16s ease;
+  }
+  .fmg-dropdown.fmg-show{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .fmg-dd-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 10px;
+    border-radius:8px;
+    text-decoration:none;
+    color:var(--n-ink);
+  }
+  .fmg-dd-item:hover{background:var(--n-paper);}
+  .fmg-dd-item.fmg-active{background:var(--n-paper);}
+  .fmg-dd-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .fmg-dd-item .fmg-label{font-weight:600;font-size:0.86rem;display:block;color:var(--n-ink);}
+  .fmg-dd-item .fmg-sub{font-size:0.72rem;color:var(--n-ink-soft);display:block;}
+  .fmg-dd-item.fmg-disabled{opacity:0.5;cursor:default;}
+  .fmg-dd-item.fmg-disabled:hover{background:none;}
+  @media (max-width:600px){
+    .fmg-dropdown{right:-6px;width:calc(100vw - 40px);max-width:280px;}
+  }
+</style>
+
+<div class="fmg-nav">
+  <div class="fmg-nav-row">
+    <a href="index.html" class="fmg-wordmark"><span class="fmg-tab"></span>Family Medicine Guides</a>
+    <div class="fmg-nav-menu">
+      <button class="fmg-nav-btn" id="fmgNavBtn" aria-expanded="false" aria-haspopup="true">
+        Browse topics
+        <svg width="11" height="7" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="fmg-dropdown" id="fmgDropdown" role="menu">
+        <a href="geriatrics.html" class="fmg-dd-item fmg-page-geriatrics" role="menuitem">
+          <span class="fmg-dd-dot" style="background:#1F5C55"></span>
+          <span><span class="fmg-label">Geriatrics</span><span class="fmg-sub">IHI 4Ms field guide</span></span>
+        </a>
+        <a href="asthma.html" class="fmg-dd-item fmg-page-asthma fmg-active" role="menuitem">
+          <span class="fmg-dd-dot" style="background:#C98A2C"></span>
+          <span><span class="fmg-label">Pediatric Asthma</span><span class="fmg-sub">GINA 2026 field guide</span></span>
+        </a>
+        <span class="fmg-dd-item fmg-disabled">
+          <span class="fmg-dd-dot" style="background:#B7BEB2"></span>
+          <span><span class="fmg-label">More topics</span><span class="fmg-sub">Added as the library grows</span></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var btn = document.getElementById('fmgNavBtn');
+    var dd = document.getElementById('fmgDropdown');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = dd.classList.toggle('fmg-show');
+      btn.classList.toggle('fmg-open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', function(){
+      dd.classList.remove('fmg-show');
+      btn.classList.remove('fmg-open');
+      btn.setAttribute('aria-expanded','false');
+    });
+  })();
+</script>
+
 
 <!-- ============ TOP BAR ============ -->
 <div class="topbar">
