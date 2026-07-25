@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Pediatric Asthma Field Guide — GINA 2026</title>
 <style>
 /* ============ DESIGN TOKENS ============
@@ -443,1144 +444,1131 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
   .hero-inner{padding:44px 0 36px}
   section{padding:40px 0}
 }
+
+  h2, h3{scroll-margin-top: 84px;}
 </style>
 </head>
 <body>
+<!-- FMG-NAV:START -->
 <style>
-  .fmg-nav{
-    --n-paper:#F4F6F2;
-    --n-ink:#1B2A28;
-    --n-ink-soft:#4B5D59;
-    --n-line:#D4DAD1;
-    --n-teal:#1F5C55;
-    --n-teal-deep:#123C38;
-    --n-amber:#C98A2C;
-    --n-card:#FFFFFF;
-    box-sizing:border-box;
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    position:sticky;
-    top:0;
-    z-index:999;
-    background:rgba(244,246,242,0.94);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--n-line);
-    padding:14px 20px;
+  .fmg-bar{
+    --n-paper:#F4F6F2; --n-ink:#1B2A28; --n-ink-soft:#4B5D59; --n-line:#D4DAD1;
+    --n-teal:#1F5C55; --n-teal-deep:#123C38; --n-amber:#C98A2C; --n-card:#FFFFFF;
+    box-sizing:border-box; font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    position:sticky; top:0; z-index:900;
+    background:rgba(244,246,242,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--n-line); padding:13px 20px;
   }
-  .fmg-nav *{box-sizing:border-box;}
-  .fmg-nav-row{
-    max-width:860px;
-    margin:0 auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-  }
+  .fmg-bar *{box-sizing:border-box;}
+  .fmg-bar-row{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;}
   .fmg-wordmark{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    font-family:'Fraunces',Georgia,serif;
-    font-weight:600;
-    font-size:1.02rem;
-    letter-spacing:-0.01em;
-    color:var(--n-teal-deep);
-    text-decoration:none;
-    white-space:nowrap;
+    display:flex;align-items:center;gap:9px;
+    font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.02rem;
+    letter-spacing:-0.01em;color:var(--n-teal-deep);text-decoration:none;white-space:nowrap;
   }
   .fmg-wordmark:hover{color:var(--n-teal);}
-  .fmg-wordmark .fmg-tab{
-    width:8px;height:18px;
-    background:var(--n-amber);
-    border-radius:2px;
-    display:inline-block;
-    flex-shrink:0;
+  .fmg-wordmark .fmg-tab{width:8px;height:18px;background:var(--n-amber);border-radius:2px;display:inline-block;flex-shrink:0;}
+  .fmg-bar-actions{display:flex;align-items:center;gap:8px;}
+  .fmg-icon-btn{
+    width:38px;height:38px;border-radius:9px;border:1px solid var(--n-line);
+    background:var(--n-card);color:var(--n-teal-deep);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
   }
-  .fmg-nav-menu{position:relative;}
-  .fmg-nav-btn{
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:0.85rem;
-    color:var(--n-teal-deep);
-    background:var(--n-card);
-    border:1px solid var(--n-line);
-    padding:8px 13px;
-    border-radius:9px;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    gap:7px;
+  .fmg-icon-btn:hover{border-color:var(--n-teal);}
+
+  /* ---- full screen menu ---- */
+  .fmg-menu{
+    position:fixed;inset:0;background:#fff;z-index:1000;
+    display:none;flex-direction:column;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
   }
-  .fmg-nav-btn:hover{border-color:var(--n-teal);}
-  .fmg-nav-btn svg{transition:transform .2s ease;flex-shrink:0;}
-  .fmg-nav-btn.fmg-open svg{transform:rotate(180deg);}
-  .fmg-dropdown{
-    position:absolute;
-    right:0;
-    top:calc(100% + 8px);
-    width:250px;
-    background:var(--n-card);
-    border:1px solid var(--n-line);
-    border-radius:12px;
-    box-shadow:0 12px 28px rgba(18,60,56,0.16);
-    padding:7px;
-    opacity:0;
-    transform:translateY(-6px);
-    pointer-events:none;
-    transition:opacity .16s ease, transform .16s ease;
+  .fmg-menu.fmg-menu-open{display:flex;}
+  .fmg-menu-top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;border-bottom:1px solid var(--n-line);
   }
-  .fmg-dropdown.fmg-show{opacity:1;transform:translateY(0);pointer-events:auto;}
-  .fmg-dd-item{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:9px 10px;
-    border-radius:8px;
-    text-decoration:none;
-    color:var(--n-ink);
+  .fmg-menu-top .fmg-wordmark{font-size:1.02rem;}
+  .fmg-menu-close{
+    width:38px;height:38px;border-radius:9px;border:1px solid var(--n-line);
+    background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--n-ink);
   }
-  .fmg-dd-item:hover{background:var(--n-paper);}
-  .fmg-dd-item.fmg-active{background:var(--n-paper);}
-  .fmg-dd-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-  .fmg-dd-item .fmg-label{font-weight:600;font-size:0.86rem;display:block;color:var(--n-ink);}
-  .fmg-dd-item .fmg-sub{font-size:0.72rem;color:var(--n-ink-soft);display:block;}
-  .fmg-dd-item.fmg-disabled{opacity:0.5;cursor:default;}
-  .fmg-dd-item.fmg-disabled:hover{background:none;}
-  @media (max-width:600px){
-    .fmg-dropdown{right:-6px;width:calc(100vw - 40px);max-width:280px;}
+  .fmg-menu-body{flex:1;overflow-y:auto;padding:8px 8px 40px;}
+  .fmg-panel{display:none;padding:8px 12px;}
+  .fmg-panel.fmg-panel-active{display:block;}
+  .fmg-back{
+    display:flex;align-items:center;gap:8px;background:none;border:none;
+    color:var(--n-ink-soft);font-size:0.92rem;font-weight:600;cursor:pointer;
+    padding:14px 8px;margin-bottom:4px;
   }
+  .fmg-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 8px;border-bottom:1px solid var(--n-line);
+    text-decoration:none;color:var(--n-ink);cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;
+    width:100%;text-align:left;font-family:inherit;
+  }
+  .fmg-row-main{display:flex;align-items:center;gap:12px;}
+  .fmg-row-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+  .fmg-row-text .fmg-row-label{font-weight:600;font-size:0.98rem;display:block;}
+  .fmg-row-text .fmg-row-sub{font-size:0.8rem;color:var(--n-ink-soft);display:block;margin-top:2px;}
+  .fmg-row.fmg-row-active .fmg-row-label{color:var(--n-teal);}
+  .fmg-row.fmg-row-disabled{opacity:0.5;cursor:default;}
+  .fmg-chev{color:var(--n-ink-soft);flex-shrink:0;}
+  .fmg-menu-section-label{
+    font-family:'JetBrains Mono','IBM Plex Mono',monospace;font-size:0.68rem;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--n-ink-soft);
+    padding:18px 8px 8px;
+  }
+
+  /* ---- search overlay (index only triggers inline; subpages link to index) ---- */
+  .fmg-search-wrap{position:relative;}
 </style>
-
-<div class="fmg-nav">
-  <div class="fmg-nav-row">
-    <a href="index.html" class="fmg-wordmark"><span class="fmg-tab"></span>Family Medicine Guides</a>
-    <div class="fmg-nav-menu">
-      <button class="fmg-nav-btn" id="fmgNavBtn" aria-expanded="false" aria-haspopup="true">
-        Browse topics
-        <svg width="11" height="7" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="fmg-dropdown" id="fmgDropdown" role="menu">
-        <a href="geriatrics.html" class="fmg-dd-item fmg-page-geriatrics" role="menuitem">
-          <span class="fmg-dd-dot" style="background:#1F5C55"></span>
-          <span><span class="fmg-label">Geriatrics</span><span class="fmg-sub">IHI 4Ms field guide</span></span>
-        </a>
-        <a href="asthma.html" class="fmg-dd-item fmg-page-asthma fmg-active" role="menuitem">
-          <span class="fmg-dd-dot" style="background:#C98A2C"></span>
-          <span><span class="fmg-label">Pediatric Asthma</span><span class="fmg-sub">GINA 2026 field guide</span></span>
-        </a>
-        <span class="fmg-dd-item fmg-disabled">
-          <span class="fmg-dd-dot" style="background:#B7BEB2"></span>
-          <span><span class="fmg-label">More topics</span><span class="fmg-sub">Added as the library grows</span></span>
-        </span>
-      </div>
-    </div>
-  </div>
+<div class="fmg-bar">
+<div class="fmg-bar-row">
+<a class="fmg-wordmark" href="index.html"><span class="fmg-tab"></span>Family Medicine Guides</a>
+<div class="fmg-bar-actions">
+<button aria-label="Search" class="fmg-icon-btn" id="fmgSearchBtn">
+<svg fill="none" height="17" viewbox="0 0 24 24" width="17"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<button aria-label="Open menu" class="fmg-icon-btn" id="fmgMenuBtn">
+<svg fill="none" height="17" viewbox="0 0 24 24" width="17"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
 </div>
-
+</div>
+</div>
+<div class="fmg-menu" id="fmgMenu">
+<div class="fmg-menu-top">
+<a class="fmg-wordmark" href="index.html"><span class="fmg-tab"></span>Family Medicine Guides</a>
+<button aria-label="Close menu" class="fmg-menu-close" id="fmgMenuClose">
+<svg fill="none" height="16" viewbox="0 0 24 24" width="16"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<div class="fmg-menu-body">
+<!-- Panel 1: root -->
+<div class="fmg-panel fmg-panel-active" data-panel="root">
+<button class="fmg-row" data-goto="topics">
+<span class="fmg-row-main">
+<span class="fmg-row-text">
+<span class="fmg-row-label">Browse Topics</span>
+<span class="fmg-row-sub">All field guides in the library</span>
+</span>
+</span>
+<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+</button>
+<a class="fmg-row" href="index.html">
+<span class="fmg-row-main">
+<span class="fmg-row-text">
+<span class="fmg-row-label">Home</span>
+<span class="fmg-row-sub">Library overview</span>
+</span>
+</span>
+</a>
+</div>
+<!-- Panel 2: topics -->
+<div class="fmg-panel" data-panel="topics">
+<button class="fmg-back" data-back="root">
+<svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+        Back
+      </button>
+<div class="fmg-menu-section-label">Field Guides</div>
+<a class="fmg-row" href="geriatrics.html">
+<span class="fmg-row-main">
+<span class="fmg-row-dot" style="background:#1F5C55"></span>
+<span class="fmg-row-text">
+<span class="fmg-row-label">Geriatrics</span>
+<span class="fmg-row-sub">IHI 4Ms field guide</span>
+</span>
+</span>
+<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+</a>
+<a class="fmg-row fmg-row-active" href="asthma.html">
+<span class="fmg-row-main">
+<span class="fmg-row-dot" style="background:#C98A2C"></span>
+<span class="fmg-row-text">
+<span class="fmg-row-label">Pediatric Asthma</span>
+<span class="fmg-row-sub">GINA 2026 field guide</span>
+</span>
+</span>
+<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+</a>
+<a class="fmg-row" href="urgent-care.html">
+<span class="fmg-row-main">
+<span class="fmg-row-dot" style="background:#B0392C"></span>
+<span class="fmg-row-text">
+<span class="fmg-row-label">Urgent Care Quick Guides</span>
+<span class="fmg-row-sub">15 point-of-care protocols</span>
+</span>
+</span>
+<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+</a>
+<div class="fmg-row fmg-row-disabled">
+<span class="fmg-row-main">
+<span class="fmg-row-dot" style="background:#B7BEB2"></span>
+<span class="fmg-row-text">
+<span class="fmg-row-label">More topics</span>
+<span class="fmg-row-sub">Added as the library grows</span>
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
 <script>
-  (function(){
-    var btn = document.getElementById('fmgNavBtn');
-    var dd = document.getElementById('fmgDropdown');
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = dd.classList.toggle('fmg-show');
-      btn.classList.toggle('fmg-open', open);
-      btn.setAttribute('aria-expanded', open);
+(function(){
+  var menu = document.getElementById('fmgMenu');
+  var menuBtn = document.getElementById('fmgMenuBtn');
+  var closeBtn = document.getElementById('fmgMenuClose');
+  var searchBtn = document.getElementById('fmgSearchBtn');
+
+  menuBtn.addEventListener('click', function(){
+    menu.classList.add('fmg-menu-open');
+    document.body.style.overflow = 'hidden';
+  });
+  closeBtn.addEventListener('click', function(){
+    menu.classList.remove('fmg-menu-open');
+    document.body.style.overflow = '';
+  });
+
+  var panels = menu.querySelectorAll('.fmg-panel');
+  function showPanel(name){
+    panels.forEach(function(p){
+      p.classList.toggle('fmg-panel-active', p.getAttribute('data-panel') === name);
     });
-    document.addEventListener('click', function(){
-      dd.classList.remove('fmg-show');
-      btn.classList.remove('fmg-open');
-      btn.setAttribute('aria-expanded','false');
-    });
-  })();
+  }
+  menu.querySelectorAll('[data-goto]').forEach(function(btn){
+    btn.addEventListener('click', function(){ showPanel(btn.getAttribute('data-goto')); });
+  });
+  menu.querySelectorAll('[data-back]').forEach(function(btn){
+    btn.addEventListener('click', function(){ showPanel(btn.getAttribute('data-back')); });
+  });
+
+  searchBtn.addEventListener('click', function(){
+    window.location.href='index.html#search';
+  });
+})();
 </script>
-
-
+<!-- FMG-NAV:END -->
 <!-- ============ TOP BAR ============ -->
 <div class="topbar">
-  <div class="wrap topbar-inner">
-    <div class="brand">
-      <svg class="lung" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9"/><path d="M8 8c0 4-3 4-3 8 0 2 1 4 3 4s2-2 2-4V8"/><path d="M16 8c0 4 3 4 3 8 0 2-1 4-3 4s-2-2-2-4V8"/></svg>
+<div class="wrap topbar-inner">
+<div class="brand">
+<svg class="lung" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3v9"></path><path d="M8 8c0 4-3 4-3 8 0 2 1 4 3 4s2-2 2-4V8"></path><path d="M16 8c0 4 3 4 3 8 0 2-1 4-3 4s-2-2-2-4V8"></path></svg>
       Pediatric Asthma Field Guide
     </div>
-    <nav class="topnav" id="topnav">
-      <a href="#overview">Overview</a>
-      <a href="#assess">Assess</a>
-      <a href="#exam">Exam</a>
-      <a href="#diagnose">Diagnose</a>
-      <a href="#ddx">DDx</a>
-      <a href="#control">Control</a>
-      <a href="#treat">Treat</a>
-      <a href="#acute">Acute</a>
-      <a href="#followup">Follow-up</a>
-      <a href="#cases">Cases</a>
-      <a href="#quickref">Quick Ref</a>
-    </nav>
-  </div>
+<nav class="topnav" id="topnav">
+<a href="#overview">Overview</a>
+<a href="#assess">Assess</a>
+<a href="#exam">Exam</a>
+<a href="#diagnose">Diagnose</a>
+<a href="#ddx">DDx</a>
+<a href="#control">Control</a>
+<a href="#treat">Treat</a>
+<a href="#acute">Acute</a>
+<a href="#followup">Follow-up</a>
+<a href="#cases">Cases</a>
+<a href="#quickref">Quick Ref</a>
+</nav>
 </div>
-
+</div>
 <!-- ============ HERO ============ -->
 <header class="hero">
-  <div class="hero-bg"></div>
-  <div class="wrap hero-inner">
-    <span class="eyebrow"><span class="dot"></span>GINA 2026 · Two Age Bands, One Console</span>
-    <h1 class="display">Asthma in <span class="u5c">the very young</span> and <span class="sixc">school-age</span> children</h1>
-    <p class="sub">A working guide to the two pediatric age bands GINA treats differently at almost every turn — assessment, diagnosis, differential, the preferred-vs-alternative treatment tracks, acute management, and follow-up. Flip the switch below to view one band, or hold both side-by-side to see exactly where they diverge.</p>
-    <div class="hero-meta">
-      <span class="chip"><span class="tag" style="width:9px;height:9px;border-radius:50%;background:var(--u5)"></span><b>≤5 years</b> · clinical diagnosis, no spirometry</span>
-      <span class="chip"><span class="tag" style="width:9px;height:9px;border-radius:50%;background:var(--six)"></span><b>6–11 years</b> · spirometry + two-track therapy</span>
-      <span class="chip">📊 PRAM severity built in</span>
-    </div>
-  </div>
+<div class="hero-bg"></div>
+<div class="wrap hero-inner">
+<span class="eyebrow"><span class="dot"></span>GINA 2026 · Two Age Bands, One Console</span>
+<h1 class="display">Asthma in <span class="u5c">the very young</span> and <span class="sixc">school-age</span> children</h1>
+<p class="sub">A working guide to the two pediatric age bands GINA treats differently at almost every turn — assessment, diagnosis, differential, the preferred-vs-alternative treatment tracks, acute management, and follow-up. Flip the switch below to view one band, or hold both side-by-side to see exactly where they diverge.</p>
+<div class="hero-meta">
+<span class="chip"><span class="tag" style="width:9px;height:9px;border-radius:50%;background:var(--u5)"></span><b>≤5 years</b> · clinical diagnosis, no spirometry</span>
+<span class="chip"><span class="tag" style="width:9px;height:9px;border-radius:50%;background:var(--six)"></span><b>6–11 years</b> · spirometry + two-track therapy</span>
+<span class="chip">📊 PRAM severity built in</span>
+</div>
+</div>
 </header>
-
 <!-- ============ AGE BAND TOGGLE ============ -->
 <div class="bandbar">
-  <div class="wrap bandbar-inner">
-    <span class="lbl">Viewing</span>
-    <div class="seg" id="seg" role="tablist" aria-label="Select age band">
-      <button data-band="u5" role="tab"><span class="tag"></span>≤5 years</button>
-      <button data-band="six" role="tab"><span class="tag"></span>6–11 years</button>
-      <button data-band="both" class="on" role="tab"><span class="tag"></span>Both · compare</button>
-    </div>
-    <span class="bandhint" id="bandhint">Both bands shown — watch for the <b>DIVERGE</b> flags.</span>
-  </div>
+<div class="wrap bandbar-inner">
+<span class="lbl">Viewing</span>
+<div aria-label="Select age band" class="seg" id="seg" role="tablist">
+<button data-band="u5" role="tab"><span class="tag"></span>≤5 years</button>
+<button data-band="six" role="tab"><span class="tag"></span>6–11 years</button>
+<button class="on" data-band="both" role="tab"><span class="tag"></span>Both · compare</button>
 </div>
-
+<span class="bandhint" id="bandhint">Both bands shown — watch for the <b>DIVERGE</b> flags.</span>
+</div>
+</div>
 <!-- ============ 1. OVERVIEW ============ -->
 <section id="overview">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">01 — ORIENTATION</div>
-      <h2>Why split children into two bands at all?</h2>
-      <p class="lead">The dividing line is not arbitrary. Around age 5–6, two things change that reshape the entire approach: children can finally perform reproducible <b>spirometry</b>, and the evidence base for <b>ICS-formoterol</b> regimens catches up. Below that line, asthma is a clinical diagnosis and treatment is deliberately conservative.</p>
-    </div>
-
-    <div class="callout analogy">
-      <span class="ic">🔗</span>
-      <h4>Analogy · Two different courtrooms</h4>
-      <p>Diagnosing the <b>6–11 year-old</b> is like a trial <i>with</i> forensic evidence — you can put lung function on the stand and get an objective reading. Diagnosing the <b>≤5 year-old</b> is a trial on <i>eyewitness testimony alone</i>: history, observed wheeze, and response to a treatment trial. Same crime (variable airflow obstruction), but one court has instruments and the other runs on careful observation — so the burden of proof is structured differently.</p>
-    </div>
-
-    <div class="knums" style="margin-top:24px">
-      <div class="knum u5c"><div class="n">3</div><div class="l">criteria — ALL required to diagnose ≤5y</div></div>
-      <div class="knum u5c"><div class="n">&gt;40</div><div class="l">RR (per min) = severe flag in ≤5y</div></div>
-      <div class="knum six-c"><div class="n">≥12%</div><div class="l">FEV₁ rise = reversibility in 6–11y</div></div>
-      <div class="knum six-c"><div class="n">2</div><div class="l">treatment tracks (AIR/MART vs ICS+SABA)</div></div>
-    </div>
-
-    <div class="subhead"><span class="bar"></span>The wheezing-phenotype trap (both bands, but critical under 5)</div>
-    <div class="callout trap">
-      <span class="ic">⚠️</span>
-      <h4>Trap · Don't anchor on "viral-induced" vs "multiple-trigger" wheeze</h4>
-      <p>Older teaching sorted preschool wheeze into tidy phenotypes (episodic viral wheeze vs multiple-trigger wheeze; transient vs persistent vs late-onset). GINA 2026 explicitly downgrades these: they have <b>poor predictive value</b>, overlap with non-asthma conditions, and some can only be applied <i>retrospectively</i>. Use them to describe, never to decide. The clinical job is to diagnose <b>this individual child</b> using the criteria — not to file them into a phenotype box.</p>
-    </div>
-
-    <div class="examq" data-q="1">
-      <div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 9-month-old has their <i>first-ever</i> episode of wheeze during a URTI, with crackles on auscultation. What is the single most likely diagnosis, and does this meet criteria for asthma?</span></div>
-      <button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
-      <div class="ans"><div class="ans-inner"><b>Bronchiolitis</b> — not asthma. A first wheeze under 12 months, especially with crackles, is bronchiolitis until proven otherwise. It fails asthma criteria on two counts: it is a single (not recurrent) episode, and crackles point to an alternative cause. GINA's rule of thumb: <b>the younger the child, the higher the probability of an alternative diagnosis.</b></div></div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">01 — ORIENTATION</div>
+<h2 id="why-split-children-into-two-bands-at-all">Why split children into two bands at all?</h2>
+<p class="lead">The dividing line is not arbitrary. Around age 5–6, two things change that reshape the entire approach: children can finally perform reproducible <b>spirometry</b>, and the evidence base for <b>ICS-formoterol</b> regimens catches up. Below that line, asthma is a clinical diagnosis and treatment is deliberately conservative.</p>
+</div>
+<div class="callout analogy">
+<span class="ic">🔗</span>
+<h4>Analogy · Two different courtrooms</h4>
+<p>Diagnosing the <b>6–11 year-old</b> is like a trial <i>with</i> forensic evidence — you can put lung function on the stand and get an objective reading. Diagnosing the <b>≤5 year-old</b> is a trial on <i>eyewitness testimony alone</i>: history, observed wheeze, and response to a treatment trial. Same crime (variable airflow obstruction), but one court has instruments and the other runs on careful observation — so the burden of proof is structured differently.</p>
+</div>
+<div class="knums" style="margin-top:24px">
+<div class="knum u5c"><div class="n">3</div><div class="l">criteria — ALL required to diagnose ≤5y</div></div>
+<div class="knum u5c"><div class="n">&gt;40</div><div class="l">RR (per min) = severe flag in ≤5y</div></div>
+<div class="knum six-c"><div class="n">≥12%</div><div class="l">FEV₁ rise = reversibility in 6–11y</div></div>
+<div class="knum six-c"><div class="n">2</div><div class="l">treatment tracks (AIR/MART vs ICS+SABA)</div></div>
+</div>
+<div class="subhead"><span class="bar"></span>The wheezing-phenotype trap (both bands, but critical under 5)</div>
+<div class="callout trap">
+<span class="ic">⚠️</span>
+<h4>Trap · Don't anchor on "viral-induced" vs "multiple-trigger" wheeze</h4>
+<p>Older teaching sorted preschool wheeze into tidy phenotypes (episodic viral wheeze vs multiple-trigger wheeze; transient vs persistent vs late-onset). GINA 2026 explicitly downgrades these: they have <b>poor predictive value</b>, overlap with non-asthma conditions, and some can only be applied <i>retrospectively</i>. Use them to describe, never to decide. The clinical job is to diagnose <b>this individual child</b> using the criteria — not to file them into a phenotype box.</p>
+</div>
+<div class="examq" data-q="1">
+<div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 9-month-old has their <i>first-ever</i> episode of wheeze during a URTI, with crackles on auscultation. What is the single most likely diagnosis, and does this meet criteria for asthma?</span></div>
+<button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
+<div class="ans"><div class="ans-inner"><b>Bronchiolitis</b> — not asthma. A first wheeze under 12 months, especially with crackles, is bronchiolitis until proven otherwise. It fails asthma criteria on two counts: it is a single (not recurrent) episode, and crackles point to an alternative cause. GINA's rule of thumb: <b>the younger the child, the higher the probability of an alternative diagnosis.</b></div></div>
+</div>
+</div>
 </section>
-
 <!-- ============ 2. ASSESSMENT ============ -->
 <section id="assess">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">02 — ASSESSMENT</div>
-      <h2>Taking the history: what you ask, and who you ask</h2>
-      <p class="lead">Assessment means building the picture of <b>variable respiratory symptoms + triggers + response</b>. In the younger band, every data point is filtered through a parent/caregiver — which is both your only channel and your biggest source of error.</p>
-    </div>
-
-    <div class="dual" id="dual-assess">
-      <div class="panel u5" data-band="u5">
-        <div class="panel-head"><span class="age-ic">5⁻</span><span class="ttl">≤5 years<small>History via parent/caregiver</small></span></div>
-        <div class="panel-body">
-          <ul>
-            <li><b>How an episode starts &amp; evolves:</b> wheeze (high-pitched, on breathing out), dry cough, coughing spells, difficult/heavy/fast breathing.</li>
-            <li><b>Timing that points to asthma:</b> worse in sleep, after laughing, crying, or activity. In infants, <b>crying and laughing = the exertion equivalent of exercise.</b></li>
-            <li><b>Interval symptoms:</b> between colds, any cough/wheeze after running or during sleep? Does the child stop playing early?</li>
-            <li><b>Triggers:</b> colds, cold air, animals/allergens, activity.</li>
-            <li><b>Episode duration:</b> minutes, or up to 24 hours? (Acute wheezing episodes typically last &gt;24 h.)</li>
-            <li><b>Treatment response already seen:</b> did a reliever help, and <b>how fast</b> (20–60 min is typical of asthma)?</li>
-            <li><b>Type-2 clues:</b> eczema, food allergy, hay fever; first-degree relative with atopy/asthma.</li>
-          </ul>
-          <div class="note">Parents/caregivers may report <b>irritability, tiredness, or mood change</b> as the main problem — not "wheeze." Some cultures/languages have no word for wheeze at all.</div>
-        </div>
-      </div>
-      <div class="panel six" data-band="six">
-        <div class="panel-head"><span class="age-ic">11</span><span class="ttl">6–11 years<small>Child can self-report + objective testing</small></span></div>
-        <div class="panel-body">
-          <ul>
-            <li><b>Typical variable symptoms:</b> wheeze, shortness of breath, chest tightness, cough — <b>variable over time and in intensity.</b></li>
-            <li><b>Pattern:</b> often worse at night/on waking; triggered by exercise, laughter, allergens, cold air.</li>
-            <li><b>The very distinctive clue:</b> symptoms <b>worsen after stopping exercise.</b></li>
-            <li><b>Often appear/worsen with viral infections.</b></li>
-            <li><b>Quantify control:</b> daytime symptoms/week, night waking, reliever use/week, activity limitation (feeds the control grid).</li>
-            <li><b>Objective anchor available:</b> plan spirometry with reversibility (see Diagnose).</li>
-            <li><b>Type-2 clues + biomarkers:</b> atopy history; FeNO &gt;35 ppb or blood eosinophils support Type-2 asthma.</li>
-          </ul>
-          <div class="note">Use a validated instrument: <b>Childhood Asthma Control Test (C-ACT)</b> is validated from age 4–11.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout hy">
-      <span class="ic">⚡</span>
-      <h4>High-Yield · The single most specific sign in the young child</h4>
-      <p><b>Audible wheeze — heard without a stethoscope — that recurs, and occurs during sleep or with activity/laughing/crying — is the most specific asthma sign in ≤5s.</b> But it must be <i>confirmed</i> at least once: directly by a clinician, via a video/audio recording, or by a caregiver who has proven they can tell wheeze from other noisy breathing.</p>
-    </div>
-
-    <div class="callout trap">
-      <span class="ic">⚠️</span>
-      <h4>Trap · "Wheeze" is a loaded word</h4>
-      <p>Caregivers use "wheeze" for <i>any</i> noisy breathing — nasal congestion, throat clearing, stridor (upper airway), or bronchial secretions (lower airway) — none of which is true bronchoconstriction. Never take reported "wheeze" at face value in a young child. Confirm it, or your diagnosis is built on sand.</p>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">02 — ASSESSMENT</div>
+<h2 id="taking-the-history-what-you-ask-and-who-you-ask">Taking the history: what you ask, and who you ask</h2>
+<p class="lead">Assessment means building the picture of <b>variable respiratory symptoms + triggers + response</b>. In the younger band, every data point is filtered through a parent/caregiver — which is both your only channel and your biggest source of error.</p>
+</div>
+<div class="dual" id="dual-assess">
+<div class="panel u5" data-band="u5">
+<div class="panel-head"><span class="age-ic">5⁻</span><span class="ttl">≤5 years<small>History via parent/caregiver</small></span></div>
+<div class="panel-body">
+<ul>
+<li><b>How an episode starts &amp; evolves:</b> wheeze (high-pitched, on breathing out), dry cough, coughing spells, difficult/heavy/fast breathing.</li>
+<li><b>Timing that points to asthma:</b> worse in sleep, after laughing, crying, or activity. In infants, <b>crying and laughing = the exertion equivalent of exercise.</b></li>
+<li><b>Interval symptoms:</b> between colds, any cough/wheeze after running or during sleep? Does the child stop playing early?</li>
+<li><b>Triggers:</b> colds, cold air, animals/allergens, activity.</li>
+<li><b>Episode duration:</b> minutes, or up to 24 hours? (Acute wheezing episodes typically last &gt;24 h.)</li>
+<li><b>Treatment response already seen:</b> did a reliever help, and <b>how fast</b> (20–60 min is typical of asthma)?</li>
+<li><b>Type-2 clues:</b> eczema, food allergy, hay fever; first-degree relative with atopy/asthma.</li>
+</ul>
+<div class="note">Parents/caregivers may report <b>irritability, tiredness, or mood change</b> as the main problem — not "wheeze." Some cultures/languages have no word for wheeze at all.</div>
+</div>
+</div>
+<div class="panel six" data-band="six">
+<div class="panel-head"><span class="age-ic">11</span><span class="ttl">6–11 years<small>Child can self-report + objective testing</small></span></div>
+<div class="panel-body">
+<ul>
+<li><b>Typical variable symptoms:</b> wheeze, shortness of breath, chest tightness, cough — <b>variable over time and in intensity.</b></li>
+<li><b>Pattern:</b> often worse at night/on waking; triggered by exercise, laughter, allergens, cold air.</li>
+<li><b>The very distinctive clue:</b> symptoms <b>worsen after stopping exercise.</b></li>
+<li><b>Often appear/worsen with viral infections.</b></li>
+<li><b>Quantify control:</b> daytime symptoms/week, night waking, reliever use/week, activity limitation (feeds the control grid).</li>
+<li><b>Objective anchor available:</b> plan spirometry with reversibility (see Diagnose).</li>
+<li><b>Type-2 clues + biomarkers:</b> atopy history; FeNO &gt;35 ppb or blood eosinophils support Type-2 asthma.</li>
+</ul>
+<div class="note">Use a validated instrument: <b>Childhood Asthma Control Test (C-ACT)</b> is validated from age 4–11.</div>
+</div>
+</div>
+</div>
+<div class="callout hy">
+<span class="ic">⚡</span>
+<h4>High-Yield · The single most specific sign in the young child</h4>
+<p><b>Audible wheeze — heard without a stethoscope — that recurs, and occurs during sleep or with activity/laughing/crying — is the most specific asthma sign in ≤5s.</b> But it must be <i>confirmed</i> at least once: directly by a clinician, via a video/audio recording, or by a caregiver who has proven they can tell wheeze from other noisy breathing.</p>
+</div>
+<div class="callout trap">
+<span class="ic">⚠️</span>
+<h4>Trap · "Wheeze" is a loaded word</h4>
+<p>Caregivers use "wheeze" for <i>any</i> noisy breathing — nasal congestion, throat clearing, stridor (upper airway), or bronchial secretions (lower airway) — none of which is true bronchoconstriction. Never take reported "wheeze" at face value in a young child. Confirm it, or your diagnosis is built on sand.</p>
+</div>
+</div>
 </section>
-
 <!-- ============ 3. EXAMINATION ============ -->
 <section id="exam">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">03 — EXAMINATION</div>
-      <h2>What the physical exam does — and doesn't — give you</h2>
-      <p class="lead">Between episodes, the chest is usually <b>normal in both bands</b>. The exam earns its keep during an acute episode (confirming lower-airway obstruction) and in hunting for red-flag features that argue <i>against</i> asthma.</p>
-    </div>
-
-    <div class="two-col">
-      <div class="card">
-        <h4>Signs of lower-airway obstruction (supports asthma)</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px">
-          <li>• Expiratory wheeze / rhonchi</li>
-          <li>• Accessory muscle use, prolonged expiration</li>
-          <li>• Decreased air entry / air exchange</li>
-          <li>• In severe cases: low SpO₂, cyanosis, rising CO₂</li>
-        </ul>
-        <div class="tagrow"><span class="tg cool">Timely response to bronchodilator seals it</span></div>
-      </div>
-      <div class="card">
-        <h4>Between-episode exam: what "normal" means</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px">
-          <li>• Chest frequently <b>normal</b> — this does <i>not</i> rule out asthma</li>
-          <li>• Look for allergic stigmata: eczema, allergic rhinitis</li>
-          <li>• Check growth (height) — a treatment-safety baseline</li>
-        </ul>
-        <div class="tagrow"><span class="tg warm">Measure &amp; plot height yearly in ≤5s on ICS</span></div>
-      </div>
-    </div>
-
-    <div class="callout further">
-      <span class="ic">🔎</span>
-      <h4>Going Further · Red-flag exam findings that mean "not just asthma" (≤5y referral list, Box 10-5)</h4>
-      <p>Any of these in a young child points to an <b>alternative diagnosis</b> and warrants investigation/referral: failure to thrive · neonatal or very-early onset (especially with failure to thrive) · vomiting with respiratory symptoms · <b>continuous wheeze, recurrent stridor, or a seal-like barking cough</b> (airway malacia) · no response to asthma meds · symptoms with no link to typical triggers like viral URTI · focal lung or cardiovascular signs, or finger clubbing · <b>hypoxemia (&lt;95%) when awake, outside an exacerbation.</b></p>
-    </div>
-
-    <div class="callout hy">
-      <span class="ic">⚡</span>
-      <h4>High-Yield · A quiet chest is the loudest sign</h4>
-      <p>During an acute episode, a <b>silent chest</b> is not reassurance — it means airflow is too low to generate a wheeze. Paired with agitation, drowsiness, or confusion (signs of cerebral hypoxemia), it is a life-threatening emergency in either band.</p>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">03 — EXAMINATION</div>
+<h2 id="what-the-physical-exam-does-and-doesn-t-give-you">What the physical exam does — and doesn't — give you</h2>
+<p class="lead">Between episodes, the chest is usually <b>normal in both bands</b>. The exam earns its keep during an acute episode (confirming lower-airway obstruction) and in hunting for red-flag features that argue <i>against</i> asthma.</p>
+</div>
+<div class="two-col">
+<div class="card">
+<h4>Signs of lower-airway obstruction (supports asthma)</h4>
+<ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px">
+<li>• Expiratory wheeze / rhonchi</li>
+<li>• Accessory muscle use, prolonged expiration</li>
+<li>• Decreased air entry / air exchange</li>
+<li>• In severe cases: low SpO₂, cyanosis, rising CO₂</li>
+</ul>
+<div class="tagrow"><span class="tg cool">Timely response to bronchodilator seals it</span></div>
+</div>
+<div class="card">
+<h4>Between-episode exam: what "normal" means</h4>
+<ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px">
+<li>• Chest frequently <b>normal</b> — this does <i>not</i> rule out asthma</li>
+<li>• Look for allergic stigmata: eczema, allergic rhinitis</li>
+<li>• Check growth (height) — a treatment-safety baseline</li>
+</ul>
+<div class="tagrow"><span class="tg warm">Measure &amp; plot height yearly in ≤5s on ICS</span></div>
+</div>
+</div>
+<div class="callout further">
+<span class="ic">🔎</span>
+<h4>Going Further · Red-flag exam findings that mean "not just asthma" (≤5y referral list, Box 10-5)</h4>
+<p>Any of these in a young child points to an <b>alternative diagnosis</b> and warrants investigation/referral: failure to thrive · neonatal or very-early onset (especially with failure to thrive) · vomiting with respiratory symptoms · <b>continuous wheeze, recurrent stridor, or a seal-like barking cough</b> (airway malacia) · no response to asthma meds · symptoms with no link to typical triggers like viral URTI · focal lung or cardiovascular signs, or finger clubbing · <b>hypoxemia (&lt;95%) when awake, outside an exacerbation.</b></p>
+</div>
+<div class="callout hy">
+<span class="ic">⚡</span>
+<h4>High-Yield · A quiet chest is the loudest sign</h4>
+<p>During an acute episode, a <b>silent chest</b> is not reassurance — it means airflow is too low to generate a wheeze. Paired with agitation, drowsiness, or confusion (signs of cerebral hypoxemia), it is a life-threatening emergency in either band.</p>
+</div>
+</div>
 </section>
-
 <!-- ============ 4. DIAGNOSIS ============ -->
 <section id="diagnose">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">04 — DIAGNOSIS</div>
-      <h2>Confirming the diagnosis — two genuinely different rulebooks <span class="diverge" style="position:static">⇄ Diverge</span></h2>
-      <p class="lead">This is the sharpest divergence between the bands. The younger child is diagnosed on a <b>3-criteria clinical rule</b>; the school-age child gets the <b>adult-style objective rule</b> built on documented variable airflow.</p>
-    </div>
-
-    <div class="dual" id="dual-dx">
-      <div class="panel u5" data-band="u5">
-        <div class="panel-head"><span class="age-ic">5⁻</span><span class="ttl">≤5 years · ALL 3 criteria required<small>Box 10-2 — else record "suspected asthma"</small></span></div>
-        <div class="panel-body">
-          <ul>
-            <li><b>① Recurrent acute wheezing episodes.</b> ≥2 acute episodes in 12 months, <i>OR</i> ≥1 acute episode <b>plus</b> interval symptoms. Wheeze must be <b>confirmed at least once</b>.</li>
-            <li><b>② No likely alternative cause</b> (a concurrent viral URTI is allowed). Imaging/labs usually not required.</li>
-            <li><b>③ Timely response to asthma treatment.</b> Improvement within <b>20–60 min</b> of SABA (or 3–4 h after SABA+OCS in a severe episode), <i>OR</i> a clear decrease in symptoms during a <b>2–3 month ICS trial</b>.</li>
-          </ul>
-          <div class="note"><b>Suspected asthma:</b> if only 1–2 criteria are met, label it "suspected," treat, and reassess over time. A definitive label often isn't possible on day one.</div>
-        </div>
-      </div>
-      <div class="panel six" data-band="six">
-        <div class="panel-head"><span class="age-ic">11</span><span class="ttl">6–11 years · symptoms + variable airflow<small>Box 1-2 — objective confirmation</small></span></div>
-        <div class="panel-body">
-          <ul>
-            <li><b>① History of typical variable symptoms</b> (wheeze, SOB, chest tightness, cough) that vary over time and intensity.</li>
-            <li><b>② Confirmed variable expiratory airflow limitation</b>, by any one of:</li>
-            <li><b>Bronchodilator reversibility:</b> FEV₁ rises <b>≥12% predicted</b> (or PEF ≥15%) after salbutamol.</li>
-            <li><b>Diurnal PEF variability</b> &gt;13% (children) averaged over 2 weeks.</li>
-            <li><b>Rise after 4 weeks ICS:</b> FEV₁ ≥12% predicted (or PEF ≥15%).</li>
-            <li><b>Bronchial challenge:</b> FEV₁ fall ≥20% (methacholine) or ≥15% (exercise/mannitol/saline).</li>
-          </ul>
-          <div class="note"><b>Biomarkers to support (not confirm):</b> FeNO &gt;35 ppb or blood eosinophils above reference support Type-2 asthma — but low levels never rule asthma out.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout trap">
-      <span class="ic">⚠️</span>
-      <h4>Trap · Normal spirometry does NOT exclude asthma (6–11y)</h4>
-      <p>Lung function is <b>variable by definition</b> — it can be completely normal between episodes. If suspicion is high and the first test is normal, repeat during symptoms, withhold bronchodilator first (SABA ≥4 h; long-acting 24–48 h), or move to challenge testing. One normal FEV₁ is not an acquittal.</p>
-    </div>
-
-    <div class="callout hy">
-      <span class="ic">⚡</span>
-      <h4>High-Yield · The reversibility number differs by age</h4>
-      <p><b>Children (6–11y): FEV₁ ≥12% predicted</b> defines a positive bronchodilator response — note it's "% predicted," and there is no absolute-mL requirement as in adults (where it's ≥12% <i>and</i> ≥200 mL). This is a classic exam discriminator.</p>
-    </div>
-
-    <div class="examq" data-q="2">
-      <div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 3-year-old has had two clinician-confirmed wheezing episodes this year and coughs at night between colds, but you cannot yet document a treatment response. What do you record, and what's the next step?</span></div>
-      <button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
-      <div class="ans"><div class="ans-inner">Record <b>"suspected asthma."</b> Criteria ① (recurrent episodes + interval symptoms) and ② (no alternative cause) are met, but ③ (documented treatment response) is not yet fulfilled. Next step: a <b>2–3 month trial of daily low-dose ICS + as-needed SABA</b>, ideally timed to the child's symptomatic season, then reassess. A convincing response confirms asthma; then <b>reduce ICS to the minimum effective dose.</b></div></div>
-    </div>
-
-    <div class="subhead six-c"><span class="bar"></span>Tests that assist (mostly 6–11, limited use ≤5)</div>
-    <div class="ddx-grid">
-      <div class="ddx"><div class="clue">≥6 years, coached, visual incentives</div><div class="dx">Spirometry</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">The workhorse for 6–11. Most ≤5s can't do reproducible maneuvers.</div></div>
-      <div class="ddx"><div class="clue">Effort-independent, tidal breathing, from age 3</div><div class="dx">Oscillometry</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">Emerging option in preschoolers; device-specific reference values needed.</div></div>
-      <div class="ddx"><div class="clue">Type-2 inflammation marker</div><div class="dx">FeNO</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">Supports diagnosis in 6–11 (&gt;35 ppb). Mostly a research tool in ≤5s.</div></div>
-      <div class="ddx"><div class="clue">Doubt about the diagnosis / atypical features</div><div class="dx">Chest X-ray</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">Rarely indicated — used to exclude structural disease, TB, foreign body.</div></div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">04 — DIAGNOSIS</div>
+<h2 id="confirming-the-diagnosis-two-genuinely-different-rulebooks-d">Confirming the diagnosis — two genuinely different rulebooks <span class="diverge" style="position:static">⇄ Diverge</span></h2>
+<p class="lead">This is the sharpest divergence between the bands. The younger child is diagnosed on a <b>3-criteria clinical rule</b>; the school-age child gets the <b>adult-style objective rule</b> built on documented variable airflow.</p>
+</div>
+<div class="dual" id="dual-dx">
+<div class="panel u5" data-band="u5">
+<div class="panel-head"><span class="age-ic">5⁻</span><span class="ttl">≤5 years · ALL 3 criteria required<small>Box 10-2 — else record "suspected asthma"</small></span></div>
+<div class="panel-body">
+<ul>
+<li><b>① Recurrent acute wheezing episodes.</b> ≥2 acute episodes in 12 months, <i>OR</i> ≥1 acute episode <b>plus</b> interval symptoms. Wheeze must be <b>confirmed at least once</b>.</li>
+<li><b>② No likely alternative cause</b> (a concurrent viral URTI is allowed). Imaging/labs usually not required.</li>
+<li><b>③ Timely response to asthma treatment.</b> Improvement within <b>20–60 min</b> of SABA (or 3–4 h after SABA+OCS in a severe episode), <i>OR</i> a clear decrease in symptoms during a <b>2–3 month ICS trial</b>.</li>
+</ul>
+<div class="note"><b>Suspected asthma:</b> if only 1–2 criteria are met, label it "suspected," treat, and reassess over time. A definitive label often isn't possible on day one.</div>
+</div>
+</div>
+<div class="panel six" data-band="six">
+<div class="panel-head"><span class="age-ic">11</span><span class="ttl">6–11 years · symptoms + variable airflow<small>Box 1-2 — objective confirmation</small></span></div>
+<div class="panel-body">
+<ul>
+<li><b>① History of typical variable symptoms</b> (wheeze, SOB, chest tightness, cough) that vary over time and intensity.</li>
+<li><b>② Confirmed variable expiratory airflow limitation</b>, by any one of:</li>
+<li><b>Bronchodilator reversibility:</b> FEV₁ rises <b>≥12% predicted</b> (or PEF ≥15%) after salbutamol.</li>
+<li><b>Diurnal PEF variability</b> &gt;13% (children) averaged over 2 weeks.</li>
+<li><b>Rise after 4 weeks ICS:</b> FEV₁ ≥12% predicted (or PEF ≥15%).</li>
+<li><b>Bronchial challenge:</b> FEV₁ fall ≥20% (methacholine) or ≥15% (exercise/mannitol/saline).</li>
+</ul>
+<div class="note"><b>Biomarkers to support (not confirm):</b> FeNO &gt;35 ppb or blood eosinophils above reference support Type-2 asthma — but low levels never rule asthma out.</div>
+</div>
+</div>
+</div>
+<div class="callout trap">
+<span class="ic">⚠️</span>
+<h4>Trap · Normal spirometry does NOT exclude asthma (6–11y)</h4>
+<p>Lung function is <b>variable by definition</b> — it can be completely normal between episodes. If suspicion is high and the first test is normal, repeat during symptoms, withhold bronchodilator first (SABA ≥4 h; long-acting 24–48 h), or move to challenge testing. One normal FEV₁ is not an acquittal.</p>
+</div>
+<div class="callout hy">
+<span class="ic">⚡</span>
+<h4>High-Yield · The reversibility number differs by age</h4>
+<p><b>Children (6–11y): FEV₁ ≥12% predicted</b> defines a positive bronchodilator response — note it's "% predicted," and there is no absolute-mL requirement as in adults (where it's ≥12% <i>and</i> ≥200 mL). This is a classic exam discriminator.</p>
+</div>
+<div class="examq" data-q="2">
+<div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 3-year-old has had two clinician-confirmed wheezing episodes this year and coughs at night between colds, but you cannot yet document a treatment response. What do you record, and what's the next step?</span></div>
+<button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
+<div class="ans"><div class="ans-inner">Record <b>"suspected asthma."</b> Criteria ① (recurrent episodes + interval symptoms) and ② (no alternative cause) are met, but ③ (documented treatment response) is not yet fulfilled. Next step: a <b>2–3 month trial of daily low-dose ICS + as-needed SABA</b>, ideally timed to the child's symptomatic season, then reassess. A convincing response confirms asthma; then <b>reduce ICS to the minimum effective dose.</b></div></div>
+</div>
+<div class="subhead six-c"><span class="bar"></span>Tests that assist (mostly 6–11, limited use ≤5)</div>
+<div class="ddx-grid">
+<div class="ddx"><div class="clue">≥6 years, coached, visual incentives</div><div class="dx">Spirometry</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">The workhorse for 6–11. Most ≤5s can't do reproducible maneuvers.</div></div>
+<div class="ddx"><div class="clue">Effort-independent, tidal breathing, from age 3</div><div class="dx">Oscillometry</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">Emerging option in preschoolers; device-specific reference values needed.</div></div>
+<div class="ddx"><div class="clue">Type-2 inflammation marker</div><div class="dx">FeNO</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">Supports diagnosis in 6–11 (&gt;35 ppb). Mostly a research tool in ≤5s.</div></div>
+<div class="ddx"><div class="clue">Doubt about the diagnosis / atypical features</div><div class="dx">Chest X-ray</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">Rarely indicated — used to exclude structural disease, TB, foreign body.</div></div>
+</div>
+</div>
 </section>
-
 <!-- ============ 5. DIFFERENTIAL DIAGNOSIS ============ -->
 <section id="ddx">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">05 — DIFFERENTIAL</div>
-      <h2>The differential is widest in the youngest child</h2>
-      <p class="lead">Criterion ② — "no likely alternative cause" — is where the youngest patients demand the most caution. These are GINA's common mimics (Box 10-4). Tap a card; red cards flag the can't-miss diagnoses.</p>
-    </div>
-
-    <div class="ddx-grid">
-      <div class="ddx"><div class="clue">Mainly cough + runny/congested nose &lt;10 days, no wheeze or difficulty breathing</div><div class="dx">Viral URTI</div></div>
-      <div class="ddx"><div class="clue">Cough when feeding, recurrent chest infections</div><div class="dx">GERD ± pharyngeal dysphagia</div></div>
-      <div class="ddx red"><div class="clue">Sudden onset, <b>unilateral</b> wheeze</div><div class="dx"><span class="flag">🚩</span>Inhaled foreign body</div></div>
-      <div class="ddx"><div class="clue">Protracted paroxysms of coughing, often with stridor and vomiting</div><div class="dx">Pertussis</div></div>
-      <div class="ddx"><div class="clue">Persistent <b>wet</b> cough</div><div class="dx">Protracted bacterial bronchitis · TB</div></div>
-      <div class="ddx"><div class="clue">Noisy breathing when crying/eating; harsh cough</div><div class="dx">Tracheo-/laryngomalacia</div></div>
-      <div class="ddx red"><div class="clue">Cardiac murmur, failure to thrive</div><div class="dx"><span class="flag">🚩</span>Congenital heart disease</div></div>
-      <div class="ddx"><div class="clue">Pre-term delivery, symptoms since birth</div><div class="dx">Bronchopulmonary dysplasia</div></div>
-      <div class="ddx red"><div class="clue">Excessive cough + mucus, GI symptoms, failure to thrive</div><div class="dx"><span class="flag">🚩</span>Cystic fibrosis</div></div>
-      <div class="ddx"><div class="clue">Neonatal resp distress, chronic ear infections, persistent nasal discharge from birth</div><div class="dx">Primary ciliary dyskinesia</div></div>
-      <div class="ddx"><div class="clue">Noisy breathing, feeding difficulties</div><div class="dx">Vascular ring</div></div>
-      <div class="ddx"><div class="clue">Recurrent fever &amp; infections (incl. non-respiratory)</div><div class="dx">Primary immunodeficiency</div></div>
-    </div>
-
-    <div class="callout hy">
-      <span class="ic">⚡</span>
-      <h4>High-Yield · Three pattern-recognition shortcuts</h4>
-      <p><b>Sudden + unilateral wheeze → foreign body.</b> <b>Wet/productive cough as the only symptom → not asthma</b> (think PBB, CF, suppurative disease). <b>First wheeze &lt;12 months → bronchiolitis.</b> These three patterns defuse the most common "asthma" misdiagnoses on exams and in clinic.</p>
-    </div>
-
-    <div class="callout analogy">
-      <span class="ic">🔗</span>
-      <h4>Analogy · Asthma is a diagnosis of pattern, not a single snapshot</h4>
-      <p>A mimic is a <i>photograph</i> — one fixed finding (a murmur, clubbing, a unilateral wheeze, failure to thrive). Asthma is a <i>flip-book</i> — the same reversible obstruction recurring and varying over time. When a "photograph" finding dominates and won't animate into the asthma flip-book, stop and investigate the mimic.</p>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">05 — DIFFERENTIAL</div>
+<h2 id="the-differential-is-widest-in-the-youngest-child">The differential is widest in the youngest child</h2>
+<p class="lead">Criterion ② — "no likely alternative cause" — is where the youngest patients demand the most caution. These are GINA's common mimics (Box 10-4). Tap a card; red cards flag the can't-miss diagnoses.</p>
+</div>
+<div class="ddx-grid">
+<div class="ddx"><div class="clue">Mainly cough + runny/congested nose &lt;10 days, no wheeze or difficulty breathing</div><div class="dx">Viral URTI</div></div>
+<div class="ddx"><div class="clue">Cough when feeding, recurrent chest infections</div><div class="dx">GERD ± pharyngeal dysphagia</div></div>
+<div class="ddx red"><div class="clue">Sudden onset, <b>unilateral</b> wheeze</div><div class="dx"><span class="flag">🚩</span>Inhaled foreign body</div></div>
+<div class="ddx"><div class="clue">Protracted paroxysms of coughing, often with stridor and vomiting</div><div class="dx">Pertussis</div></div>
+<div class="ddx"><div class="clue">Persistent <b>wet</b> cough</div><div class="dx">Protracted bacterial bronchitis · TB</div></div>
+<div class="ddx"><div class="clue">Noisy breathing when crying/eating; harsh cough</div><div class="dx">Tracheo-/laryngomalacia</div></div>
+<div class="ddx red"><div class="clue">Cardiac murmur, failure to thrive</div><div class="dx"><span class="flag">🚩</span>Congenital heart disease</div></div>
+<div class="ddx"><div class="clue">Pre-term delivery, symptoms since birth</div><div class="dx">Bronchopulmonary dysplasia</div></div>
+<div class="ddx red"><div class="clue">Excessive cough + mucus, GI symptoms, failure to thrive</div><div class="dx"><span class="flag">🚩</span>Cystic fibrosis</div></div>
+<div class="ddx"><div class="clue">Neonatal resp distress, chronic ear infections, persistent nasal discharge from birth</div><div class="dx">Primary ciliary dyskinesia</div></div>
+<div class="ddx"><div class="clue">Noisy breathing, feeding difficulties</div><div class="dx">Vascular ring</div></div>
+<div class="ddx"><div class="clue">Recurrent fever &amp; infections (incl. non-respiratory)</div><div class="dx">Primary immunodeficiency</div></div>
+</div>
+<div class="callout hy">
+<span class="ic">⚡</span>
+<h4>High-Yield · Three pattern-recognition shortcuts</h4>
+<p><b>Sudden + unilateral wheeze → foreign body.</b> <b>Wet/productive cough as the only symptom → not asthma</b> (think PBB, CF, suppurative disease). <b>First wheeze &lt;12 months → bronchiolitis.</b> These three patterns defuse the most common "asthma" misdiagnoses on exams and in clinic.</p>
+</div>
+<div class="callout analogy">
+<span class="ic">🔗</span>
+<h4>Analogy · Asthma is a diagnosis of pattern, not a single snapshot</h4>
+<p>A mimic is a <i>photograph</i> — one fixed finding (a murmur, clubbing, a unilateral wheeze, failure to thrive). Asthma is a <i>flip-book</i> — the same reversible obstruction recurring and varying over time. When a "photograph" finding dominates and won't animate into the asthma flip-book, stop and investigate the mimic.</p>
+</div>
+</div>
 </section>
-
 <!-- ============ 6. CONTROL ASSESSMENT ============ -->
 <section id="control">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">06 — CONTROL</div>
-      <h2>Assessing control: same 4 questions, different reliever threshold</h2>
-      <p class="lead">Both bands assess control over the <b>last 4 weeks</b> across the same four domains, then layer on future-risk factors. Count how many of the four are "yes."</p>
-    </div>
-
-    <div class="two-col">
-      <div class="card" data-band="u5">
-        <h4 style="color:var(--u5-deep)">Symptom control — ≤5 years (Box 11-1)</h4>
-        <p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">In the past 4 weeks, has the child had:</p>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px">
-          <li>• Daytime symptoms more than twice a week?</li>
-          <li>• Any night waking or night coughing due to asthma?</li>
-          <li>• Reliever needed more than twice a week?</li>
-          <li>• Any activity limitation? (<i>runs/plays less, tires on walks</i>)</li>
-        </ul>
-        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-          <span class="tg" style="background:var(--mild-wash);color:var(--mild)">None = Well</span>
-          <span class="tg" style="background:var(--mod-wash);color:#9a5e10">1–2 = Partly</span>
-          <span class="tg" style="background:var(--sev-wash);color:var(--sev)">3–4 = Uncontrolled</span>
-        </div>
-      </div>
-      <div class="card" data-band="six">
-        <h4 style="color:var(--six-deep)">Symptom control — 6–11 years (Box 2-2)</h4>
-        <p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">In the past 4 weeks, has the child had:</p>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px">
-          <li>• Daytime symptoms more than <b>twice a week</b>?</li>
-          <li>• Any night waking due to asthma?</li>
-          <li>• Reliever needed more than twice a week?</li>
-          <li>• Any activity limitation due to asthma?</li>
-        </ul>
-        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-          <span class="tg" style="background:var(--mild-wash);color:var(--mild)">None = Well</span>
-          <span class="tg" style="background:var(--mod-wash);color:#9a5e10">1–2 = Partly</span>
-          <span class="tg" style="background:var(--sev-wash);color:var(--sev)">3–4 = Uncontrolled</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout trap">
-      <span class="ic">⚠️</span>
-      <h4>Trap · The "SABA more than twice a week" line excludes pre-exercise dosing</h4>
-      <p>When you count reliever use for control, <b>don't count a puff taken before sport</b> — that's prophylaxis, not rescue. And before ever stepping treatment up, confirm the symptoms are truly asthma, and that <b>inhaler technique and adherence are adequate</b> — the two commonest reasons for apparent "uncontrolled" asthma.</p>
-    </div>
-
-    <div class="callout further">
-      <span class="ic">🔎</span>
-      <h4>Going Further · Future-risk factors (assessed even when symptoms look controlled)</h4>
-      <p><b>Exacerbation risk:</b> ≥1 severe episode (ED/hospital/OCS) in the past year · uncontrolled symptoms · start of the child's "flare season" (especially autumn) · indoor tobacco smoke, allergens, pollution — <b>especially combined with viral infection</b> · poor adherence/technique · major psychosocial or socioeconomic problems. <b>Persistent airflow-limitation risk:</b> severe asthma with several hospitalizations; history of bronchiolitis. Even months of good control doesn't zero the risk — viral URTIs still trigger flares.</p>
-    </div>
-
-    <div class="callout analogy">
-      <span class="ic">🔗</span>
-      <h4>Analogy · Control has two dials, not one</h4>
-      <p>Think of a mixing desk with two sliders: <b>"symptoms now"</b> and <b>"risk later."</b> A child can look great on the first slider (quiet last month) while the second is pushed high (an ED visit in spring, a smoker at home, autumn approaching). Manage both sliders — treating only today's symptoms leaves the child exposed to the next viral-triggered flare.</p>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">06 — CONTROL</div>
+<h2 id="assessing-control-same-4-questions-different-reliever-thresh">Assessing control: same 4 questions, different reliever threshold</h2>
+<p class="lead">Both bands assess control over the <b>last 4 weeks</b> across the same four domains, then layer on future-risk factors. Count how many of the four are "yes."</p>
+</div>
+<div class="two-col">
+<div class="card" data-band="u5">
+<h4 style="color:var(--u5-deep)">Symptom control — ≤5 years (Box 11-1)</h4>
+<p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">In the past 4 weeks, has the child had:</p>
+<ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px">
+<li>• Daytime symptoms more than twice a week?</li>
+<li>• Any night waking or night coughing due to asthma?</li>
+<li>• Reliever needed more than twice a week?</li>
+<li>• Any activity limitation? (<i>runs/plays less, tires on walks</i>)</li>
+</ul>
+<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+<span class="tg" style="background:var(--mild-wash);color:var(--mild)">None = Well</span>
+<span class="tg" style="background:var(--mod-wash);color:#9a5e10">1–2 = Partly</span>
+<span class="tg" style="background:var(--sev-wash);color:var(--sev)">3–4 = Uncontrolled</span>
+</div>
+</div>
+<div class="card" data-band="six">
+<h4 style="color:var(--six-deep)">Symptom control — 6–11 years (Box 2-2)</h4>
+<p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">In the past 4 weeks, has the child had:</p>
+<ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px">
+<li>• Daytime symptoms more than <b>twice a week</b>?</li>
+<li>• Any night waking due to asthma?</li>
+<li>• Reliever needed more than twice a week?</li>
+<li>• Any activity limitation due to asthma?</li>
+</ul>
+<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+<span class="tg" style="background:var(--mild-wash);color:var(--mild)">None = Well</span>
+<span class="tg" style="background:var(--mod-wash);color:#9a5e10">1–2 = Partly</span>
+<span class="tg" style="background:var(--sev-wash);color:var(--sev)">3–4 = Uncontrolled</span>
+</div>
+</div>
+</div>
+<div class="callout trap">
+<span class="ic">⚠️</span>
+<h4>Trap · The "SABA more than twice a week" line excludes pre-exercise dosing</h4>
+<p>When you count reliever use for control, <b>don't count a puff taken before sport</b> — that's prophylaxis, not rescue. And before ever stepping treatment up, confirm the symptoms are truly asthma, and that <b>inhaler technique and adherence are adequate</b> — the two commonest reasons for apparent "uncontrolled" asthma.</p>
+</div>
+<div class="callout further">
+<span class="ic">🔎</span>
+<h4>Going Further · Future-risk factors (assessed even when symptoms look controlled)</h4>
+<p><b>Exacerbation risk:</b> ≥1 severe episode (ED/hospital/OCS) in the past year · uncontrolled symptoms · start of the child's "flare season" (especially autumn) · indoor tobacco smoke, allergens, pollution — <b>especially combined with viral infection</b> · poor adherence/technique · major psychosocial or socioeconomic problems. <b>Persistent airflow-limitation risk:</b> severe asthma with several hospitalizations; history of bronchiolitis. Even months of good control doesn't zero the risk — viral URTIs still trigger flares.</p>
+</div>
+<div class="callout analogy">
+<span class="ic">🔗</span>
+<h4>Analogy · Control has two dials, not one</h4>
+<p>Think of a mixing desk with two sliders: <b>"symptoms now"</b> and <b>"risk later."</b> A child can look great on the first slider (quiet last month) while the second is pushed high (an ED visit in spring, a smoker at home, autumn approaching). Manage both sliders — treating only today's symptoms leaves the child exposed to the next viral-triggered flare.</p>
+</div>
+</div>
 </section>
-
 <!-- ============ 7. TREATMENT TRACKS ============ -->
 <section id="treat">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">07 — TREATMENT</div>
-      <h2>Stepwise control: preferred vs alternative, by band <span class="diverge" style="position:static">⇄ Diverge</span></h2>
-      <p class="lead">Here the bands separate most in <i>ceiling</i> and <i>tooling</i>. The 6–11 band gets the modern <b>ICS-formoterol (AIR / MART)</b> machinery and runs to Step 5. The ≤5 band has a deliberately short, conservative ladder — <b>no MART evidence exists below age 5</b> — that tops out at "double the low ICS dose, then refer."</p>
-    </div>
-
-    <div class="tracks" id="tracks">
-      <!-- ≤5 TRACK -->
-      <div class="track-col u5" data-band="u5">
-        <div class="tc-head"><span class="age-ic">5⁻</span>≤5 years · the short ladder (Box 11-2)</div>
-        <div class="tc-body">
-          <div class="steps">
-            <div class="step u5-track">
-              <div class="step-n">1</div>
-              <div class="step-body">
-                <div class="stitle">As-needed SABA</div>
-                <div class="pref"><span class="k">Preferred:</span> inhaled SABA PRN via pMDI + spacer (mask &lt;3y, mouthpiece 3–5y).</div>
-                <div class="alt"><span class="k">Other:</span> intermittent high-dose ICS for viral-triggered wheeze in atopic (mAPI+) children if SABA alone insufficient. <b>Oral bronchodilators — not recommended.</b></div>
-              </div>
-            </div>
-            <div class="step u5-track">
-              <div class="step-n">2</div>
-              <div class="step-body">
-                <div class="stitle">Daily low-dose ICS + PRN SABA</div>
-                <div class="pref"><span class="k">Preferred:</span> daily low-dose ICS — trial ≥3 months. Start if symptoms &gt;2×/week or ≥1 severe flare in the past year.</div>
-                <div class="alt"><span class="k">Other:</span> LTRA (less effective than ICS; counsel on neuropsychiatric effects) · episodic high-dose ICS.</div>
-              </div>
-            </div>
-            <div class="step u5-track">
-              <div class="step-n">3</div>
-              <div class="step-body">
-                <div class="stitle">Double the "low" ICS dose</div>
-                <div class="pref"><span class="k">Preferred:</span> "medium" = double the low daily ICS dose; reassess at 2–3 months. <b>Check technique/adherence/diagnosis first.</b></div>
-                <div class="alt"><span class="k">Consider:</span> specialist referral.</div>
-              </div>
-            </div>
-            <div class="step u5-track">
-              <div class="step-n">4</div>
-              <div class="step-body">
-                <div class="stitle">Continue + refer to specialist</div>
-                <div class="pref"><span class="k">Preferred:</span> continue controller &amp; <b>refer for expert assessment.</b></div>
-                <div class="alt"><span class="k">Specialist may add:</span> LTRA add-on · (LAMA and ICS-LABA have insufficient evidence &lt;4–5y; <b>no MART studies &lt;5y</b>).</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6-11 TRACK -->
-      <div class="track-col six" data-band="six">
-        <div class="tc-head"><span class="age-ic">11</span>6–11 years · two tracks to Step 5 (Box 4-12)</div>
-        <div class="tc-body">
-          <div class="steps">
-            <div class="step six-track">
-              <div class="step-n">1</div>
-              <div class="step-body">
-                <div class="stitle">Infrequent symptoms (≤2 days/wk)</div>
-                <div class="pref"><span class="k">Preferred:</span> as-needed low-dose <b>ICS-formoterol</b> (AIR).</div>
-                <div class="alt"><span class="k">Alternative:</span> ICS taken whenever SABA is taken (combination or separate inhalers).</div>
-              </div>
-            </div>
-            <div class="step six-track">
-              <div class="step-n">2</div>
-              <div class="step-body">
-                <div class="stitle">Symptoms 3–4 days/week</div>
-                <div class="pref"><span class="k">Preferred:</span> daily low-dose ICS + PRN SABA (or + PRN ICS-SABA).</div>
-                <div class="alt"><span class="k">Alternative:</span> as-needed low-dose ICS-formoterol · ICS-whenever-SABA · daily LTRA (ICS beats LTRA for exacerbations).</div>
-              </div>
-            </div>
-            <div class="step six-track">
-              <div class="step-n">3</div>
-              <div class="step-body">
-                <div class="stitle">Most days / night waking ≥1×/wk / low lung fn</div>
-                <div class="pref"><span class="k">Preferred:</span> low-dose <b>ICS-formoterol MART</b> — or low-dose ICS-LABA / medium-dose ICS + PRN SABA.</div>
-                <div class="alt"><span class="k">Alternative:</span> daily low-dose ICS + LTRA, plus PRN reliever.</div>
-              </div>
-            </div>
-            <div class="step six-track">
-              <div class="step-n">4</div>
-              <div class="step-body">
-                <div class="stitle">Daily symptoms / nightly waking / recent flare</div>
-                <div class="pref"><span class="k">Preferred:</span> <b>medium-dose ICS-formoterol MART</b> (double the Step-3 MART dose — still a low daily dose) — or medium-dose ICS-LABA + PRN reliever.</div>
-                <div class="alt"><span class="k">Before stepping up:</span> recheck technique, adherence, triggers, and the diagnosis.</div>
-              </div>
-            </div>
-            <div class="step six-track">
-              <div class="step-n">5</div>
-              <div class="step-body">
-                <div class="stitle">Refer for phenotyping ± add-on</div>
-                <div class="pref"><span class="k">Preferred:</span> refer for expert assessment &amp; phenotyping; add-on <b>LAMA</b> or higher-dose ICS-LABA; consider <b>biologics</b> (anti-IgE / anti-IL-5 / anti-IL-4Rα).</div>
-                <div class="alt"><span class="k">Note:</span> some biologics are approved from age 6.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout hy">
-      <span class="ic">⚡</span>
-      <h4>High-Yield · The one-line summary of the whole ladder</h4>
-      <p><b>6–11:</b> anti-inflammatory reliever (ICS-formoterol) is now the preferred backbone, and MART runs Steps 3–5. <b>≤5:</b> plain <b>daily low-dose ICS is the preferred controller</b>, there is <b>no MART</b>, and the ladder is short — Step 3 is literally "double the low dose," Step 4 is "refer." Whenever control fails in either band, the first move is <b>not</b> escalation — it's checking <b>technique, adherence, diagnosis, and triggers.</b></p>
-    </div>
-
-    <div class="subhead"><span class="bar"></span>ICS dosing — what "low dose" actually means (metered mcg/day)</div>
-    <div class="sev-table" style="margin-bottom:6px">
-      <table class="grid">
-        <thead>
-          <tr>
-            <th class="feat">Inhaled corticosteroid</th>
-            <th class="c-mild" style="background:var(--six)">6–11y · LOW</th>
-            <th class="c-mod" style="background:var(--six-deep)">6–11y · MED</th>
-            <th class="c-sev" style="background:var(--u5)">≤5y · LOW total daily</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="feat">Beclometasone (pMDI, standard particle, HFA)</td><td>100–200</td><td>&gt;200–400</td><td>100 <small>(≥5y)</small></td></tr>
-          <tr><td class="feat">Beclometasone (extrafine particle, HFA)</td><td>50–100</td><td>&gt;100–200</td><td>50 <small>(≥5y)</small></td></tr>
-          <tr><td class="feat">Budesonide (pMDI/DPI)</td><td>100–200</td><td>&gt;200–400</td><td>— <small>(nebulised: 500, ≥1y)</small></td></tr>
-          <tr><td class="feat">Fluticasone propionate (pMDI, standard particle)</td><td>50–100</td><td>&gt;100–200</td><td>50 <small>(≥4y)</small></td></tr>
-          <tr><td class="feat">Mometasone furoate (pMDI, standard particle)</td><td>100</td><td>200</td><td>100 <small>(≥5y)</small></td></tr>
-          <tr><td class="feat">Ciclesonide (extrafine, HFA)</td><td>80</td><td>&gt;80–160</td><td>not sufficiently studied ≤5y</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:12.5px;color:var(--ink-soft);font-style:italic">Not a table of potency equivalence. Switching between molecules at the "same" dose band can change potency — monitor stability after any change. In children, <b>a pMDI should always be used with a spacer.</b></p>
-
-    <div class="callout trap">
-      <span class="ic">⚠️</span>
-      <h4>Trap · "Low dose" is not interchangeable between drugs</h4>
-      <p>These bands look tidy, but they do <b>not</b> imply equal potency. Swapping a child from "low-dose" drug A to "low-dose" drug B may quietly raise or lower their effective steroid exposure — destabilizing control or adding side-effect risk. Change one variable at a time and reassess.</p>
-    </div>
-
-    <div class="examq" data-q="3">
-      <div class="qhead"><span class="qbadge">Exam Q</span><span class="q">An 8-year-old on daily low-dose ICS still wakes twice weekly with cough and uses his reliever most days. Technique and adherence are confirmed good. What is the single preferred next step?</span></div>
-      <button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
-      <div class="ans"><div class="ans-inner">Step up to <b>low-dose ICS-formoterol MART</b> (Step 3 preferred) — the same inhaler for daily maintenance <i>and</i> as-needed relief. Alternatives are low-dose ICS-LABA or medium-dose ICS with a PRN reliever. The stem deliberately pre-confirms technique and adherence so that escalation is the correct answer rather than the usual "recheck the basics first."</div></div>
-    </div>
-
-    <div class="callout further">
-      <span class="ic">🔎</span>
-      <h4>Going Further · The montelukast (LTRA) counseling point</h4>
-      <p>LTRA appears as an <i>alternative</i> in both bands but is consistently <b>less effective than ICS for preventing exacerbations</b>. Whenever you prescribe it, GINA now asks you to actively counsel families about <b>neuropsychiatric adverse effects</b> (sleep disturbance, mood/behavior change) — a boxed-warning-level talking point that shows up in exams.</p>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">07 — TREATMENT</div>
+<h2 id="stepwise-control-preferred-vs-alternative-by-band-diverge">Stepwise control: preferred vs alternative, by band <span class="diverge" style="position:static">⇄ Diverge</span></h2>
+<p class="lead">Here the bands separate most in <i>ceiling</i> and <i>tooling</i>. The 6–11 band gets the modern <b>ICS-formoterol (AIR / MART)</b> machinery and runs to Step 5. The ≤5 band has a deliberately short, conservative ladder — <b>no MART evidence exists below age 5</b> — that tops out at "double the low ICS dose, then refer."</p>
+</div>
+<div class="tracks" id="tracks">
+<!-- ≤5 TRACK -->
+<div class="track-col u5" data-band="u5">
+<div class="tc-head"><span class="age-ic">5⁻</span>≤5 years · the short ladder (Box 11-2)</div>
+<div class="tc-body">
+<div class="steps">
+<div class="step u5-track">
+<div class="step-n">1</div>
+<div class="step-body">
+<div class="stitle">As-needed SABA</div>
+<div class="pref"><span class="k">Preferred:</span> inhaled SABA PRN via pMDI + spacer (mask &lt;3y, mouthpiece 3–5y).</div>
+<div class="alt"><span class="k">Other:</span> intermittent high-dose ICS for viral-triggered wheeze in atopic (mAPI+) children if SABA alone insufficient. <b>Oral bronchodilators — not recommended.</b></div>
+</div>
+</div>
+<div class="step u5-track">
+<div class="step-n">2</div>
+<div class="step-body">
+<div class="stitle">Daily low-dose ICS + PRN SABA</div>
+<div class="pref"><span class="k">Preferred:</span> daily low-dose ICS — trial ≥3 months. Start if symptoms &gt;2×/week or ≥1 severe flare in the past year.</div>
+<div class="alt"><span class="k">Other:</span> LTRA (less effective than ICS; counsel on neuropsychiatric effects) · episodic high-dose ICS.</div>
+</div>
+</div>
+<div class="step u5-track">
+<div class="step-n">3</div>
+<div class="step-body">
+<div class="stitle">Double the "low" ICS dose</div>
+<div class="pref"><span class="k">Preferred:</span> "medium" = double the low daily ICS dose; reassess at 2–3 months. <b>Check technique/adherence/diagnosis first.</b></div>
+<div class="alt"><span class="k">Consider:</span> specialist referral.</div>
+</div>
+</div>
+<div class="step u5-track">
+<div class="step-n">4</div>
+<div class="step-body">
+<div class="stitle">Continue + refer to specialist</div>
+<div class="pref"><span class="k">Preferred:</span> continue controller &amp; <b>refer for expert assessment.</b></div>
+<div class="alt"><span class="k">Specialist may add:</span> LTRA add-on · (LAMA and ICS-LABA have insufficient evidence &lt;4–5y; <b>no MART studies &lt;5y</b>).</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 6-11 TRACK -->
+<div class="track-col six" data-band="six">
+<div class="tc-head"><span class="age-ic">11</span>6–11 years · two tracks to Step 5 (Box 4-12)</div>
+<div class="tc-body">
+<div class="steps">
+<div class="step six-track">
+<div class="step-n">1</div>
+<div class="step-body">
+<div class="stitle">Infrequent symptoms (≤2 days/wk)</div>
+<div class="pref"><span class="k">Preferred:</span> as-needed low-dose <b>ICS-formoterol</b> (AIR).</div>
+<div class="alt"><span class="k">Alternative:</span> ICS taken whenever SABA is taken (combination or separate inhalers).</div>
+</div>
+</div>
+<div class="step six-track">
+<div class="step-n">2</div>
+<div class="step-body">
+<div class="stitle">Symptoms 3–4 days/week</div>
+<div class="pref"><span class="k">Preferred:</span> daily low-dose ICS + PRN SABA (or + PRN ICS-SABA).</div>
+<div class="alt"><span class="k">Alternative:</span> as-needed low-dose ICS-formoterol · ICS-whenever-SABA · daily LTRA (ICS beats LTRA for exacerbations).</div>
+</div>
+</div>
+<div class="step six-track">
+<div class="step-n">3</div>
+<div class="step-body">
+<div class="stitle">Most days / night waking ≥1×/wk / low lung fn</div>
+<div class="pref"><span class="k">Preferred:</span> low-dose <b>ICS-formoterol MART</b> — or low-dose ICS-LABA / medium-dose ICS + PRN SABA.</div>
+<div class="alt"><span class="k">Alternative:</span> daily low-dose ICS + LTRA, plus PRN reliever.</div>
+</div>
+</div>
+<div class="step six-track">
+<div class="step-n">4</div>
+<div class="step-body">
+<div class="stitle">Daily symptoms / nightly waking / recent flare</div>
+<div class="pref"><span class="k">Preferred:</span> <b>medium-dose ICS-formoterol MART</b> (double the Step-3 MART dose — still a low daily dose) — or medium-dose ICS-LABA + PRN reliever.</div>
+<div class="alt"><span class="k">Before stepping up:</span> recheck technique, adherence, triggers, and the diagnosis.</div>
+</div>
+</div>
+<div class="step six-track">
+<div class="step-n">5</div>
+<div class="step-body">
+<div class="stitle">Refer for phenotyping ± add-on</div>
+<div class="pref"><span class="k">Preferred:</span> refer for expert assessment &amp; phenotyping; add-on <b>LAMA</b> or higher-dose ICS-LABA; consider <b>biologics</b> (anti-IgE / anti-IL-5 / anti-IL-4Rα).</div>
+<div class="alt"><span class="k">Note:</span> some biologics are approved from age 6.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout hy">
+<span class="ic">⚡</span>
+<h4>High-Yield · The one-line summary of the whole ladder</h4>
+<p><b>6–11:</b> anti-inflammatory reliever (ICS-formoterol) is now the preferred backbone, and MART runs Steps 3–5. <b>≤5:</b> plain <b>daily low-dose ICS is the preferred controller</b>, there is <b>no MART</b>, and the ladder is short — Step 3 is literally "double the low dose," Step 4 is "refer." Whenever control fails in either band, the first move is <b>not</b> escalation — it's checking <b>technique, adherence, diagnosis, and triggers.</b></p>
+</div>
+<div class="subhead"><span class="bar"></span>ICS dosing — what "low dose" actually means (metered mcg/day)</div>
+<div class="sev-table" style="margin-bottom:6px">
+<table class="grid">
+<thead>
+<tr>
+<th class="feat">Inhaled corticosteroid</th>
+<th class="c-mild" style="background:var(--six)">6–11y · LOW</th>
+<th class="c-mod" style="background:var(--six-deep)">6–11y · MED</th>
+<th class="c-sev" style="background:var(--u5)">≤5y · LOW total daily</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="feat">Beclometasone (pMDI, standard particle, HFA)</td><td>100–200</td><td>&gt;200–400</td><td>100 <small>(≥5y)</small></td></tr>
+<tr><td class="feat">Beclometasone (extrafine particle, HFA)</td><td>50–100</td><td>&gt;100–200</td><td>50 <small>(≥5y)</small></td></tr>
+<tr><td class="feat">Budesonide (pMDI/DPI)</td><td>100–200</td><td>&gt;200–400</td><td>— <small>(nebulised: 500, ≥1y)</small></td></tr>
+<tr><td class="feat">Fluticasone propionate (pMDI, standard particle)</td><td>50–100</td><td>&gt;100–200</td><td>50 <small>(≥4y)</small></td></tr>
+<tr><td class="feat">Mometasone furoate (pMDI, standard particle)</td><td>100</td><td>200</td><td>100 <small>(≥5y)</small></td></tr>
+<tr><td class="feat">Ciclesonide (extrafine, HFA)</td><td>80</td><td>&gt;80–160</td><td>not sufficiently studied ≤5y</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:12.5px;color:var(--ink-soft);font-style:italic">Not a table of potency equivalence. Switching between molecules at the "same" dose band can change potency — monitor stability after any change. In children, <b>a pMDI should always be used with a spacer.</b></p>
+<div class="callout trap">
+<span class="ic">⚠️</span>
+<h4>Trap · "Low dose" is not interchangeable between drugs</h4>
+<p>These bands look tidy, but they do <b>not</b> imply equal potency. Swapping a child from "low-dose" drug A to "low-dose" drug B may quietly raise or lower their effective steroid exposure — destabilizing control or adding side-effect risk. Change one variable at a time and reassess.</p>
+</div>
+<div class="examq" data-q="3">
+<div class="qhead"><span class="qbadge">Exam Q</span><span class="q">An 8-year-old on daily low-dose ICS still wakes twice weekly with cough and uses his reliever most days. Technique and adherence are confirmed good. What is the single preferred next step?</span></div>
+<button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
+<div class="ans"><div class="ans-inner">Step up to <b>low-dose ICS-formoterol MART</b> (Step 3 preferred) — the same inhaler for daily maintenance <i>and</i> as-needed relief. Alternatives are low-dose ICS-LABA or medium-dose ICS with a PRN reliever. The stem deliberately pre-confirms technique and adherence so that escalation is the correct answer rather than the usual "recheck the basics first."</div></div>
+</div>
+<div class="callout further">
+<span class="ic">🔎</span>
+<h4>Going Further · The montelukast (LTRA) counseling point</h4>
+<p>LTRA appears as an <i>alternative</i> in both bands but is consistently <b>less effective than ICS for preventing exacerbations</b>. Whenever you prescribe it, GINA now asks you to actively counsel families about <b>neuropsychiatric adverse effects</b> (sleep disturbance, mood/behavior change) — a boxed-warning-level talking point that shows up in exams.</p>
+</div>
+</div>
 </section>
-
 <!-- ============ 8. ACUTE ============ -->
 <section id="acute">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">08 — ACUTE</div>
-      <h2>The exacerbation: grade it, treat it, know when to transfer</h2>
-      <p class="lead">Assess severity <b>while</b> you start treatment — never sequentially. GINA recommends a validated score; <b>PRAM</b> (Pediatric Respiratory Assessment Measure, validated ages 2–17) is the flagship. The severity <i>thresholds</i> differ by band — most importantly the respiratory-rate cut-off.</p>
-    </div>
-
-    <div class="callout hy">
-      <span class="ic">⚡</span>
-      <h4>High-Yield · The age-specific vital-sign cut-offs</h4>
-      <p>In <b>≤5 years</b>, the severe/transfer respiratory-rate flag is <b>&gt;40/min</b> (normal is &lt;40 in 1–5y; &lt;50 in infants 2–12 months). In the older/adult framework it's &gt;30/min. The <b>SpO₂ &lt;92% on room air</b> threshold is shared and is a hospital-transfer trigger in the young child. Remember pulse oximetry can <b>overestimate</b> saturation in children with dark skin.</p>
-    </div>
-
-    <!-- Interactive PRAM -->
-    <div class="subhead six-c"><span class="bar"></span>Interactive · Score the PRAM</div>
-    <p style="font-size:14px;color:var(--ink-soft);margin-bottom:16px;max-width:70ch">Tap one option per row. The score, severity band, and the matching first-hour action update live. (PRAM ranges: 0–3 mild · 4–7 moderate · 8–12 severe.)</p>
-    <div class="pram">
-      <div class="pram-form" id="pramForm">
-        <div class="pram-row" data-cat="o2">
-          <div class="rlbl">O₂ saturation</div>
-          <div class="pram-opts">
-            <button data-v="0">≥95% <span class="pts">0</span></button>
-            <button data-v="1">92–94% <span class="pts">1</span></button>
-            <button data-v="2">&lt;92% <span class="pts">2</span></button>
-          </div>
-        </div>
-        <div class="pram-row" data-cat="sup">
-          <div class="rlbl">Suprasternal retraction</div>
-          <div class="pram-opts">
-            <button data-v="0">Absent <span class="pts">0</span></button>
-            <button data-v="2">Present <span class="pts">2</span></button>
-          </div>
-        </div>
-        <div class="pram-row" data-cat="scal">
-          <div class="rlbl">Scalene muscle contraction</div>
-          <div class="pram-opts">
-            <button data-v="0">Absent <span class="pts">0</span></button>
-            <button data-v="2">Present <span class="pts">2</span></button>
-          </div>
-        </div>
-        <div class="pram-row" data-cat="air">
-          <div class="rlbl">Air entry</div>
-          <div class="pram-opts">
-            <button data-v="0">Normal <span class="pts">0</span></button>
-            <button data-v="1">↓ at base <span class="pts">1</span></button>
-            <button data-v="2">↓ apex + base <span class="pts">2</span></button>
-            <button data-v="3">Minimal/absent <span class="pts">3</span></button>
-          </div>
-        </div>
-        <div class="pram-row" data-cat="wheeze">
-          <div class="rlbl">Wheezing</div>
-          <div class="pram-opts">
-            <button data-v="0">Absent <span class="pts">0</span></button>
-            <button data-v="1">Expiratory only <span class="pts">1</span></button>
-            <button data-v="2">Insp. ± exp. <span class="pts">2</span></button>
-            <button data-v="3">Audible w/o scope or silent chest <span class="pts">3</span></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="pram-result">
-        <div class="pram-score b-none" id="pramScore">
-          <div><span class="num" id="pramNum">–</span><span class="of"> / 12</span></div>
-          <div class="band" id="pramBand">Select findings</div>
-        </div>
-        <div class="pram-action" id="pramAction">
-          <h5>First-hour action</h5>
-          <div id="pramActionText" style="color:var(--ink-soft)">Score the five domains to see the matching management tier.</div>
-          <button class="pram-reset" onclick="resetPram()">↺ Reset</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Severity table ≤5 -->
-    <div class="subhead u5c" style="margin-top:34px"><span class="bar"></span>≤5y severity at a glance (Box 12-1) — note RR &gt;40</div>
-    <div class="sev-table">
-      <table class="grid">
-        <thead>
-          <tr>
-            <th class="feat">Feature</th>
-            <th class="c-mild">Mild <small>(all)</small></th>
-            <th class="c-mod">Moderate</th>
-            <th class="c-sev">Severe <small>(any)</small></th>
-            <th class="c-life">Life-threatening</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="feat">Consciousness</td><td class="c-mild">Normal</td><td class="c-mod">Normal</td><td class="c-sev">Normal</td><td class="c-life crit">Drowsy, confused, cyanosed</td></tr>
-          <tr><td class="feat">SpO₂ (room air)</td><td class="c-mild">≥94%</td><td class="c-mod">≥92%</td><td class="c-sev crit">&lt;92%</td><td class="c-life">—</td></tr>
-          <tr><td class="feat">Speech</td><td class="c-mild">Sentences</td><td class="c-mod">Phrases</td><td class="c-sev">Words</td><td class="c-life">Unable</td></tr>
-          <tr><td class="feat">Respiratory rate</td><td class="c-mild">≤40/min</td><td class="c-mod">≤40/min</td><td class="c-sev crit">&gt;40/min</td><td class="c-life">—</td></tr>
-          <tr><td class="feat">Accessory muscle use</td><td class="c-mild">Absent</td><td class="c-mod">Some</td><td class="c-sev">Present (scalene)</td><td class="c-life">—</td></tr>
-          <tr><td class="feat">Air entry</td><td class="c-mild">Normal / mild basal ↓</td><td class="c-mod">↓ basal or widespread</td><td class="c-sev crit">Silent chest / inspiratory only</td><td class="c-life">Quiet/silent</td></tr>
-          <tr><td class="feat">PRAM (guide)</td><td class="c-mild">1–3</td><td class="c-mod">4–7</td><td class="c-sev">8–10</td><td class="c-life">11–12</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Acute treatment dual -->
-    <div class="subhead" style="margin-top:30px"><span class="bar"></span>First-line acute treatment</div>
-    <div class="dual" id="dual-acute">
-      <div class="panel u5" data-band="u5">
-        <div class="panel-head"><span class="age-ic">5⁻</span><span class="ttl">≤5 years · doses (Box 12-4)<small>pMDI + spacer preferred</small></span></div>
-        <div class="panel-body">
-          <ul>
-            <li><b>O₂:</b> to keep SpO₂ ≥92%.</li>
-            <li><b>SABA:</b> salbutamol <b>≥4 puffs</b> (100 mcg, one at a time) by spacer, or 2.5 mg neb; for mod/severe repeat q20 min ×3, then reassess.</li>
-            <li><b>Ipratropium</b> (mod/severe): 4 puffs (20 mcg) or 0.25 mg neb, with each SABA set, up to 3×.</li>
-            <li><b>Systemic steroid</b> (mod/severe): prednisolone 1–2 mg/kg — <b>max 20 mg if &lt;2y, 30 mg if 2–5y</b> — OR dexamethasone 0.3–0.6 mg/kg (max 12 mg).</li>
-            <li><b>Mg sulfate</b> (severe, ED, ≥2y): IV 40–50 mg/kg (max 2 g) over 10–20 min.</li>
-            <li><b>Anaphylaxis features too?</b> IM epinephrine <b>first.</b></li>
-          </ul>
-          <div class="note">OCS course length: prednisolone <b>3–5 days</b>, or dexamethasone <b>1–2 days.</b></div>
-        </div>
-      </div>
-      <div class="panel six" data-band="six">
-        <div class="panel-head"><span class="age-ic">11</span><span class="ttl">6–11 years · principles<small>Same skeleton, adult-style thresholds</small></span></div>
-        <div class="panel-body">
-          <ul>
-            <li><b>O₂:</b> titrate to target saturation (≥94% commonly used in this band).</li>
-            <li><b>SABA:</b> repeated salbutamol via spacer or neb; escalate to continuous nebulisation if severe.</li>
-            <li><b>Ipratropium</b> added for moderate–severe presentations.</li>
-            <li><b>Systemic steroid</b> early for moderate–severe: prednisolone 1–2 mg/kg (max 40 mg typical in this band); OCS course 3–5 days.</li>
-            <li><b>IV Mg sulfate</b> for severe/refractory.</li>
-            <li><b>Severity RR flag here is &gt;30/min</b> (vs &gt;40 in ≤5s) — the key cross-band contrast.</li>
-          </ul>
-          <div class="note">Before discharge: step up controller (start/continue/increase ICS), fix technique, and arrange follow-up.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout trap">
-      <span class="ic">⚠️</span>
-      <h4>Trap · Two "who does what" errors in the young child</h4>
-      <p><b>(1)</b> GINA does <b>not</b> recommend caregiver-<i>initiated</i> oral corticosteroids at home for ≤5s — the evidence is weak and cumulative-OCS harm is real. <b>(2)</b> Seek same-day medical care if the child needs SABA <b>&lt;4-hourly</b> or on <b>&gt;3 occasions in 12 hours</b>, and urgent care if a single set of 4 puffs doesn't hold. These "seek care" triggers are frequently tested.</p>
-    </div>
-
-    <div class="callout further">
-      <span class="ic">🔎</span>
-      <h4>Going Further · Immediate hospital-transfer criteria (≤5y, Box 12-3)</h4>
-      <p><b>Transfer now</b> if any of: cyanosis · unable to speak or drink · <b>RR &gt;40/min</b> · <b>SpO₂ &lt;92%</b> on room air · quiet chest when dyspneic — <i>or</i> failure to respond to 4–6 salbutamol puffs given as separate puffs every 20 min ×3 over 1 hour, or persisting tachypnea despite three SABA sets. Add a low threshold for children <b>&lt;2 years</b> (dehydration + respiratory fatigue risk) and those with prior life-threatening episodes. Keep giving SABA, O₂, and start systemic steroids <b>during</b> transfer.</p>
-    </div>
-
-    <div class="examq" data-q="4">
-      <div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 4-year-old in the ED has SpO₂ 90%, RR 46, scalene retractions, and inspiratory + expiratory wheeze. Beyond oxygen and repeated salbutamol, name the two additional first-line drugs and one dosing caveat.</span></div>
-      <button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
-      <div class="ans"><div class="ans-inner">This is a <b>severe</b> exacerbation (SpO₂ &lt;92%, RR &gt;40). Add <b>ipratropium bromide</b> (4 puffs / 0.25 mg neb with each SABA set, up to 3×) and a <b>systemic corticosteroid</b> — prednisolone 1–2 mg/kg. <b>Caveat:</b> the OCS ceiling is age-banded — <b>max 30 mg for a 2–5-year-old</b> (20 mg if &lt;2y). Consider IV magnesium sulfate (≥2y) if severe/refractory, and arrange hospital transfer.</div></div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">08 — ACUTE</div>
+<h2 id="the-exacerbation-grade-it-treat-it-know-when-to-transfer">The exacerbation: grade it, treat it, know when to transfer</h2>
+<p class="lead">Assess severity <b>while</b> you start treatment — never sequentially. GINA recommends a validated score; <b>PRAM</b> (Pediatric Respiratory Assessment Measure, validated ages 2–17) is the flagship. The severity <i>thresholds</i> differ by band — most importantly the respiratory-rate cut-off.</p>
+</div>
+<div class="callout hy">
+<span class="ic">⚡</span>
+<h4>High-Yield · The age-specific vital-sign cut-offs</h4>
+<p>In <b>≤5 years</b>, the severe/transfer respiratory-rate flag is <b>&gt;40/min</b> (normal is &lt;40 in 1–5y; &lt;50 in infants 2–12 months). In the older/adult framework it's &gt;30/min. The <b>SpO₂ &lt;92% on room air</b> threshold is shared and is a hospital-transfer trigger in the young child. Remember pulse oximetry can <b>overestimate</b> saturation in children with dark skin.</p>
+</div>
+<!-- Interactive PRAM -->
+<div class="subhead six-c"><span class="bar"></span>Interactive · Score the PRAM</div>
+<p style="font-size:14px;color:var(--ink-soft);margin-bottom:16px;max-width:70ch">Tap one option per row. The score, severity band, and the matching first-hour action update live. (PRAM ranges: 0–3 mild · 4–7 moderate · 8–12 severe.)</p>
+<div class="pram">
+<div class="pram-form" id="pramForm">
+<div class="pram-row" data-cat="o2">
+<div class="rlbl">O₂ saturation</div>
+<div class="pram-opts">
+<button data-v="0">≥95% <span class="pts">0</span></button>
+<button data-v="1">92–94% <span class="pts">1</span></button>
+<button data-v="2">&lt;92% <span class="pts">2</span></button>
+</div>
+</div>
+<div class="pram-row" data-cat="sup">
+<div class="rlbl">Suprasternal retraction</div>
+<div class="pram-opts">
+<button data-v="0">Absent <span class="pts">0</span></button>
+<button data-v="2">Present <span class="pts">2</span></button>
+</div>
+</div>
+<div class="pram-row" data-cat="scal">
+<div class="rlbl">Scalene muscle contraction</div>
+<div class="pram-opts">
+<button data-v="0">Absent <span class="pts">0</span></button>
+<button data-v="2">Present <span class="pts">2</span></button>
+</div>
+</div>
+<div class="pram-row" data-cat="air">
+<div class="rlbl">Air entry</div>
+<div class="pram-opts">
+<button data-v="0">Normal <span class="pts">0</span></button>
+<button data-v="1">↓ at base <span class="pts">1</span></button>
+<button data-v="2">↓ apex + base <span class="pts">2</span></button>
+<button data-v="3">Minimal/absent <span class="pts">3</span></button>
+</div>
+</div>
+<div class="pram-row" data-cat="wheeze">
+<div class="rlbl">Wheezing</div>
+<div class="pram-opts">
+<button data-v="0">Absent <span class="pts">0</span></button>
+<button data-v="1">Expiratory only <span class="pts">1</span></button>
+<button data-v="2">Insp. ± exp. <span class="pts">2</span></button>
+<button data-v="3">Audible w/o scope or silent chest <span class="pts">3</span></button>
+</div>
+</div>
+</div>
+<div class="pram-result">
+<div class="pram-score b-none" id="pramScore">
+<div><span class="num" id="pramNum">–</span><span class="of"> / 12</span></div>
+<div class="band" id="pramBand">Select findings</div>
+</div>
+<div class="pram-action" id="pramAction">
+<h5>First-hour action</h5>
+<div id="pramActionText" style="color:var(--ink-soft)">Score the five domains to see the matching management tier.</div>
+<button class="pram-reset" onclick="resetPram()">↺ Reset</button>
+</div>
+</div>
+</div>
+<!-- Severity table ≤5 -->
+<div class="subhead u5c" style="margin-top:34px"><span class="bar"></span>≤5y severity at a glance (Box 12-1) — note RR &gt;40</div>
+<div class="sev-table">
+<table class="grid">
+<thead>
+<tr>
+<th class="feat">Feature</th>
+<th class="c-mild">Mild <small>(all)</small></th>
+<th class="c-mod">Moderate</th>
+<th class="c-sev">Severe <small>(any)</small></th>
+<th class="c-life">Life-threatening</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="feat">Consciousness</td><td class="c-mild">Normal</td><td class="c-mod">Normal</td><td class="c-sev">Normal</td><td class="c-life crit">Drowsy, confused, cyanosed</td></tr>
+<tr><td class="feat">SpO₂ (room air)</td><td class="c-mild">≥94%</td><td class="c-mod">≥92%</td><td class="c-sev crit">&lt;92%</td><td class="c-life">—</td></tr>
+<tr><td class="feat">Speech</td><td class="c-mild">Sentences</td><td class="c-mod">Phrases</td><td class="c-sev">Words</td><td class="c-life">Unable</td></tr>
+<tr><td class="feat">Respiratory rate</td><td class="c-mild">≤40/min</td><td class="c-mod">≤40/min</td><td class="c-sev crit">&gt;40/min</td><td class="c-life">—</td></tr>
+<tr><td class="feat">Accessory muscle use</td><td class="c-mild">Absent</td><td class="c-mod">Some</td><td class="c-sev">Present (scalene)</td><td class="c-life">—</td></tr>
+<tr><td class="feat">Air entry</td><td class="c-mild">Normal / mild basal ↓</td><td class="c-mod">↓ basal or widespread</td><td class="c-sev crit">Silent chest / inspiratory only</td><td class="c-life">Quiet/silent</td></tr>
+<tr><td class="feat">PRAM (guide)</td><td class="c-mild">1–3</td><td class="c-mod">4–7</td><td class="c-sev">8–10</td><td class="c-life">11–12</td></tr>
+</tbody>
+</table>
+</div>
+<!-- Acute treatment dual -->
+<div class="subhead" style="margin-top:30px"><span class="bar"></span>First-line acute treatment</div>
+<div class="dual" id="dual-acute">
+<div class="panel u5" data-band="u5">
+<div class="panel-head"><span class="age-ic">5⁻</span><span class="ttl">≤5 years · doses (Box 12-4)<small>pMDI + spacer preferred</small></span></div>
+<div class="panel-body">
+<ul>
+<li><b>O₂:</b> to keep SpO₂ ≥92%.</li>
+<li><b>SABA:</b> salbutamol <b>≥4 puffs</b> (100 mcg, one at a time) by spacer, or 2.5 mg neb; for mod/severe repeat q20 min ×3, then reassess.</li>
+<li><b>Ipratropium</b> (mod/severe): 4 puffs (20 mcg) or 0.25 mg neb, with each SABA set, up to 3×.</li>
+<li><b>Systemic steroid</b> (mod/severe): prednisolone 1–2 mg/kg — <b>max 20 mg if &lt;2y, 30 mg if 2–5y</b> — OR dexamethasone 0.3–0.6 mg/kg (max 12 mg).</li>
+<li><b>Mg sulfate</b> (severe, ED, ≥2y): IV 40–50 mg/kg (max 2 g) over 10–20 min.</li>
+<li><b>Anaphylaxis features too?</b> IM epinephrine <b>first.</b></li>
+</ul>
+<div class="note">OCS course length: prednisolone <b>3–5 days</b>, or dexamethasone <b>1–2 days.</b></div>
+</div>
+</div>
+<div class="panel six" data-band="six">
+<div class="panel-head"><span class="age-ic">11</span><span class="ttl">6–11 years · principles<small>Same skeleton, adult-style thresholds</small></span></div>
+<div class="panel-body">
+<ul>
+<li><b>O₂:</b> titrate to target saturation (≥94% commonly used in this band).</li>
+<li><b>SABA:</b> repeated salbutamol via spacer or neb; escalate to continuous nebulisation if severe.</li>
+<li><b>Ipratropium</b> added for moderate–severe presentations.</li>
+<li><b>Systemic steroid</b> early for moderate–severe: prednisolone 1–2 mg/kg (max 40 mg typical in this band); OCS course 3–5 days.</li>
+<li><b>IV Mg sulfate</b> for severe/refractory.</li>
+<li><b>Severity RR flag here is &gt;30/min</b> (vs &gt;40 in ≤5s) — the key cross-band contrast.</li>
+</ul>
+<div class="note">Before discharge: step up controller (start/continue/increase ICS), fix technique, and arrange follow-up.</div>
+</div>
+</div>
+</div>
+<div class="callout trap">
+<span class="ic">⚠️</span>
+<h4>Trap · Two "who does what" errors in the young child</h4>
+<p><b>(1)</b> GINA does <b>not</b> recommend caregiver-<i>initiated</i> oral corticosteroids at home for ≤5s — the evidence is weak and cumulative-OCS harm is real. <b>(2)</b> Seek same-day medical care if the child needs SABA <b>&lt;4-hourly</b> or on <b>&gt;3 occasions in 12 hours</b>, and urgent care if a single set of 4 puffs doesn't hold. These "seek care" triggers are frequently tested.</p>
+</div>
+<div class="callout further">
+<span class="ic">🔎</span>
+<h4>Going Further · Immediate hospital-transfer criteria (≤5y, Box 12-3)</h4>
+<p><b>Transfer now</b> if any of: cyanosis · unable to speak or drink · <b>RR &gt;40/min</b> · <b>SpO₂ &lt;92%</b> on room air · quiet chest when dyspneic — <i>or</i> failure to respond to 4–6 salbutamol puffs given as separate puffs every 20 min ×3 over 1 hour, or persisting tachypnea despite three SABA sets. Add a low threshold for children <b>&lt;2 years</b> (dehydration + respiratory fatigue risk) and those with prior life-threatening episodes. Keep giving SABA, O₂, and start systemic steroids <b>during</b> transfer.</p>
+</div>
+<div class="examq" data-q="4">
+<div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 4-year-old in the ED has SpO₂ 90%, RR 46, scalene retractions, and inspiratory + expiratory wheeze. Beyond oxygen and repeated salbutamol, name the two additional first-line drugs and one dosing caveat.</span></div>
+<button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
+<div class="ans"><div class="ans-inner">This is a <b>severe</b> exacerbation (SpO₂ &lt;92%, RR &gt;40). Add <b>ipratropium bromide</b> (4 puffs / 0.25 mg neb with each SABA set, up to 3×) and a <b>systemic corticosteroid</b> — prednisolone 1–2 mg/kg. <b>Caveat:</b> the OCS ceiling is age-banded — <b>max 30 mg for a 2–5-year-old</b> (20 mg if &lt;2y). Consider IV magnesium sulfate (≥2y) if severe/refractory, and arrange hospital transfer.</div></div>
+</div>
+</div>
 </section>
-
 <!-- ============ 9. FOLLOW-UP ============ -->
 <section id="followup">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">09 — FOLLOW-UP</div>
-      <h2>After treatment: the assess–adjust–review cycle</h2>
-      <p class="lead">Management is a loop, not a prescription. Two timelines matter: the <b>post-exacerbation</b> follow-up (catch the relapse) and the <b>routine review</b> cycle (right-size the controller as the child changes — because preschool symptoms often remit).</p>
-    </div>
-
-    <div class="two-col">
-      <div>
-        <div class="subhead u5c" style="margin-top:0"><span class="bar"></span>Post-exacerbation (≤5y, Box 12)</div>
-        <div class="timeline u5c">
-          <div class="tl-item"><span class="dot"></span><div class="when">Next 24–48 hours</div><div class="what">Caregiver seeks care if no improvement or any deterioration. Written action plan in hand.</div></div>
-          <div class="tl-item"><span class="dot"></span><div class="when">Within 1–3 days</div><div class="what">Arrange review after the flare — confirm recovery, reinforce technique, document the diagnosis if now met.</div></div>
-          <div class="tl-item"><span class="dot"></span><div class="when">2–3 months later</div><div class="what">Second review — reassess control and future risk; the child has had one flare and is at risk of another.</div></div>
-        </div>
-      </div>
-      <div>
-        <div class="subhead six-c" style="margin-top:0"><span class="bar"></span>Routine review cycle (both bands)</div>
-        <div class="timeline">
-          <div class="tl-item"><span class="dot"></span><div class="when">2–3 months after any start/change</div><div class="what">Review response to a new controller or dose before deciding to continue or adjust.</div></div>
-          <div class="tl-item"><span class="dot"></span><div class="when">Every 3–6 months</div><div class="what">Reassess whether controller is still needed (≤5 symptoms often remit); measure &amp; plot height yearly on ICS.</div></div>
-          <div class="tl-item"><span class="dot"></span><div class="when">Step-down → 3–6 weeks later</div><div class="what">After reducing/stopping therapy, review soon to catch recurrence — may need to reinstate.</div></div>
-          <div class="tl-item"><span class="dot"></span><div class="when">Seasonal</div><div class="what">If stopping seasonal controller (~4 weeks after season ends), send home a written action plan.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout hy">
-      <span class="ic">⚡</span>
-      <h4>High-Yield · Before every step-up, run the four-item checklist</h4>
-      <p><b>Diagnosis · Technique · Adherence · Triggers.</b> GINA repeats this at every escalation point in both bands. Most "treatment failure" is one of these four — not an inadequate drug. Step up the medication only after these are confirmed.</p>
-    </div>
-
-    <div class="callout analogy">
-      <span class="ic">🔗</span>
-      <h4>Analogy · Controller dosing is a thermostat, not a light switch</h4>
-      <p>You don't leave the heating on max all winter and forget it. You set it, watch the room, and dial it down once it's comfortable — then nudge it back up in a cold snap. ICS in a young child is the same: reach control, <b>step down to the minimum effective dose</b>, and be ready to step back up for the flare season. "Set and forget" over-treats the child who has quietly remitted.</p>
-    </div>
-
-    <div class="callout further">
-      <span class="ic">🔎</span>
-      <h4>Going Further · "Will they grow out of it?" — how to answer honestly</h4>
-      <p>Preschool symptoms remit in a substantial proportion of children, but <b>remission is not cure</b> — asthma often recurs later, and previously-affected lungs carry a higher risk of accelerated decline (synergistic with smoking). GINA's advised phrasing: <b>"asthma has gone quiet for now."</b> If you say "remission," explain it, because families often hear it as "cured forever." Keep the conversation on the child's <i>current</i> benefit from treatment — fewer attacks, school attendance, normal play — not promises about the future.</p>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">09 — FOLLOW-UP</div>
+<h2 id="after-treatment-the-assess-adjust-review-cycle">After treatment: the assess–adjust–review cycle</h2>
+<p class="lead">Management is a loop, not a prescription. Two timelines matter: the <b>post-exacerbation</b> follow-up (catch the relapse) and the <b>routine review</b> cycle (right-size the controller as the child changes — because preschool symptoms often remit).</p>
+</div>
+<div class="two-col">
+<div>
+<div class="subhead u5c" style="margin-top:0"><span class="bar"></span>Post-exacerbation (≤5y, Box 12)</div>
+<div class="timeline u5c">
+<div class="tl-item"><span class="dot"></span><div class="when">Next 24–48 hours</div><div class="what">Caregiver seeks care if no improvement or any deterioration. Written action plan in hand.</div></div>
+<div class="tl-item"><span class="dot"></span><div class="when">Within 1–3 days</div><div class="what">Arrange review after the flare — confirm recovery, reinforce technique, document the diagnosis if now met.</div></div>
+<div class="tl-item"><span class="dot"></span><div class="when">2–3 months later</div><div class="what">Second review — reassess control and future risk; the child has had one flare and is at risk of another.</div></div>
+</div>
+</div>
+<div>
+<div class="subhead six-c" style="margin-top:0"><span class="bar"></span>Routine review cycle (both bands)</div>
+<div class="timeline">
+<div class="tl-item"><span class="dot"></span><div class="when">2–3 months after any start/change</div><div class="what">Review response to a new controller or dose before deciding to continue or adjust.</div></div>
+<div class="tl-item"><span class="dot"></span><div class="when">Every 3–6 months</div><div class="what">Reassess whether controller is still needed (≤5 symptoms often remit); measure &amp; plot height yearly on ICS.</div></div>
+<div class="tl-item"><span class="dot"></span><div class="when">Step-down → 3–6 weeks later</div><div class="what">After reducing/stopping therapy, review soon to catch recurrence — may need to reinstate.</div></div>
+<div class="tl-item"><span class="dot"></span><div class="when">Seasonal</div><div class="what">If stopping seasonal controller (~4 weeks after season ends), send home a written action plan.</div></div>
+</div>
+</div>
+</div>
+<div class="callout hy">
+<span class="ic">⚡</span>
+<h4>High-Yield · Before every step-up, run the four-item checklist</h4>
+<p><b>Diagnosis · Technique · Adherence · Triggers.</b> GINA repeats this at every escalation point in both bands. Most "treatment failure" is one of these four — not an inadequate drug. Step up the medication only after these are confirmed.</p>
+</div>
+<div class="callout analogy">
+<span class="ic">🔗</span>
+<h4>Analogy · Controller dosing is a thermostat, not a light switch</h4>
+<p>You don't leave the heating on max all winter and forget it. You set it, watch the room, and dial it down once it's comfortable — then nudge it back up in a cold snap. ICS in a young child is the same: reach control, <b>step down to the minimum effective dose</b>, and be ready to step back up for the flare season. "Set and forget" over-treats the child who has quietly remitted.</p>
+</div>
+<div class="callout further">
+<span class="ic">🔎</span>
+<h4>Going Further · "Will they grow out of it?" — how to answer honestly</h4>
+<p>Preschool symptoms remit in a substantial proportion of children, but <b>remission is not cure</b> — asthma often recurs later, and previously-affected lungs carry a higher risk of accelerated decline (synergistic with smoking). GINA's advised phrasing: <b>"asthma has gone quiet for now."</b> If you say "remission," explain it, because families often hear it as "cured forever." Keep the conversation on the child's <i>current</i> benefit from treatment — fewer attacks, school attendance, normal play — not promises about the future.</p>
+</div>
+</div>
 </section>
-
 <!-- ============ 10. QUICK REFERENCE ============ -->
 <!-- ============ CASES / OSCE ============ -->
 <section id="cases">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">10 — CASE-BASED DISCUSSION</div>
-      <h2>Four OSCE stations — apply the criteria &amp; the PRAM</h2>
-      <p class="lead">Work each station before you open the debrief: read the stem, score it yourself, decide your management. The severity label is deliberately hidden until you reveal the answer.</p>
-    </div>
-
-    <!-- STATION 1 — MILD -->
-    <div class="case mild">
-      <div class="case-head"><span class="st">Station 1</span><span class="nm">The wheezy toddler</span><span class="agechip">≤5 years</span></div>
-      <div class="case-body">
-        <div class="stem"><b>Sara, 4 years old</b>, is brought by her mother with 2 days of cough and wheeze during a cold. This is her <b>3rd similar episode this year</b>; between colds she occasionally coughs at night. Her father has asthma and she has eczema. She is alert and still playing, speaking in <b>full sentences</b>, with mild expiratory wheeze and <b>no retractions</b>.</div>
-        <div class="vitals">
-          <div class="vital"><div class="vl">Temp</div><div class="vv">37.4°C</div></div>
-          <div class="vital"><div class="vl">HR</div><div class="vv">110</div></div>
-          <div class="vital"><div class="vl">RR</div><div class="vv">32</div></div>
-          <div class="vital"><div class="vl">SpO₂</div><div class="vv">96% RA</div></div>
-        </div>
-        <div class="tasks">
-          <h5>Candidate tasks</h5>
-          <ol>
-            <li>Apply the GINA ≤5y diagnostic criteria — does Sara have asthma?</li>
-            <li>Grade this exacerbation with the PRAM score.</li>
-            <li>Outline immediate management + what the caregiver goes home with.</li>
-          </ol>
-        </div>
-        <button class="debrief-btn" onclick="togD(this)">▸ Reveal debrief</button>
-        <div class="debrief">
-          <div class="two-col">
-            <div>
-              <table class="score-tbl">
-                <thead><tr><th>Sign</th><th>Finding</th><th>Pts</th></tr></thead>
-                <tbody>
-                  <tr><td>O₂ saturation</td><td>96%</td><td><span class="pt">0</span></td></tr>
-                  <tr><td>Suprasternal</td><td>Absent</td><td><span class="pt">0</span></td></tr>
-                  <tr><td>Scalene</td><td>Absent</td><td><span class="pt">0</span></td></tr>
-                  <tr><td>Air entry</td><td>Normal</td><td><span class="pt">0</span></td></tr>
-                  <tr><td>Wheezing</td><td>Expiratory only</td><td><span class="pt">1</span></td></tr>
-                </tbody>
-                <tfoot><tr><td colspan="3">TOTAL = 1 → MILD</td></tr></tfoot>
-              </table>
-            </div>
-            <div>
-              <div class="subhead u5c" style="margin-top:0;font-size:15px"><span class="bar"></span>Diagnostic criteria (≤5y)</div>
-              <ul class="crit-list">
-                <li><span class="mk yes">✓</span><span><b>① Recurrent wheeze</b> — 3 episodes/yr + interval night cough</span></li>
-                <li><span class="mk yes">✓</span><span><b>② No alternative cause</b> — viral URTI allowed; atopy supports</span></li>
-                <li><span class="mk qq">?</span><span><b>③ Treatment response</b> — not yet documented; confirm with SABA response or a 2–3 month ICS trial</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="callout hy" style="margin-bottom:0">
-            <span class="ic">⚡</span>
-            <h4>Model answer</h4>
-            <p><b>Diagnosis:</b> the recurrent pattern + atopy + family history strongly support asthma. Since criterion ③ isn't documented yet, record <b>"suspected asthma"</b>, treat, and confirm.</p>
-            <p><b>Mild exacerbation (PRAM 1):</b> salbutamol 2 puffs via pMDI + spacer, reassess at 20 min.</p>
-            <p><b>Home with:</b> reliever technique checked, a <b>written action plan</b>, when-to-seek-care triggers (SABA needed &lt;4-hourly or &gt;3× in 12 h), 1-week follow-up — and start daily low-dose ICS given this pattern.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STATION 2 — MODERATE -->
-    <div class="case mod">
-      <div class="case-head"><span class="st">Station 2</span><span class="nm">The breathless schoolboy</span><span class="agechip">6–11 years</span></div>
-      <div class="case-body">
-        <div class="stem"><b>Omar, 8 years old</b>, a known asthmatic on daily low-dose ICS, has 1 day of worsening cough and wheeze and is breathless walking into clinic. He's used salbutamol every 3–4 hours with only partial relief. His mother mentions his <b>ICS inhaler ran out 2 weeks ago</b> and wasn't refilled. He speaks in <b>phrases</b>, is mildly agitated, with <b>scalene use</b> and widespread inspiratory + expiratory wheeze.</div>
-        <div class="vitals">
-          <div class="vital"><div class="vl">Temp</div><div class="vv">37.2°C</div></div>
-          <div class="vital abn"><div class="vl">HR</div><div class="vv">122</div></div>
-          <div class="vital abn"><div class="vl">RR</div><div class="vv">28</div></div>
-          <div class="vital abn"><div class="vl">SpO₂</div><div class="vv">93% RA</div></div>
-        </div>
-        <div class="tasks">
-          <h5>Candidate tasks</h5>
-          <ol>
-            <li>Apply the PRAM score — which severity band?</li>
-            <li>Give your first-hour management for this severity.</li>
-            <li>What undermined his baseline control, and what will you fix before he leaves?</li>
-          </ol>
-        </div>
-        <button class="debrief-btn" onclick="togD(this)">▸ Reveal debrief</button>
-        <div class="debrief">
-          <table class="score-tbl">
-            <thead><tr><th>Sign</th><th>Finding</th><th>Pts</th></tr></thead>
-            <tbody>
-              <tr><td>O₂ saturation</td><td>93%</td><td><span class="pt">1</span></td></tr>
-              <tr><td>Suprasternal</td><td>Absent</td><td><span class="pt">0</span></td></tr>
-              <tr><td>Scalene</td><td>Present</td><td><span class="pt">2</span></td></tr>
-              <tr><td>Air entry</td><td>Widespread ↓</td><td><span class="pt">2</span></td></tr>
-              <tr><td>Wheezing</td><td>Inspiratory + expiratory</td><td><span class="pt">2</span></td></tr>
-            </tbody>
-            <tfoot><tr><td colspan="3">TOTAL = 7 → MODERATE</td></tr></tfoot>
-          </table>
-          <div class="callout hy">
-            <span class="ic">⚡</span>
-            <h4>First-hour management (moderate)</h4>
-            <p><b>Oxygen</b> to keep SpO₂ ≥94%. <b>SABA + ipratropium every 20 min ×3.</b> <b>Systemic corticosteroid</b> (prednisolone 1–2 mg/kg, max ~40 mg) <b>after the first bronchodilator</b>. Reassess PRAM at 1 hour — if improving, observe, then discharge with the full bundle.</p>
-          </div>
-          <div class="callout trap" style="margin-bottom:0">
-            <span class="ic">⚠️</span>
-            <h4>The baseline that failed</h4>
-            <p>The <b>adherence gap</b> — his controller ran out two weeks ago — is precisely why a "controlled" child flared. Before he leaves: <b>restart the controller</b>, check inhaler technique, arrange a reliable refill, give a written action plan, and book follow-up. Escalating the drug without fixing adherence just hides the real problem.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STATION 3 — SEVERE -->
-    <div class="case sev">
-      <div class="case-head"><span class="st">Station 3</span><span class="nm">Urgent care: the exhausted child</span><span class="agechip">≤5 years · 18 kg</span></div>
-      <div class="case-body">
-        <div class="stem"><b>Faisal, 5 years old (18 kg)</b>, arrives at a primary-care urgent clinic with severe breathlessness for 6 hours, worsening despite repeated home salbutamol. He is <b>too breathless to feed</b> and is becoming agitated. He speaks in <b>single words</b>, with marked suprasternal and scalene retractions, markedly reduced air entry, and a wheeze that is <b>becoming quiet</b>.</div>
-        <div class="vitals">
-          <div class="vital"><div class="vl">Temp</div><div class="vv">37.6°C</div></div>
-          <div class="vital abn"><div class="vl">HR</div><div class="vv">150</div></div>
-          <div class="vital abn"><div class="vl">RR</div><div class="vv">48</div></div>
-          <div class="vital abn"><div class="vl">SpO₂</div><div class="vv">89% RA</div></div>
-        </div>
-        <div class="tasks">
-          <h5>Candidate tasks</h5>
-          <ol>
-            <li>Apply the PRAM — severity? What is the ominous sign to watch?</li>
-            <li>Your first 15 minutes, with weight-based doses (&lt;20 kg).</li>
-            <li>Does he meet hospital-transfer criteria?</li>
-          </ol>
-        </div>
-        <button class="debrief-btn" onclick="togD(this)">▸ Reveal debrief</button>
-        <div class="debrief">
-          <table class="score-tbl">
-            <thead><tr><th>Sign</th><th>Finding</th><th>Pts</th></tr></thead>
-            <tbody>
-              <tr><td>O₂ saturation</td><td>89%</td><td><span class="pt">2</span></td></tr>
-              <tr><td>Suprasternal</td><td>Present</td><td><span class="pt">2</span></td></tr>
-              <tr><td>Scalene</td><td>Present</td><td><span class="pt">2</span></td></tr>
-              <tr><td>Air entry</td><td>↓ apex + base</td><td><span class="pt">2</span></td></tr>
-              <tr><td>Wheezing</td><td>Inspiratory + expiratory</td><td><span class="pt">2</span></td></tr>
-            </tbody>
-            <tfoot><tr><td colspan="3">TOTAL = 10 → SEVERE</td></tr></tfoot>
-          </table>
-          <div class="callout trap">
-            <span class="ic">⚠️</span>
-            <h4>The quiet chest is the ominous sign</h4>
-            <p>A wheeze <b>fading toward a silent chest is not improvement</b> — airflow is too low to generate sound. Combined with agitation heading toward drowsiness, it signals a slide from severe toward <b>life-threatening</b>. Escalate; do not reassure.</p>
-          </div>
-          <div class="subhead" style="font-size:16px"><span class="bar"></span>First 15 minutes (weight-based, &lt;20 kg)</div>
-          <ul class="crit-list">
-            <li><span class="mk yes">1</span><span><b>Oxygen</b> — titrate to keep SpO₂ ≥92%</span></li>
-            <li><span class="mk yes">2</span><span><b>SABA + ipratropium</b> — salbutamol 2.5 mg neb (or ≥6 puffs pMDI+spacer) + ipratropium 0.25 mg neb, back-to-back / every 20 min</span></li>
-            <li><span class="mk yes">3</span><span><b>Systemic steroid, early</b> — prednisolone 1–2 mg/kg (<b>max 30 mg at 2–5y</b>)</span></li>
-            <li><span class="mk yes">4</span><span><b>IV access</b> — consider IV magnesium sulfate 40–50 mg/kg (≥2y) if severe/refractory</span></li>
-            <li><span class="mk yes">5</span><span><b>Anaphylaxis features?</b> IM epinephrine <b>FIRST</b>, then bronchodilators</span></li>
-          </ul>
-          <div class="callout further" style="margin-bottom:0">
-            <span class="ic">🔎</span>
-            <h4>Transfer criteria — MET</h4>
-            <p>Faisal triggers several <b>immediate-transfer</b> criteria: <b>SpO₂ &lt;92%</b>, <b>RR &gt;40/min</b>, <b>unable to feed</b>, and a quietening chest. Arrange hospital transfer now — and keep oxygen, bronchodilators, and systemic steroid running <b>during</b> transfer, not after it.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STATION 4 — COUNSELING -->
-    <div class="case couns">
-      <div class="case-head"><span class="st">Station 4</span><span class="nm">The follow-up that isn't going well</span><span class="agechip">6–11 years</span></div>
-      <div class="case-body">
-        <div class="stem"><b>Layla, 9 years old</b>, has known asthma on daily low-dose ICS and comes for routine follow-up. Her mother says she's "been wheezing a lot lately," has <b>skipped PE twice</b>, wakes about <b>2 nights a week</b>, and uses her reliever roughly <b>5 times a week</b>. No ED visits or steroid courses this year.</div>
-        <div class="tasks">
-          <h5>Candidate tasks</h5>
-          <ol>
-            <li>Assess her control using the GINA four questions.</li>
-            <li>Before you step up, what four things must you check?</li>
-            <li>Counsel the family: your step-up plan + the ONE thing you'll have Layla demonstrate.</li>
-          </ol>
-        </div>
-        <button class="debrief-btn" onclick="togD(this)">▸ Reveal debrief</button>
-        <div class="debrief">
-          <div class="two-col">
-            <div>
-              <table class="score-tbl">
-                <thead><tr><th>GINA control question</th><th>Answer</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td>Daytime symptoms &gt;2×/wk?</td><td>Yes</td><td><span class="pt">✓</span></td></tr>
-                  <tr><td>Any night waking?</td><td>Yes (2/wk)</td><td><span class="pt">✓</span></td></tr>
-                  <tr><td>Reliever &gt;2×/wk?</td><td>Yes (5/wk)</td><td><span class="pt">✓</span></td></tr>
-                  <tr><td>Activity limitation?</td><td>Yes (PE)</td><td><span class="pt">✓</span></td></tr>
-                </tbody>
-                <tfoot><tr><td colspan="3">4 of 4 → UNCONTROLLED</td></tr></tfoot>
-              </table>
-            </div>
-            <div>
-              <div class="subhead six-c" style="margin-top:0;font-size:15px"><span class="bar"></span>Before you step up — check four</div>
-              <ul class="crit-list">
-                <li><span class="mk qq">1</span><span><b>Diagnosis</b> — is it really asthma?</span></li>
-                <li><span class="mk qq">2</span><span><b>Technique</b> — watch her actually use the inhaler</span></li>
-                <li><span class="mk qq">3</span><span><b>Adherence</b> — is she taking it at all?</span></li>
-                <li><span class="mk qq">4</span><span><b>Triggers</b> — exposures, comorbidities (rhinitis, obesity)</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="callout analogy" style="margin-bottom:0">
-            <span class="ic">🔗</span>
-            <h4>Counsel the family</h4>
-            <p>Most "uncontrolled" asthma is a <b>technique or adherence</b> problem, not a weak drug. Fix the basics first: demonstrate correct spacer technique, then use <b>teach-back</b> — have Layla show <i>you</i> (that's the ONE thing to demonstrate).</p>
-            <p>If she is genuinely uncontrolled <i>on</i> good technique and adherence, step up to <b>low-dose ICS-formoterol MART</b> (Step 3), issue a <b>written action plan</b>, and review in <b>4–6 weeks</b>.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="quickref">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">10 — QUICK REFERENCE</div>
-      <h2>The two bands, side by side</h2>
-      <p class="lead">One screen to hold the whole contrast. This is the table to glance at before you walk into the room.</p>
-    </div>
-
-    <div class="sev-table">
-      <table class="grid">
-        <thead>
-          <tr>
-            <th class="feat" style="min-width:170px">Dimension</th>
-            <th class="c-sev" style="background:var(--u5)">≤5 years</th>
-            <th class="c-mild" style="background:var(--six)">6–11 years</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="feat">Basis of diagnosis</td><td>Clinical — <b>3 criteria, all required</b></td><td>Symptoms + <b>documented variable airflow</b></td></tr>
-          <tr><td class="feat">Lung function</td><td>Not feasible (oscillometry from ~3y, research)</td><td><b>Spirometry</b> workhorse; reversibility FEV₁ ≥12% pred</td></tr>
-          <tr><td class="feat">If criteria incomplete</td><td>Label <b>"suspected asthma,"</b> treat &amp; reassess</td><td>Repeat/withhold-BD testing or challenge</td></tr>
-          <tr><td class="feat">Preferred controller</td><td><b>Daily low-dose ICS</b></td><td><b>ICS-formoterol</b> (AIR/MART backbone)</td></tr>
-          <tr><td class="feat">MART available?</td><td><b>No</b> — no studies &lt;5y</td><td><b>Yes</b> — Steps 3–5</td></tr>
-          <tr><td class="feat">Ladder ceiling</td><td>Step 4 = "continue + <b>refer</b>" (Step 3 = double low ICS)</td><td>Step 5 = phenotyping + <b>biologics</b> (some from age 6)</td></tr>
-          <tr><td class="feat">Reliever device</td><td>pMDI + spacer; <b>mask &lt;3y</b>, mouthpiece 3–5y</td><td>pMDI + spacer or DPI; ICS-formoterol as AIR</td></tr>
-          <tr><td class="feat">Severe RR flag</td><td class="crit">&gt;40/min</td><td class="crit">&gt;30/min</td></tr>
-          <tr><td class="feat">OCS ceiling (acute)</td><td>20 mg (&lt;2y) · <b>30 mg (2–5y)</b></td><td>~40 mg typical</td></tr>
-          <tr><td class="feat">Control tool</td><td>GINA ≤5 grid; TRACK (parent-reported)</td><td>GINA grid; <b>C-ACT</b> (validated 4–11)</td></tr>
-          <tr><td class="feat">Review cadence</td><td>Every 3–6 mo (symptoms often remit); height yearly</td><td>Every 2–3 mo after change; step down after 3 mo control</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="knums" style="margin-top:24px">
-      <div class="knum u5c"><div class="n">20–60</div><div class="l">min — SABA response window (dx criterion ≤5)</div></div>
-      <div class="knum u5c"><div class="n">2–3</div><div class="l">month ICS trial to confirm dx ≤5</div></div>
-      <div class="knum six-c"><div class="n">&gt;35</div><div class="l">FeNO ppb supports Type-2 (children)</div></div>
-      <div class="knum six-c"><div class="n">&gt;13%</div><div class="l">diurnal PEF variability (children)</div></div>
-    </div>
-
-    <div class="callout hy" style="margin-top:26px">
-      <span class="ic">⚡</span>
-      <h4>High-Yield · If you remember only five things</h4>
-      <p><b>1.</b> ≤5 = clinical diagnosis, 3 criteria, all required. <b>2.</b> 6–11 = objective variable airflow, reversibility FEV₁ ≥12% predicted. <b>3.</b> Preferred controller: low-dose ICS (≤5) vs ICS-formoterol AIR/MART (6–11); <b>no MART under 5.</b> <b>4.</b> Acute severe RR flag is <b>&gt;40 (≤5)</b> vs &gt;30 (older); SpO₂ &lt;92% transfers. <b>5.</b> Before any step-up: diagnosis, technique, adherence, triggers.</p>
-    </div>
-  </div>
-</section>
-
-<div class="sharebar">
-  <div class="wrap">
-    <span><b>Share this guide</b> — it's a single self-contained file; anyone with the link can open it on any device.</span>
-    <button onclick="revealAll()">⇩ Reveal all answers</button>
-    <button onclick="window.print()">🖨 Save as PDF</button>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">10 — CASE-BASED DISCUSSION</div>
+<h2 id="four-osce-stations-apply-the-criteria-the-pram">Four OSCE stations — apply the criteria &amp; the PRAM</h2>
+<p class="lead">Work each station before you open the debrief: read the stem, score it yourself, decide your management. The severity label is deliberately hidden until you reveal the answer.</p>
 </div>
-
+<!-- STATION 1 — MILD -->
+<div class="case mild">
+<div class="case-head"><span class="st">Station 1</span><span class="nm">The wheezy toddler</span><span class="agechip">≤5 years</span></div>
+<div class="case-body">
+<div class="stem"><b>Sara, 4 years old</b>, is brought by her mother with 2 days of cough and wheeze during a cold. This is her <b>3rd similar episode this year</b>; between colds she occasionally coughs at night. Her father has asthma and she has eczema. She is alert and still playing, speaking in <b>full sentences</b>, with mild expiratory wheeze and <b>no retractions</b>.</div>
+<div class="vitals">
+<div class="vital"><div class="vl">Temp</div><div class="vv">37.4°C</div></div>
+<div class="vital"><div class="vl">HR</div><div class="vv">110</div></div>
+<div class="vital"><div class="vl">RR</div><div class="vv">32</div></div>
+<div class="vital"><div class="vl">SpO₂</div><div class="vv">96% RA</div></div>
+</div>
+<div class="tasks">
+<h5>Candidate tasks</h5>
+<ol>
+<li>Apply the GINA ≤5y diagnostic criteria — does Sara have asthma?</li>
+<li>Grade this exacerbation with the PRAM score.</li>
+<li>Outline immediate management + what the caregiver goes home with.</li>
+</ol>
+</div>
+<button class="debrief-btn" onclick="togD(this)">▸ Reveal debrief</button>
+<div class="debrief">
+<div class="two-col">
+<div>
+<table class="score-tbl">
+<thead><tr><th>Sign</th><th>Finding</th><th>Pts</th></tr></thead>
+<tbody>
+<tr><td>O₂ saturation</td><td>96%</td><td><span class="pt">0</span></td></tr>
+<tr><td>Suprasternal</td><td>Absent</td><td><span class="pt">0</span></td></tr>
+<tr><td>Scalene</td><td>Absent</td><td><span class="pt">0</span></td></tr>
+<tr><td>Air entry</td><td>Normal</td><td><span class="pt">0</span></td></tr>
+<tr><td>Wheezing</td><td>Expiratory only</td><td><span class="pt">1</span></td></tr>
+</tbody>
+<tfoot><tr><td colspan="3">TOTAL = 1 → MILD</td></tr></tfoot>
+</table>
+</div>
+<div>
+<div class="subhead u5c" style="margin-top:0;font-size:15px"><span class="bar"></span>Diagnostic criteria (≤5y)</div>
+<ul class="crit-list">
+<li><span class="mk yes">✓</span><span><b>① Recurrent wheeze</b> — 3 episodes/yr + interval night cough</span></li>
+<li><span class="mk yes">✓</span><span><b>② No alternative cause</b> — viral URTI allowed; atopy supports</span></li>
+<li><span class="mk qq">?</span><span><b>③ Treatment response</b> — not yet documented; confirm with SABA response or a 2–3 month ICS trial</span></li>
+</ul>
+</div>
+</div>
+<div class="callout hy" style="margin-bottom:0">
+<span class="ic">⚡</span>
+<h4>Model answer</h4>
+<p><b>Diagnosis:</b> the recurrent pattern + atopy + family history strongly support asthma. Since criterion ③ isn't documented yet, record <b>"suspected asthma"</b>, treat, and confirm.</p>
+<p><b>Mild exacerbation (PRAM 1):</b> salbutamol 2 puffs via pMDI + spacer, reassess at 20 min.</p>
+<p><b>Home with:</b> reliever technique checked, a <b>written action plan</b>, when-to-seek-care triggers (SABA needed &lt;4-hourly or &gt;3× in 12 h), 1-week follow-up — and start daily low-dose ICS given this pattern.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- STATION 2 — MODERATE -->
+<div class="case mod">
+<div class="case-head"><span class="st">Station 2</span><span class="nm">The breathless schoolboy</span><span class="agechip">6–11 years</span></div>
+<div class="case-body">
+<div class="stem"><b>Omar, 8 years old</b>, a known asthmatic on daily low-dose ICS, has 1 day of worsening cough and wheeze and is breathless walking into clinic. He's used salbutamol every 3–4 hours with only partial relief. His mother mentions his <b>ICS inhaler ran out 2 weeks ago</b> and wasn't refilled. He speaks in <b>phrases</b>, is mildly agitated, with <b>scalene use</b> and widespread inspiratory + expiratory wheeze.</div>
+<div class="vitals">
+<div class="vital"><div class="vl">Temp</div><div class="vv">37.2°C</div></div>
+<div class="vital abn"><div class="vl">HR</div><div class="vv">122</div></div>
+<div class="vital abn"><div class="vl">RR</div><div class="vv">28</div></div>
+<div class="vital abn"><div class="vl">SpO₂</div><div class="vv">93% RA</div></div>
+</div>
+<div class="tasks">
+<h5>Candidate tasks</h5>
+<ol>
+<li>Apply the PRAM score — which severity band?</li>
+<li>Give your first-hour management for this severity.</li>
+<li>What undermined his baseline control, and what will you fix before he leaves?</li>
+</ol>
+</div>
+<button class="debrief-btn" onclick="togD(this)">▸ Reveal debrief</button>
+<div class="debrief">
+<table class="score-tbl">
+<thead><tr><th>Sign</th><th>Finding</th><th>Pts</th></tr></thead>
+<tbody>
+<tr><td>O₂ saturation</td><td>93%</td><td><span class="pt">1</span></td></tr>
+<tr><td>Suprasternal</td><td>Absent</td><td><span class="pt">0</span></td></tr>
+<tr><td>Scalene</td><td>Present</td><td><span class="pt">2</span></td></tr>
+<tr><td>Air entry</td><td>Widespread ↓</td><td><span class="pt">2</span></td></tr>
+<tr><td>Wheezing</td><td>Inspiratory + expiratory</td><td><span class="pt">2</span></td></tr>
+</tbody>
+<tfoot><tr><td colspan="3">TOTAL = 7 → MODERATE</td></tr></tfoot>
+</table>
+<div class="callout hy">
+<span class="ic">⚡</span>
+<h4>First-hour management (moderate)</h4>
+<p><b>Oxygen</b> to keep SpO₂ ≥94%. <b>SABA + ipratropium every 20 min ×3.</b> <b>Systemic corticosteroid</b> (prednisolone 1–2 mg/kg, max ~40 mg) <b>after the first bronchodilator</b>. Reassess PRAM at 1 hour — if improving, observe, then discharge with the full bundle.</p>
+</div>
+<div class="callout trap" style="margin-bottom:0">
+<span class="ic">⚠️</span>
+<h4>The baseline that failed</h4>
+<p>The <b>adherence gap</b> — his controller ran out two weeks ago — is precisely why a "controlled" child flared. Before he leaves: <b>restart the controller</b>, check inhaler technique, arrange a reliable refill, give a written action plan, and book follow-up. Escalating the drug without fixing adherence just hides the real problem.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- STATION 3 — SEVERE -->
+<div class="case sev">
+<div class="case-head"><span class="st">Station 3</span><span class="nm">Urgent care: the exhausted child</span><span class="agechip">≤5 years · 18 kg</span></div>
+<div class="case-body">
+<div class="stem"><b>Faisal, 5 years old (18 kg)</b>, arrives at a primary-care urgent clinic with severe breathlessness for 6 hours, worsening despite repeated home salbutamol. He is <b>too breathless to feed</b> and is becoming agitated. He speaks in <b>single words</b>, with marked suprasternal and scalene retractions, markedly reduced air entry, and a wheeze that is <b>becoming quiet</b>.</div>
+<div class="vitals">
+<div class="vital"><div class="vl">Temp</div><div class="vv">37.6°C</div></div>
+<div class="vital abn"><div class="vl">HR</div><div class="vv">150</div></div>
+<div class="vital abn"><div class="vl">RR</div><div class="vv">48</div></div>
+<div class="vital abn"><div class="vl">SpO₂</div><div class="vv">89% RA</div></div>
+</div>
+<div class="tasks">
+<h5>Candidate tasks</h5>
+<ol>
+<li>Apply the PRAM — severity? What is the ominous sign to watch?</li>
+<li>Your first 15 minutes, with weight-based doses (&lt;20 kg).</li>
+<li>Does he meet hospital-transfer criteria?</li>
+</ol>
+</div>
+<button class="debrief-btn" onclick="togD(this)">▸ Reveal debrief</button>
+<div class="debrief">
+<table class="score-tbl">
+<thead><tr><th>Sign</th><th>Finding</th><th>Pts</th></tr></thead>
+<tbody>
+<tr><td>O₂ saturation</td><td>89%</td><td><span class="pt">2</span></td></tr>
+<tr><td>Suprasternal</td><td>Present</td><td><span class="pt">2</span></td></tr>
+<tr><td>Scalene</td><td>Present</td><td><span class="pt">2</span></td></tr>
+<tr><td>Air entry</td><td>↓ apex + base</td><td><span class="pt">2</span></td></tr>
+<tr><td>Wheezing</td><td>Inspiratory + expiratory</td><td><span class="pt">2</span></td></tr>
+</tbody>
+<tfoot><tr><td colspan="3">TOTAL = 10 → SEVERE</td></tr></tfoot>
+</table>
+<div class="callout trap">
+<span class="ic">⚠️</span>
+<h4>The quiet chest is the ominous sign</h4>
+<p>A wheeze <b>fading toward a silent chest is not improvement</b> — airflow is too low to generate sound. Combined with agitation heading toward drowsiness, it signals a slide from severe toward <b>life-threatening</b>. Escalate; do not reassure.</p>
+</div>
+<div class="subhead" style="font-size:16px"><span class="bar"></span>First 15 minutes (weight-based, &lt;20 kg)</div>
+<ul class="crit-list">
+<li><span class="mk yes">1</span><span><b>Oxygen</b> — titrate to keep SpO₂ ≥92%</span></li>
+<li><span class="mk yes">2</span><span><b>SABA + ipratropium</b> — salbutamol 2.5 mg neb (or ≥6 puffs pMDI+spacer) + ipratropium 0.25 mg neb, back-to-back / every 20 min</span></li>
+<li><span class="mk yes">3</span><span><b>Systemic steroid, early</b> — prednisolone 1–2 mg/kg (<b>max 30 mg at 2–5y</b>)</span></li>
+<li><span class="mk yes">4</span><span><b>IV access</b> — consider IV magnesium sulfate 40–50 mg/kg (≥2y) if severe/refractory</span></li>
+<li><span class="mk yes">5</span><span><b>Anaphylaxis features?</b> IM epinephrine <b>FIRST</b>, then bronchodilators</span></li>
+</ul>
+<div class="callout further" style="margin-bottom:0">
+<span class="ic">🔎</span>
+<h4>Transfer criteria — MET</h4>
+<p>Faisal triggers several <b>immediate-transfer</b> criteria: <b>SpO₂ &lt;92%</b>, <b>RR &gt;40/min</b>, <b>unable to feed</b>, and a quietening chest. Arrange hospital transfer now — and keep oxygen, bronchodilators, and systemic steroid running <b>during</b> transfer, not after it.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- STATION 4 — COUNSELING -->
+<div class="case couns">
+<div class="case-head"><span class="st">Station 4</span><span class="nm">The follow-up that isn't going well</span><span class="agechip">6–11 years</span></div>
+<div class="case-body">
+<div class="stem"><b>Layla, 9 years old</b>, has known asthma on daily low-dose ICS and comes for routine follow-up. Her mother says she's "been wheezing a lot lately," has <b>skipped PE twice</b>, wakes about <b>2 nights a week</b>, and uses her reliever roughly <b>5 times a week</b>. No ED visits or steroid courses this year.</div>
+<div class="tasks">
+<h5>Candidate tasks</h5>
+<ol>
+<li>Assess her control using the GINA four questions.</li>
+<li>Before you step up, what four things must you check?</li>
+<li>Counsel the family: your step-up plan + the ONE thing you'll have Layla demonstrate.</li>
+</ol>
+</div>
+<button class="debrief-btn" onclick="togD(this)">▸ Reveal debrief</button>
+<div class="debrief">
+<div class="two-col">
+<div>
+<table class="score-tbl">
+<thead><tr><th>GINA control question</th><th>Answer</th><th></th></tr></thead>
+<tbody>
+<tr><td>Daytime symptoms &gt;2×/wk?</td><td>Yes</td><td><span class="pt">✓</span></td></tr>
+<tr><td>Any night waking?</td><td>Yes (2/wk)</td><td><span class="pt">✓</span></td></tr>
+<tr><td>Reliever &gt;2×/wk?</td><td>Yes (5/wk)</td><td><span class="pt">✓</span></td></tr>
+<tr><td>Activity limitation?</td><td>Yes (PE)</td><td><span class="pt">✓</span></td></tr>
+</tbody>
+<tfoot><tr><td colspan="3">4 of 4 → UNCONTROLLED</td></tr></tfoot>
+</table>
+</div>
+<div>
+<div class="subhead six-c" style="margin-top:0;font-size:15px"><span class="bar"></span>Before you step up — check four</div>
+<ul class="crit-list">
+<li><span class="mk qq">1</span><span><b>Diagnosis</b> — is it really asthma?</span></li>
+<li><span class="mk qq">2</span><span><b>Technique</b> — watch her actually use the inhaler</span></li>
+<li><span class="mk qq">3</span><span><b>Adherence</b> — is she taking it at all?</span></li>
+<li><span class="mk qq">4</span><span><b>Triggers</b> — exposures, comorbidities (rhinitis, obesity)</span></li>
+</ul>
+</div>
+</div>
+<div class="callout analogy" style="margin-bottom:0">
+<span class="ic">🔗</span>
+<h4>Counsel the family</h4>
+<p>Most "uncontrolled" asthma is a <b>technique or adherence</b> problem, not a weak drug. Fix the basics first: demonstrate correct spacer technique, then use <b>teach-back</b> — have Layla show <i>you</i> (that's the ONE thing to demonstrate).</p>
+<p>If she is genuinely uncontrolled <i>on</i> good technique and adherence, step up to <b>low-dose ICS-formoterol MART</b> (Step 3), issue a <b>written action plan</b>, and review in <b>4–6 weeks</b>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quickref">
+<div class="wrap">
+<div class="sec-head">
+<div class="sec-num">10 — QUICK REFERENCE</div>
+<h2 id="the-two-bands-side-by-side">The two bands, side by side</h2>
+<p class="lead">One screen to hold the whole contrast. This is the table to glance at before you walk into the room.</p>
+</div>
+<div class="sev-table">
+<table class="grid">
+<thead>
+<tr>
+<th class="feat" style="min-width:170px">Dimension</th>
+<th class="c-sev" style="background:var(--u5)">≤5 years</th>
+<th class="c-mild" style="background:var(--six)">6–11 years</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="feat">Basis of diagnosis</td><td>Clinical — <b>3 criteria, all required</b></td><td>Symptoms + <b>documented variable airflow</b></td></tr>
+<tr><td class="feat">Lung function</td><td>Not feasible (oscillometry from ~3y, research)</td><td><b>Spirometry</b> workhorse; reversibility FEV₁ ≥12% pred</td></tr>
+<tr><td class="feat">If criteria incomplete</td><td>Label <b>"suspected asthma,"</b> treat &amp; reassess</td><td>Repeat/withhold-BD testing or challenge</td></tr>
+<tr><td class="feat">Preferred controller</td><td><b>Daily low-dose ICS</b></td><td><b>ICS-formoterol</b> (AIR/MART backbone)</td></tr>
+<tr><td class="feat">MART available?</td><td><b>No</b> — no studies &lt;5y</td><td><b>Yes</b> — Steps 3–5</td></tr>
+<tr><td class="feat">Ladder ceiling</td><td>Step 4 = "continue + <b>refer</b>" (Step 3 = double low ICS)</td><td>Step 5 = phenotyping + <b>biologics</b> (some from age 6)</td></tr>
+<tr><td class="feat">Reliever device</td><td>pMDI + spacer; <b>mask &lt;3y</b>, mouthpiece 3–5y</td><td>pMDI + spacer or DPI; ICS-formoterol as AIR</td></tr>
+<tr><td class="feat">Severe RR flag</td><td class="crit">&gt;40/min</td><td class="crit">&gt;30/min</td></tr>
+<tr><td class="feat">OCS ceiling (acute)</td><td>20 mg (&lt;2y) · <b>30 mg (2–5y)</b></td><td>~40 mg typical</td></tr>
+<tr><td class="feat">Control tool</td><td>GINA ≤5 grid; TRACK (parent-reported)</td><td>GINA grid; <b>C-ACT</b> (validated 4–11)</td></tr>
+<tr><td class="feat">Review cadence</td><td>Every 3–6 mo (symptoms often remit); height yearly</td><td>Every 2–3 mo after change; step down after 3 mo control</td></tr>
+</tbody>
+</table>
+</div>
+<div class="knums" style="margin-top:24px">
+<div class="knum u5c"><div class="n">20–60</div><div class="l">min — SABA response window (dx criterion ≤5)</div></div>
+<div class="knum u5c"><div class="n">2–3</div><div class="l">month ICS trial to confirm dx ≤5</div></div>
+<div class="knum six-c"><div class="n">&gt;35</div><div class="l">FeNO ppb supports Type-2 (children)</div></div>
+<div class="knum six-c"><div class="n">&gt;13%</div><div class="l">diurnal PEF variability (children)</div></div>
+</div>
+<div class="callout hy" style="margin-top:26px">
+<span class="ic">⚡</span>
+<h4>High-Yield · If you remember only five things</h4>
+<p><b>1.</b> ≤5 = clinical diagnosis, 3 criteria, all required. <b>2.</b> 6–11 = objective variable airflow, reversibility FEV₁ ≥12% predicted. <b>3.</b> Preferred controller: low-dose ICS (≤5) vs ICS-formoterol AIR/MART (6–11); <b>no MART under 5.</b> <b>4.</b> Acute severe RR flag is <b>&gt;40 (≤5)</b> vs &gt;30 (older); SpO₂ &lt;92% transfers. <b>5.</b> Before any step-up: diagnosis, technique, adherence, triggers.</p>
+</div>
+</div>
+</section>
+<div class="sharebar">
+<div class="wrap">
+<span><b>Share this guide</b> — it's a single self-contained file; anyone with the link can open it on any device.</span>
+<button onclick="revealAll()">⇩ Reveal all answers</button>
+<button onclick="window.print()">🖨 Save as PDF</button>
+</div>
+</div>
 <footer>
-  <div class="wrap">
-    <div class="refs">
-      <b>Sources:</b> Global Initiative for Asthma (GINA), Global Strategy for Asthma Management and Prevention, 2026 — Sections 1–4 (diagnosis, assessment, medications, 6–11 years), Sections 10–12 (diagnosis, assessment &amp; management, and acute wheezing in children ≤5 years), Boxes 1-2, 4-2, 4-10/11/12, 10-2, 10-4, 10-5, 11-1/2/3, 12-1 to 12-5. PRAM © 2011 Francine Ducharme.
+<div class="wrap">
+<div class="refs">
+<b>Sources:</b> Global Initiative for Asthma (GINA), Global Strategy for Asthma Management and Prevention, 2026 — Sections 1–4 (diagnosis, assessment, medications, 6–11 years), Sections 10–12 (diagnosis, assessment &amp; management, and acute wheezing in children ≤5 years), Boxes 1-2, 4-2, 4-10/11/12, 10-2, 10-4, 10-5, 11-1/2/3, 12-1 to 12-5. PRAM © 2011 Francine Ducharme.
     </div>
-    <div class="disc">Educational summary for clinicians — not a substitute for the full guideline or for individual clinical judgment. Doses and thresholds vary by country and local product labelling; always verify against current product information before prescribing.</div>
-  </div>
+<div class="disc">Educational summary for clinicians — not a substitute for the full guideline or for individual clinical judgment. Doses and thresholds vary by country and local product labelling; always verify against current product information before prescribing.</div>
+</div>
 </footer>
-
 <script>
 /* ---------- Exam-Q reveal ---------- */
 function tog(btn){
@@ -1689,6 +1677,5 @@ const spy=new IntersectionObserver((entries)=>{
 },{rootMargin:'-45% 0px -50% 0px'});
 secs.forEach(s=>s&&spy.observe(s));
 </script>
-
 </body>
 </html>

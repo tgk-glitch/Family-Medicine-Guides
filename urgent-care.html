@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Urgent Care Quick Guides — Family Medicine Guides</title>
+<meta content="Point-of-care urgent care protocols — red flags first, condensed steps, at-a-glance dosing." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --paper:#F4F6F2; --paper-2:#EBEEE7; --ink:#1B2A28; --ink-soft:#4B5D59;
+    --line:#D4DAD1; --teal:#1F5C55; --teal-deep:#123C38;
+    --amber:#C98A2C; --red:#B0392C; --card:#FFFFFF; --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  h2,h3{scroll-margin-top:170px;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- INTRO ---------- */
+  .uc-hero{padding:44px 0 28px;}
+  .uc-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--red);margin:0 0 14px;
+  }
+  .uc-hero h1{
+    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,4.5vw,2.7rem);
+    line-height:1.12;letter-spacing:-0.015em;margin:0 0 14px;color:var(--teal-deep);
+  }
+  .uc-hero p{font-size:1.02rem;line-height:1.6;color:var(--ink-soft);max-width:620px;margin:0;}
+
+  /* ---------- QUICK JUMP ---------- */
+  .uc-jump{
+    position:sticky;top:64px;z-index:80;background:rgba(244,246,242,0.96);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);padding:12px 0;
+  }
+  .uc-jump-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;}
+  .uc-chip{
+    --tag-color:#1F5C55;
+    flex-shrink:0;font-family:'Inter',sans-serif;font-weight:600;font-size:0.78rem;
+    color:var(--tag-color);background:color-mix(in srgb, var(--tag-color) 10%, white);
+    border:1px solid color-mix(in srgb, var(--tag-color) 30%, white);
+    padding:7px 13px;border-radius:100px;text-decoration:none;white-space:nowrap;
+  }
+  .uc-chip:hover{background:color-mix(in srgb, var(--tag-color) 18%, white);}
+
+  /* ---------- TOPIC ---------- */
+  .uc-list{padding:28px 0 90px;display:flex;flex-direction:column;gap:36px;}
+  .uc-topic{
+    --tag-color:#1F5C55;
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:26px 26px 30px;position:relative;overflow:hidden;
+  }
+  .uc-topic::before{content:'';position:absolute;top:0;left:0;width:6px;height:100%;background:var(--tag-color);}
+  .uc-topic-head{margin-bottom:16px;}
+  .uc-cat-pill{
+    display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;
+    text-transform:uppercase;color:var(--tag-color);background:color-mix(in srgb, var(--tag-color) 12%, white);
+    padding:4px 10px;border-radius:100px;font-weight:600;margin-bottom:10px;
+  }
+  .uc-topic-head h2{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;margin:0 0 4px;color:var(--teal-deep);
+  }
+  .uc-source{font-size:0.78rem;color:var(--ink-soft);font-style:italic;margin:0;}
+
+  .uc-redflag{
+    background:#FCEEEC;border:1.5px solid #E8B7AC;border-radius:12px;
+    padding:16px 18px;margin:16px 0 22px;
+  }
+  .uc-redflag-label{font-weight:700;color:var(--red);font-size:0.92rem;margin-bottom:8px;}
+  .uc-redflag ul{margin:0;padding-left:20px;}
+  .uc-redflag li{color:#7A2A20;font-size:0.9rem;line-height:1.55;margin-bottom:4px;}
+  .uc-redflag li:last-child{margin-bottom:0;}
+
+  .uc-step{display:flex;gap:14px;margin-bottom:20px;}
+  .uc-step:last-child{margin-bottom:0;}
+  .uc-step-num{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--tag-color);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;margin-top:2px;
+  }
+  .uc-step-body{flex:1;min-width:0;}
+  .uc-step-body h4{
+    font-family:'Fraunces',serif;font-size:1.02rem;font-weight:600;margin:0 0 8px;color:var(--teal-deep);
+  }
+  .uc-step-body ul{margin:0;padding-left:20px;}
+  .uc-step-body li{font-size:0.92rem;line-height:1.55;color:var(--ink);margin-bottom:6px;}
+  .uc-step-body li:last-child{margin-bottom:0;}
+  .uc-note{
+    font-size:0.85rem;color:var(--ink-soft);background:var(--paper-2);border-radius:9px;
+    padding:10px 13px;margin:10px 0 0;
+  }
+
+  .uc-table-wrap{overflow-x:auto;margin:8px 0;}
+  table{border-collapse:collapse;width:100%;font-size:0.85rem;}
+  th{
+    background:var(--paper-2);color:var(--teal-deep);font-weight:700;text-align:left;
+    padding:8px 10px;border:1px solid var(--line);white-space:nowrap;
+  }
+  td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;color:var(--ink);}
+
+  /* ---------- INTERACTIVE TOOLS ---------- */
+  .uc-tool{
+    background:var(--paper-2);border:1.5px dashed color-mix(in srgb, var(--tag-color) 40%, var(--line));
+    border-radius:14px;padding:20px 20px 22px;margin:0 0 22px;
+  }
+  .uc-tool-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+  .uc-tool-badge{
+    font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;
+    color:#fff;background:var(--tag-color);padding:3px 9px;border-radius:100px;font-weight:700;
+  }
+  .uc-tool h4{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;margin:0;color:var(--teal-deep);}
+  .uc-tool-sub{font-size:0.82rem;color:var(--ink-soft);margin:4px 0 14px;}
+  .uc-tool-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;max-width:280px;}
+  .uc-tool-row label{font-size:0.82rem;font-weight:600;color:var(--ink);}
+  .uc-tool-row input{
+    border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;font-size:0.95rem;
+    font-family:'Inter',sans-serif;background:#fff;
+  }
+  .uc-tool-row input:focus{outline:none;border-color:var(--tag-color);}
+  .uc-tool-result{
+    background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 15px;
+    font-size:0.92rem;color:var(--ink-soft);
+  }
+  .uc-tool-result-active{color:var(--ink);border-color:var(--tag-color);}
+  .uc-tool-note{font-size:0.78rem;color:var(--ink-soft);}
+  .uc-heart-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+  .uc-heart-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .uc-heart-row label{font-size:0.85rem;font-weight:600;color:var(--ink);width:110px;flex-shrink:0;}
+  .uc-heart-row select{
+    flex:1;min-width:200px;border:1.5px solid var(--line);border-radius:9px;padding:9px 11px;
+    font-family:'Inter',sans-serif;font-size:0.88rem;background:#fff;
+  }
+  .uc-heart-row select:focus{outline:none;border-color:var(--tag-color);}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:32px 0 48px;}
+  footer p{font-size:0.85rem;color:var(--ink-soft);line-height:1.6;margin:0 0 6px;}
+  footer .mono{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<!-- FMG-NAV:START -->
+<style>
+  .fmg-bar{
+    --n-paper:#F4F6F2; --n-ink:#1B2A28; --n-ink-soft:#4B5D59; --n-line:#D4DAD1;
+    --n-teal:#1F5C55; --n-teal-deep:#123C38; --n-amber:#C98A2C; --n-card:#FFFFFF;
+    box-sizing:border-box; font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    position:sticky; top:0; z-index:900;
+    background:rgba(244,246,242,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--n-line); padding:13px 20px;
+  }
+  .fmg-bar *{box-sizing:border-box;}
+  .fmg-bar-row{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .fmg-wordmark{
+    display:flex;align-items:center;gap:9px;
+    font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.02rem;
+    letter-spacing:-0.01em;color:var(--n-teal-deep);text-decoration:none;white-space:nowrap;
+  }
+  .fmg-wordmark:hover{color:var(--n-teal);}
+  .fmg-wordmark .fmg-tab{width:8px;height:18px;background:var(--n-amber);border-radius:2px;display:inline-block;flex-shrink:0;}
+  .fmg-bar-actions{display:flex;align-items:center;gap:8px;}
+  .fmg-icon-btn{
+    width:38px;height:38px;border-radius:9px;border:1px solid var(--n-line);
+    background:var(--n-card);color:var(--n-teal-deep);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .fmg-icon-btn:hover{border-color:var(--n-teal);}
+
+  /* ---- full screen menu ---- */
+  .fmg-menu{
+    position:fixed;inset:0;background:#fff;z-index:1000;
+    display:none;flex-direction:column;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  .fmg-menu.fmg-menu-open{display:flex;}
+  .fmg-menu-top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;border-bottom:1px solid var(--n-line);
+  }
+  .fmg-menu-top .fmg-wordmark{font-size:1.02rem;}
+  .fmg-menu-close{
+    width:38px;height:38px;border-radius:9px;border:1px solid var(--n-line);
+    background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--n-ink);
+  }
+  .fmg-menu-body{flex:1;overflow-y:auto;padding:8px 8px 40px;}
+  .fmg-panel{display:none;padding:8px 12px;}
+  .fmg-panel.fmg-panel-active{display:block;}
+  .fmg-back{
+    display:flex;align-items:center;gap:8px;background:none;border:none;
+    color:var(--n-ink-soft);font-size:0.92rem;font-weight:600;cursor:pointer;
+    padding:14px 8px;margin-bottom:4px;
+  }
+  .fmg-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 8px;border-bottom:1px solid var(--n-line);
+    text-decoration:none;color:var(--n-ink);cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;
+    width:100%;text-align:left;font-family:inherit;
+  }
+  .fmg-row-main{display:flex;align-items:center;gap:12px;}
+  .fmg-row-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+  .fmg-row-text .fmg-row-label{font-weight:600;font-size:0.98rem;display:block;}
+  .fmg-row-text .fmg-row-sub{font-size:0.8rem;color:var(--n-ink-soft);display:block;margin-top:2px;}
+  .fmg-row.fmg-row-active .fmg-row-label{color:var(--n-teal);}
+  .fmg-row.fmg-row-disabled{opacity:0.5;cursor:default;}
+  .fmg-chev{color:var(--n-ink-soft);flex-shrink:0;}
+  .fmg-menu-section-label{
+    font-family:'JetBrains Mono','IBM Plex Mono',monospace;font-size:0.68rem;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--n-ink-soft);
+    padding:18px 8px 8px;
+  }
+
+  /* ---- search overlay (index only triggers inline; subpages link to index) ---- */
+  .fmg-search-wrap{position:relative;}
+</style>
+<div class="fmg-bar">
+<div class="fmg-bar-row">
+<a class="fmg-wordmark" href="index.html"><span class="fmg-tab"></span>Family Medicine Guides</a>
+<div class="fmg-bar-actions">
+<button aria-label="Search" class="fmg-icon-btn" id="fmgSearchBtn">
+<svg fill="none" height="17" viewbox="0 0 24 24" width="17"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<button aria-label="Open menu" class="fmg-icon-btn" id="fmgMenuBtn">
+<svg fill="none" height="17" viewbox="0 0 24 24" width="17"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<div class="fmg-menu" id="fmgMenu">
+<div class="fmg-menu-top">
+<a class="fmg-wordmark" href="index.html"><span class="fmg-tab"></span>Family Medicine Guides</a>
+<button aria-label="Close menu" class="fmg-menu-close" id="fmgMenuClose">
+<svg fill="none" height="16" viewbox="0 0 24 24" width="16"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<div class="fmg-menu-body">
+<!-- Panel 1: root -->
+<div class="fmg-panel fmg-panel-active" data-panel="root">
+<button class="fmg-row" data-goto="topics">
+<span class="fmg-row-main">
+<span class="fmg-row-text">
+<span class="fmg-row-label">Browse Topics</span>
+<span class="fmg-row-sub">All field guides in the library</span>
+</span>
+</span>
+<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+</button>
+<a class="fmg-row" href="index.html">
+<span class="fmg-row-main">
+<span class="fmg-row-text">
+<span class="fmg-row-label">Home</span>
+<span class="fmg-row-sub">Library overview</span>
+</span>
+</span>
+</a>
+</div>
+<!-- Panel 2: topics -->
+<div class="fmg-panel" data-panel="topics">
+<button class="fmg-back" data-back="root">
+<svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+        Back
+      </button>
+<div class="fmg-menu-section-label">Field Guides</div>
+<a class="fmg-row" href="geriatrics.html">
+<span class="fmg-row-main">
+<span class="fmg-row-dot" style="background:#1F5C55"></span>
+<span class="fmg-row-text">
+<span class="fmg-row-label">Geriatrics</span>
+<span class="fmg-row-sub">IHI 4Ms field guide</span>
+</span>
+</span>
+<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+</a>
+<a class="fmg-row" href="asthma.html">
+<span class="fmg-row-main">
+<span class="fmg-row-dot" style="background:#C98A2C"></span>
+<span class="fmg-row-text">
+<span class="fmg-row-label">Pediatric Asthma</span>
+<span class="fmg-row-sub">GINA 2026 field guide</span>
+</span>
+</span>
+<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+</a>
+<a class="fmg-row fmg-row-active" href="urgent-care.html">
+<span class="fmg-row-main">
+<span class="fmg-row-dot" style="background:#B0392C"></span>
+<span class="fmg-row-text">
+<span class="fmg-row-label">Urgent Care Quick Guides</span>
+<span class="fmg-row-sub">15 point-of-care protocols</span>
+</span>
+</span>
+<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
+</a>
+<div class="fmg-row fmg-row-disabled">
+<span class="fmg-row-main">
+<span class="fmg-row-dot" style="background:#B7BEB2"></span>
+<span class="fmg-row-text">
+<span class="fmg-row-label">More topics</span>
+<span class="fmg-row-sub">Added as the library grows</span>
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var menu = document.getElementById('fmgMenu');
+  var menuBtn = document.getElementById('fmgMenuBtn');
+  var closeBtn = document.getElementById('fmgMenuClose');
+  var searchBtn = document.getElementById('fmgSearchBtn');
+
+  menuBtn.addEventListener('click', function(){
+    menu.classList.add('fmg-menu-open');
+    document.body.style.overflow = 'hidden';
+  });
+  closeBtn.addEventListener('click', function(){
+    menu.classList.remove('fmg-menu-open');
+    document.body.style.overflow = '';
+  });
+
+  var panels = menu.querySelectorAll('.fmg-panel');
+  function showPanel(name){
+    panels.forEach(function(p){
+      p.classList.toggle('fmg-panel-active', p.getAttribute('data-panel') === name);
+    });
+  }
+  menu.querySelectorAll('[data-goto]').forEach(function(btn){
+    btn.addEventListener('click', function(){ showPanel(btn.getAttribute('data-goto')); });
+  });
+  menu.querySelectorAll('[data-back]').forEach(function(btn){
+    btn.addEventListener('click', function(){ showPanel(btn.getAttribute('data-back')); });
+  });
+
+  searchBtn.addEventListener('click', function(){
+    window.location.href='index.html#search';
+  });
+})();
+</script>
+<!-- FMG-NAV:END -->
+<section class="uc-hero">
+<div class="wrap">
+<p class="uc-eyebrow">Point-of-care · PMBAH, Medina</p>
+<h1>Urgent Care Quick Guides</h1>
+<p>Fifteen protocols for the primary care / urgent care setting. Every guide opens with its ER-activation criteria first — read that before anything else. Condensed steps and dosing follow.</p>
+</div>
+</section>
+<nav class="uc-jump">
+<div class="uc-jump-inner">
+<a class="uc-chip" href="#bls" style="--tag-color:#B0392C">BLS: Adult &amp; Pediatric</a>
+<a class="uc-chip" href="#anaphylaxis" style="--tag-color:#B0392C">Anaphylaxis (All Ages)</a>
+<a class="uc-chip" href="#peds-status-epilepticus" style="--tag-color:#C98A2C">Pediatric Status Epilepticus</a>
+<a class="uc-chip" href="#febrile-convulsion" style="--tag-color:#C98A2C">Pediatric Febrile Convulsion</a>
+<a class="uc-chip" href="#peds-gastro" style="--tag-color:#C98A2C">Pediatric Gastroenteritis</a>
+<a class="uc-chip" href="#peds-hypoglycemia" style="--tag-color:#C98A2C">Pediatric Hypoglycemia</a>
+<a class="uc-chip" href="#peds-resp-distress" style="--tag-color:#C98A2C">Pediatric Respiratory Distress — Bronchiolitis &amp; Croup</a>
+<a class="uc-chip" href="#febrile-infant" style="--tag-color:#C98A2C">Febrile Infant (≤90 Days)</a>
+<a class="uc-chip" href="#adult-status-epilepticus" style="--tag-color:#4A4D8C">Adult Status Epilepticus</a>
+<a class="uc-chip" href="#adult-hypoglycemia" style="--tag-color:#1F5C55">Adult Hypoglycemia</a>
+<a class="uc-chip" href="#htn-crisis" style="--tag-color:#1F5C55">Hypertensive Crisis</a>
+<a class="uc-chip" href="#chest-pain" style="--tag-color:#1F5C55">Chest Pain</a>
+<a class="uc-chip" href="#acute-abdomen" style="--tag-color:#1F5C55">Acute Abdomen &amp; Renal Colic</a>
+<a class="uc-chip" href="#asthma-exacerbation-adult" style="--tag-color:#1F5C55">Asthma Exacerbation (Adult) — SINA</a>
+<a class="uc-chip" href="#tia-stroke" style="--tag-color:#4A4D8C">TIA &amp; Stroke</a>
+</div>
+</nav>
+<section class="uc-list">
+<div class="wrap">
+<section class="uc-topic" id="bls" style="--tag-color:#B0392C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Resuscitation</span>
+<h2 id="bls-adult-pediatric">BLS: Adult &amp; Pediatric</h2>
+<p class="uc-source">Source: AHA/AAP 2025 BLS Guidelines; ILCOR 2025 CoSTR</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Unresponsive + absent/abnormal breathing (gasping) + no definite pulse within 10 seconds</li><li>If uncertain whether a pulse is present — start CPR. Do not delay.</li><li>Witnessed sudden collapse — activate EMS and get the AED immediately, then start CPR</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Recognize &amp; activate (0–30 sec)</h4>
+<ul><li>Check responsiveness, breathing, and pulse simultaneously — max 10 seconds.</li><li>Pulse check: carotid/femoral in adult/child; brachial in infant.</li><li>Call for help: request AED/defibrillator, oxygen, bag-mask, crash cart.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>High-quality compressions</h4>
+<div class="uc-table-wrap"><table><thead><tr><th></th><th>Adult</th><th>Child (1y–puberty)</th><th>Infant (&lt;1y)</th></tr></thead><tbody><tr><td>Depth</td><td>5–6 cm</td><td>≥⅓ AP depth, ~5 cm</td><td>≥⅓ AP depth, ~4 cm</td></tr><tr><td>Hands</td><td>2 hands, lower sternum</td><td>1–2 hands</td><td>1-hand heel or 2-thumb encircling</td></tr><tr><td>Rate</td><td>100–120/min</td><td>100–120/min</td><td>100–120/min</td></tr><tr><td>Ratio (no airway)</td><td>30:2</td><td>30:2 (1 rescuer), 15:2 (2)</td><td>30:2 (1 rescuer), 15:2 (2)</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Ventilation</h4>
+<ul><li>Pulse present, not breathing normally: adult 1 breath/6 sec; child/infant 1 breath/2–3 sec.</li><li>Advanced airway: continuous compressions, ventilate without pausing.</li><li>Each breath over ~1 second with visible chest rise — avoid hyperventilation.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>AED / defibrillator</h4>
+<ul><li>Attach as soon as available — minimize hands-off time.</li><li>Children &lt;8y: pediatric attenuator/pads if available, otherwise standard adult AED.</li><li>Clear patient → shock if advised → resume CPR immediately for 2 minutes.</li><li>Do NOT delay AED for IV access, medications, or intubation attempts.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">5</div>
+<div class="uc-step-body">
+<h4>Choking (FBAO)</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Severity</th><th>Adult/Child</th><th>Infant</th></tr></thead><tbody><tr><td>Mild</td><td>Encourage coughing, monitor</td><td>Allow cough/cry, monitor</td></tr><tr><td>Severe</td><td>5 back blows + 5 abdominal thrusts, cycle</td><td>5 back blows + 5 chest thrusts (no abdominal thrusts)</td></tr><tr><td>Unresponsive</td><td>Start CPR, remove only visible object, no blind sweeps</td><td>Start CPR, remove only visible object, no blind sweeps</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">6</div>
+<div class="uc-step-body">
+<h4>ROSC &amp; handover</h4>
+<ul><li>Maintain airway, oxygenate/ventilate, monitor ECG/BP/SpO₂, treat hypoglycemia, avoid hypotension.</li><li>Handover: age, collapse time, witnessed/unwitnessed, initial rhythm/shocks, CPR start time, glucose, ROSC time.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="anaphylaxis" style="--tag-color:#B0392C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Resuscitation</span>
+<h2 id="anaphylaxis-all-ages">Anaphylaxis (All Ages)</h2>
+<p class="uc-source">Source: NIAID/FAAN (Sampson); WAO 2020; ASCIA 2024; AAAAI/ACAAI 2023</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Any airway compromise: stridor, throat tightness, tongue swelling, hoarse voice, drooling</li><li>Breathing: wheeze, persistent cough, dyspnea, hypoxia, severe asthma-like episode</li><li>Circulation: hypotension, collapse, syncope, shock, confusion, pale/floppy infant</li><li>Skin/GI + a systemic feature: hives/angioedema or severe abdominal pain/repetitive vomiting plus respiratory or circulatory symptoms</li></ul>
+</div>
+<div class="uc-tool" id="tool-epi">
+<div class="uc-tool-head">
+<span class="uc-tool-badge">Interactive</span>
+<h4>Pediatric IM Epinephrine Dose Calculator</h4>
+</div>
+<p class="uc-tool-sub">1 mg/mL (1:1000) IM into the mid-outer thigh · 0.01 mg/kg · max 0.5 mg</p>
+<div class="uc-tool-row">
+<label for="epiWeight">Child's weight (kg)</label>
+<input id="epiWeight" max="150" min="1" placeholder="e.g. 18" step="0.1" type="number"/>
+</div>
+<div class="uc-tool-result" id="epiResult">Enter a weight to calculate the dose.</div>
+</div>
+<script>
+    (function(){
+      var w = document.getElementById('epiWeight');
+      var r = document.getElementById('epiResult');
+      function calc(){
+        var kg = parseFloat(w.value);
+        if(!kg || kg<=0){ r.innerHTML = 'Enter a weight to calculate the dose.'; r.classList.remove('uc-tool-result-active'); return; }
+        var doseMg = Math.min(kg*0.01, 0.5);
+        var volMl = doseMg; // 1mg/mL so mg == mL
+        r.innerHTML = '<b>' + doseMg.toFixed(2) + ' mg IM</b> &nbsp;=&nbsp; <b>' + volMl.toFixed(2) + ' mL</b> of 1 mg/mL (1:1000)' +
+          (kg*0.01 >= 0.5 ? '<br><span class="uc-tool-note">Capped at the 0.5 mg adult maximum.</span>' : '');
+        r.classList.add('uc-tool-result-active');
+      }
+      w.addEventListener('input', calc);
+    })();
+    </script>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Diagnostic criteria — ONE of three</h4>
+<ul><li>Acute onset with skin/mucosal involvement <b>AND</b> respiratory compromise or reduced BP.</li><li>TWO or more of: skin/mucosal signs, respiratory compromise, reduced BP, persistent GI symptoms — after a <i>likely</i> allergen.</li><li>Reduced BP after a <i>known</i> allergen: adult SBP &lt;90 or &gt;30% drop; child — age-specific low SBP or &gt;30% drop.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>First 60 seconds — treat first</h4>
+<ul><li><b>IM epinephrine into the mid-outer thigh immediately</b> — repeat every 5 min if ABC problems persist.</li><li>Call EMS, state "anaphylaxis," request ALS, prepare AED/BLS.</li><li>Remove trigger, stop any infusion, lie flat with legs raised (left-lateral if pregnant/vomiting).</li><li><b>PHC/UCC rule: IM epinephrine has no absolute contraindication in anaphylaxis. Antihistamines, steroids, inhalers, or nebulizers must never delay it.</b></li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>While waiting for EMS</h4>
+<ul><li>High-flow oxygen if hypoxic/distressed/shock.</li><li>IV/IO access — do not delay epinephrine for this.</li><li>Normal saline bolus for hypotension/shock: adult 500–1000 mL rapid; child 20 mL/kg IV/IO, repeat as needed.</li><li>Monitor vitals, SpO₂, ECG; be ready for BLS/CPR and AED.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Adjuncts — supportive only, after epinephrine</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Medication</th><th>Adult dose</th><th>Pediatric dose</th><th>Use</th></tr></thead><tbody><tr><td>Salbutamol neb</td><td>5 mg, repeat/continuous</td><td>&lt;20 kg: 2.5 mg · ≥20 kg: 5 mg</td><td>Persistent wheeze/bronchospasm after epi</td></tr><tr><td>Diphenhydramine</td><td>25–50 mg PO/IM/IV</td><td>1 mg/kg (max 50 mg)</td><td>Itch/urticaria only</td></tr><tr><td>Hydrocortisone</td><td>200 mg IV/IM</td><td>4 mg/kg (max 200 mg)</td><td>Not routine — refractory/delayed-onset reactions</td></tr><tr><td>Glucagon</td><td>1–2 mg IV/IM, may repeat</td><td>20–30 mcg/kg (max 1 mg)</td><td>Refractory hypotension in beta-blocker patients</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">5</div>
+<div class="uc-step-body">
+<h4>Refractory anaphylaxis</h4>
+<ul><li>Ongoing ABC problems despite 2 appropriate IM epinephrine doses → urgent ALS/ED, usually IV epinephrine infusion (0.05–0.1 mcg/kg/min titrated).</li><li>Prepare for airway failure: stridor, laryngeal swelling, exhaustion, cyanosis — notify ED early.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">6</div>
+<div class="uc-step-body">
+<h4>Disposition — never discharge from PHC/UCC</h4>
+<ul><li>All patients treated for anaphylaxis are transferred to ED for observation (usually ≥4–6h; longer if severe/multiple epi doses).</li><li>Before ED discharge: epinephrine auto-injector prescription, written action plan, allergy referral.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="peds-status-epilepticus" style="--tag-color:#C98A2C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Pediatric Emergency</span>
+<h2 id="pediatric-status-epilepticus">Pediatric Status Epilepticus</h2>
+<p class="uc-source">Source: American Epilepsy Society; CHOP/RCH/Queensland pediatric pathways</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Continuous convulsive seizure &gt;5 minutes, OR ≥2 seizures without return to baseline between</li><li>Any child not returning to neurological baseline</li><li>Seizure persisting after 2 appropriate benzodiazepine doses — activate EMS/ED regardless of further therapy</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Rapid assessment (0–5 min)</h4>
+<ul><li>Time the seizure and call for help early.</li><li>Lateral/recovery position, suction PRN, oxygen to keep SpO₂ ≥94%.</li><li><b>Do not</b> place objects in the mouth or restrain.</li><li>Capillary glucose immediately — if low, D10W 5 mL/kg IV/IO.</li><li>Estimate weight, establish IV/IO, attach monitors.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>First-line: benzodiazepines (5–20 min)</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>No IV/IO access</th><th>IV/IO access established</th></tr></thead><tbody><tr><td><b>Midazolam IM</b> 0.2 mg/kg (max 10 mg), mid-outer thigh</td><td><b>Lorazepam IV</b> 0.1 mg/kg (max 4 mg) over 2–5 min; may repeat once at 5–10 min</td></tr><tr><td>Midazolam intranasal/buccal 0.3 mg/kg (max 10 mg)</td><td>Alt: Diazepam IV 0.15–0.2 mg/kg (max 10 mg); may repeat once</td></tr><tr><td>Diazepam rectal 0.3–0.5 mg/kg (max 20 mg) if midazolam unavailable</td><td></td></tr></tbody></table></div><p class="uc-note">Maximum 2 benzodiazepine doses total, including any given pre-hospital. Activate EMS/transfer concurrently — do not delay for medication.</p>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Second-line (20–40 min) — typically ED/PICU</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Drug</th><th>Dose</th></tr></thead><tbody><tr><td>Levetiracetam</td><td>60 mg/kg IV (max 4,500 mg) over 5–15 min</td></tr><tr><td>Fosphenytoin</td><td>20 mg PE/kg IV (max 1,500 mg PE) — cardiac monitoring</td></tr><tr><td>Valproic acid</td><td>40 mg/kg IV (max 3,000 mg) — avoid in liver disease, caution &lt;2y</td></tr><tr><td>Phenytoin</td><td>20 mg/kg IV (max 1,500 mg), ≤1 mg/kg/min — cardiac monitoring</td></tr><tr><td>Phenobarbital</td><td>20 mg/kg IV (max 1,000 mg) — risk of respiratory depression</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Post-ictal &amp; disposition</h4>
+<ul><li>Monitor for respiratory depression after benzodiazepines; support ventilation if needed.</li><li><b>ALL children with status epilepticus require immediate ED transfer.</b></li><li>Look for cause: fever/sepsis/meningitis, trauma, toxins, electrolytes, missed anti-seizure medication, hypoglycemia.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="febrile-convulsion" style="--tag-color:#C98A2C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Pediatric Emergency</span>
+<h2 id="pediatric-febrile-convulsion">Pediatric Febrile Convulsion</h2>
+<p class="uc-source">Source: Royal Children's Hospital; AAP; Queensland pediatric guideline</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Age &lt;6 months or &gt;5 years</li><li>Signs of sepsis/meningitis/encephalitis, non-blanching rash, focal deficit</li><li>Persistent altered mental state &gt;1 hour, recurrent/prolonged seizure</li><li>Seizure &gt;5 minutes → manage as status epilepticus</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Definition &amp; initial safety</h4>
+<ul><li>Seizure with fever, age 6–60 months, no CNS infection/metabolic cause/prior afebrile seizure.</li><li>Time the seizure, protect from injury, lateral position, oxygen if needed. Do not restrain or put anything in mouth.</li><li>Check ABCs, SpO₂, temperature, glucose if ongoing/prolonged.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Classify</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Simple</th><th>Complex</th></tr></thead><tbody><tr><td>Generalized tonic-clonic</td><td>Focal features or deficit</td></tr><tr><td>Duration &lt;15 min</td><td>Duration ≥15 min</td></tr><tr><td>Single seizure per illness/24h</td><td>Recurrent within 24h/same illness</td></tr><tr><td>Full recovery &lt;1 hour</td><td>Altered mental state &gt;1 hour</td></tr></tbody></table></div><p class="uc-note">Prolonged/febrile status (&gt;30 min or recurrent without recovery) — manage as status epilepticus and transfer.</p>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Treatment</h4>
+<ul><li>Active seizure &gt;5 min: midazolam IN/buccal 0.3 mg/kg (max 10 mg) OR lorazepam IV/IO 0.1 mg/kg (max 4 mg). Max 2 doses total.</li><li>Treat fever source; antipyretic for comfort — does <b>not</b> prevent recurrence.</li><li>Simple febrile seizure: no routine bloods, EEG, imaging, or LP.</li><li>LP if meningitis/encephalitis suspected, or immunization incomplete/antibiotics may mask signs.</li><li>Anti-epileptic prophylaxis is not routinely recommended after a simple febrile seizure.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Disposition &amp; parent advice</h4>
+<ul><li>Discharge if simple, back to baseline, fever source managed, follow-up arranged.</li><li>Consult/transfer if complex, prolonged, respiratory/hemodynamic compromise, age &lt;6 months, uncertain diagnosis.</li><li>Parent advice: lateral position, time it, no restraint/objects in mouth — call EMS if &gt;5 min, breathing difficulty, blue color, injury, first seizure, or not waking.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="peds-gastro" style="--tag-color:#C98A2C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Pediatric Emergency</span>
+<h2 id="pediatric-gastroenteritis">Pediatric Gastroenteritis</h2>
+<p class="uc-source">Source: CDC &amp; AAP Clinical Practice Guidelines</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Bilious (green) emesis, hematemesis, severe localized abdominal pain, guarding, or hematochezia</li><li>Bulging fontanelle, neck stiffness, intractable vomiting, altered consciousness</li><li>Tachypnea (possible acidosis/pneumonia), toxic appearance, or suspected DKA (polyuria despite vomiting)</li></ul>
+</div>
+<div class="uc-tool" id="tool-dehydration">
+<div class="uc-tool-head">
+<span class="uc-tool-badge">Interactive</span>
+<h4>Dehydration Severity Picker</h4>
+</div>
+<p class="uc-tool-sub">Select the closest match for each sign — the overall estimate is a clinical gestalt, not a validated composite score</p>
+<div class="uc-heart-grid" id="dehydrationGrid">
+<div class="uc-heart-row">
+<label>Mental status</label>
+<select data-dehy="">
+<option value="0">Alert, drinks normally</option>
+<option value="1">Restless, irritable, thirsty</option>
+<option value="2">Lethargic, unconscious, drinks poorly</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Heart rate</label>
+<select data-dehy="">
+<option value="0">Normal</option>
+<option value="1">Normal to increased</option>
+<option value="2">Tachycardia (bradycardia late)</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Eyes / tears</label>
+<select data-dehy="">
+<option value="0">Normal / present</option>
+<option value="1">Slightly sunken / decreased</option>
+<option value="2">Deeply sunken / absent</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Mucous membranes</label>
+<select data-dehy="">
+<option value="0">Moist</option>
+<option value="1">Sticky / dry</option>
+<option value="2">Parched / very dry</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Cap refill / skin</label>
+<select data-dehy="">
+<option value="0">&lt;2 sec, instant recoil</option>
+<option value="1">Prolonged, slow recoil</option>
+<option value="2">&gt;3–4 sec, tenting, cool/mottled</option>
+</select>
+</div>
+</div>
+<div class="uc-tool-result uc-tool-result-active" id="dehydrationResult">Estimated: Minimal / no dehydration (&lt;3% loss)</div>
+</div>
+<script>
+    (function(){
+      var selects = document.querySelectorAll('#dehydrationGrid select[data-dehy]');
+      var r = document.getElementById('dehydrationResult');
+      function calc(){
+        var counts = [0,0,0];
+        selects.forEach(function(s){ counts[parseInt(s.value,10)]++; });
+        // worst level needs at least 2 signs to declare that band; otherwise step down
+        var level;
+        if (counts[2] >= 2) level = 2;
+        else if (counts[2] + counts[1] >= 2) level = 1;
+        else level = 0;
+        var labels = [
+          ['Minimal / no dehydration (&lt;3% loss)', '#1F5C55'],
+          ['Mild–moderate dehydration (3–9% loss) — consider ORT trial', '#C98A2C'],
+          ['Severe dehydration (&gt;9% loss) — red flag, prepare for EMS/ED', '#B0392C']
+        ];
+        r.innerHTML = '<b>Estimated:</b> ' + labels[level][0];
+        r.style.borderColor = labels[level][1];
+      }
+      selects.forEach(function(s){ s.addEventListener('change', calc); });
+      calc();
+    })();
+    </script>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Triage</h4>
+<ul><li>Accurate naked weight — critical for fluid calculations.</li><li>Vitals: HR, RR, BP, temperature (≥38.5°C warrants closer evaluation for alternative infection).</li><li>Hydration history: wet diapers/24h, emesis/stool frequency, oral tolerance.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Dehydration severity</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Sign</th><th>Minimal (&lt;3%)</th><th>Mild–Moderate (3–9%)</th><th>Severe (&gt;9%)</th></tr></thead><tbody><tr><td>Mental status</td><td>Alert</td><td>Restless, irritable, thirsty</td><td>Lethargic, unconscious</td></tr><tr><td>Heart rate</td><td>Normal</td><td>Normal–increased</td><td>Tachycardia (late: brady)</td></tr><tr><td>Eyes/tears</td><td>Normal</td><td>Slightly sunken/decreased</td><td>Deeply sunken/absent</td></tr><tr><td>Mucous membranes</td><td>Moist</td><td>Sticky/dry</td><td>Parched/very dry</td></tr><tr><td>Cap refill/skin</td><td>&lt;2 sec, instant recoil</td><td>Prolonged, slow recoil</td><td>&gt;3–4 sec, tenting, mottled</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Hydration management</h4>
+<ul><li>Minimal: continue regular diet/breastfeeding; ORS 10 mL/kg per loose stool/emesis.</li><li>Mild–moderate: ORT trial in clinic — ORS 50–100 mL/kg over 3–4h, small frequent volumes (5 mL q1–2min).</li><li>Ondansetron 0.15 mg/kg (max 8 mg) single dose PO — for &gt;6 months with persistent vomiting interfering with ORT.</li><li><b>Anti-diarrheals (e.g. loperamide) are contraindicated in pediatrics. Avoid routine antibiotics.</b></li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Disposition</h4>
+<ul><li>Transfer via EMS: severe dehydration, shock, failed ORT trial, unreliable caregivers, or surgical/neurological red flags.</li><li>Discharge: well-hydrated, successful ORT, reliable caregivers.</li><li>Follow-up within 24–48h. Return precautions: no wet diaper in 8h, lethargy, intractable vomiting.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="peds-hypoglycemia" style="--tag-color:#C98A2C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Pediatric Emergency</span>
+<h2 id="pediatric-hypoglycemia">Pediatric Hypoglycemia</h2>
+<p class="uc-source">Source: ISPAD Clinical Practice Consensus Guidelines; ADA Standards of Care</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Altered mental status, seizures, coma, or extreme lethargy — unsafe to swallow</li><li>Glucose often &lt;54 mg/dL with any severe symptom</li><li>Failure to fully regain consciousness, or inability to tolerate oral intake after correction</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Severity</h4>
+<div class="uc-table-wrap"><table><thead><tr><th></th><th>Mild–Moderate</th><th>Severe</th></tr></thead><tbody><tr><td>Glucose</td><td>&lt;70 mg/dL (&lt;3.9 mmol/L)</td><td>Often &lt;54 mg/dL, or any level with severe symptoms</td></tr><tr><td>Symptoms</td><td>Tremor, pallor, sweating, hunger, tachycardia, irritability</td><td>Seizures, coma, extreme lethargy</td></tr><tr><td>Mentation</td><td>Alert, safe to swallow</td><td>Altered — unsafe to swallow</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Conscious &amp; able to swallow</h4>
+<ul><li>Fast-acting carbohydrate 10–15 g: 120 mL juice/soda, 3–4 glucose tablets, or 1 tbsp sugar/corn syrup.</li><li><b>No honey in infants &lt;1 year — botulism risk.</b></li><li>Recheck glucose in exactly 15 minutes; repeat dose if still &lt;70 mg/dL.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Unconscious / seizing / unsafe to swallow</h4>
+<ul><li>Recovery position — <b>no oral fluids or food.</b></li><li>No IV access: Glucagon IM/SC — &lt;25 kg (&lt;12y): 0.5 mg · ≥25 kg (≥12y): 1.0 mg. Activate EMS.</li><li>IV access: D10W (preferred) 2–5 mL/kg IV bolus over 3–5 min, OR D25W 2 mL/kg. <b>Avoid D50W in children</b> (vein sclerosis, rebound).</li><li>Flush line with saline; recheck glucose after 5 minutes.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Post-correction &amp; disposition</h4>
+<ul><li>Once &gt;70 mg/dL and fully alert: complex carb + protein snack to prevent recurrence.</li><li>Identify trigger: missed meal, unaccustomed exercise, insulin error, illness, accidental ingestion.</li><li>Discharge: known diabetic, clear correctable cause, recovered baseline, tolerating oral intake, reliable caregiver.</li><li>Transfer: unexplained hypoglycemia in non-diabetic, failure to regain consciousness, can't tolerate oral intake, oral hypoglycemic ingestion (needs 24–48h monitoring).</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="peds-resp-distress" style="--tag-color:#C98A2C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Pediatric Emergency</span>
+<h2 id="pediatric-respiratory-distress-bronchiolitis-croup">Pediatric Respiratory Distress — Bronchiolitis &amp; Croup</h2>
+<p class="uc-source">Source: NICE NG9; RCH Bronchiolitis/Croup CPG; Queensland Paediatric EC; AAP Bronchiolitis</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Apnea, central cyanosis, exhaustion/listlessness, reduced respiratory effort</li><li>Poor air entry/silent chest, severe recession/grunting</li><li>Failure to maintain SpO₂ despite oxygen, or SpO₂ &lt;90% (≥6wk) / &lt;92% (&lt;6wk or comorbidity)</li><li>Croup: stridor at rest with agitation/fatigue/lethargy/cyanosis, or silent chest, decreased LOC, apnea</li></ul>
+</div>
+<div class="uc-tool" id="tool-pram">
+<div class="uc-tool-head">
+<span class="uc-tool-badge">Interactive</span>
+<h4>PRAM Score — Pediatric Respiratory Assessment Measure</h4>
+</div>
+<p class="uc-tool-sub">Validated ages 2–17 for wheeze/asthma-type respiratory distress — use alongside clinical judgment for bronchiolitis, where it is less validated</p>
+<div class="uc-heart-grid" id="pramGrid">
+<div class="uc-heart-row">
+<label>Suprasternal retractions</label>
+<select data-pram="">
+<option value="0">Absent</option>
+<option value="2">Present</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Scalene muscle use</label>
+<select data-pram="">
+<option value="0">Absent</option>
+<option value="2">Present</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Air entry</label>
+<select data-pram="">
+<option value="0">Normal</option>
+<option value="1">Decreased at bases</option>
+<option value="2">Decreased throughout</option>
+<option value="3">Minimal / absent</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Wheezing</label>
+<select data-pram="">
+<option value="0">Absent</option>
+<option value="1">Expiratory only</option>
+<option value="2">Inspiratory + expiratory</option>
+<option value="3">Audible without stethoscope, or silent chest with minimal air entry</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>SpO₂ (room air)</label>
+<select data-pram="">
+<option value="0">≥95%</option>
+<option value="1">92–94%</option>
+<option value="2">&lt;92%</option>
+</select>
+</div>
+</div>
+<div class="uc-tool-result uc-tool-result-active" id="pramResult">Score: 0 / 12 — Mild</div>
+</div>
+<script>
+    (function(){
+      var selects = document.querySelectorAll('#pramGrid select[data-pram]');
+      var r = document.getElementById('pramResult');
+      function calc(){
+        var total = 0;
+        selects.forEach(function(s){ total += parseInt(s.value,10); });
+        var risk, cls;
+        if (total <= 3){ risk = 'Mild'; cls='#1F5C55'; }
+        else if (total <= 7){ risk = 'Moderate'; cls='#C98A2C'; }
+        else { risk = 'Severe'; cls='#B0392C'; }
+        r.innerHTML = '<b>Score: ' + total + ' / 12</b> — ' + risk;
+        r.style.borderColor = cls;
+      }
+      selects.forEach(function(s){ s.addEventListener('change', calc); });
+      calc();
+    })();
+    </script>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Rapid assessment</h4>
+<ul><li>ABCDE + appearance: work of breathing, circulation, mental status, feed/speak/cry ability.</li><li>Position of comfort, keep with caregiver, minimal handling.</li><li>Oxygen if hypoxic/distressed; suction only if obstruction/secretions contributing.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Bronchiolitis severity (usually &lt;2y)</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Mild</th><th>Moderate</th><th>Severe / ED–EMS</th></tr></thead><tbody><tr><td>Alert, mild/no recession</td><td>Moderate recession, nasal flaring, RR often &gt;60</td><td>Apnea, central cyanosis</td></tr><tr><td>SpO₂ ≥92% in air</td><td>Persistent SpO₂ 90–91% or &lt;92%</td><td>Grunting, marked recession, RR &gt;70</td></tr><tr><td>Feeds &gt;75% usual</td><td>Feeds 50–75%, early dehydration</td><td>Exhaustion, listless</td></tr><tr><td>No apnea/cyanosis</td><td>Young age/risk factors</td><td>Feeds &lt;50%, dehydration, shock</td></tr></tbody></table></div><p class="uc-note">Do NOT routinely use: salbutamol, nebulized adrenaline/steroids, antibiotics, CXR/bloods, or chest physio for typical bronchiolitis.</p>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Bronchiolitis management</h4>
+<ul><li>Minimal handling; oxygen if SpO₂ &lt;90% (≥6wk) or &lt;92% (&lt;6wk/cardiopulmonary disease).</li><li>No routine suctioning — only if secretions cause distress/feeding difficulty/apnea.</li><li>Small frequent feeds/ORS if safe; stop oral feeds if severe distress or aspiration risk.</li><li>Lower threshold to transfer: age &lt;3mo, prematurity &lt;32wk, chronic lung/heart disease, feeding 50–75%, caregiver/access concerns.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Croup severity (usually 6mo–6y)</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Mild</th><th>Moderate</th><th>Severe / life-threatening</th></tr></thead><tbody><tr><td>Barking cough, hoarse voice</td><td>Stridor at rest, moderate recession</td><td>Marked stridor/recession OR poor air entry</td></tr><tr><td>No stridor at rest</td><td>Anxious but alert, good air entry</td><td>Agitation, fatigue, cyanosis, hypoxia</td></tr><tr><td>No/mild recession</td><td>Usually normal SpO₂</td><td>Silent chest, decreased LOC, apnea</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">5</div>
+<div class="uc-step-body">
+<h4>Croup management</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Severity</th><th>Treatment</th></tr></thead><tbody><tr><td>Mild</td><td>Dexamethasone 0.15 mg/kg PO once (or prednisolone 1 mg/kg). Discharge if stridor-free at rest.</td></tr><tr><td>Moderate</td><td>Dexamethasone 0.15 mg/kg PO once. Consider nebulized adrenaline if persistent/worsening stridor. Observe.</td></tr><tr><td>Severe</td><td>Activate EMS. Nebulized adrenaline 1:1000, 5 mL undiluted. Dexamethasone 0.6 mg/kg PO/IM/IV (max 12 mg). Repeat adrenaline while arranging transfer.</td></tr></tbody></table></div><p class="uc-note">Observe minimum 3 hours after nebulized adrenaline before considering discharge. Do not agitate the child or force a throat exam.</p>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="febrile-infant" style="--tag-color:#C98A2C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Pediatric Emergency</span>
+<h2 id="febrile-infant-90-days">Febrile Infant (≤90 Days)</h2>
+<p class="uc-source">Source: AAP 2021; CPS 2024; NICE NG143; RCH Febrile Child</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Any infant ≤28 days with fever ≥38.0°C — always urgent ED transfer</li><li>Poor perfusion, shock, mottling, apnea, grunting, SpO₂ &lt;92%, hypoglycemia</li><li>Lethargy, inconsolable irritability, seizures, bulging fontanelle, abnormal tone</li><li>Non-blanching rash/petechiae, neck stiffness, temperature instability &lt;36.5°C</li><li>Any ill-appearing infant at any age</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Assessment</h4>
+<ul><li>Confirm fever — rectal preferred; don't dismiss reliable caregiver-reported fever.</li><li>Pediatric Assessment Triangle: work of breathing, circulation/perfusion, mental status.</li><li>Full exposure exam: fontanelle, skin/rash, joints, ears/throat, abdomen, hydration.</li><li>A viral URI, positive viral test, or recent vaccination reduces but does not eliminate serious bacterial infection risk.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Age-based risk &amp; action</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Age</th><th>Risk &amp; action</th></tr></thead><tbody><tr><td>0–7 days</td><td>Neonatal fever = emergency. EMS/ED now — full sepsis workup + empiric IV antibiotics usually required.</td></tr><tr><td>8–28 days</td><td>Highest invasive bacterial infection risk. ED/pediatric assessment — blood/urine/CSF, admission common.</td></tr><tr><td>29–60 days</td><td>Still urgent. ED risk stratification with urine, blood culture, inflammatory markers. LP/admission per pathway.</td></tr><tr><td>61–90 days</td><td>Lower but not zero risk. Urine assessment at minimum; ED/peds if no source, red flag, abnormal vitals, or poor follow-up.</td></tr></tbody></table></div><p class="uc-note">PHC/UCC rule: a febrile infant &lt;3 months should not be discharged without senior pediatric/ED advice and a documented same-day plan.</p>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>While awaiting transfer</h4>
+<ul><li>Check glucose immediately in any ill, lethargic, hypothermic, or seizing infant.</li><li>Don't delay ED transfer to collect urine; avoid bag specimens for culture decisions.</li><li>If septic/shock: isotonic crystalloid 10–20 mL/kg, reassess; don't delay life-saving antibiotics for cultures.</li><li>Antipyretics for comfort only — avoid ibuprofen &lt;3 months.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Disposition</h4>
+<ul><li>Most febrile infants ≤90 days require same-day ED/pediatric assessment.</li><li>Non-EMS private transport only if well-appearing, stable, no red flags, age &gt;28d, ED agrees, short travel.</li><li>One-line handover: age (days), Tmax/method, appearance, vitals/glucose, red flags, transfer time.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="adult-status-epilepticus" style="--tag-color:#4A4D8C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Neuro / Vascular</span>
+<h2 id="adult-status-epilepticus-2">Adult Status Epilepticus</h2>
+<p class="uc-source">Source: Neurocritical Care Society / American Epilepsy Society</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Continuous seizure &gt;5 minutes, OR ≥2 seizures without full recovery between</li><li>Seizure persisting after first-line therapy — activate EMS concurrently, don't wait</li><li>Respiratory depression post-benzodiazepine — be ready to support ventilation</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Rapid assessment (0–5 min)</h4>
+<ul><li>Note exact seizure start time.</li><li>Maintain airway, oxygen to SpO₂ ≥94%, recovery position — <b>do not</b> place objects in mouth.</li><li>Capillary glucose immediately (treat if &lt;70 mg/dL), IV access, continuous monitors.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>First-line therapy (5–20 min)</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>No IV access</th><th>IV access established</th></tr></thead><tbody><tr><td>Midazolam IM 10 mg (mid-outer thigh, vastus lateralis)</td><td>Lorazepam IV 4 mg (rate 2 mg/min); may repeat once at 5–10 min</td></tr><tr><td>Diazepam rectal 0.2–0.5 mg/kg (max 20 mg) if IM unavailable</td><td>Alt: Diazepam IV 10 mg (rate 5 mg/min)</td></tr></tbody></table></div><p class="uc-note">Activate EMS and initiate transfer concurrently — do not delay for medication administration.</p>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Second-line (20–40 min) — typically ED</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Drug</th><th>Dose</th></tr></thead><tbody><tr><td>Levetiracetam</td><td>60 mg/kg IV (max 4,500 mg) over 15 min</td></tr><tr><td>Valproic acid</td><td>40 mg/kg IV (max 3,000 mg) over 10 min — avoid in pregnancy/severe liver disease</td></tr><tr><td>Fosphenytoin</td><td>20 mg PE/kg IV (max 1,500 mg PE) over 10 min — cardiac monitoring</td></tr><tr><td>Phenytoin</td><td>20 mg/kg IV (max 1,500 mg), ≤50 mg/min — cardiac monitoring</td></tr><tr><td>Phenobarbital</td><td>20 mg/kg IV (max 1,000 mg), 50–100 mg/min — respiratory depression risk</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Disposition</h4>
+<ul><li><b>All patients with status epilepticus require immediate ED transfer</b> for neuroimaging and definitive care.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="adult-hypoglycemia" style="--tag-color:#1F5C55">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Adult Emergency</span>
+<h2 id="adult-hypoglycemia-2">Adult Hypoglycemia</h2>
+<p class="uc-source">Source: American Diabetes Association Standards of Care</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Altered mental status, seizures, coma — unsafe to swallow (Level 3)</li><li>Failure to fully regain consciousness despite glucose correction</li><li>Recurrent hypoglycemia in clinic despite adequate oral intake, or no caregiver at home</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Severity</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Level 1 (Mild)</th><th>Level 2 (Moderate)</th><th>Level 3 (Severe)</th></tr></thead><tbody><tr><td>Glucose 54–69 mg/dL</td><td>Glucose &lt;54 mg/dL</td><td>Any level, typically &lt;54</td></tr><tr><td>Sweating, tremor, palpitations, hunger</td><td>Irritability, confusion, blurred vision</td><td>Altered mental status, seizures, coma</td></tr><tr><td>Alert, self-treats</td><td>Alert enough to swallow safely</td><td>Unsafe to swallow, needs assistance</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Conscious &amp; able to swallow — Rule of 15</h4>
+<ul><li>15 g fast-acting carbohydrate: 4 glucose tablets (preferred), 120 mL juice/regular soda, or 1 tbsp sugar/honey/corn syrup.</li><li>Avoid high-fat treats (chocolate, milk) — they delay absorption.</li><li>Recheck glucose in exactly 15 minutes; repeat 15g if still &lt;70 mg/dL.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Unconscious / unsafe to swallow</h4>
+<ul><li>Recovery position — no oral fluids or food.</li><li>No IV access: Glucagon 1 mg IM/SC stat. Activate EMS if no recovery within 15 min.</li><li>IV access: D50W 50 mL IV over 3–5 min (or D10W 250 mL). Flush line; recheck glucose at 5 min.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Disposition</h4>
+<ul><li>Discharge: correctable cause identified, back to baseline, tolerating oral intake, competent caregiver present.</li><li>Sulfonylurea-induced hypoglycemia: prolonged observation 24–48h (long half-life).</li><li>Transfer: failure to regain consciousness, recurrent hypoglycemia despite intake, no caregiver available.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="htn-crisis" style="--tag-color:#1F5C55">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Adult Emergency</span>
+<h2 id="hypertensive-crisis">Hypertensive Crisis</h2>
+<p class="uc-source">Source: ACC/AHA 2017 Guideline</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>BP &gt;180/120 mmHg WITH acute target organ damage → hypertensive EMERGENCY, activate EMS immediately</li><li>Neuro: altered mental status, severe headache + vomiting, visual disturbance, focal weakness, seizures</li><li>CV: chest pain, dyspnea, tearing back/abdominal pain, acute heart failure signs</li><li>Renal: oliguria, new hematuria, AKI  ·  Ophthalmic: papilledema, retinal hemorrhage</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Confirm the BP</h4>
+<ul><li>Quiet room, rest ≥5 minutes.</li><li>Re-check manually with appropriately sized cuff, bare arm at heart level; repeat in 10–15 min if still elevated.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Assess target organ damage (TOD)</h4>
+<ul><li>12-lead ECG — LVH, acute ischemia, arrhythmia.</li><li>Consider U&amp;E, creatinine, urinalysis if resources permit.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Hypertensive EMERGENCY — BP &gt;180/120 WITH TOD</h4>
+<ul><li><b>Activate EMS immediately</b> for ED transfer.</li><li>IV access if possible while waiting; oxygen only if SpO₂ &lt;90%.</li><li><b>Do NOT attempt to rapidly lower BP with oral agents in clinic — can precipitate cerebral, coronary, or renal ischemia.</b></li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Severe asymptomatic HTN (urgency) — BP &gt;180/120 WITHOUT TOD</h4>
+<ul><li>Identify/treat triggers: pain, anxiety, urinary retention, medication non-adherence.</li><li>Target: gradual reduction ≤20–25% within the first few hours.</li><li>Restart home meds if missed; if starting new therapy use gradual oral agents (e.g. Captopril 25 mg, Amlodipine 5 mg).</li><li><b>Never use sublingual nifedipine</b> — high risk of unpredictable BP drop → stroke/MI.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">5</div>
+<div class="uc-step-body">
+<h4>Disposition</h4>
+<ul><li>Emergency: EMS transfer for IV antihypertensive therapy and continuous monitoring.</li><li>Urgency: discharge when asymptomatic, clear downward trend toward &lt;180/110, triggers resolved.</li><li>Follow-up within 24–48 hours with strict return precautions.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="chest-pain" style="--tag-color:#1F5C55">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Adult Emergency</span>
+<h2 id="chest-pain-2">Chest Pain</h2>
+<p class="uc-source">Source: 2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>STEMI, new LBBB, or obvious ischemic changes on ECG → activate EMS immediately</li><li>Any of the "Deadly Six": ACS, PE, aortic dissection, tamponade, pneumothorax, esophageal rupture</li><li>BP difference &gt;20 mmHg between arms — think aortic dissection</li><li>Angina equivalents in women/elderly/diabetics: unexplained dyspnea, diaphoresis, nausea, fatigue, atypical-location pain</li></ul>
+</div>
+<div class="uc-tool" id="tool-heart">
+<div class="uc-tool-head">
+<span class="uc-tool-badge">Interactive</span>
+<h4>HEART Score Calculator</h4>
+</div>
+<p class="uc-tool-sub">Select the best-fit option for each category</p>
+<div class="uc-heart-grid">
+<div class="uc-heart-row">
+<label>History</label>
+<select data-heart="0,1,2">
+<option value="0">Slightly suspicious</option>
+<option value="1">Moderately suspicious</option>
+<option value="2">Highly suspicious</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>ECG</label>
+<select data-heart="0,1,2">
+<option value="0">Normal</option>
+<option value="1">Nonspecific repolarization</option>
+<option value="2">Significant ST depression</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Age</label>
+<select data-heart="0,1,2">
+<option value="0">&lt; 45 years</option>
+<option value="1">45–64 years</option>
+<option value="2">≥ 65 years</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Risk factors</label>
+<select data-heart="0,1,2">
+<option value="0">None</option>
+<option value="1">1–2 risk factors</option>
+<option value="2">≥3 risk factors or known CAD</option>
+</select>
+</div>
+<div class="uc-heart-row">
+<label>Troponin</label>
+<select data-heart="0,1,2">
+<option value="0">≤ normal limit</option>
+<option value="1">1–3× normal limit</option>
+<option value="2">&gt; 3× normal limit</option>
+</select>
+</div>
+</div>
+<div class="uc-tool-result uc-tool-result-active" id="heartResult">Score: 0 / 10 — Low risk (1.7% MACE)</div>
+</div>
+<script>
+    (function(){
+      var selects = document.querySelectorAll('#tool-heart select[data-heart]');
+      var r = document.getElementById('heartResult');
+      function calc(){
+        var total = 0;
+        selects.forEach(function(s){ total += parseInt(s.value,10); });
+        var risk, cls;
+        if (total <= 3){ risk = 'Low risk (1.7% MACE) — consider discharge if clinically appropriate'; cls='#1F5C55'; }
+        else if (total <= 6){ risk = 'Moderate risk (16.6% MACE) — observation / transfer indicated'; cls='#C98A2C'; }
+        else { risk = 'High risk (50.1% MACE) — urgent transfer indicated'; cls='#B0392C'; }
+        r.innerHTML = '<b>Score: ' + total + ' / 10</b> — ' + risk;
+        r.style.borderColor = cls;
+      }
+      selects.forEach(function(s){ s.addEventListener('change', calc); });
+      calc();
+    })();
+    </script>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Immediate triage (0–2 min)</h4>
+<ul><li>Bypass waiting room — immediate rooming.</li><li>Vitals in both arms; SpO₂.</li><li>Oxygen only if SpO₂ &lt;90% or respiratory distress — routine O₂ can worsen coronary ischemia.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>The 10-minute ECG</h4>
+<ul><li>Acquire and interpret 12-lead ECG within 10 minutes of arrival.</li><li>STEMI/new LBBB/obvious ischemia → activate EMS immediately, don't delay for labs or history.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Rapid clinical assessment</h4>
+<ul><li>OPQRST: exertional nature, radiation to jaw/arm, tearing sensation, recent immobilization.</li><li>Exam: muffled heart sounds (tamponade), new murmurs, unequal pulses, unilateral absent breath sounds (pneumothorax).</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>If ACS suspected</h4>
+<ul><li>Aspirin 162–325 mg chewed and swallowed, unless contraindicated.</li><li>IV access if resources permit.</li><li><b>Do not delay EMS transfer to give medications.</b></li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">5</div>
+<div class="uc-step-body">
+<h4>HEART Score for major cardiac events</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Parameter</th><th>0 pts</th><th>1 pt</th><th>2 pts</th></tr></thead><tbody><tr><td>History</td><td>Slightly suspicious</td><td>Moderately suspicious</td><td>Highly suspicious</td></tr><tr><td>ECG</td><td>Normal</td><td>Nonspecific repolarization</td><td>Significant ST depression</td></tr><tr><td>Age</td><td>&lt;45</td><td>45–64</td><td>≥65</td></tr><tr><td>Risk factors*</td><td>None</td><td>1–2</td><td>≥3 or known CAD</td></tr><tr><td>Troponin</td><td>≤normal</td><td>1–3× normal</td><td>&gt;3× normal</td></tr></tbody></table></div><p class="uc-note">*HTN, hypercholesterolemia, DM, obesity, smoking, family history. 0–3: low risk (1.7% MACE) — consider discharge. 4–6: moderate (16.6%) — observe/transfer. 7–10: high (50.1%) — urgent transfer.</p>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">6</div>
+<div class="uc-step-body">
+<h4>Disposition</h4>
+<ul><li>Transfer: any ischemic ECG changes, hemodynamic instability, or Deadly Six suspicion.</li><li>Discharge only with a clear benign non-cardiac cause, normal ECG and vitals — strict return precautions, follow-up 24–48h.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="acute-abdomen" style="--tag-color:#1F5C55">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Adult Emergency</span>
+<h2 id="acute-abdomen-renal-colic">Acute Abdomen &amp; Renal Colic</h2>
+<p class="uc-source">Source: Internal PHC protocol</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Signs of peritonitis: involuntary guarding, board-like abdomen</li><li>Pulsatile abdominal mass — suspected AAA</li><li>Severe pain disproportionate to exam findings — think ischemia</li><li>Signs of obstruction (vomiting, obstipation, distension), or fever with tenderness</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Triage</h4>
+<ul><li>Check HR, BP, RR, mental status — bypass to ED immediately if unstable.</li><li>Focused history: onset, migration, radiation to groin/testicle (colic), vomiting, fever, bowel/urinary change.</li><li>Exam: inspect for distension, auscultate, percuss for tympany, palpate for tenderness/guarding/rebound.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Renal colic — specific management</h4>
+<ul><li>Presentation: sudden severe flank pain radiating to groin, nausea/vomiting, hematuria.</li><li>Diagnostics: dipstick urinalysis, U&amp;E/creatinine.</li><li><b>NSAIDs are first-line</b> for renal colic pain, absent contraindications.</li><li>Hydration: oral fluids if not vomiting; antiemetics + observe otherwise.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>When to refer</h4>
+<ul><li>Failure to control pain or persistent intractable vomiting.</li><li>Evidence of infection/urosepsis, single or obstructed kidney, suspected high-grade obstruction.</li><li>Pregnancy — requires obstetric/specialist consult.</li><li>Any red flag from triage above.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Discharge</h4>
+<ul><li>Hemodynamically stable, pain controlled on oral meds, tolerating fluids, no sepsis signs, reliable follow-up.</li><li>Advise hydration, NSAIDs/analgesics, strain urine for stones.</li><li>Urgent outpatient/urology follow-up within 24–48h for imaging review.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="asthma-exacerbation-adult" style="--tag-color:#1F5C55">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Adult Emergency</span>
+<h2 id="asthma-exacerbation-adult-sina">Asthma Exacerbation (Adult) — SINA</h2>
+<p class="uc-source">Source: SINA 2024 Guidelines</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Unable to talk, confused/drowsy/coma → Life-threatening</li><li>RR &gt;30 or respiratory failure, silent chest, SaO₂ &lt;90% or cyanosis</li><li>PEFR &lt;30% predicted, or rising PaCO₂/acidosis on ABG</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Severity assessment</h4>
+<div class="uc-table-wrap"><table><thead><tr><th></th><th>Moderate</th><th>Severe</th><th>Life-threatening</th></tr></thead><tbody><tr><td>Talking</td><td>Phrases/full sentences</td><td>Words only</td><td>Unable to talk</td></tr><tr><td>Mental state</td><td>Agitated but alert</td><td>Agitated</td><td>Confused, drowsy, coma</td></tr><tr><td>RR</td><td>20–30/min</td><td>&gt;30/min</td><td>&gt;30/min or resp. failure</td></tr><tr><td>HR</td><td>&lt;120/min</td><td>&gt;120/min</td><td>&gt;120 or bradycardia + silent chest</td></tr><tr><td>SaO₂ (RA)</td><td>≥92%</td><td>&lt;92%</td><td>&lt;90% or cyanosis</td></tr><tr><td>PEFR</td><td>50–75% predicted</td><td>30–50% predicted</td><td>&lt;30% predicted</td></tr></tbody></table></div><p class="uc-note">Reassess mental status, RR, HR, SaO₂, PEFR every 30–60 min. If features span more than one level, classify to the higher level.</p>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Initial treatment</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Moderate</th><th>Severe</th><th>Life-threatening</th></tr></thead><tbody><tr><td>Salbutamol MDI+spacer 6–12 puffs q20min×1h, or neb 2.5–5mg q20min×1h</td><td>Oxygen to SaO₂≥92%. Salbutamol neb 2.5–5mg q20min×1h</td><td>High-flow O₂ to SaO₂≥92%. Continuous salbutamol neb 10–15mg + ipratropium 1–1.5mg ×1h</td></tr><tr><td>Oral prednisolone 0.5–1 mg/kg (max 50 mg) OD</td><td>Ipratropium neb 0.5mg q20min×1h. IV methylprednisolone 40mg BD</td><td>IV MgSO₄ 2g/20min. IV methylprednisolone 40–80mg q8–12h</td></tr><tr><td>CXR/ABG/electrolytes/ECG not usually needed</td><td>Consider IV MgSO₄ 2g/20min. CXR/ABG/electrolytes/ECG monitored</td><td>ICU referral mandatory. CXR/ABG/electrolytes/ECG continuous</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Reassessment</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Adequate response</th><th>Partial response</th><th>Poor response</th></tr></thead><tbody><tr><td>PEFR &gt;60%, SaO₂≥92%, stable ≥4h</td><td>PEFR 30–50%, SaO₂≥92% on O₂</td><td>PEFR &lt;30%, SaO₂&lt;92% on high-flow O₂</td></tr><tr><td>Continue bronchodilators PRN, oral prednisone 5–7 days</td><td>Continue bronchodilator + ipratropium q1–4h</td><td>Signs of fatigue/exhaustion, acidosis/rising PaCO₂</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>Disposition</h4>
+<ul><li>Adequate → discharge with 4-hourly bronchodilator plan, ICS/LABA, inhaler technique review, written action plan, follow-up.</li><li>Partial → continue steroids (oral 1mg/kg or IV hydrocortisone 200mg/day), observe for fatigue; escalate if no improvement by 4h.</li><li>Poor → continue bronchodilators/steroids, ICU consultation for possible admission.</li></ul>
+</div>
+</div>
+</section>
+<section class="uc-topic" id="tia-stroke" style="--tag-color:#4A4D8C">
+<div class="uc-topic-head">
+<span class="uc-cat-pill">Neuro / Vascular</span>
+<h2 id="tia-stroke-2">TIA &amp; Stroke</h2>
+<p class="uc-source">Source: AHA/ASA 2026; NICE NG128; Canadian Stroke Best Practices; UK National Clinical Guideline</p>
+</div>
+<div class="uc-redflag">
+<div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
+<ul><li>Any ONGOING focal neurological deficit → treat as STROKE until proven otherwise</li><li>Persistent deficit, decreased LOC, seizure at onset, thunderclap headache, anticoagulant use</li><li>TIA (fully resolved symptoms) is STILL a medical emergency — needs same-day assessment</li></ul>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">1</div>
+<div class="uc-step-body">
+<h4>Rapid recognition (0–5 min)</h4>
+<ul><li>Time the onset — Last Known Well (LKW), ask family/witness.</li><li>Screen with FAST/BE-FAST: face, arm, speech, balance, eyes, time.</li><li>ABCs, lateral position if vomiting/reduced consciousness, oxygen only if SpO₂ &lt;94%.</li><li>Capillary glucose immediately; consider mimics — hypo/hyperglycemia, post-ictal Todd's, migraine with aura, Bell's palsy, peripheral vertigo.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">2</div>
+<div class="uc-step-body">
+<h4>Persistent deficit or unclear recovery</h4>
+<ul><li><b>Activate EMS/stroke code</b> — immediate transfer to stroke-capable ED, never by private car.</li><li>Pre-alert ED: LKW/onset, deficits, glucose, BP, anticoagulant use, baseline function.</li><li>IV thrombolysis window: most time-sensitive within 4.5h from LKW; selected wake-up/4.5–9h patients may qualify after imaging. Thrombectomy up to 24h for selected LVO.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">3</div>
+<div class="uc-step-body">
+<h4>Completely resolved symptoms (suspected TIA)</h4>
+<ul><li>Still urgent — same-day stroke/ED assessment, ideally within 24h.</li><li><b>No aspirin in PHC/UCC</b> before imaging excludes hemorrhage.</li><li>Do not use ABCD2 score to delay referral.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">4</div>
+<div class="uc-step-body">
+<h4>While awaiting EMS</h4>
+<ul><li>Keep NPO, support airway, lateral position if reduced consciousness/vomiting.</li><li>Do NOT rapidly lower BP unless hypertensive emergency/dissection/ACS — thrombolysis-candidate target &lt;185/110.</li><li><b>No antithrombotics, no oral intake, no IM injections/sedatives</b> before imaging.</li><li>Fluctuating or partially-recovering deficits can still be stroke — don't be falsely reassured.</li></ul>
+</div>
+</div>
+<div class="uc-step">
+<div class="uc-step-num">5</div>
+<div class="uc-step-body">
+<h4>Disposition</h4>
+<ul><li>Transfer now: any persistent/recurrent deficit, reperfusion-window symptoms, severe headache/vomiting/decreased consciousness, seizure, anticoagulation, unstable vitals.</li><li>Never discharge undifferentiated focal neurological symptoms without a documented urgent stroke plan.</li><li>Document LKW/onset, BE-FAST findings, glucose/vitals, mimic features considered, last anticoagulant dose.</li></ul>
+</div>
+</div>
+</section>
+</div>
+</section>
+<footer>
+<div class="wrap">
+<p>Built by a family physician for the family medicine community — free to use, share, and study from.</p>
+<p class="mono">Point-of-care reference only — always follow local protocol and clinical judgment.</p>
+</div>
+</footer>
+</body>
+</html>
