@@ -9,6 +9,10 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
 <style>
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+button,a{-webkit-tap-highlight-color:transparent;}
+img{max-width:100%;height:auto;}
+
   :root{
     --ink:#16282D;
     --ink-soft:#3C5258;
@@ -193,7 +197,8 @@
     --n-teal:#1F5C55; --n-teal-deep:#123C38; --n-amber:#C98A2C; --n-card:#FFFFFF;
     box-sizing:border-box; font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     position:sticky; top:0; z-index:900;
-    background:rgba(244,246,242,0.94); backdrop-filter:blur(8px);
+    background:rgba(244,246,242,0.94);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
     border-bottom:1px solid var(--n-line); padding:13px 20px;
   }
   .fmg-bar *{box-sizing:border-box;}
@@ -207,57 +212,59 @@
   .fmg-wordmark .fmg-tab{width:8px;height:18px;background:var(--n-amber);border-radius:2px;display:inline-block;flex-shrink:0;}
   .fmg-bar-actions{display:flex;align-items:center;gap:8px;}
   .fmg-icon-btn{
-    width:38px;height:38px;border-radius:9px;border:1px solid var(--n-line);
+    width:40px;height:40px;border-radius:9px;border:1px solid var(--n-line);
     background:var(--n-card);color:var(--n-teal-deep);cursor:pointer;
     display:flex;align-items:center;justify-content:center;flex-shrink:0;
   }
   .fmg-icon-btn:hover{border-color:var(--n-teal);}
-
-  /* ---- full screen menu ---- */
   .fmg-menu{
     position:fixed;inset:0;background:#fff;z-index:1000;
     display:none;flex-direction:column;
     font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
   }
+  .fmg-menu *{box-sizing:border-box;}
   .fmg-menu.fmg-menu-open{display:flex;}
   .fmg-menu-top{
     display:flex;align-items:center;justify-content:space-between;
-    padding:16px 20px;border-bottom:1px solid var(--n-line);
+    padding:16px 20px;border-bottom:1px solid #D4DAD1;
   }
-  .fmg-menu-top .fmg-wordmark{font-size:1.02rem;}
   .fmg-menu-close{
-    width:38px;height:38px;border-radius:9px;border:1px solid var(--n-line);
-    background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--n-ink);
+    width:40px;height:40px;border-radius:9px;border:1px solid #D4DAD1;
+    background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1B2A28;
   }
   .fmg-menu-body{flex:1;overflow-y:auto;padding:8px 8px 40px;}
   .fmg-panel{display:none;padding:8px 12px;}
   .fmg-panel.fmg-panel-active{display:block;}
   .fmg-back{
     display:flex;align-items:center;gap:8px;background:none;border:none;
-    color:var(--n-ink-soft);font-size:0.92rem;font-weight:600;cursor:pointer;
+    color:#4B5D59;font-size:0.92rem;font-weight:600;cursor:pointer;
     padding:14px 8px;margin-bottom:4px;
   }
   .fmg-row{
     display:flex;align-items:center;justify-content:space-between;
-    padding:16px 8px;border-bottom:1px solid var(--n-line);
-    text-decoration:none;color:var(--n-ink);cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;
-    width:100%;text-align:left;font-family:inherit;
+    padding:15px 8px;border-bottom:1px solid #E4E8E1;
+    text-decoration:none;color:#1B2A28;cursor:pointer;background:none;
+    border-left:none;border-right:none;border-top:none;
+    width:100%;text-align:left;font-family:inherit;gap:10px;
   }
-  .fmg-row-main{display:flex;align-items:center;gap:12px;}
+  .fmg-row-main{display:flex;align-items:center;gap:12px;min-width:0;}
   .fmg-row-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
-  .fmg-row-text .fmg-row-label{font-weight:600;font-size:0.98rem;display:block;}
-  .fmg-row-text .fmg-row-sub{font-size:0.8rem;color:var(--n-ink-soft);display:block;margin-top:2px;}
-  .fmg-row.fmg-row-active .fmg-row-label{color:var(--n-teal);}
-  .fmg-row.fmg-row-disabled{opacity:0.5;cursor:default;}
-  .fmg-chev{color:var(--n-ink-soft);flex-shrink:0;}
+  .fmg-row-text{min-width:0;}
+  .fmg-row-text .fmg-row-label{font-weight:600;font-size:0.95rem;display:block;}
+  .fmg-row-text .fmg-row-sub{font-size:0.76rem;color:#4B5D59;display:block;margin-top:2px;}
+  .fmg-row.fmg-row-active .fmg-row-label{color:#1F5C55;}
+  .fmg-row.fmg-row-disabled{opacity:0.55;cursor:default;}
+  .fmg-chev{color:#4B5D59;flex-shrink:0;}
   .fmg-menu-section-label{
-    font-family:'JetBrains Mono','IBM Plex Mono',monospace;font-size:0.68rem;
-    letter-spacing:0.08em;text-transform:uppercase;color:var(--n-ink-soft);
-    padding:18px 8px 8px;
+    font-family:'JetBrains Mono','IBM Plex Mono',monospace;font-size:0.66rem;
+    letter-spacing:0.08em;text-transform:uppercase;color:#4B5D59;
+    padding:16px 8px 6px;
   }
-
-  /* ---- search overlay (index only triggers inline; subpages link to index) ---- */
-  .fmg-search-wrap{position:relative;}
+  .fmg-plan-pill{
+    font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.05em;
+    text-transform:uppercase;color:#4B5D59;background:#EBEEE7;
+    padding:3px 8px;border-radius:100px;flex-shrink:0;
+  }
 </style>
 <div class="fmg-bar">
 <div class="fmg-bar-row">
@@ -280,72 +287,270 @@
 </button>
 </div>
 <div class="fmg-menu-body">
-<!-- Panel 1: root -->
 <div class="fmg-panel fmg-panel-active" data-panel="root">
-<button class="fmg-row" data-goto="topics">
-<span class="fmg-row-main">
-<span class="fmg-row-text">
-<span class="fmg-row-label">Browse Topics</span>
-<span class="fmg-row-sub">All field guides in the library</span>
-</span>
-</span>
-<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
-</button>
-<a class="fmg-row" href="index.html">
-<span class="fmg-row-main">
-<span class="fmg-row-text">
-<span class="fmg-row-label">Home</span>
-<span class="fmg-row-sub">Library overview</span>
-</span>
-</span>
-</a>
+<button class="fmg-row" data-goto="cats"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Browse by specialty</span><span class="fmg-row-sub">20 categories</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="live"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Live guides</span><span class="fmg-row-sub">Open now</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<a class="fmg-row" href="categories.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4B5D59"></span><span class="fmg-row-text"><span class="fmg-row-label">Topic directory</span><span class="fmg-row-sub">Every topic, live and planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="resources.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4B5D59"></span><span class="fmg-row-text"><span class="fmg-row-label">Resources</span><span class="fmg-row-sub">Saudi &amp; global references</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
 </div>
-<!-- Panel 2: topics -->
-<div class="fmg-panel" data-panel="topics">
-<button class="fmg-back" data-back="root">
-<svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
-        Back
-      </button>
-<div class="fmg-menu-section-label">Field Guides</div>
-<a class="fmg-row fmg-row-active" href="geriatrics.html">
-<span class="fmg-row-main">
-<span class="fmg-row-dot" style="background:#1F5C55"></span>
-<span class="fmg-row-text">
-<span class="fmg-row-label">Geriatrics</span>
-<span class="fmg-row-sub">IHI 4Ms field guide</span>
-</span>
-</span>
-<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
-</a>
-<a class="fmg-row" href="asthma.html">
-<span class="fmg-row-main">
-<span class="fmg-row-dot" style="background:#C98A2C"></span>
-<span class="fmg-row-text">
-<span class="fmg-row-label">Pediatric Asthma</span>
-<span class="fmg-row-sub">GINA 2026 field guide</span>
-</span>
-</span>
-<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
-</a>
-<a class="fmg-row" href="urgent-care.html">
-<span class="fmg-row-main">
-<span class="fmg-row-dot" style="background:#B0392C"></span>
-<span class="fmg-row-text">
-<span class="fmg-row-label">Urgent Care Quick Guides</span>
-<span class="fmg-row-sub">15 point-of-care protocols</span>
-</span>
-</span>
-<svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>
-</a>
-<div class="fmg-row fmg-row-disabled">
-<span class="fmg-row-main">
-<span class="fmg-row-dot" style="background:#B7BEB2"></span>
-<span class="fmg-row-text">
-<span class="fmg-row-label">More topics</span>
-<span class="fmg-row-sub">Added as the library grows</span>
-</span>
-</span>
+<div class="fmg-panel" data-panel="cats">
+<button class="fmg-back" data-back="root"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Specialties</div>
+<button class="fmg-row" data-goto="cat-urgent"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Urgent Care &amp; Emergencies</span><span class="fmg-row-sub">15 live · 5 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-peds"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Pediatrics</span><span class="fmg-row-sub">3 live · 11 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-geri"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Geriatrics</span><span class="fmg-row-sub">1 live · 5 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-cardio"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Cardiovascular</span><span class="fmg-row-sub">2 live · 6 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-endo"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Endocrine &amp; Metabolic</span><span class="fmg-row-sub">2 live · 6 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-resp"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Respiratory (Adult)</span><span class="fmg-row-sub">1 live · 6 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-womens"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Women's Health</span><span class="fmg-row-sub">7 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-mens"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Men's Health</span><span class="fmg-row-sub">3 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-mental"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Mental Health</span><span class="fmg-row-sub">5 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-msk"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Musculoskeletal</span><span class="fmg-row-sub">6 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-derm"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Dermatology</span><span class="fmg-row-sub">6 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-gi"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Gastroenterology</span><span class="fmg-row-sub">2 live · 5 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-infx"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Infectious Disease</span><span class="fmg-row-sub">6 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-renal"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Renal &amp; Urology</span><span class="fmg-row-sub">1 live · 3 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-neuro"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Neurology</span><span class="fmg-row-sub">2 live · 4 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-ent"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">ENT &amp; Eye</span><span class="fmg-row-sub">5 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-heme"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Hematology</span><span class="fmg-row-sub">4 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-prevent"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Preventive Care &amp; Screening</span><span class="fmg-row-sub">5 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-tcam"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Traditional &amp; Complementary Medicine</span><span class="fmg-row-sub">5 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
+<button class="fmg-row" data-goto="cat-ramadan"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Ramadan &amp; Fasting Medicine</span><span class="fmg-row-sub">5 planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
 </div>
+<div class="fmg-panel" data-panel="live">
+<button class="fmg-back" data-back="root"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Open now</div>
+<a class="fmg-row fmg-row-active" href="geriatrics.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#1F5C55"></span><span class="fmg-row-text"><span class="fmg-row-label">The Geriatrics Field Guide</span><span class="fmg-row-sub">IHI 4Ms teaching guide</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="asthma.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Asthma Field Guide</span><span class="fmg-row-sub">GINA 2026 teaching guide</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Urgent Care Quick Guides</span><span class="fmg-row-sub">15 point-of-care protocols</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+</div>
+<div class="fmg-panel" data-panel="cat-urgent">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Live protocols</div>
+<a class="fmg-row" href="urgent-care.html#bls"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">BLS: Adult &amp; Pediatric</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#anaphylaxis"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Anaphylaxis</span><span class="fmg-row-sub">incl. epinephrine dose calculator</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#chest-pain"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Chest Pain</span><span class="fmg-row-sub">incl. HEART score calculator</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#tia-stroke"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">TIA &amp; Stroke</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#htn-crisis"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Hypertensive Crisis</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#adult-status-epilepticus"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Adult Status Epilepticus</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#adult-hypoglycemia"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Adult Hypoglycemia</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#asthma-exacerbation-adult"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Asthma Exacerbation (Adult, SINA)</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#acute-abdomen"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Acute Abdomen &amp; Renal Colic</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#peds-status-epilepticus"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Status Epilepticus</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#febrile-convulsion"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Febrile Convulsion</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#febrile-infant"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Febrile Infant ≤90 Days</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#peds-gastro"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Gastroenteritis</span><span class="fmg-row-sub">incl. dehydration picker</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#peds-hypoglycemia"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Hypoglycemia</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#peds-resp-distress"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Bronchiolitis &amp; Croup</span><span class="fmg-row-sub">incl. PRAM calculator</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Adult sepsis recognition</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Burns &amp; wound care</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Epistaxis</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Head injury triage</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Heat illness</span><span class="fmg-row-sub">Hajj-season relevant</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-peds">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Respiratory</div>
+<a class="fmg-row" href="asthma.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Asthma Field Guide</span><span class="fmg-row-sub">GINA 2026 · full teaching guide</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#peds-resp-distress"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Bronchiolitis &amp; Croup</span><span class="fmg-row-sub">urgent care protocol</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Community-acquired pneumonia</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-menu-section-label">Newborn &amp; infant</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Neonatal jaundice</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Newborn screening in KSA</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Infant feeding &amp; growth faltering</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-menu-section-label">Common presentations</div>
+<a class="fmg-row" href="urgent-care.html#febrile-infant"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Fever in the infant ≤90 days</span><span class="fmg-row-sub">urgent care protocol</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Fever without source (older child)</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Acute otitis media</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Constipation</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Iron deficiency anemia</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">ADHD assessment</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-menu-section-label">Prevention</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Saudi immunization schedule</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Well-child visits &amp; milestones</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-geri">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Live</div>
+<a class="fmg-row fmg-row-active" href="geriatrics.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#1F5C55"></span><span class="fmg-row-text"><span class="fmg-row-label">The Geriatrics Field Guide</span><span class="fmg-row-sub">IHI 4Ms · Beers · STOPP/START · full teaching guide</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#1F5C55"></span><span class="fmg-row-text"><span class="fmg-row-label">Falls assessment &amp; prevention</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#1F5C55"></span><span class="fmg-row-text"><span class="fmg-row-label">Dementia workup in primary care</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#1F5C55"></span><span class="fmg-row-text"><span class="fmg-row-label">Deprescribing in practice</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#1F5C55"></span><span class="fmg-row-text"><span class="fmg-row-label">Frailty &amp; comprehensive geriatric assessment</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#1F5C55"></span><span class="fmg-row-text"><span class="fmg-row-label">Advance care planning</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-cardio">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Urgent care crossover</div>
+<a class="fmg-row" href="urgent-care.html#chest-pain"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A3A4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Chest Pain</span><span class="fmg-row-sub">HEART score</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#htn-crisis"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A3A4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Hypertensive Crisis</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A3A4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Hypertension — chronic management</span><span class="fmg-row-sub">Saudi HTN guideline based</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A3A4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Dyslipidemia &amp; ASCVD risk</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A3A4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Stable angina / chronic coronary syndrome</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A3A4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Atrial fibrillation</span><span class="fmg-row-sub">CHA₂DS₂-VASc calculator planned</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A3A4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Heart failure in primary care</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A3A4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Palpitations workup</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-endo">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Urgent care crossover</div>
+<a class="fmg-row" href="urgent-care.html#adult-hypoglycemia"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A6B8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Adult Hypoglycemia</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#peds-hypoglycemia"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A6B8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Hypoglycemia</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A6B8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Type 2 diabetes — diagnosis &amp; management</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A6B8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Prediabetes &amp; prevention</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A6B8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Insulin initiation in primary care</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A6B8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Thyroid disorders</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A6B8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Obesity management</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A6B8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Vitamin D deficiency</span><span class="fmg-row-sub">highly prevalent in KSA</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-resp">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Urgent care crossover</div>
+<a class="fmg-row" href="urgent-care.html#asthma-exacerbation-adult"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C7A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Asthma Exacerbation (SINA)</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C7A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Asthma — chronic management (SINA)</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C7A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">COPD</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C7A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Allergic rhinitis</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C7A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Chronic cough workup</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C7A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Smoking cessation</span><span class="fmg-row-sub">incl. shisha/medwakh counseling</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C7A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Obstructive sleep apnea screening</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-womens">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A4A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Antenatal care schedule</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A4A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">PCOS</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A4A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Contraception counseling</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A4A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Menopause &amp; HRT</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A4A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Recurrent UTI in women</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A4A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Abnormal uterine bleeding</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A4A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Breast complaint triage</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-mens">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#3E5C7A"></span><span class="fmg-row-text"><span class="fmg-row-label">BPH / lower urinary tract symptoms</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#3E5C7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Erectile dysfunction</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#3E5C7A"></span><span class="fmg-row-text"><span class="fmg-row-label">PSA screening counseling</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-mental">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C4A8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Depression</span><span class="fmg-row-sub">PHQ-9 calculator planned</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C4A8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Anxiety disorders</span><span class="fmg-row-sub">GAD-7 calculator planned</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C4A8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Insomnia</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C4A8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Somatic symptom presentations</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C4A8A"></span><span class="fmg-row-text"><span class="fmg-row-label">Suicide risk assessment in primary care</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-msk">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#A85C32"></span><span class="fmg-row-text"><span class="fmg-row-label">Low back pain</span><span class="fmg-row-sub">red flags &amp; imaging rules</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#A85C32"></span><span class="fmg-row-text"><span class="fmg-row-label">Knee osteoarthritis</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#A85C32"></span><span class="fmg-row-text"><span class="fmg-row-label">Shoulder pain</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#A85C32"></span><span class="fmg-row-text"><span class="fmg-row-label">Gout</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#A85C32"></span><span class="fmg-row-text"><span class="fmg-row-label">Neck pain</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#A85C32"></span><span class="fmg-row-text"><span class="fmg-row-label">Fibromyalgia</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-derm">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B08A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Eczema / atopic dermatitis</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B08A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Acne</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B08A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Fungal skin infections</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B08A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Urticaria</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B08A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Psoriasis</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B08A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Melasma &amp; pigmentation disorders</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-gi">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Urgent care crossover</div>
+<a class="fmg-row" href="urgent-care.html#acute-abdomen"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#6B7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Acute Abdomen &amp; Renal Colic</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#peds-gastro"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#6B7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Gastroenteritis</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#6B7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">GERD &amp; dyspepsia</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#6B7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">H. pylori — test &amp; treat</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#6B7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Irritable bowel syndrome</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#6B7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Chronic constipation</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#6B7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Metabolic-associated fatty liver disease</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-infx">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A3E3E"></span><span class="fmg-row-text"><span class="fmg-row-label">URTI &amp; antibiotic stewardship</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A3E3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Adult UTI</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A3E3E"></span><span class="fmg-row-text"><span class="fmg-row-label">TB screening &amp; latent TB</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A3E3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Hajj &amp; Umrah health</span><span class="fmg-row-sub">vaccination requirements, mass-gathering medicine</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A3E3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Brucellosis</span><span class="fmg-row-sub">endemic — raw milk counseling</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A3E3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Dengue awareness</span><span class="fmg-row-sub">western region</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-renal">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Urgent care crossover</div>
+<a class="fmg-row" href="urgent-care.html#acute-abdomen"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#3E7A7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Renal Colic</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#3E7A7A"></span><span class="fmg-row-text"><span class="fmg-row-label">CKD staging &amp; referral</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#3E7A7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Hematuria workup</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#3E7A7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Kidney stone prevention</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-neuro">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Urgent care crossover</div>
+<a class="fmg-row" href="urgent-care.html#tia-stroke"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A4D8C"></span><span class="fmg-row-text"><span class="fmg-row-label">TIA &amp; Stroke</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="urgent-care.html#adult-status-epilepticus"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A4D8C"></span><span class="fmg-row-text"><span class="fmg-row-label">Adult Status Epilepticus</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A4D8C"></span><span class="fmg-row-text"><span class="fmg-row-label">Headache &amp; migraine</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A4D8C"></span><span class="fmg-row-text"><span class="fmg-row-label">Dizziness &amp; vertigo</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A4D8C"></span><span class="fmg-row-text"><span class="fmg-row-label">Peripheral neuropathy</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4A4D8C"></span><span class="fmg-row-text"><span class="fmg-row-label">Bell's palsy</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-ent">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A6B3A"></span><span class="fmg-row-text"><span class="fmg-row-label">Acute sinusitis</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A6B3A"></span><span class="fmg-row-text"><span class="fmg-row-label">Otitis media &amp; externa</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A6B3A"></span><span class="fmg-row-text"><span class="fmg-row-label">Red eye triage</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A6B3A"></span><span class="fmg-row-text"><span class="fmg-row-label">Hearing loss workup</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A6B3A"></span><span class="fmg-row-text"><span class="fmg-row-label">Epistaxis</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-heme">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A2C4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Iron deficiency anemia</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A2C4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Sickle cell disease in primary care</span><span class="fmg-row-sub">endemic in Eastern &amp; Southern regions</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A2C4A"></span><span class="fmg-row-text"><span class="fmg-row-label">Thalassemia &amp; the premarital screening program</span><span class="fmg-row-sub">mandatory in KSA</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#7A2C4A"></span><span class="fmg-row-text"><span class="fmg-row-label">G6PD deficiency</span><span class="fmg-row-sub">drug &amp; fava bean counseling</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-prevent">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C5C7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Periodic health examination (Saudi)</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C5C7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Cancer screening summary</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C5C7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Adult immunization</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C5C7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Premarital screening program</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C5C7A"></span><span class="fmg-row-text"><span class="fmg-row-label">Travel medicine basics</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-tcam">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Hijama (wet cupping)</span><span class="fmg-row-sub">evidence, safety, NCCAM regulation in KSA</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Prophetic medicine in practice</span><span class="fmg-row-sub">black seed, honey, dates, olive oil — evidence &amp; counseling</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Herbal safety &amp; drug interactions</span><span class="fmg-row-sub">e.g. Nigella sativa with anticoagulants</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Ruqyah &amp; spiritual healing</span><span class="fmg-row-sub">coexisting with clinical care, red flags for delayed presentation</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#5C7A3E"></span><span class="fmg-row-text"><span class="fmg-row-label">Talking with patients about TCAM</span><span class="fmg-row-sub">respectful, non-dismissive counseling frameworks</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+</div>
+<div class="fmg-panel" data-panel="cat-ramadan">
+<button class="fmg-back" data-back="cats"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
+<div class="fmg-menu-section-label">Planned</div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A5C2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Diabetes &amp; fasting</span><span class="fmg-row-sub">IDF-DAR risk categories, calculator planned</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A5C2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Medication timing in Ramadan</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A5C2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Chronic disease &amp; fasting</span><span class="fmg-row-sub">HTN, CKD, cardiac patients</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A5C2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Pregnancy &amp; fasting</span></span></span><span class="fmg-plan-pill">Planned</span></div>
+<div class="fmg-row fmg-row-disabled"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#8A5C2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Exemptions from fasting</span><span class="fmg-row-sub">counseling with fiqh-aware sensitivity</span></span></span><span class="fmg-plan-pill">Planned</span></div>
 </div>
 </div>
 </div>
@@ -355,7 +560,6 @@
   var menuBtn = document.getElementById('fmgMenuBtn');
   var closeBtn = document.getElementById('fmgMenuClose');
   var searchBtn = document.getElementById('fmgSearchBtn');
-
   menuBtn.addEventListener('click', function(){
     menu.classList.add('fmg-menu-open');
     document.body.style.overflow = 'hidden';
@@ -364,20 +568,27 @@
     menu.classList.remove('fmg-menu-open');
     document.body.style.overflow = '';
   });
-
   var panels = menu.querySelectorAll('.fmg-panel');
   function showPanel(name){
-    panels.forEach(function(p){
-      p.classList.toggle('fmg-panel-active', p.getAttribute('data-panel') === name);
-    });
+    for (var i=0;i<panels.length;i++){
+      var p = panels[i];
+      if (p.getAttribute('data-panel') === name) p.classList.add('fmg-panel-active');
+      else p.classList.remove('fmg-panel-active');
+    }
+    menu.querySelector('.fmg-menu-body').scrollTop = 0;
   }
-  menu.querySelectorAll('[data-goto]').forEach(function(btn){
-    btn.addEventListener('click', function(){ showPanel(btn.getAttribute('data-goto')); });
-  });
-  menu.querySelectorAll('[data-back]').forEach(function(btn){
-    btn.addEventListener('click', function(){ showPanel(btn.getAttribute('data-back')); });
-  });
-
+  var gotos = menu.querySelectorAll('[data-goto]');
+  for (var i=0;i<gotos.length;i++){
+    (function(btn){
+      btn.addEventListener('click', function(){ showPanel(btn.getAttribute('data-goto')); });
+    })(gotos[i]);
+  }
+  var backs = menu.querySelectorAll('[data-back]');
+  for (var j=0;j<backs.length;j++){
+    (function(btn){
+      btn.addEventListener('click', function(){ showPanel(btn.getAttribute('data-back')); });
+    })(backs[j]);
+  }
   searchBtn.addEventListener('click', function(){
     window.location.href='index.html#search';
   });
