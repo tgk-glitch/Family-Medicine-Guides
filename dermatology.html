@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Resources — Family Medicine Guides</title>
-<meta content="Saudi and global reference organizations behind the library — guidelines, regulators, and evidence sources." name="description"/>
+<title>Dermatology — Family Medicine Guides</title>
+<meta content="The six highest-frequency skin presentations in primary care — pattern recognition, presentation in richly pigmented skin, safe topical steroids, and Saudi-specific traps." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
@@ -13,39 +13,158 @@
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 button,a{-webkit-tap-highlight-color:transparent;}
 img{max-width:100%;height:auto;}
-
   :root{
     --paper:#F4F6F2; --paper-2:#EBEEE7; --ink:#1B2A28; --ink-soft:#4B5D59;
-    --line:#D4DAD1; --teal:#1F5C55; --teal-deep:#123C38; --amber:#C98A2C; --card:#FFFFFF;
+    --line:#D4DAD1; --teal:#1F5C55; --teal-deep:#123C38;
+    --red:#B0392C; --card:#FFFFFF; --tone:#B08A2C; --tone-soft:#FBF4E6; --tone-line:#E3CE9E;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  h2{scroll-margin-top:120px;}
+  h2,h3{scroll-margin-top:170px;}
+  .dz-sec{scroll-margin-top:150px;}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:820px;margin:0 auto;padding:0 24px;}
-  .res-hero{padding:44px 0 10px;}
-  .res-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin:0 0 14px;}
-  .res-hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,4.5vw,2.7rem);line-height:1.12;margin:0 0 12px;color:var(--teal-deep);}
-  .res-hero p{font-size:1rem;line-height:1.6;color:var(--ink-soft);max-width:620px;margin:0 0 8px;}
-  .res-section{padding:24px 0 10px;}
-  .res-section h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;color:var(--teal-deep);margin:0 0 4px;}
-  .res-section .res-tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:14px;}
-  .res-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 20px;}
-  .res-row{display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid #E7EAE4;flex-wrap:wrap;}
-  .res-row:last-child{border-bottom:none;}
-  .res-main{flex:1;min-width:220px;}
-  .res-name{font-weight:600;font-size:0.95rem;display:block;color:var(--ink);}
-  .res-note{font-size:0.82rem;color:var(--ink-soft);line-height:1.5;display:block;margin-top:2px;}
-  .res-link{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--teal);text-decoration:none;flex-shrink:0;}
-  .res-link:hover{text-decoration:underline;}
-  .res-nolink{color:var(--ink-soft);font-style:italic;}
-  .res-disclaimer{
-    margin:26px 0 0;padding:14px 18px;background:var(--paper-2);border-radius:12px;
-    font-size:0.82rem;color:var(--ink-soft);line-height:1.55;
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  /* hero */
+  .dz-hero{padding:44px 0 22px;}
+  .dz-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--tone);margin:0 0 14px;}
+  .dz-hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,4.6vw,2.8rem);line-height:1.1;letter-spacing:-0.015em;margin:0 0 14px;color:var(--teal-deep);}
+  .dz-hero p{font-size:1.02rem;line-height:1.62;color:var(--ink-soft);max-width:650px;margin:0 0 14px;}
+
+  /* image policy */
+  .dz-policy{
+    background:var(--card);border:1px solid var(--line);border-left:5px solid var(--tone);
+    border-radius:12px;padding:18px 20px;margin:18px 0 0;
   }
-  .res-bottom{padding:10px 0 80px;}
+  .dz-policy h3{font-family:'Fraunces',serif;font-size:1.02rem;font-weight:600;margin:0 0 8px;color:var(--teal-deep);}
+  .dz-policy p{font-size:0.88rem;line-height:1.6;color:var(--ink-soft);margin:0 0 8px;}
+  .dz-policy p:last-child{margin-bottom:0;}
+
+  /* jump */
+  .dz-jump{
+    position:sticky;top:64px;z-index:80;background:rgba(244,246,242,0.96);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);padding:12px 0;
+  }
+  .dz-jump-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;}
+  .dz-chip{
+    flex-shrink:0;font-weight:600;font-size:0.77rem;color:#8A6B24;
+    background:var(--tone-soft);border:1px solid var(--tone-line);
+    padding:7px 13px;border-radius:100px;text-decoration:none;white-space:nowrap;
+  }
+  .dz-chip:hover{background:#F5E9CF;}
+
+  .dz-list{padding:26px 0 90px;display:flex;flex-direction:column;gap:30px;}
+  .dz-sec{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:26px 26px 30px;position:relative;overflow:hidden;
+  }
+  .dz-sec::before{content:'';position:absolute;top:0;left:0;width:6px;height:100%;background:var(--tone);}
+  .dz-sec-head{margin-bottom:16px;}
+  .dz-sec h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;margin:0 0 4px;color:var(--teal-deep);}
+  .dz-subtitle{font-size:0.9rem;color:var(--ink-soft);font-style:italic;margin:0;}
+
+  /* atlas */
+  .dz-atlas{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:13px;
+    padding:14px 16px 12px;margin:0 0 20px;
+  }
+  .dz-atlas-head{
+    font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;font-weight:500;
+  }
+  .dz-atlas-link{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:8px 0;
+    border-bottom:1px solid #DFE3DB;text-decoration:none;color:var(--ink);
+  }
+  .dz-atlas-link:last-child{border-bottom:none;}
+  .dz-atlas-src{font-weight:600;font-size:0.88rem;color:#8A6B24;flex-shrink:0;}
+  .dz-atlas-src::after{content:' →';font-weight:400;}
+  .dz-atlas-note{font-size:0.8rem;color:var(--ink-soft);line-height:1.45;}
+
+  /* photo slot */
+  .dz-slot{margin:0 0 20px;}
+  .dz-slot-frame{
+    border:2px dashed var(--tone-line);border-radius:12px;background:var(--tone-soft);
+    padding:26px 20px;display:flex;flex-direction:column;align-items:center;gap:8px;
+    color:#A98A45;font-size:0.82rem;font-weight:600;
+  }
+  .dz-slot-cap{font-size:0.82rem;color:var(--ink-soft);line-height:1.55;margin:8px 0 0;font-style:italic;}
+
+  /* steps */
+  .dz-step{display:flex;gap:14px;margin-bottom:20px;}
+  .dz-step:last-child{margin-bottom:0;}
+  .dz-step-num{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--tone);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;margin-top:2px;
+  }
+  .dz-step-body{flex:1;min-width:0;}
+  .dz-step-body h3{font-family:'Fraunces',serif;font-size:1.04rem;font-weight:600;margin:0 0 8px;color:var(--teal-deep);}
+  ul{margin:0;padding-left:20px;}
+  li{font-size:0.92rem;line-height:1.58;color:var(--ink);margin-bottom:7px;}
+  li:last-child{margin-bottom:0;}
+  p{margin:0 0 10px;}
+
+  /* blocks */
+  .dz-skin{background:#F0EDF5;border:1.5px solid #C9BFDC;border-radius:12px;padding:16px 18px;margin:16px 0;}
+  .dz-skin-label{font-weight:700;color:#5C4A8A;font-size:0.92rem;margin-bottom:8px;}
+  .dz-skin li{color:#3E3355;font-size:0.89rem;}
+  .dz-trap{background:#FBF0E6;border:1.5px solid #E0C199;border-radius:12px;padding:16px 18px;margin:16px 0;}
+  .dz-trap-label{font-weight:700;color:#A8611C;font-size:0.92rem;margin-bottom:8px;}
+  .dz-trap li,.dz-trap p{color:#70441A;font-size:0.89rem;line-height:1.58;}
+  .dz-flag{background:#FCEEEC;border:1.5px solid #E8B7AC;border-radius:12px;padding:16px 18px;margin:16px 0 0;}
+  .dz-flag-label{font-weight:700;color:var(--red);font-size:0.92rem;margin-bottom:8px;}
+  .dz-flag li{color:#7A2A20;font-size:0.89rem;}
+  .dz-note{background:var(--paper-2);border-radius:10px;padding:12px 15px;margin:12px 0;}
+  .dz-note-label{display:none;}
+  .dz-note li,.dz-note p{font-size:0.86rem;color:var(--ink-soft);line-height:1.58;}
+
+  /* tables */
+  .dz-table-wrap{overflow-x:auto;margin:10px 0;}
+  table{border-collapse:collapse;width:100%;font-size:0.85rem;}
+  th{background:var(--paper-2);color:var(--teal-deep);font-weight:700;text-align:left;padding:9px 11px;border:1px solid var(--line);}
+  td{padding:9px 11px;border:1px solid var(--line);vertical-align:top;color:var(--ink);}
+
+  /* tools */
+  .dz-tools{padding:6px 0 0;}
+  .dz-tool{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:24px 24px 26px;margin-bottom:20px;position:relative;overflow:hidden;
+  }
+  .dz-tool::before{content:'';position:absolute;top:0;left:0;width:6px;height:100%;background:var(--tone);}
+  .dz-tool-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+  .dz-tool-badge{
+    font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;
+    color:#fff;background:var(--tone);padding:3px 9px;border-radius:100px;font-weight:700;
+  }
+  .dz-tool h2{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin:0;color:var(--teal-deep);}
+  .dz-tool-sub{font-size:0.87rem;color:var(--ink-soft);margin:6px 0 16px;line-height:1.55;}
+
+  .ftu-grid{display:flex;flex-direction:column;gap:11px;margin-bottom:16px;}
+  .ftu-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .ftu-row label{font-size:0.86rem;font-weight:600;color:var(--ink);width:130px;flex-shrink:0;}
+  .ftu-row select,.ftu-row input{
+    flex:1;min-width:170px;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;
+    font-family:'Inter',sans-serif;font-size:0.88rem;background:#fff;color:var(--ink);
+  }
+  .ftu-row select:focus,.ftu-row input:focus{outline:none;border-color:var(--tone);}
+  .ftu-regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:6px 0 16px;}
+  .ftu-check{
+    display:flex;align-items:center;gap:9px;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:9px;padding:10px 12px;cursor:pointer;font-size:0.85rem;
+  }
+  .ftu-check:hover{border-color:var(--tone);}
+  .ftu-check input{width:16px;height:16px;accent-color:var(--tone);flex-shrink:0;margin:0;}
+  .dz-result{
+    background:var(--tone-soft);border:1.5px solid var(--tone);border-radius:11px;padding:15px 17px;
+    font-size:0.94rem;color:var(--ink);line-height:1.55;
+  }
+  .dz-result b{color:#7A5A18;}
+  .dz-result .sub{display:block;margin-top:6px;font-size:0.85rem;color:var(--ink-soft);}
+
   footer{border-top:1px solid var(--line);padding:32px 0 48px;}
   footer p{font-size:0.85rem;color:var(--ink-soft);line-height:1.6;margin:0 0 6px;}
+  footer .mono{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--ink-soft);}
 </style>
 </head>
 <body>
@@ -150,7 +269,7 @@ img{max-width:100%;height:auto;}
 <button class="fmg-row" data-goto="cats"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Browse by specialty</span><span class="fmg-row-sub">21 categories</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
 <button class="fmg-row" data-goto="live"><span class="fmg-row-main"><span class="fmg-row-text"><span class="fmg-row-label">Live guides</span><span class="fmg-row-sub">Open now</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></button>
 <a class="fmg-row" href="categories.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4B5D59"></span><span class="fmg-row-text"><span class="fmg-row-label">Topic directory</span><span class="fmg-row-sub">Every topic, live and planned</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
-<a class="fmg-row fmg-row-active" href="resources.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4B5D59"></span><span class="fmg-row-text"><span class="fmg-row-label">Resources</span><span class="fmg-row-sub">Saudi &amp; global references</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row" href="resources.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#4B5D59"></span><span class="fmg-row-text"><span class="fmg-row-label">Resources</span><span class="fmg-row-sub">Saudi &amp; global references</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
 </div>
 <div class="fmg-panel" data-panel="cats">
 <button class="fmg-back" data-back="root"><svg fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M7 1L1 7l6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg> Back</button>
@@ -183,7 +302,7 @@ img{max-width:100%;height:auto;}
 <a class="fmg-row" href="geriatrics.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#1F5C55"></span><span class="fmg-row-text"><span class="fmg-row-label">The Geriatrics Field Guide</span><span class="fmg-row-sub">IHI 4Ms teaching guide</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
 <a class="fmg-row" href="adult-asthma.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#2C7A6B"></span><span class="fmg-row-text"><span class="fmg-row-label">Adult Asthma</span><span class="fmg-row-sub">SINA 2024 · ACT calculator</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
 <a class="fmg-row" href="asthma.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#C98A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Pediatric Asthma Field Guide</span><span class="fmg-row-sub">GINA 2026 · C-ACT · PRAM</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
-<a class="fmg-row" href="dermatology.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B08A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Dermatology</span><span class="fmg-row-sub">6 conditions · steroids · FTU calculator</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
+<a class="fmg-row fmg-row-active" href="dermatology.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B08A2C"></span><span class="fmg-row-text"><span class="fmg-row-label">Dermatology</span><span class="fmg-row-sub">6 conditions · steroids · FTU calculator</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
 <a class="fmg-row" href="osce.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#6B4A8A"></span><span class="fmg-row-text"><span class="fmg-row-label">OSCE Station Bank</span><span class="fmg-row-sub">10 built · 97 staged</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
 <a class="fmg-row" href="urgent-care.html"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:#B0392C"></span><span class="fmg-row-text"><span class="fmg-row-label">Urgent Care Quick Guides</span><span class="fmg-row-sub">15 point-of-care protocols</span></span></span><svg class="fmg-chev" fill="none" height="14" viewbox="0 0 8 14" width="8"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg></a>
 </div>
@@ -494,32 +613,332 @@ img{max-width:100%;height:auto;}
 })();
 </script>
 <!-- FMG-NAV:END -->
-<section class="res-hero">
+<section class="dz-hero">
 <div class="wrap">
-<p class="res-eyebrow">Resources</p>
-<h1>The shoulders this library stands on.</h1>
-<p>Every guide cites its sources inline — this page collects the organizations behind them: the Saudi bodies that govern our practice, and the global ones that shape the evidence.</p>
+<p class="dz-eyebrow">Dermatology · primary care</p>
+<h1>The six that fill the clinic</h1>
+<p>Eczema, acne, tinea, urticaria, psoriasis, pigmentation. Between them these account for the large majority of skin presentations in general practice — and each has one classic trap that turns a simple consultation into a months-long problem.</p>
+<p>Two things run through every section: <b>how the condition actually looks in richly pigmented skin</b>, because erythema-based descriptions fail here and the textbooks are still overwhelmingly light-skinned; and <b>the regional traps</b> — over-the-counter steroid-antifungal combinations, unregulated skin-lightening creams, black henna, camel contact, Hajj-season crowding.</p>
+<div class="dz-policy">
+<h3 id="about-the-images">About the images</h3>
+<p>Clinical photographs in published atlases and textbooks are licensed works — they can't be copied onto a site like this one, and reputable image banks like DFTB Skin Deep explicitly permit personal study only. So instead of two or three stock photos per condition, each section <b>deep-links into the free atlases</b>, where you'll find a full photo series and, on DermNet, a dedicated section on how the condition varies across skin types.</p>
+<p>Each condition also has a <b>slot for your own clinical photograph</b>. Images from your own patients — with written consent, no identifying features — are the most valuable teaching material you can put here, because they show the presentations of the population you actually serve. The dashed frames mark where they go.</p>
+</div>
 </div>
 </section>
-<section class="res-section">
+<nav class="dz-jump">
+<div class="dz-jump-inner">
+<a class="dz-chip" href="#tools">⚙ Steroids &amp; FTU</a>
+<a class="dz-chip" href="#eczema">Eczema / Atopic Dermatitis</a>
+<a class="dz-chip" href="#acne">Acne Vulgaris</a>
+<a class="dz-chip" href="#fungal">Fungal Skin Infections</a>
+<a class="dz-chip" href="#urticaria">Urticaria</a>
+<a class="dz-chip" href="#psoriasis">Psoriasis</a>
+<a class="dz-chip" href="#pigmentation">Melasma &amp; Pigmentation Disorders</a>
+</div>
+</nav>
+<section class="dz-list">
 <div class="wrap">
-<span class="res-tag">Local · Kingdom of Saudi Arabia</span>
-<h2 id="saudi-authorities-guidelines">Saudi authorities &amp; guidelines</h2>
-<div class="res-card"><div class="res-row"><div class="res-main"><span class="res-name">Ministry of Health (MOH)</span><span class="res-note">National health authority — policies, MOH guidelines, Sehhaty app &amp; the 937 service</span></div><a class="res-link" href="https://moh.gov.sa" rel="noopener" target="_blank">moh.gov.sa</a></div><div class="res-row"><div class="res-main"><span class="res-name">Saudi Commission for Health Specialties (SCFHS)</span><span class="res-note">Licensing, board training (incl. Saudi Board of Family Medicine), CPD</span></div><a class="res-link" href="https://scfhs.org.sa" rel="noopener" target="_blank">scfhs.org.sa</a></div><div class="res-row"><div class="res-main"><span class="res-name">Saudi Health Council</span><span class="res-note">National clinical practice guidelines and health strategy</span></div><a class="res-link" href="https://shc.gov.sa" rel="noopener" target="_blank">shc.gov.sa</a></div><div class="res-row"><div class="res-main"><span class="res-name">Saudi Thoracic Society</span><span class="res-note">Parent body for SINA and 15 other respiratory subsidiaries — guidelines, Annals of Thoracic Medicine</span></div><a class="res-link" href="https://saudithoracicsociety.org" rel="noopener" target="_blank">saudithoracicsociety.org</a></div><div class="res-row"><div class="res-main"><span class="res-name">Saudi FDA (SFDA)</span><span class="res-note">Drug registration, safety alerts, herbal &amp; supplement regulation</span></div><a class="res-link" href="https://sfda.gov.sa" rel="noopener" target="_blank">sfda.gov.sa</a></div><div class="res-row"><div class="res-main"><span class="res-name">Saudi Initiative for Asthma (SINA)</span><span class="res-note">National asthma guideline (SINA 2024) — basis of our adult asthma guide. Page also hosts the Arabic/English ACT, action plan, and patient brochures</span></div><a class="res-link" href="https://saudithoracicsociety.org/sina/" rel="noopener" target="_blank">saudithoracicsociety.org/sina/</a></div><div class="res-row"><div class="res-main"><span class="res-name">National Center for Complementary &amp; Alternative Medicine (NCCAM)</span><span class="res-note">Regulates hijama licensing and TCAM practice in KSA — key reference for our TCAM section</span></div><span class="res-link res-nolink">link to be verified</span></div><div class="res-row"><div class="res-main"><span class="res-name">Saudi Public Health Authority</span><span class="res-note">Communicable disease control, Hajj health requirements, outbreak guidance</span></div><span class="res-link res-nolink">link to be verified</span></div></div>
+<!-- ═══════════ CROSS-CUTTING TOOLS ═══════════ -->
+<div class="dz-tools" id="tools">
+<div class="dz-tool">
+<div class="dz-tool-head">
+<span class="dz-tool-badge">Interactive</span>
+<h2 id="how-much-cream-to-prescribe">How much cream to prescribe</h2>
+</div>
+<p class="dz-tool-sub">Under-prescribing is the commonest reason topical treatment "fails". One fingertip unit (a ribbon from the fingertip to the first crease, from a 5 mm nozzle) is about <b>0.5 g</b> and covers two adult palm areas. Select the regions you're treating and this works out the total quantity.</p>
+<div class="ftu-grid">
+<div class="ftu-row">
+<label for="ftuAge">Patient age</label>
+<select id="ftuAge">
+<option selected="" value="adult">Adult / adolescent</option>
+<option value="6-10">6–10 years</option>
+<option value="3-5">3–5 years</option>
+<option value="1-2">1–2 years</option>
+<option value="3-6m">3–6 months</option>
+</select>
+</div>
+</div>
+<div class="ftu-regions" id="ftuRegions"></div>
+<div class="ftu-grid">
+<div class="ftu-row">
+<label for="ftuFreq">Applications/day</label>
+<select id="ftuFreq">
+<option value="1">Once daily</option>
+<option selected="" value="2">Twice daily</option>
+</select>
+</div>
+<div class="ftu-row">
+<label for="ftuDays">Duration (days)</label>
+<input id="ftuDays" max="180" min="1" step="1" type="number" value="14"/>
+</div>
+</div>
+<div class="dz-result" id="ftuResult"></div>
+</div>
+<div class="dz-tool">
+<div class="dz-tool-head">
+<span class="dz-tool-badge">Reference</span>
+<h2 id="topical-corticosteroid-potency">Topical corticosteroid potency</h2>
+</div>
+<p class="dz-tool-sub">Match potency to <b>site</b> and <b>severity</b>, then review. The commonest errors are a too-weak steroid used for months on a thick plaque, and a potent steroid used casually on the face or flexures. Brand availability varies — verify against what's actually stocked locally.</p>
+<div class="dz-table-wrap">
+<table>
+<thead><tr><th>Class</th><th>Potency</th><th>Examples</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td><b>I</b></td><td>Superpotent</td><td>Clobetasol propionate 0.05%; halobetasol 0.05%</td><td>Thick plaques, palms/soles, lichenified skin. Short courses, specialist-level caution</td></tr>
+<tr><td><b>II–III</b></td><td>Potent</td><td>Betamethasone dipropionate 0.05%; fluocinonide 0.05%; mometasone furoate 0.1% oint; betamethasone valerate 0.1% oint</td><td>Trunk and limbs, plaque psoriasis, severe eczema flares</td></tr>
+<tr><td><b>IV–V</b></td><td>Moderate</td><td>Triamcinolone acetonide 0.1%; betamethasone valerate 0.1% cream; fluticasone propionate 0.05% cream; hydrocortisone butyrate 0.1%</td><td>Body eczema, workhorse for most flares</td></tr>
+<tr><td><b>VI</b></td><td>Mild–moderate</td><td>Desonide 0.05%; alclometasone dipropionate 0.05%</td><td>Face, flexures, children</td></tr>
+<tr><td><b>VII</b></td><td>Mild</td><td>Hydrocortisone 1% / 2.5%</td><td>Face, eyelids, genitals, napkin area, infants</td></tr>
+</tbody>
+</table>
+</div>
+<div class="dz-note">
+<ul>
+<li><b>Vehicle changes potency.</b> The same molecule is more potent as an ointment than a cream — ointments occlude and penetrate better. Ointments for dry, lichenified skin; creams for weeping or intertriginous areas; gels, foams and lotions for hair-bearing scalp.</li>
+<li><b>Regional absorption varies enormously</b> — roughly, eyelid and genital skin absorb many times more than forearm, and palms/soles far less. Site matters more than the number on the tube.</li>
+<li><b>Do not use potent steroids on face, eyelids, flexures or genitals</b> outside specialist direction — atrophy, striae, telangiectasia, steroid rosacea and perioral dermatitis follow, and withdrawal rebound then traps the patient.</li>
+<li><b>Never apply a steroid to an undiagnosed scaly or annular rash</b> — see the tinea section.</li>
+</ul>
+</div>
+</div>
+<div class="dz-tool">
+<div class="dz-tool-head">
+<span class="dz-tool-badge">Interactive</span>
+<h2 id="uas7-urticaria-activity-score">UAS7 — urticaria activity score</h2>
+</div>
+<p class="dz-tool-sub">The standard measure for chronic spontaneous urticaria. The patient records weals and itch once daily for seven days; each day scores 0–6, so the week totals 0–42. Enter daily scores to get the weekly total and activity band.</p>
+<div class="ftu-grid" id="uasGrid"></div>
+<div class="dz-result" id="uasResult"></div>
+<div class="dz-note" style="margin-top:14px">
+<ul>
+<li><b>Weals (per day):</b> 0 = none · 1 = mild (&lt;20) · 2 = moderate (20–50) · 3 = intense (&gt;50 or large confluent areas)</li>
+<li><b>Itch (per day):</b> 0 = none · 1 = mild · 2 = moderate · 3 = intense (interferes with sleep or daily activity)</li>
+<li>Use it to judge whether escalating the antihistamine dose actually worked, rather than relying on recall at the next visit.</li>
+</ul>
+</div>
+</div>
+</div>
+<section class="dz-sec" id="eczema">
+<div class="dz-sec-head">
+<h2 id="eczema-atopic-dermatitis">Eczema / Atopic Dermatitis</h2>
+<p class="dz-subtitle">The itch that rashes — not the rash that itches</p>
+</div>
+<div class="dz-atlas"><div class="dz-atlas-head">🔍 Visual atlas — opens in a new tab</div><a class="dz-atlas-link" href="https://dermnetnz.org/topics/atopic-dermatitis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet</span><span class="dz-atlas-note">Photo series + a dedicated <b>“Variation in skin types”</b> section</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/dermatitis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Dermatitis overview</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/discoid-eczema" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Discoid eczema</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dftbskindeep.com/" rel="noopener" target="_blank"><span class="dz-atlas-src">DFTB Skin Deep</span><span class="dz-atlas-note">Paediatric images across skin tones — search by diagnosis or body part</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet A–Z</span><span class="dz-atlas-note">Full index, if a direct link has moved</span></a></div>
+<div class="dz-slot" id="slot-eczema"><div class="dz-slot-frame"><svg fill="none" height="30" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="30"><rect height="14" rx="2" width="18" x="3" y="5"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="M21 15l-5-5-6 6-2-2-5 5"></path></svg><span>Your clinical photo slot</span></div><p class="dz-slot-cap">Flexural involvement in an infant or child — the single most recognisable pattern. Antecubital/popliteal fossae, or cheeks and extensors in infancy.</p></div><div class="dz-step"><div class="dz-step-num">1</div><div class="dz-step-body"><h3 id="recognise-it">Recognise it</h3><ul><li><b>Itch is obligatory.</b> No itch, reconsider the diagnosis entirely.</li><li><b>Age-dependent distribution:</b> infants — cheeks, scalp, extensors, napkin area usually spared; children — flexures (antecubital, popliteal), neck, wrists, ankles; adults — hands, eyelids, flexures, often more localised and lichenified.</li><li><b>Morphology by phase:</b> acute — ill-defined erythema, papulovesicles, weeping, excoriation; chronic — lichenification, thickened skin with accentuated skin markings, fissuring.</li><li><b>Background xerosis</b> is near-universal — dry skin between flares is part of the disease, not a separate problem.</li><li>Supportive features: personal or family atopy (asthma, allergic rhinitis), early onset, relapsing course.</li></ul></div></div><div class="dz-skin"><div class="dz-skin-label">◐ In richly pigmented skin — read this before you look</div><ul><li><b>Erythema is the least reliable sign.</b> Inflammation appears violaceous, grey-brown, or simply darker rather than red — and may be nearly invisible under fluorescent clinic lighting. Palpate for warmth and induration; look tangentially in natural light.</li><li><b>Follicular and papular patterns are more common</b> — small firm follicular papules on the trunk and extensors rather than confluent plaques. Easy to mistake for keratosis pilaris or a folliculitis.</li><li><b>Extensor rather than flexural</b> involvement is well described and can throw you off the diagnosis.</li><li><b>Post-inflammatory pigment change is the outcome that matters most to the patient</b> — both hyper- and hypopigmentation. Counsel early that the pigment change is the <i>footprint</i> of inflammation, not a scar and not a steroid side effect, and that controlling the eczema is what prevents more of it. This single conversation prevents a great deal of treatment abandonment.</li><li>Lichenification and prurigo-like nodules are more prominent.</li><li><b>Severity is systematically underestimated</b> in darker skin precisely because erythema-weighted scores miss it. Score on itch, sleep disturbance, extent and lichenification instead.</li></ul></div><div class="dz-step"><div class="dz-step-num">2</div><div class="dz-step-body"><h3 id="the-differential-you-must-not-miss">The differential you must not miss</h3><div class="dz-table-wrap"><table><thead><tr><th>Mimic</th><th>What gives it away</th></tr></thead><tbody><tr><td><b>Scabies</b></td><td>Itch worse at night, whole household itching, burrows in web spaces/wrists, genital or nipple nodules. <b>Any refractory “eczema” in a Hajj/Umrah season or crowded accommodation — examine for scabies before escalating steroids.</b></td></tr><tr><td><b>Tinea (steroid-modified)</b></td><td>Annular with an advancing scaly edge and central clearing. Steroids flatten the edge and make it worse — see the tinea section.</td></tr><tr><td>Seborrhoeic dermatitis</td><td>Greasy yellow scale, scalp/nasolabial/retroauricular, less itchy</td></tr><tr><td>Allergic contact dermatitis</td><td>Geometric or unusual distribution matching an exposure — <b>ask about black henna (PPD), hair dye, nickel, and skin-lightening creams</b></td></tr><tr><td>Psoriasis</td><td>Well-demarcated edge, silvery scale, extensor rather than flexural, nail changes</td></tr><tr><td>Cutaneous T-cell lymphoma</td><td>Adult-onset 'eczema' that never quite fits and never clears — biopsy</td></tr></tbody></table></div></div></div><div class="dz-step"><div class="dz-step-num">3</div><div class="dz-step-body"><h3 id="treatment-the-part-that-usually-fails-on-quantity-not-choice">Treatment — the part that usually fails on quantity, not choice</h3><ul><li><b>Emollients are the backbone.</b> Under-prescribing is the commonest error: an adult with widespread eczema needs <b>250–500 g per week</b>, a child 150–250 g. Prescribe in 500 g tubs, not 30 g tubes. Apply within minutes of bathing, in the direction of hair growth.</li><li>Soap substitutes; short lukewarm showers. Avoid fragranced products.</li><li><b>Topical corticosteroid matched to site and severity</b> — see the potency table and the fingertip-unit calculator above. Undertreating with a too-weak steroid for too long causes more harm than a short course of the correct potency.</li><li><b>Face, eyelids, flexures, genitals:</b> mild potency only, or a topical calcineurin inhibitor (tacrolimus, pimecrolimus) as a steroid-sparing agent — no atrophy risk, so suited to long-term facial use. Warn about transient stinging in the first few days or they will stop.</li><li><b>Proactive / 'weekend' therapy</b> for frequent relapsers: after clearing, apply the steroid or TCI to the usual trouble sites twice weekly to prevent flares rather than chasing them.</li><li><b>Steroid phobia is the main adherence barrier</b> and it is best met head-on: name it, explain potency and duration, show the fingertip unit, and give a written plan. A correctly used potent steroid for two weeks is safer than six months of an inadequate one.</li><li>Sedating antihistamine may help sleep during a severe flare; non-sedating antihistamines do not control eczema itch.</li><li>Bacterial superinfection (weeping, golden crust, pustules, sudden deterioration): treat <i>S. aureus</i>. Do not use topical antibiotics long-term.</li></ul></div></div><div class="dz-flag"><div class="dz-flag-label">🚩 Refer or escalate</div><ul><li><b>Eczema herpeticum — same-day emergency.</b> Rapidly worsening, painful, monomorphic punched-out erosions or vesicles, often clustered, plus fever and malaise. Needs systemic aciclovir. Missing this is the serious error in eczema care.</li><li>Erythroderma (&gt;90% body surface involvement) — risk of fluid loss, sepsis, thermoregulatory failure.</li><li>Failure to respond to appropriate-potency treatment used correctly for 4–6 weeks.</li><li>Severe disease affecting sleep, school, or work — candidate for phototherapy or systemic/biologic therapy (dupilumab).</li><li>Suspected contact allergy requiring patch testing.</li><li>Recurrent infections, or diagnostic uncertainty in adult-onset disease.</li></ul></div>
+</section>
+<section class="dz-sec" id="acne">
+<div class="dz-sec-head">
+<h2 id="acne-vulgaris">Acne Vulgaris</h2>
+<p class="dz-subtitle">Where antibiotic stewardship and scar prevention collide</p>
+</div>
+<div class="dz-atlas"><div class="dz-atlas-head">🔍 Visual atlas — opens in a new tab</div><a class="dz-atlas-link" href="https://dermnetnz.org/topics/acne" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet</span><span class="dz-atlas-note">Photo series + a dedicated <b>“Variation in skin types”</b> section</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/comedonal-acne" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Comedonal</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/acne-scarring" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Scarring</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dftbskindeep.com/" rel="noopener" target="_blank"><span class="dz-atlas-src">DFTB Skin Deep</span><span class="dz-atlas-note">Paediatric images across skin tones — search by diagnosis or body part</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet A–Z</span><span class="dz-atlas-note">Full index, if a direct link has moved</span></a></div>
+<div class="dz-slot" id="slot-acne"><div class="dz-slot-frame"><svg fill="none" height="30" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="30"><rect height="14" rx="2" width="18" x="3" y="5"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="M21 15l-5-5-6 6-2-2-5 5"></path></svg><span>Your clinical photo slot</span></div><p class="dz-slot-cap">Comedonal vs inflammatory vs nodular — three photos here would carry the whole grading section.</p></div><div class="dz-step"><div class="dz-step-num">1</div><div class="dz-step-body"><h3 id="grade-it-because-grade-drives-treatment">Grade it, because grade drives treatment</h3><div class="dz-table-wrap"><table><thead><tr><th>Grade</th><th>Findings</th><th>Starting point</th></tr></thead><tbody><tr><td><b>Mild</b></td><td>Comedones predominate; few inflammatory papules/pustules</td><td>Topical retinoid ± benzoyl peroxide</td></tr><tr><td><b>Moderate</b></td><td>Numerous papules and pustules; occasional nodule; truncal involvement</td><td>Topical retinoid + BPO, <b>add oral antibiotic</b> if extensive or truncal</td></tr><tr><td><b>Severe</b></td><td>Nodules, cysts, sinus tracts, or <b>any scarring</b></td><td>Refer for isotretinoin — do not cycle antibiotics</td></tr></tbody></table></div><div class="dz-note"><div class="dz-note-label"></div><b>Scarring or marked post-inflammatory hyperpigmentation at any grade upgrades urgency.</b> Every month of delay in a scarring phenotype is permanent. Photograph at baseline with consent — it is the only reliable way to demonstrate response to a discouraged patient.</div></div></div><div class="dz-skin"><div class="dz-skin-label">◐ In richly pigmented skin</div><ul><li><b>Post-inflammatory hyperpigmentation is frequently the patient's actual complaint</b> — they may present for the dark marks, not the spots. Treating the active acne <i>is</i> the treatment for the PIH; say so explicitly, and add rigorous photoprotection.</li><li>PIH can persist for many months and looks like scarring to the patient. Distinguish them: pigment change is flat; scarring is textural. Run a finger over it and show them.</li><li><b>Higher keloid and hypertrophic scar risk</b> — a further reason to escalate early rather than temporise.</li><li><b>Pomade acne</b> along the hairline and forehead from heavy hair oils and greases — ask directly.</li><li><b>Acne mechanica</b> under sustained pressure or occlusion — relevant with hijab, niqab, headbands, and prolonged mask use. Not a reason to stop covering; manage with cleansing, non-comedogenic products, and treating the acne properly.</li><li>Counsel that harsh scrubbing and skin-lightening creams worsen both the acne and the pigmentation — see the melasma section on unregulated products.</li></ul></div><div class="dz-step"><div class="dz-step-num">2</div><div class="dz-step-body"><h3 id="antibiotic-stewardship-the-rules-that-actually-matter">Antibiotic stewardship — the rules that actually matter</h3><ul><li><b>Never use a topical or oral antibiotic as monotherapy.</b> Always pair with benzoyl peroxide or a retinoid to suppress resistance.</li><li><b>Limit oral antibiotics to about 3 months</b>, then stop and maintain on topicals. Cycling a patient through repeated antibiotic courses for years is both ineffective and a resistance problem.</li><li>Doxycycline or lymecycline are the usual choices. Avoid tetracyclines under 12 years and in pregnancy.</li><li><b>Maintenance is with a topical retinoid</b>, not an antibiotic. This is where most relapse happens — patients stop everything once clear.</li><li>Counsel photosensitivity with doxycycline — a genuine issue at this latitude and in Hajj season.</li></ul></div></div><div class="dz-step"><div class="dz-step-num">3</div><div class="dz-step-body"><h3 id="hormonal-and-specific-situations">Hormonal and specific situations</h3><ul><li><b>Female pattern acne</b> (jawline, chin, premenstrual flare, resistant to standard therapy): combined oral contraceptive or spironolactone can be very effective.</li><li><b>Screen for hyperandrogenism</b> if acne is accompanied by hirsutism, irregular cycles, or acanthosis nigricans — PCOS is common and often first suspected from the skin.</li><li><b>Pregnancy:</b> retinoids (topical and oral) contraindicated. Azelaic acid and topical erythromycin are the usual safe options.</li><li><b>Isotretinoin</b> requires strict pregnancy prevention, baseline and monitoring bloods, and counselling about mood — specialist-led in most settings.</li></ul></div></div><div class="dz-flag"><div class="dz-flag-label">🚩 Refer</div><ul><li>Nodulocystic disease, sinus tracts, or scarring — isotretinoin candidates.</li><li>Failure after two adequate treatment courses (each ≥12 weeks, correctly used).</li><li>Severe psychological impact regardless of clinical grade — ask about mood, and treat this as a genuine indication.</li><li>Acne fulminans (abrupt severe ulcerating acne with fever and arthralgia) — urgent.</li><li>Suspected endocrinopathy, or sudden-onset severe acne in an adult suggesting drug cause or virilisation.</li></ul></div>
+</section>
+<section class="dz-sec" id="fungal">
+<div class="dz-sec-head">
+<h2 id="fungal-skin-infections">Fungal Skin Infections</h2>
+<p class="dz-subtitle">Confirm before you treat — and never put a steroid on it</p>
+</div>
+<div class="dz-atlas"><div class="dz-atlas-head">🔍 Visual atlas — opens in a new tab</div><a class="dz-atlas-link" href="https://dermnetnz.org/topics/tinea" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet</span><span class="dz-atlas-note">Photo series + a dedicated <b>“Variation in skin types”</b> section</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/tinea-corporis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Tinea corporis</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/tinea-capitis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Tinea capitis</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/pityriasis-versicolor" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Pityriasis versicolor</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/tinea-incognita" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Tinea incognito</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dftbskindeep.com/" rel="noopener" target="_blank"><span class="dz-atlas-src">DFTB Skin Deep</span><span class="dz-atlas-note">Paediatric images across skin tones — search by diagnosis or body part</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet A–Z</span><span class="dz-atlas-note">Full index, if a direct link has moved</span></a></div>
+<div class="dz-slot" id="slot-fungal"><div class="dz-slot-frame"><svg fill="none" height="30" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="30"><rect height="14" rx="2" width="18" x="3" y="5"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="M21 15l-5-5-6 6-2-2-5 5"></path></svg><span>Your clinical photo slot</span></div><p class="dz-slot-cap">An untreated annular plaque with a raised scaly advancing edge next to a steroid-modified one. That contrast is the highest-yield teaching image in this whole guide.</p></div><div class="dz-step"><div class="dz-step-num">1</div><div class="dz-step-body"><h3 id="recognise-the-pattern-by-site">Recognise the pattern by site</h3><div class="dz-table-wrap"><table><thead><tr><th>Site</th><th>Pattern</th><th>Notes</th></tr></thead><tbody><tr><td><b>Corporis</b> (body)</td><td>Annular, advancing raised scaly edge, central clearing, asymmetric</td><td>The classic. Scale lives at the <i>edge</i> — scrape there</td></tr><tr><td><b>Cruris</b> (groin)</td><td>Half-moon plaques on inner thighs, active edge, <b>scrotum usually spared</b></td><td>Scrotal involvement suggests candida instead</td></tr><tr><td><b>Pedis</b> (foot)</td><td>Interdigital maceration, or dry scaly 'moccasin' sole, or vesicular</td><td>Very common; check for onychomycosis and reinfection source</td></tr><tr><td><b>Capitis</b> (scalp)</td><td>Scaly patch with broken hairs, alopecia, sometimes boggy kerion</td><td>Paediatric. <b>Always needs oral therapy</b></td></tr><tr><td><b>Unguium</b> (nail)</td><td>Distal subungual thickening, discolouration</td><td>Confirm before committing to months of oral therapy</td></tr><tr><td><b>Versicolor</b></td><td>Fine-scaled hypo- or hyperpigmented macules on trunk/shoulders</td><td><i>Malassezia</i>, not a dermatophyte — different treatment</td></tr></tbody></table></div></div></div><div class="dz-trap"><div class="dz-trap-label">⚠ The trap that defines this topic — tinea incognito</div><p>A patient presents with an itchy rash. It gets a topical steroid. It improves for a few days, then spreads, loses its raised edge, and becomes an odd, poorly-defined, pustular or widespread eruption that no longer looks like anything. Now nobody can diagnose it.</p><ul><li><b>Never prescribe a topical steroid for an undiagnosed annular or scaly rash.</b></li><li>Beware combination steroid-antifungal creams — widely available over the counter across the region, and a major driver of this presentation. Ask specifically what the patient has already applied, including anything bought without prescription or brought from abroad.</li><li>If a rash was steroid-treated and worsened, scrape it before doing anything else.</li></ul></div><div class="dz-skin"><div class="dz-skin-label">◐ In richly pigmented skin</div><ul><li>The erythematous advancing edge may read as <b>hyperpigmented or violaceous</b> rather than red — the <i>texture</i> of the scaly edge and the annular configuration are far more reliable than colour. Run a finger across the border.</li><li>Extensive tinea corporis can present as widespread hyperpigmented plaques and be mistaken for psoriasis, eczema, or even cutaneous lymphoma.</li><li><b>Pityriasis versicolor is often the hypopigmented variant</b>, and patients present distressed about white patches, fearing vitiligo. The fine surface scale and the sharp confetti-like border distinguish it; vitiligo is depigmented with no scale. Warn that repigmentation takes months <i>after</i> the fungus is cleared, or they will think treatment failed.</li><li>Post-inflammatory pigment change after clearance is common — again, not treatment failure.</li></ul></div><div class="dz-step"><div class="dz-step-num">2</div><div class="dz-step-body"><h3 id="confirm-the-diagnosis">Confirm the diagnosis</h3><ul><li><b>Skin scraping for KOH microscopy or culture</b> — take scale from the active edge. This takes two minutes and prevents months of wrong treatment.</li><li>Confirmation is <b>mandatory</b> before oral therapy for nail or scalp disease, given treatment duration and drug interactions.</li><li>Consider zoonotic sources in the history — <b>camel, sheep, and cattle contact</b> (<i>Trichophyton verrucosum</i>) produces particularly inflammatory, often kerion-like lesions here.</li></ul></div></div><div class="dz-step"><div class="dz-step-num">3</div><div class="dz-step-body"><h3 id="treatment">Treatment</h3><div class="dz-table-wrap"><table><thead><tr><th>Situation</th><th>Treatment</th></tr></thead><tbody><tr><td>Limited corporis / cruris / pedis</td><td>Topical terbinafine or an azole. Continue 1–2 weeks <b>beyond</b> clinical clearance</td></tr><tr><td>Extensive, or failed topical</td><td>Oral terbinafine or itraconazole</td></tr><tr><td><b>Tinea capitis</b></td><td><b>Oral therapy always</b> — topical alone never cures it. Griseofulvin or terbinafine per local protocol, with adjunctive antifungal shampoo to reduce shedding. Examine household contacts</td></tr><tr><td>Onychomycosis</td><td>Oral terbinafine, prolonged course — confirm first, check interactions and liver history</td></tr><tr><td>Pityriasis versicolor</td><td>Topical ketoconazole shampoo applied to the trunk, or selenium sulfide; oral for extensive or recurrent</td></tr><tr><td>Kerion</td><td>Oral antifungal; add antibiotic only if genuine bacterial superinfection. Do not incise</td></tr></tbody></table></div><div class="dz-note"><div class="dz-note-label"></div><b>Reinfection prevention is the part that gets skipped:</b> treat tinea pedis and onychomycosis if you are treating cruris (the feet are usually the reservoir), separate towels, dry the groin and web spaces, launder hot, avoid occlusive footwear, and treat family members and pets.</div></div></div><div class="dz-flag"><div class="dz-flag-label">🚩 Refer</div><ul><li>Any suspected tinea capitis where oral therapy or paediatric dosing is uncertain.</li><li>Extensive or recurrent disease in a possibly immunocompromised patient — including undiagnosed diabetes, which recurrent or florid fungal infection should always prompt you to check.</li><li>Diagnostic uncertainty after negative scrapings but ongoing suspicion.</li><li>Nail disease where the diagnosis or fitness for oral therapy is unclear.</li></ul></div>
+</section>
+<section class="dz-sec" id="urticaria">
+<div class="dz-sec-head">
+<h2 id="urticaria-2">Urticaria</h2>
+<p class="dz-subtitle">Wheals that move — and the ones that don't</p>
+</div>
+<div class="dz-atlas"><div class="dz-atlas-head">🔍 Visual atlas — opens in a new tab</div><a class="dz-atlas-link" href="https://dermnetnz.org/topics/urticaria-an-overview" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet</span><span class="dz-atlas-note">Photo series + a dedicated <b>“Variation in skin types”</b> section</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/urticaria-in-children" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · In children</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/dermographism" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Dermographism</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/angioedema" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Angioedema</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dftbskindeep.com/" rel="noopener" target="_blank"><span class="dz-atlas-src">DFTB Skin Deep</span><span class="dz-atlas-note">Paediatric images across skin tones — search by diagnosis or body part</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet A–Z</span><span class="dz-atlas-note">Full index, if a direct link has moved</span></a></div>
+<div class="dz-slot" id="slot-urticaria"><div class="dz-slot-frame"><svg fill="none" height="30" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="30"><rect height="14" rx="2" width="18" x="3" y="5"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="M21 15l-5-5-6 6-2-2-5 5"></path></svg><span>Your clinical photo slot</span></div><p class="dz-slot-cap">A well-formed weal with a pale centre and surrounding flare. Worth also capturing dermographism after stroking the skin.</p></div><div class="dz-step"><div class="dz-step-num">1</div><div class="dz-step-body"><h3 id="confirm-it-is-actually-urticaria">Confirm it is actually urticaria</h3><ul><li><b>Individual weals last less than 24 hours</b> and resolve without a trace. This single question does most of the diagnostic work — ask the patient to circle one lesion with a pen and check it the next day.</li><li>Intensely itchy, migratory, pale-centred weals with a surrounding flare.</li><li><b>Acute</b> — under 6 weeks. <b>Chronic</b> — 6 weeks or more, subdivided into spontaneous and inducible (pressure, cold, heat, vibration, exercise, sunlight, water).</li><li>Angioedema accompanies urticaria in a substantial minority — deeper, non-pitting swelling of lips, eyelids, tongue, or genitals, often painful rather than itchy.</li></ul></div></div><div class="dz-trap"><div class="dz-trap-label">⚠ Two things that look like urticaria and aren't</div><ul><li><b>Urticarial vasculitis:</b> individual lesions persist <b>beyond 24 hours</b>, are painful or burning rather than itchy, and leave bruising or pigment behind. Needs bloods and biopsy, not more antihistamine.</li><li><b>Angioedema without any weals:</b> think ACE-inhibitor–induced (may start months or years after starting the drug), hereditary or acquired C1-inhibitor deficiency. These do <b>not</b> respond to antihistamines or adrenaline in the usual way — a different pathway and a different emergency plan. Review the medication list every time.</li></ul></div><div class="dz-skin"><div class="dz-skin-label">◐ In richly pigmented skin</div><ul><li>The surrounding <b>flare is often not visible</b> — you may see only the raised weal. Palpate; ask the patient to point rather than relying on what you can see.</li><li>Weals may appear as <b>skin-coloured or slightly darker raised areas</b>. Photographing in good natural light, or having the patient photograph at home during a flare, is genuinely useful since the eruption is often gone by the appointment.</li><li>Post-inflammatory hyperpigmentation after resolution should prompt reconsideration of urticarial vasculitis, since true urticaria resolves without a mark.</li></ul></div><div class="dz-step"><div class="dz-step-num">2</div><div class="dz-step-body"><h3 id="investigate-sparingly">Investigate sparingly</h3><ul><li><b>Chronic spontaneous urticaria needs almost no investigation.</b> CBC and CRP/ESR is a reasonable baseline. Extensive allergy panels, food IgE screens, and imaging are not indicated and generate false trails.</li><li>Most chronic spontaneous urticaria has <b>no identifiable external trigger</b> — a substantial proportion is autoimmune. Saying this clearly and early is therapeutic; patients otherwise embark on exhausting elimination diets.</li><li>Targeted testing only where history points: thyroid function if autoimmune features, further workup if systemic symptoms, weight loss, fever, or arthralgia.</li><li>For inducible urticaria, provocation testing confirms the subtype.</li><li>Review drugs: <b>NSAIDs and opiates</b> can aggravate urticaria non-allergically; ACE inhibitors for angioedema.</li></ul></div></div><div class="dz-step"><div class="dz-step-num">3</div><div class="dz-step-body"><h3 id="treatment-ladder">Treatment ladder</h3><div class="dz-table-wrap"><table><thead><tr><th>Step</th><th>Treatment</th></tr></thead><tbody><tr><td>1</td><td><b>Second-generation non-sedating H1 antihistamine</b>, regular daily dosing — not as-needed. Standard licensed dose</td></tr><tr><td>2</td><td><b>Increase up to fourfold</b> the standard dose if inadequate after 2–4 weeks. Off-label but explicitly guideline-endorsed and generally well tolerated</td></tr><tr><td>3</td><td>Add omalizumab — specialist</td></tr><tr><td>4</td><td>Ciclosporin or other immunosuppression — specialist</td></tr></tbody></table></div><div class="dz-note"><div class="dz-note-label"></div><ul><li><b>Avoid first-generation sedating antihistamines</b> for routine control — impaired cognition, driving risk, and poor sleep architecture.</li><li><b>Do not use maintenance oral corticosteroids.</b> A short course (a few days) is reasonable for a severe exacerbation only; long-term use causes harm and rebound.</li><li>Set expectations: chronic spontaneous urticaria typically remits over months to a few years. Treatment suppresses, it does not cure — patients who understand this stop chasing triggers.</li></ul></div></div></div>
+</section>
+<section class="dz-sec" id="psoriasis">
+<div class="dz-sec-head">
+<h2 id="psoriasis-2">Psoriasis</h2>
+<p class="dz-subtitle">A skin disease with a joint, a heart, and a mood</p>
+</div>
+<div class="dz-atlas"><div class="dz-atlas-head">🔍 Visual atlas — opens in a new tab</div><a class="dz-atlas-link" href="https://dermnetnz.org/topics/psoriasis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet</span><span class="dz-atlas-note">Photo series + a dedicated <b>“Variation in skin types”</b> section</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/scalp-psoriasis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Scalp</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/flexural-psoriasis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Flexural</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/nail-psoriasis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Nail</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/guttate-psoriasis" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Guttate</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dftbskindeep.com/" rel="noopener" target="_blank"><span class="dz-atlas-src">DFTB Skin Deep</span><span class="dz-atlas-note">Paediatric images across skin tones — search by diagnosis or body part</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet A–Z</span><span class="dz-atlas-note">Full index, if a direct link has moved</span></a></div>
+<div class="dz-slot" id="slot-psoriasis"><div class="dz-slot-frame"><svg fill="none" height="30" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="30"><rect height="14" rx="2" width="18" x="3" y="5"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="M21 15l-5-5-6 6-2-2-5 5"></path></svg><span>Your clinical photo slot</span></div><p class="dz-slot-cap">A well-demarcated plaque with adherent silvery scale, plus a nail with pitting or onycholysis — nails are the diagnostic clincher people forget to photograph.</p></div><div class="dz-step"><div class="dz-step-num">1</div><div class="dz-step-body"><h3 id="recognise-it-2">Recognise it</h3><ul><li><b>Sharply demarcated</b> plaques with adherent silvery-white scale — the sharp border is the key contrast with eczema.</li><li><b>Extensor</b> distribution: elbows, knees, sacrum, scalp, retroauricular. Symmetrical.</li><li><b>Look at the nails and the scalp in everyone</b> — pitting, onycholysis, salmon patches, subungual hyperkeratosis. Nail involvement raises the likelihood of psoriatic arthritis.</li><li><b>Koebner phenomenon</b> — plaques arising in scars, scratches, or sites of trauma.</li><li>Variants: guttate (abrupt small drop-like lesions after streptococcal throat infection, often in young people), flexural/inverse (shiny, minimal scale — easily mistaken for candida or tinea), pustular, erythrodermic.</li></ul></div></div><div class="dz-skin"><div class="dz-skin-label">◐ In richly pigmented skin</div><ul><li>Plaques appear <b>violaceous, grey, or dark brown</b> rather than salmon-pink, and the scale often looks more prominent against the darker background.</li><li><b>Extent is greater at presentation</b> on average, and the diagnosis is more often delayed — partly because erythema-based recognition fails and partly because eczema is assumed first.</li><li><b>Post-inflammatory pigment alteration after clearance is pronounced and prolonged</b>, and patients often judge treatment as having failed when the plaque has actually resolved. Show them the texture has normalised even though the colour has not; set a months-long expectation.</li><li>Scalp involvement matters disproportionately with certain hair care practices — infrequent washing and heavy oils can complicate topical delivery. Ask how they wash their hair before prescribing a scalp regimen, or it will not be used.</li></ul></div><div class="dz-step"><div class="dz-step-num">2</div><div class="dz-step-body"><h3 id="look-beyond-the-skin-every-visit">Look beyond the skin — every visit</h3><ul><li><b>Psoriatic arthritis in up to a third.</b> Ask about inflammatory joint pain (morning stiffness over 30 minutes, improves with movement), dactylitis (sausage digit), enthesitis (heel, plantar fascia), and low back pain. Joint damage is irreversible — early referral changes outcomes. Consider a structured screen such as PEST.</li><li><b>Cardiometabolic risk is elevated</b> — screen for hypertension, dyslipidaemia, obesity and diabetes, particularly in moderate-to-severe disease. This is a genuine primary care responsibility, not an add-on.</li><li><b>Depression and anxiety are common and under-asked.</b> Visible disease, especially on hands and face, carries real social cost.</li><li>Ask about smoking and alcohol — both worsen disease and matter for systemic therapy choices.</li></ul></div></div><div class="dz-step"><div class="dz-step-num">3</div><div class="dz-step-body"><h3 id="treatment-in-primary-care">Treatment in primary care</h3><div class="dz-table-wrap"><table><thead><tr><th>Situation</th><th>Approach</th></tr></thead><tbody><tr><td>Limited plaque disease</td><td>Emollients + <b>potent topical corticosteroid with a vitamin D analogue</b> (e.g. calcipotriol/betamethasone). Combination products improve adherence</td></tr><tr><td>Scalp</td><td>Potent steroid in an appropriate vehicle (gel, foam, lotion); coal tar or salicylic acid to lift dense scale first, otherwise nothing penetrates</td></tr><tr><td>Flexural / facial</td><td><b>Mild</b> potency only; consider a calcineurin inhibitor. Skin here is thin and occluded</td></tr><tr><td>Guttate</td><td>Often self-limiting over weeks to months; treat streptococcal infection if present; emollients and topicals</td></tr><tr><td>Extensive (&gt;10% BSA), or failed topicals</td><td>Refer — phototherapy, systemic therapy, or biologics</td></tr></tbody></table></div></div></div><div class="dz-trap"><div class="dz-trap-label">⚠ Do not give systemic corticosteroids for psoriasis</div><p>Oral or intramuscular steroids may appear to help briefly, then cause a severe rebound on withdrawal — including transformation to <b>generalised pustular or erythrodermic psoriasis</b>, which is a medical emergency. This is a well-recognised and avoidable iatrogenic disaster. It is worth saying out loud to any patient who asks for 'a steroid injection' because it worked for a relative.</p></div><div class="dz-flag"><div class="dz-flag-label">🚩 Refer — and two that are emergencies</div><ul><li><b>Erythrodermic psoriasis</b> — near-total body erythema. Fluid loss, hypothermia, sepsis risk. <b>Same-day admission.</b></li><li><b>Generalised pustular psoriasis</b> — sheets of sterile pustules with fever and systemic upset. <b>Same-day admission.</b></li><li>Suspected psoriatic arthritis — rheumatology, urgently. Do not wait for skin control.</li><li>Extensive disease, failure of appropriate topical therapy, or major functional/psychological impact.</li><li>Involvement of hands, feet, face, or genitals disproportionate to body surface area — these are functionally severe regardless of percentage.</li><li>Diagnostic uncertainty, especially flexural disease not responding to antifungals.</li></ul></div>
+</section>
+<section class="dz-sec" id="pigmentation">
+<div class="dz-sec-head">
+<h2 id="melasma-pigmentation-disorders">Melasma &amp; Pigmentation Disorders</h2>
+<p class="dz-subtitle">Where photoprotection is the treatment and the shortcuts cause harm</p>
+</div>
+<div class="dz-atlas"><div class="dz-atlas-head">🔍 Visual atlas — opens in a new tab</div><a class="dz-atlas-link" href="https://dermnetnz.org/topics/melasma" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet</span><span class="dz-atlas-note">Photo series + a dedicated <b>“Variation in skin types”</b> section</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/postinflammatory-hyperpigmentation" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Post-inflammatory hyperpigmentation</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/vitiligo" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Vitiligo</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics/skin-phototype" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet · Skin phototype</span><span class="dz-atlas-note">Related pattern worth comparing side by side</span></a><a class="dz-atlas-link" href="https://dftbskindeep.com/" rel="noopener" target="_blank"><span class="dz-atlas-src">DFTB Skin Deep</span><span class="dz-atlas-note">Paediatric images across skin tones — search by diagnosis or body part</span></a><a class="dz-atlas-link" href="https://dermnetnz.org/topics" rel="noopener" target="_blank"><span class="dz-atlas-src">DermNet A–Z</span><span class="dz-atlas-note">Full index, if a direct link has moved</span></a></div>
+<div class="dz-slot" id="slot-pigmentation"><div class="dz-slot-frame"><svg fill="none" height="30" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="30"><rect height="14" rx="2" width="18" x="3" y="5"></rect><circle cx="8.5" cy="10" r="1.5"></circle><path d="M21 15l-5-5-6 6-2-2-5 5"></path></svg><span>Your clinical photo slot</span></div><p class="dz-slot-cap">Centrofacial melasma in good, even natural light — pigmentation photographs badly under clinic fluorescents, so this one is worth taking properly.</p></div><div class="dz-step"><div class="dz-step-num">1</div><div class="dz-step-body"><h3 id="recognise-melasma">Recognise melasma</h3><ul><li>Symmetrical, irregular, well-demarcated <b>brown to grey-brown macules and patches</b> on sun-exposed facial skin.</li><li><b>Patterns:</b> centrofacial (forehead, cheeks, nose, upper lip, chin) — commonest; malar; mandibular. Extrafacial forms occur on forearms and neck.</li><li>Predominantly women; strongly associated with <b>UV and visible light exposure, pregnancy, combined oral contraceptives, and hormonal therapy</b>. Family history is common.</li><li>Wood's lamp helps gauge depth: epidermal pigment accentuates under the lamp and responds better to treatment; dermal pigment does not accentuate and responds poorly. Setting this expectation early avoids a frustrated patient.</li></ul></div></div><div class="dz-skin"><div class="dz-skin-label">◐ Skin phototype is the whole story here</div><ul><li>Melasma and post-inflammatory hyperpigmentation are <b>substantially more common and more persistent</b> in phototypes IV–VI, and the psychosocial impact is frequently underestimated by clinicians who see it as cosmetic.</li><li><b>Visible light — not just UV — drives melasma in darker skin.</b> This is why an ordinary transparent sunscreen underperforms: it blocks UV but not visible light. <b>Tinted sunscreens containing iron oxides</b> block visible light and outperform non-tinted formulations in melasma. This is one of the most useful, least-known practice points in this whole guide.</li><li>Any inflammatory dermatosis leaves more pigment behind — which is why controlling acne, eczema, or tinea promptly <i>is</i> pigmentation management.</li><li><b>Never treat aggressively without considering post-inflammatory hyperpigmentation risk.</b> Over-vigorous peels, lasers, or irritating regimens in darker skin can cause exactly the pigmentation they were meant to treat, and it can be worse and longer-lasting than the original problem.</li></ul></div><div class="dz-trap"><div class="dz-trap-label">⚠ Unregulated skin-lightening products — ask every patient</div><p>Products marketed for skin lightening are widely used across the region, and a proportion of unregulated creams — bought informally, online, or brought from abroad — contain <b>mercury, potent corticosteroids, or unlabelled hydroquinone at high concentration</b>.</p><ul><li><b>Mercury:</b> nephrotoxicity, neurotoxicity, and paradoxical pigmentation. The WHO has repeatedly flagged mercury in skin-lightening creams as a public health problem.</li><li><b>Undisclosed potent topical steroids:</b> steroid-induced rosacea, perioral dermatitis, atrophy, striae, telangiectasia, steroid-modified tinea, and — with widespread long-term facial use — adrenal suppression. Withdrawal produces a severe rebound that drives patients back to the cream.</li><li><b>Prolonged high-concentration hydroquinone:</b> exogenous ochronosis — a blue-black paradoxical pigmentation that is very difficult to reverse.</li><li><b>Ask non-judgementally and specifically:</b> "what have you used on your face, including anything you bought yourself or that a relative gave you?" Patients frequently do not volunteer this, and they may not consider a cream to be a medicine. Check for SFDA registration where a product is named.</li></ul></div><div class="dz-step"><div class="dz-step-num">2</div><div class="dz-step-body"><h3 id="treatment-foundation-first-and-it-is-not-glamorous">Treatment — foundation first, and it is not glamorous</h3><ul><li><b>Rigorous daily photoprotection is the treatment, not an adjunct.</b> Nothing else works without it and relapse is otherwise guaranteed. Broad-spectrum SPF 50+, reapplied; <b>tinted with iron oxides</b> for visible-light protection; plus physical measures — shade, wide-brimmed hat, and the shading that headscarves already provide. UV index here is high year-round, and windows do not block visible light.</li><li><b>Remove the driver where possible:</b> review combined oral contraceptives and hormonal therapy; melasma of pregnancy often improves postpartum, so avoid aggressive treatment during pregnancy.</li><li><b>Topical therapy:</b> hydroquinone remains most effective; triple combination (hydroquinone + tretinoin + a corticosteroid) is more effective than single agents. Use for a <b>defined, limited period</b> with review — not indefinitely, given ochronosis risk. Non-hydroquinone options for maintenance or pregnancy: azelaic acid, niacinamide, vitamin C, cysteamine, tranexamic acid topically.</li><li><b>Gentle everything.</b> Irritation causes pigmentation. Stop scrubs, harsh cleansers, and layered actives.</li><li><b>Realistic expectations, stated at the first visit:</b> improvement takes 3–6 months, recurrence is the norm on sun re-exposure, and dermal pigment may not clear. A patient who expects clearance in a month will move on to an unregulated cream.</li></ul></div></div><div class="dz-step"><div class="dz-step-num">3</div><div class="dz-step-body"><h3 id="the-differential-not-all-facial-pigment-is-melasma">The differential — not all facial pigment is melasma</h3><div class="dz-table-wrap"><table><thead><tr><th>Condition</th><th>Distinguishing features</th></tr></thead><tbody><tr><td><b>Post-inflammatory hyperpigmentation</b></td><td>Follows the footprint of a preceding inflammatory lesion; not symmetrical in melasma's pattern. Treat the cause; time and photoprotection</td></tr><tr><td><b>Steroid-induced changes</b></td><td>History of topical steroid or lightening cream; telangiectasia, atrophy, perioral dermatitis</td></tr><tr><td>Lichen planus pigmentosus</td><td>Dark brown-grey, may involve neck and flexures; sometimes pruritic; may follow lichen planus</td></tr><tr><td>Erythema dyschromicum perstans</td><td>Slate-grey macules, trunk and limbs; erythematous border early</td></tr><tr><td>Riehl melanosis / pigmented contact dermatitis</td><td>Related to cosmetics or fragrance; reticulate brown pigment</td></tr><tr><td>Drug-induced pigmentation</td><td>Review the drug list — minocycline, amiodarone, antimalarials, chemotherapeutics</td></tr><tr><td><b>Acanthosis nigricans</b></td><td>Velvety thickened pigment in flexures/neck. <b>Screen for insulin resistance and diabetes</b></td></tr><tr><td><b>Vitiligo</b></td><td><b>De</b>pigmented (chalk-white, not brown), sharply defined, often periorificial/acral. Enormous psychosocial impact — screen thyroid, refer</td></tr></tbody></table></div></div></div><div class="dz-flag"><div class="dz-flag-label">🚩 Refer</div><ul><li>Diagnostic uncertainty, or pigmentation not fitting a recognised pattern.</li><li>Suspected exogenous ochronosis or steroid damage from prior products.</li><li>Refractory melasma after 6 months of correct treatment including genuine photoprotection.</li><li>Vitiligo — for diagnosis, treatment options, and because the psychological burden warrants proper support.</li><li><b>Any single pigmented lesion that is changing, irregular, asymmetric, or new in an adult</b> — this section is about diffuse pigmentation, not lesions. A changing solitary lesion needs assessment for melanoma, including acral and nail-unit sites, which are the presentations most often missed in darker skin.</li></ul></div>
+</section>
+<!-- ═══════════ USING YOUR OWN PHOTOS ═══════════ -->
+<section class="dz-sec" id="own-photos">
+<div class="dz-sec-head">
+<h2 id="adding-your-own-clinical-photographs">Adding your own clinical photographs</h2>
+<p class="dz-subtitle">The most valuable images on this site will be the ones from your own clinic</p>
+</div>
+<p style="font-size:0.93rem;color:var(--ink-soft);line-height:1.6;">Every condition above has a dashed photo slot. Filling those with images from your own patients solves the problem the atlases can't: they show the presentations, skin tones, and product histories of the population in front of you. Practically:</p>
+<div class="dz-step">
+<div class="dz-step-num">1</div>
+<div class="dz-step-body">
+<h3 id="consent-and-de-identification">Consent and de-identification</h3>
+<ul>
+<li>Written, specific consent for <b>educational use on a publicly accessible website</b> — general clinical photography consent usually does not cover this. Keep the signed form.</li>
+<li>Crop to the lesion. No faces, tattoos, jewellery, distinctive scars, hospital wristbands, or name labels in frame.</li>
+<li><b>Strip EXIF metadata</b> before upload — phone photos embed GPS coordinates and device identifiers.</li>
+<li>Follow your institution's and MOH policy; where a child is involved, guardian consent and extra caution on identifiability.</li>
+</ul>
+</div>
+</div>
+<div class="dz-step">
+<div class="dz-step-num">2</div>
+<div class="dz-step-body">
+<h3 id="taking-a-usable-clinical-photo">Taking a usable clinical photo</h3>
+<ul>
+<li><b>Even, natural light.</b> Clinic fluorescents distort colour badly, and colour is exactly what you're trying to convey — this matters most for pigmentation and for erythema in darker skin.</li>
+<li>Plain, uncluttered background. No flash directly on the lesion (specular glare hides scale and texture).</li>
+<li>Two frames per lesion: one wider for distribution, one close for morphology. A disposable ruler or coin gives scale.</li>
+<li>Same angle, distance and lighting on follow-up if you want a comparison to mean anything.</li>
+</ul>
+</div>
+</div>
+<div class="dz-step">
+<div class="dz-step-num">3</div>
+<div class="dz-step-body">
+<h3 id="getting-them-onto-the-site">Getting them onto the site</h3>
+<ul>
+<li>Send them to me and tell me which condition each belongs to — I'll fit them into the slots with captions, correct sizing, and alt text.</li>
+<li>Or add them yourself: create an <code>images/derm/</code> folder in the repo, upload, and the slot markup is ready to swap.</li>
+<li>Resize to about 1200 px on the long edge before uploading — full-resolution phone photos will make pages slow to load on clinic wifi.</li>
+</ul>
+</div>
 </div>
 </section>
-<section class="res-section res-bottom">
-<div class="wrap">
-<span class="res-tag">Global</span>
-<h2 id="international-guidelines-evidence">International guidelines &amp; evidence</h2>
-<div class="res-card"><div class="res-row"><div class="res-main"><span class="res-name">World Health Organization</span><span class="res-note">Global guidance, EMRO regional office for our region</span></div><a class="res-link" href="https://who.int" rel="noopener" target="_blank">who.int</a></div><div class="res-row"><div class="res-main"><span class="res-name">AAFP</span><span class="res-note">American Academy of Family Physicians — clinical recommendations, FP essentials</span></div><a class="res-link" href="https://aafp.org" rel="noopener" target="_blank">aafp.org</a></div><div class="res-row"><div class="res-main"><span class="res-name">NICE</span><span class="res-note">UK guidance — exceptionally practical primary care pathways</span></div><a class="res-link" href="https://nice.org.uk" rel="noopener" target="_blank">nice.org.uk</a></div><div class="res-row"><div class="res-main"><span class="res-name">CDC</span><span class="res-note">Infectious disease, travel health, immunization schedules</span></div><a class="res-link" href="https://cdc.gov" rel="noopener" target="_blank">cdc.gov</a></div><div class="res-row"><div class="res-main"><span class="res-name">Cochrane Library</span><span class="res-note">Systematic reviews — the evidence backbone</span></div><a class="res-link" href="https://cochranelibrary.com" rel="noopener" target="_blank">cochranelibrary.com</a></div><div class="res-row"><div class="res-main"><span class="res-name">USPSTF</span><span class="res-note">Screening &amp; prevention recommendations with evidence grades</span></div><a class="res-link" href="https://uspreventiveservicestaskforce.org" rel="noopener" target="_blank">uspreventiveservicestaskforce.org</a></div><div class="res-row"><div class="res-main"><span class="res-name">GINA</span><span class="res-note">Global asthma strategy — basis of our pediatric asthma guide</span></div><a class="res-link" href="https://ginasthma.org" rel="noopener" target="_blank">ginasthma.org</a></div><div class="res-row"><div class="res-main"><span class="res-name">GOLD</span><span class="res-note">COPD strategy</span></div><a class="res-link" href="https://goldcopd.org" rel="noopener" target="_blank">goldcopd.org</a></div><div class="res-row"><div class="res-main"><span class="res-name">American Diabetes Association</span><span class="res-note">Standards of Care — basis of our hypoglycemia protocols</span></div><a class="res-link" href="https://diabetes.org" rel="noopener" target="_blank">diabetes.org</a></div><div class="res-row"><div class="res-main"><span class="res-name">IDF &amp; DAR</span><span class="res-note">International Diabetes Federation — incl. the IDF-DAR Ramadan fasting guidance our Ramadan section will build on</span></div><a class="res-link" href="https://idf.org" rel="noopener" target="_blank">idf.org</a></div><div class="res-row"><div class="res-main"><span class="res-name">ESC</span><span class="res-note">European cardiology guidelines</span></div><a class="res-link" href="https://escardio.org" rel="noopener" target="_blank">escardio.org</a></div><div class="res-row"><div class="res-main"><span class="res-name">KDIGO</span><span class="res-note">Kidney disease guidelines — CKD staging</span></div><a class="res-link" href="https://kdigo.org" rel="noopener" target="_blank">kdigo.org</a></div></div>
-<p class="res-disclaimer">Links point to each organization's main site rather than deep pages, since guideline URLs move frequently. A few Saudi bodies are listed without links pending verification of their current official domains — if you know the correct ones, send them over and they'll be added.</p>
 </div>
 </section>
 <footer>
 <div class="wrap">
 <p>Built by a family physician for the family medicine community — free to use, share, and study from.</p>
+<p class="mono">Atlas links: DermNet (New Zealand Dermatological Society) · DFTB Skin Deep. Educational summary for clinicians — verify drug availability, strengths and licensing against local product information before prescribing.</p>
 </div>
 </footer>
+<script>
+/* ── Fingertip unit calculator ───────────────────────────── */
+(function(){
+  // FTU per application, by age band. Adult figures are the standard NICE/BNF set.
+  var FTU = {
+    'adult':  {'face-neck':2.5,'one-hand':1,'one-arm':3,'one-foot':2,'one-leg':6,'trunk-front':7,'trunk-back':7,'scalp':3,'genitals':0.5},
+    '6-10':   {'face-neck':2,'one-hand':1,'one-arm':2.5,'one-foot':1.25,'one-leg':4.5,'trunk-front':3.5,'trunk-back':5,'scalp':2,'genitals':0.5},
+    '3-5':    {'face-neck':1.5,'one-hand':0.75,'one-arm':2,'one-foot':1,'one-leg':3,'trunk-front':3,'trunk-back':3.5,'scalp':1.5,'genitals':0.5},
+    '1-2':    {'face-neck':1.5,'one-hand':0.5,'one-arm':1.5,'one-foot':0.75,'one-leg':2,'trunk-front':2,'trunk-back':3,'scalp':1.5,'genitals':0.25},
+    '3-6m':   {'face-neck':1,'one-hand':0.5,'one-arm':1,'one-foot':0.5,'one-leg':1.5,'trunk-front':1,'trunk-back':1.5,'scalp':1,'genitals':0.25}
+  };
+  var LABELS = [
+    ['face-neck','Face &amp; neck'],
+    ['scalp','Scalp'],
+    ['one-arm','Arm (each)'],
+    ['one-hand','Hand (each)'],
+    ['trunk-front','Trunk — front'],
+    ['trunk-back','Trunk — back'],
+    ['one-leg','Leg (each)'],
+    ['one-foot','Foot (each)'],
+    ['genitals','Genital area']
+  ];
+  var PAIRED = {'one-arm':1,'one-hand':1,'one-leg':1,'one-foot':1};
+
+  var regionsEl = document.getElementById('ftuRegions');
+  var ageEl = document.getElementById('ftuAge');
+  var freqEl = document.getElementById('ftuFreq');
+  var daysEl = document.getElementById('ftuDays');
+  var out = document.getElementById('ftuResult');
+  if(!regionsEl) return;
+
+  var html = '';
+  for (var i=0;i<LABELS.length;i++){
+    var key = LABELS[i][0], lab = LABELS[i][1];
+    var both = PAIRED[key] ? ' <span style="color:#4B5D59;font-size:.78rem">(both = ×2)</span>' : '';
+    html += '<label class="ftu-check"><input type="checkbox" data-region="'+key+'"><span>'+lab+both+'</span></label>';
+  }
+  regionsEl.innerHTML = html;
+
+  var boxes = regionsEl.querySelectorAll('input[data-region]');
+
+  function calc(){
+    var age = ageEl.value;
+    var tbl = FTU[age];
+    var ftuPerApp = 0, chosen = [];
+    for (var i=0;i<boxes.length;i++){
+      if (boxes[i].checked){
+        var k = boxes[i].getAttribute('data-region');
+        ftuPerApp += tbl[k];
+        chosen.push(k);
+      }
+    }
+    if (chosen.length === 0){
+      out.innerHTML = 'Select one or more body regions to calculate the quantity.';
+      return;
+    }
+    var freq = parseInt(freqEl.value,10);
+    var days = parseInt(daysEl.value,10);
+    if (!days || days < 1){ days = 1; }
+    var gPerApp = ftuPerApp * 0.5;
+    var total = gPerApp * freq * days;
+    var weekly = gPerApp * freq * 7;
+
+    // suggest a dispensable tube size
+    var sizes = [15,30,50,100,250,500];
+    var pick = sizes[sizes.length-1];
+    for (var s=0;s<sizes.length;s++){ if (sizes[s] >= total){ pick = sizes[s]; break; } }
+    var note = total > 500
+      ? 'That exceeds a single 500 g tub — dispense multiple units or review whether this area and duration need a potent topical.'
+      : 'Closest standard dispensing size: about <b>' + pick + ' g</b>.';
+
+    out.innerHTML =
+      '<b>' + ftuPerApp.toFixed(1) + ' FTU per application</b> = ' + gPerApp.toFixed(1) + ' g' +
+      '<span class="sub"><b>' + total.toFixed(0) + ' g</b> total for ' + freq + '× daily over ' + days + ' days' +
+      ' &nbsp;·&nbsp; about <b>' + weekly.toFixed(0) + ' g per week</b>.<br>' + note +
+      '<br>Emollient is separate and needs far more — budget roughly 250–500 g per week for widespread adult eczema.</span>';
+  }
+
+  for (var b=0;b<boxes.length;b++){ boxes[b].addEventListener('change', calc); }
+  ageEl.addEventListener('change', calc);
+  freqEl.addEventListener('change', calc);
+  daysEl.addEventListener('input', calc);
+  calc();
+})();
+
+/* ── UAS7 ────────────────────────────────────────────────── */
+(function(){
+  var grid = document.getElementById('uasGrid');
+  var out = document.getElementById('uasResult');
+  if(!grid) return;
+  var days = ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6','Day 7'];
+  var html = '';
+  for (var i=0;i<days.length;i++){
+    html += '<div class="ftu-row">'
+         +  '<label>'+days[i]+'</label>'
+         +  '<select data-uas-w><option value="0">Weals 0 — none</option><option value="1">Weals 1 — mild</option><option value="2">Weals 2 — moderate</option><option value="3">Weals 3 — intense</option></select>'
+         +  '<select data-uas-i><option value="0">Itch 0 — none</option><option value="1">Itch 1 — mild</option><option value="2">Itch 2 — moderate</option><option value="3">Itch 3 — intense</option></select>'
+         +  '</div>';
+  }
+  grid.innerHTML = html;
+  var ws = grid.querySelectorAll('[data-uas-w]');
+  var is = grid.querySelectorAll('[data-uas-i]');
+
+  function calc(){
+    var total = 0;
+    for (var i=0;i<ws.length;i++){
+      total += parseInt(ws[i].value,10) + parseInt(is[i].value,10);
+    }
+    var band, colour;
+    if (total === 0){ band = 'Urticaria-free'; colour = '#1F5C55'; }
+    else if (total <= 6){ band = 'Well-controlled urticaria'; colour = '#1F5C55'; }
+    else if (total <= 15){ band = 'Mild activity'; colour = '#C98A2C'; }
+    else if (total <= 27){ band = 'Moderate activity'; colour = '#C98A2C'; }
+    else { band = 'Severe activity'; colour = '#B0392C'; }
+    out.innerHTML = '<b>UAS7 = ' + total + ' / 42 — ' + band + '</b>'
+      + '<span class="sub">A fall of about 10 points is generally taken as a meaningful response. Persistent moderate-to-severe activity despite a fourfold antihistamine dose is the trigger for specialist referral.</span>';
+    out.style.borderColor = colour;
+  }
+  for (var i=0;i<ws.length;i++){ ws[i].addEventListener('change', calc); is[i].addEventListener('change', calc); }
+  calc();
+})();
+</script>
 </body>
 </html>
