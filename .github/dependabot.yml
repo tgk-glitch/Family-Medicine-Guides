@@ -1,0 +1,21 @@
+# Dependabot: GitHub checks the build tools for known security problems and
+# newer versions, and opens a "pull request" for you to review and approve.
+# Nothing changes on the site until you approve (Merge) it.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"   # the official steps in deploy.yml
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"              # Eleventy and its helper packages
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      eleventy-and-friends:
+        patterns: ["*"]
+    open-pull-requests-limit: 3

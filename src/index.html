@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Medicine Guides</title>
+<meta name="description" content="A family medicine library for Saudi primary care — field guides, urgent care protocols, and a full specialty map.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="search-index.js"></script>
+<style>
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+button,a{-webkit-tap-highlight-color:transparent;}
+img{max-width:100%;height:auto;}
+
+  :root{
+    --paper:#F4F6F2; --paper-2:#EBEEE7; --ink:#1B2A28; --ink-soft:#4B5D59;
+    --line:#D4DAD1; --teal:#1F5C55; --teal-deep:#123C38;
+    --amber:#C98A2C; --card:#FFFFFF; --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  .hero{padding:52px 0 36px;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--teal);margin:0 0 16px;
+  }
+  h1{
+    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2rem,5vw,3.1rem);
+    line-height:1.1;letter-spacing:-0.015em;margin:0 0 16px;color:var(--teal-deep);
+  }
+  h1 em{font-style:italic;color:var(--amber);}
+  .lede{font-size:1.03rem;line-height:1.6;color:var(--ink-soft);max-width:640px;margin:0 0 30px;}
+  #search{scroll-margin-top:90px;}
+  .search-box{
+    display:flex;align-items:center;gap:10px;
+    background:var(--card);border:1.5px solid var(--line);border-radius:14px;
+    padding:14px 16px;max-width:580px;transition:border-color .15s ease;
+  }
+  .search-box:focus-within{border-color:var(--teal);}
+  .search-box svg{flex-shrink:0;color:var(--ink-soft);}
+  .search-box input{
+    border:none;outline:none;background:none;font-family:'Inter',sans-serif;
+    font-size:1rem;color:var(--ink);width:100%;
+  }
+  .search-box input::placeholder{color:var(--ink-soft);}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--teal-deep);
+    background:var(--paper-2);border:1px solid var(--line);padding:7px 12px;
+    border-radius:100px;cursor:pointer;
+  }
+  .chip:hover{border-color:var(--teal);}
+  .results-panel{
+    max-width:580px;margin-top:10px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;overflow:hidden;display:none;
+  }
+  .results-panel.show{display:block;}
+  .result-item{
+    display:flex;gap:12px;padding:13px 16px;text-decoration:none;color:var(--ink);
+    border-bottom:1px solid var(--line);align-items:flex-start;
+  }
+  .result-item:last-child{border-bottom:none;}
+  .result-item:hover{background:var(--paper-2);}
+  .result-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+  .result-heading{font-weight:600;font-size:0.92rem;color:var(--teal-deep);margin:0 0 2px;display:block;}
+  .result-guide{
+    font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.04em;
+    text-transform:uppercase;color:var(--ink-soft);margin:0 0 4px;display:block;
+  }
+  .result-snippet{font-size:0.82rem;line-height:1.45;color:var(--ink-soft);margin:0;display:block;}
+  .results-more{
+    padding:10px 16px;font-size:0.78rem;color:var(--ink-soft);text-align:center;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .quick{padding:4px 0 8px;}
+  .section-label{
+    font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--ink-soft);margin:0 0 16px;display:flex;align-items:center;gap:10px;
+  }
+  .section-label::after{content:'';flex:1;height:1px;background:var(--line);}
+  .quick-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .quick-pill{
+    display:flex;align-items:center;gap:10px;text-decoration:none;
+    background:var(--card);border:1px solid var(--line);border-radius:100px;
+    padding:10px 18px 10px 12px;color:var(--ink);font-weight:600;font-size:0.88rem;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .quick-pill:hover{border-color:var(--pc,var(--teal));transform:translateY(-1px);}
+  .quick-dot{width:10px;height:10px;border-radius:50%;background:var(--pc,var(--teal));flex-shrink:0;}
+  .library{padding:26px 0 80px;}
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;}
+  .cat-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 18px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;
+    gap:11px;transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  }
+  .cat-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(18,60,56,0.12);border-color:var(--tag-color,var(--teal));}
+  .cat-icon{
+    width:42px;height:42px;border-radius:11px;
+    background:#EDF2EE;
+    background:color-mix(in srgb, var(--tag-color,#1F5C55) 13%, white);
+    color:var(--tag-color,#1F5C55);display:flex;align-items:center;justify-content:center;
+  }
+  .cat-card h3{font-family:'Fraunces',serif;font-size:1.06rem;font-weight:600;margin:0;color:var(--teal-deep);line-height:1.25;}
+  .cat-card p{font-size:0.82rem;line-height:1.5;color:var(--ink-soft);margin:0;}
+  .cat-count{
+    font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.05em;
+    text-transform:uppercase;color:var(--tag-color,var(--teal));margin-top:auto;
+  }
+  .no-results{
+    display:none;padding:28px 22px;background:var(--card);border:1px dashed var(--line);
+    border-radius:var(--radius);color:var(--ink-soft);font-size:0.92rem;text-align:center;margin-top:14px;
+  }
+  .no-results.show{display:block;}
+  footer{border-top:1px solid var(--line);padding:32px 0 48px;}
+  footer p{font-size:0.85rem;color:var(--ink-soft);line-height:1.6;margin:0 0 6px;}
+  footer .mono{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--ink-soft);}
+</style>
+<style>/* FMG-WRAP-FIX */ .wrap{width:100%;min-width:0;}</style>
+</head>
+<body>
+
+{% include "nav.html" %}
+
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">A family medicine library · Saudi primary care</p>
+    <h1>Family medicine,<br>made to <em>stick</em>.</h1>
+    <p class="lede">Field guides, urgent care protocols, and a full specialty map for family physicians — from the exam room to the ER handover, including the medicine our patients actually practice at home.</p>
+    <div id="search">
+      <div class="search-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="text" id="fmgHeroSearch" placeholder="Search guides &amp; specialties — GINA, HEART, hijama, Ramadan…" autocomplete="off">
+      </div>
+      <div class="chips">
+        <span class="chip" data-q="GINA">GINA 2026</span>
+        <span class="chip" data-q="HEART">HEART score</span>
+        <span class="chip" data-q="Beers">Beers Criteria</span>
+        <span class="chip" data-q="PRAM">PRAM</span>
+        <span class="chip" data-q="Ramadan">Ramadan</span>
+        <span class="chip" data-q="hijama">Hijama</span>
+        <span class="chip" data-q="fingertip">Fingertip unit</span>
+        <span class="chip" data-q="OSCE">OSCE stations</span>
+        <span class="chip" data-q="PHQ-9">PHQ-9</span>
+      </div>
+      <div class="results-panel" id="resultsPanel"></div>
+    </div>
+  </div>
+</section>
+
+<section class="quick">
+  <div class="wrap">
+    <p class="section-label">Open now</p>
+    <div class="quick-row">
+      <a href="geriatrics.html" class="quick-pill" style="--pc:#1F5C55"><span class="quick-dot"></span>Geriatrics Field Guide</a>
+      <a href="adult-asthma.html" class="quick-pill" style="--pc:#2C7A6B"><span class="quick-dot"></span>Adult Asthma</a>
+      <a href="asthma.html" class="quick-pill" style="--pc:#C98A2C"><span class="quick-dot"></span>Pediatric Asthma</a>
+      <a href="dermatology.html" class="quick-pill" style="--pc:#B08A2C"><span class="quick-dot"></span>Dermatology</a>
+      <a href="osce.html" class="quick-pill" style="--pc:#6B4A8A"><span class="quick-dot"></span>OSCE Station Bank</a>
+      <a href="mental-health.html" class="quick-pill" style="--pc:#5C4A8A"><span class="quick-dot"></span>Mental Health</a>
+      <a href="counselling.html" class="quick-pill" style="--pc:#9C4F2E"><span class="quick-dot"></span>Counselling · EN / ع</a>
+      <a href="urgent-care.html" class="quick-pill" style="--pc:#B0392C"><span class="quick-dot"></span>Urgent Care · 15 protocols</a>
+      <a href="patients.html" class="quick-pill" style="--pc:#2B6A8C"><span class="quick-dot"></span>For patients · للمرضى</a>
+    </div>
+  </div>
+</section>
+
+<!-- FMG-PUBLIC:START -->
+<style>
+  .fmg-public{padding:6px 0 18px;}
+  .fmg-public-card{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+    background:#EAF2F7;border:1.5px solid #BCD3E1;border-radius:18px;padding:20px 22px;text-decoration:none;color:#1B2A28;}
+  .fmg-public-card:hover{border-color:#2B6A8C;}
+  .fmg-public-text{min-width:0;flex:1 1 320px;}
+  .fmg-public-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:#2B6A8C;margin:0 0 6px;}
+  .fmg-public-h{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;line-height:1.25;color:#123C38;margin:0 0 4px;}
+  .fmg-public-ar{font-family:'IBM Plex Sans Arabic','Inter',sans-serif;font-weight:600;font-size:1.08rem;color:#123C38;margin:0 0 6px;text-align:left;}
+  .fmg-public-p{font-size:0.88rem;line-height:1.55;color:#4B5D59;margin:0;}
+  .fmg-public-go{flex-shrink:0;background:#2B6A8C;color:#fff;font-weight:600;font-size:0.86rem;border-radius:10px;padding:10px 16px;}
+</style>
+<section class="fmg-public" aria-label="For patients and families">
+  <div class="wrap">
+    <a class="fmg-public-card" href="patients.html">
+      <span class="fmg-public-text">
+        <span class="fmg-public-eyebrow" style="display:block">For patients &amp; families</span>
+        <span class="fmg-public-h" style="display:block">Your health, explained clearly</span>
+        <span class="fmg-public-ar" style="display:block" lang="ar" dir="rtl">صحتك… بكلمات واضحة</span>
+        <span class="fmg-public-p" style="display:block">Leaflets and WhatsApp-size summary cards — iron deficiency and fasting Ramadan with diabetes — plus home blood pressure and blood sugar guides with record sheets to bring to every visit, and urgent help numbers.</span>
+      </span>
+      <span class="fmg-public-go">Open leaflets →</span>
+    </a>
+  </div>
+</section>
+<!-- FMG-PUBLIC:END -->
+
+<section class="library">
+  <div class="wrap">
+    <p class="section-label">Browse by specialty</p>
+    <div class="cat-grid" id="catGrid">
+
+      <a href="categories.html#cat-urgent" class="cat-card" style="--tag-color:#B0392C" data-tags="urgent care &amp; emergencies bls: adult &amp; pediatric  anaphylaxis incl. epinephrine dose calculator chest pain incl. heart score calculator tia &amp; stroke  hypertensive crisis  adult status epilepticus  adult hypoglycemia  asthma exacerbation (adult, sina)  acute abdomen &amp; renal colic  pediatric status epilepticus  pediatric febrile convulsion  febrile infant ≤90 days  pediatric gastroenteritis incl. dehydration picker pediatric hypoglycemia  bronchiolitis &amp; croup incl. pram calculator adult sepsis recognition  burns &amp; wound care  epistaxis  head injury triage  heat illness hajj-season relevant">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L3 7v6c0 5 4 9 9 9s9-4 9-9V7l-9-5z" stroke-linejoin="round"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg></div>
+        <h3>Urgent Care &amp; Emergencies</h3>
+        <p>Point-of-care protocols. Red flags first, condensed steps, live calculators.</p>
+        <span class="cat-count">15 live · 5 planned</span>
+      </a>
+
+      <a href="categories.html#cat-peds" class="cat-card" style="--tag-color:#C98A2C" data-tags="pediatrics pediatric asthma field guide gina 2026 · sina c-act · pram calculator bronchiolitis &amp; croup urgent care protocol community-acquired pneumonia  neonatal jaundice  newborn screening in ksa  infant feeding &amp; growth faltering  fever in the infant ≤90 days urgent care protocol fever without source (older child)  acute otitis media  constipation  iron deficiency anemia  adhd assessment  saudi immunization schedule  well-child visits &amp; milestones ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-3.5 3-6 7-6s7 2.5 7 6" stroke-linecap="round"/></svg></div>
+        <h3>Pediatrics</h3>
+        <p>From newborn to adolescent — growth, common presentations, and the Saudi schedule.</p>
+        <span class="cat-count">3 live · 11 planned</span>
+      </a>
+
+      <a href="categories.html#cat-geri" class="cat-card" style="--tag-color:#1F5C55" data-tags="geriatrics the geriatrics field guide ihi 4ms · beers · stopp/start · full teaching guide falls assessment &amp; prevention  dementia workup in primary care  deprescribing in practice  frailty &amp; comprehensive geriatric assessment  advance care planning ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a5 5 0 015 5v2a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6M17 14v7" stroke-linecap="round"/></svg></div>
+        <h3>Geriatrics</h3>
+        <p>Age-friendly care built on the 4Ms — plus the syndromes that fill a family clinic.</p>
+        <span class="cat-count">1 live · 5 planned</span>
+      </a>
+
+      <a href="categories.html#cat-cardio" class="cat-card" style="--tag-color:#8A3A4A" data-tags="cardiovascular chest pain heart score hypertensive crisis  hypertension — chronic management saudi htn guideline based dyslipidemia &amp; ascvd risk  stable angina / chronic coronary syndrome  atrial fibrillation cha₂ds₂-vasc calculator planned heart failure in primary care  palpitations workup ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21C7 17 3 13.5 3 9.5 3 6.5 5.5 4 8.5 4c1.7 0 3 .8 3.5 2 .5-1.2 1.8-2 3.5-2C18.5 4 21 6.5 21 9.5c0 4-4 7.5-9 11.5z" stroke-linejoin="round"/></svg></div>
+        <h3>Cardiovascular</h3>
+        <p>The bread and butter of chronic care — pressure, lipids, rhythm, and risk.</p>
+        <span class="cat-count">2 live · 6 planned</span>
+      </a>
+
+      <a href="categories.html#cat-endo" class="cat-card" style="--tag-color:#4A6B8A" data-tags="endocrine &amp; metabolic adult hypoglycemia  pediatric hypoglycemia  type 2 diabetes — diagnosis &amp; management  prediabetes &amp; prevention  insulin initiation in primary care  thyroid disorders  obesity management  vitamin d deficiency highly prevalent in ksa">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2" stroke-linecap="round"/></svg></div>
+        <h3>Endocrine &amp; Metabolic</h3>
+        <p>Diabetes is the defining chronic disease of Saudi primary care — this is its home.</p>
+        <span class="cat-count">2 live · 6 planned</span>
+      </a>
+
+      <a href="categories.html#cat-resp" class="cat-card" style="--tag-color:#2C7A6B" data-tags="respiratory (adult) adult asthma — chronic management sina 2024 · gina 2026 · incl. act calculator asthma exacerbation (sina) urgent care protocol copd  asthma-copd overlap  allergic rhinitis  chronic cough workup  smoking cessation incl. shisha/bukhoor/medwakh counseling obstructive sleep apnea screening ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v7M12 11c0 3-2 5-5 5H5v-4c0-3 2-6 5-6M12 11c0 3 2 5 5 5h2v-4c0-3-2-6-5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Respiratory (Adult)</h3>
+        <p>Airways, allergy, and the single highest-yield preventive act: smoking cessation.</p>
+        <span class="cat-count">3 live · 5 planned</span>
+      </a>
+
+      <a href="categories.html#cat-womens" class="cat-card" style="--tag-color:#7A4A6B" data-tags="women&#x27;s health antenatal care schedule  pcos  contraception counseling  menopause &amp; hrt  recurrent uti in women  abnormal uterine bleeding  breast complaint triage ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6" stroke-linecap="round"/></svg></div>
+        <h3>Women's Health</h3>
+        <p>Antenatal care through menopause — the visits that anchor family practice.</p>
+        <span class="cat-count">7 planned</span>
+      </a>
+
+      <a href="categories.html#cat-mens" class="cat-card" style="--tag-color:#3E5C7A" data-tags="men&#x27;s health bph / lower urinary tract symptoms  erectile dysfunction  psa screening counseling ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="14" r="5"/><path d="M14 10l6-6M15 4h5v5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Men's Health</h3>
+        <p>The visits men delay — LUTS, sexual health, and screening conversations.</p>
+        <span class="cat-count">3 planned</span>
+      </a>
+
+      <a href="mental-health.html" class="cat-card" style="--tag-color:#5C4A8A" data-tags="mental health depression anxiety phq-9 phq9 gad-7 gad7 insomnia isi cbt-i sleep somatic somatisation suicide risk safety planning schizophrenia psychosis borderline personality disorder bpd dbt emotion regulation self-harm antipsychotic metabolic monitoring ssri benzodiazepine stigma">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21v-2H6c-1 0-2-1-2-2v-3H3l2-3c0-4 3-7 7-7 4.5 0 8 3 8 7.5S17 19 13 19v2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Mental Health</h3>
+        <p>Depression and anxiety present in every clinic — often through the body first.</p>
+        <span class="cat-count">7 live · 7 planned</span>
+      </a>
+      <!-- FMG-CAT-COUNSEL:CARD --><a href="categories.html#cat-counsel" class="cat-card" style="--tag-color:#9C4F2E" data-tags="counselling counseling communication motivational interviewing mi oars change talk stages of change transtheoretical five a&#x27;s 5a frames brief intervention bathe psychosocial smoking cessation tobacco shisha medwakh nicotine varenicline breaking bad news spikes shared decision making adherence">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke-linejoin="round"/><path d="M19 9h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1v3l-3.5-3H12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Counselling &amp; Communication</h3>
+        <p>The consultation is the treatment — behaviour change, difficult news and shared decisions.</p>
+        <span class="cat-count">6 live · 5 planned</span>
+      </a>
+
+      <a href="categories.html#cat-msk" class="cat-card" style="--tag-color:#A85C32" data-tags="musculoskeletal low back pain red flags &amp; imaging rules knee osteoarthritis  shoulder pain  gout  neck pain  fibromyalgia ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4v6c0 2 1 3 3 3h4c2 0 3 1 3 3v4" stroke-linecap="round"/><circle cx="7" cy="4" r="2"/><circle cx="17" cy="20" r="2"/></svg></div>
+        <h3>Musculoskeletal</h3>
+        <p>Back, knees, shoulders — the mechanical complaints that fill every list.</p>
+        <span class="cat-count">6 planned</span>
+      </a>
+
+      <a href="categories.html#cat-derm" class="cat-card" style="--tag-color:#B08A2C" data-tags="dermatology eczema / atopic dermatitis incl. fingertip-unit calculator acne vulgaris grading &amp; antibiotic stewardship fungal skin infections tinea by site · steroid-modified tinea urticaria incl. uas7 calculator psoriasis incl. psa and cardiometabolic screening melasma &amp; pigmentation disorders incl. unregulated lightening creams topical steroid potency &amp; quantity potency classes + how much to prescribe adding your own clinical photos consent, technique, de-identification scabies &amp; infestations high yield in hajj/umrah season skin cancer &amp; the changing lesion incl. acral/nail melanoma in darker skin rosacea &amp; perioral dermatitis incl. steroid-induced vitiligo  hair loss &amp; alopecia  leg ulcers &amp; venous eczema  contact dermatitis &amp; patch testing incl. black henna / ppd">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="14" cy="14" r="1" fill="currentColor"/><circle cx="13" cy="8.5" r="0.8" fill="currentColor"/></svg></div>
+        <h3>Dermatology</h3>
+        <p>The most visual specialty in the clinic — pattern recognition, skin of colour, and safe steroids.</p>
+        <span class="cat-count">8 live · 7 planned</span>
+      </a>
+
+      <a href="categories.html#cat-gi" class="cat-card" style="--tag-color:#6B7A3E" data-tags="gastroenterology acute abdomen &amp; renal colic  pediatric gastroenteritis  gerd &amp; dyspepsia  h. pylori — test &amp; treat  irritable bowel syndrome  chronic constipation  metabolic-associated fatty liver disease ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5c0 2 1 3 3 3s4 1 4 4-2 4-4 4H8c-2 0-3-1-3-3" stroke-linecap="round"/><path d="M15 3v3" stroke-linecap="round"/></svg></div>
+        <h3>Gastroenterology</h3>
+        <p>Reflux to the right iliac fossa — plus the fatty liver epidemic.</p>
+        <span class="cat-count">2 live · 5 planned</span>
+      </a>
+
+      <a href="categories.html#cat-infx" class="cat-card" style="--tag-color:#7A3E3E" data-tags="infectious disease urti &amp; antibiotic stewardship  adult uti  tb screening &amp; latent tb  hajj &amp; umrah health vaccination requirements, mass-gathering medicine brucellosis endemic — raw milk counseling dengue awareness western region">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" stroke-linecap="round"/></svg></div>
+        <h3>Infectious Disease</h3>
+        <p>Stewardship, screening, and the infections that are distinctly Saudi.</p>
+        <span class="cat-count">6 planned</span>
+      </a>
+
+      <a href="categories.html#cat-renal" class="cat-card" style="--tag-color:#3E7A7A" data-tags="renal &amp; urology renal colic  ckd staging &amp; referral  hematuria workup  kidney stone prevention ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 4C7 4 5 6.5 5 10s2 6 4 6c1 0 1.5-.5 1.5-1.5V13c0-3 .5-9-.5-9zM14 4c3 0 5 2.5 5 6s-2 6-4 6c-1 0-1.5-.5-1.5-1.5V13c0-3-.5-9 .5-9z" stroke-linejoin="round"/><path d="M11 16v4M13 16v4" stroke-linecap="round"/></svg></div>
+        <h3>Renal &amp; Urology</h3>
+        <p>Stones and staging — when to watch, when to refer.</p>
+        <span class="cat-count">1 live · 3 planned</span>
+      </a>
+
+      <a href="categories.html#cat-neuro" class="cat-card" style="--tag-color:#4A4D8C" data-tags="neurology tia &amp; stroke  adult status epilepticus  headache &amp; migraine  dizziness &amp; vertigo  peripheral neuropathy  bell&#x27;s palsy ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c4 0 7 3 7 7 0 2-1 3.5-2 4.5V21h-8v-3H7c-1 0-2-1-2-2v-2H4l1.5-2.5C5 7 8 3 12 3z" stroke-linejoin="round"/><path d="M10 9h4M12 7v4" stroke-linecap="round"/></svg></div>
+        <h3>Neurology</h3>
+        <p>Headache, dizziness, and the deficits that can't wait.</p>
+        <span class="cat-count">2 live · 4 planned</span>
+      </a>
+
+      <a href="categories.html#cat-ent" class="cat-card" style="--tag-color:#8A6B3A" data-tags="ent &amp; eye acute sinusitis  otitis media &amp; externa  red eye triage  hearing loss workup  epistaxis ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10a6 6 0 0112 0c0 2-1 3-2 4s-1.5 2-1.5 3.5a2.5 2.5 0 01-5 0" stroke-linecap="round"/><path d="M9.5 10a2.5 2.5 0 015 0" stroke-linecap="round"/></svg></div>
+        <h3>ENT &amp; Eye</h3>
+        <p>Ears, sinuses, and the red eye you must not miss.</p>
+        <span class="cat-count">5 planned</span>
+      </a>
+
+      <a href="categories.html#cat-heme" class="cat-card" style="--tag-color:#7A2C4A" data-tags="hematology iron deficiency anemia  sickle cell disease in primary care endemic in eastern &amp; southern regions thalassemia &amp; the premarital screening program mandatory in ksa g6pd deficiency drug &amp; fava bean counseling">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 7 6 11a6 6 0 01-12 0c0-4 6-11 6-11z" stroke-linejoin="round"/></svg></div>
+        <h3>Hematology</h3>
+        <p>Anemia and the hemoglobinopathies that shape Saudi preventive medicine.</p>
+        <span class="cat-count">4 planned</span>
+      </a>
+
+      <a href="categories.html#cat-prevent" class="cat-card" style="--tag-color:#2C5C7A" data-tags="preventive care &amp; screening periodic health examination (saudi)  cancer screening summary  adult immunization  premarital screening program  travel medicine basics ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Preventive Care &amp; Screening</h3>
+        <p>The quiet work that saves the most lives — organized, scheduled, documented.</p>
+        <span class="cat-count">5 planned</span>
+      </a>
+
+      <a href="categories.html#cat-tcam" class="cat-card" style="--tag-color:#5C7A3E" data-tags="traditional &amp; complementary medicine hijama (wet cupping) evidence, safety, nccam regulation in ksa prophetic medicine in practice black seed, honey, dates, olive oil — evidence &amp; counseling herbal safety &amp; drug interactions e.g. nigella sativa with anticoagulants ruqyah &amp; spiritual healing coexisting with clinical care, red flags for delayed presentation talking with patients about tcam respectful, non-dismissive counseling frameworks">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c-5 0-8-3-8-8 0-6 5-10 8-10s8 4 8 10c0 5-3 8-8 8z" stroke-linejoin="round"/><path d="M12 7v10M12 11c-2 0-3.5-1-4-2.5M12 14c2 0 3.5-1 4-2.5" stroke-linecap="round"/></svg></div>
+        <h3>Traditional &amp; Complementary Medicine</h3>
+        <p>What patients actually use — the evidence, the safety profile, the interactions, and how to counsel with respect.</p>
+        <span class="cat-count">5 planned</span>
+      </a>
+
+      <a href="categories.html#cat-exams" class="cat-card" style="--tag-color:#6B4A8A" data-tags="osce · ospe · soe hypertension  diabetes mellitus  chest pain  headache  stroke / tia  depression  antenatal care  well baby clinic  acute abdomen  red eye  pediatric asthma osce stations four stations in the existing field guide geriatrics osce-style cases case-based practice throughout full pipeline directory every remaining station title, grouped by specialty, ready to build saudi board of family medicine — format &amp; blueprint  timing strategy &amp; station technique  ospe spot-diagnosis bank will draw on the dermatology atlas and photo slots soe / structured oral exam question banks ">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3" stroke-linejoin="round"/><path d="M9 10l1.5 1.5L13 9M9 15h6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>OSCE · OSPE · SOE</h3>
+        <p>107 stations from a full OSCE manual — 10 built in full, 97 staged and page-referenced.</p>
+        <span class="cat-count">13 live · 4 planned</span>
+      </a>
+
+      <a href="categories.html#cat-ramadan" class="cat-card" style="--tag-color:#8A5C2C" data-tags="ramadan &amp; fasting medicine diabetes &amp; fasting idf-dar risk categories, calculator planned medication timing in ramadan  chronic disease &amp; fasting htn, ckd, cardiac patients pregnancy &amp; fasting  exemptions from fasting counseling with fiqh-aware sensitivity">
+        <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 13.5A7.5 7.5 0 1110.5 5 6 6 0 0019 13.5z" stroke-linejoin="round"/><path d="M17 4l.6 1.6L19 6l-1.4.6L17 8l-.6-1.4L15 6l1.4-.4L17 4z" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Ramadan &amp; Fasting Medicine</h3>
+        <p>A month that changes every prescription — risk stratification, timing, and safe fasting.</p>
+        <span class="cat-count">5 planned</span>
+      </a>
+    </div>
+    <p class="no-results" id="noResults">No specialty matches that search — but the section results above may. The library grows monthly.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Built by a family physician for the family medicine community — free to use, share, and study from.</p>
+    <p class="mono">Live guides open instantly · planned topics are in the pipeline · <a href="categories.html" style="color:inherit">full directory</a> · <a href="resources.html" style="color:inherit">resources</a></p>
+  </div>
+{% include "credit.html" %}
+</footer>
+
+<script>
+  var input = document.getElementById('fmgHeroSearch');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#catGrid .cat-card'));
+  var noResults = document.getElementById('noResults');
+  var panel = document.getElementById('resultsPanel');
+  var INDEX = window.FMG_SEARCH_INDEX || [];
+  var MAX_RESULTS = 8;
+
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function filterCards(q){
+    var visible = 0;
+    for (var i=0;i<cards.length;i++){
+      var card = cards[i];
+      var text = (card.innerText + ' ' + (card.getAttribute('data-tags') || '')).toLowerCase();
+      var match = q === '' || text.indexOf(q) !== -1;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    }
+    noResults.classList.toggle('show', q !== '' && visible === 0);
+  }
+  function searchSections(q){
+    if (q === '') { panel.classList.remove('show'); panel.innerHTML=''; return; }
+    var scored = [];
+    for (var i=0;i<INDEX.length;i++){
+      var item = INDEX[i];
+      var heading = item.heading.toLowerCase();
+      var snippet = (item.snippet || '').toLowerCase();
+      var score = 0;
+      if (heading.indexOf(q) !== -1) score = 2;
+      else if (snippet.indexOf(q) !== -1) score = 1;
+      if (score > 0) scored.push({item:item, score:score});
+    }
+    scored.sort(function(a,b){ return b.score - a.score; });
+    if (scored.length === 0){ panel.classList.remove('show'); panel.innerHTML=''; return; }
+    var shown = scored.slice(0, MAX_RESULTS);
+    var out = '';
+    for (var k=0;k<shown.length;k++){
+      var it = shown[k].item;
+      out += '<a class="result-item" href="' + it.guide + '#' + it.id + '">'
+        + '<span class="result-dot" style="background:' + it.tag + '"></span>'
+        + '<span><span class="result-guide">' + escapeHtml(it.guideTitle) + '</span>'
+        + '<span class="result-heading">' + escapeHtml(it.heading) + '</span>'
+        + '<span class="result-snippet">' + escapeHtml(it.snippet) + (it.snippet ? '…' : '') + '</span>'
+        + '</span></a>';
+    }
+    if (scored.length > MAX_RESULTS){
+      out += '<div class="results-more">' + (scored.length - MAX_RESULTS) + ' more matches — refine your search</div>';
+    }
+    panel.innerHTML = out;
+    panel.classList.add('show');
+  }
+  function runSearch(raw){
+    var q = raw.replace(/^\s+|\s+$/g,'').toLowerCase();
+    filterCards(q);
+    searchSections(q);
+  }
+  input.addEventListener('input', function(){ runSearch(input.value); });
+  var chips = document.querySelectorAll('.chip');
+  for (var c=0;c<chips.length;c++){
+    (function(chip){
+      chip.addEventListener('click', function(){
+        input.value = chip.getAttribute('data-q');
+        runSearch(input.value);
+        input.focus();
+      });
+    })(chips[c]);
+  }
+  document.addEventListener('click', function(e){
+    if (!panel.contains(e.target) && e.target !== input) panel.classList.remove('show');
+  });
+  input.addEventListener('focus', function(){
+    if (input.value.replace(/\s/g,'') !== '') panel.classList.add('show');
+  });
+  if (window.location.hash === '#search'){
+    window.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('search').scrollIntoView();
+      input.focus();
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Topic Directory — Family Medicine Guides</title>
+<meta content="Every topic in the library — live guides and the full planned roadmap across 20 family medicine specialties." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+button,a{-webkit-tap-highlight-color:transparent;}
+img{max-width:100%;height:auto;}
+
+  :root{
+    --paper:#F4F6F2; --paper-2:#EBEEE7; --ink:#1B2A28; --ink-soft:#4B5D59;
+    --line:#D4DAD1; --teal:#1F5C55; --teal-deep:#123C38; --amber:#C98A2C; --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  h2,h3{scroll-margin-top:170px;}
+  .dir-cat{scroll-margin-top:150px;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+  .dir-hero{padding:44px 0 24px;}
+  .dir-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin:0 0 14px;}
+  .dir-hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,4.5vw,2.7rem);line-height:1.12;margin:0 0 12px;color:var(--teal-deep);}
+  .dir-hero p{font-size:1rem;line-height:1.6;color:var(--ink-soft);max-width:620px;margin:0;}
+  .dir-jump{
+    position:sticky;top:64px;z-index:80;background:rgba(244,246,242,0.96);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);padding:12px 0;
+  }
+  .dir-jump-inner{max-width:860px;margin:0 auto;padding:0 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;}
+  .dir-chip{
+    --tag-color:#1F5C55;flex-shrink:0;font-weight:600;font-size:0.76rem;
+    color:var(--tag-color);
+    background:#EDF2EE;background:color-mix(in srgb, var(--tag-color) 10%, white);
+    border:1px solid var(--line);border:1px solid color-mix(in srgb, var(--tag-color) 30%, white);
+    padding:7px 12px;border-radius:100px;text-decoration:none;white-space:nowrap;
+  }
+  .dir-list{padding:26px 0 90px;display:flex;flex-direction:column;gap:26px;}
+  .dir-cat{
+    --tag-color:#1F5C55;background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:24px 24px 26px;position:relative;overflow:hidden;
+  }
+  .dir-cat::before{content:'';position:absolute;top:0;left:0;width:6px;height:100%;background:var(--tag-color);}
+  .dir-cat-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:8px;}
+  .dir-cat-icon{
+    flex-shrink:0;width:46px;height:46px;border-radius:12px;
+    background:#EDF2EE;background:color-mix(in srgb, var(--tag-color) 13%, white);
+    color:var(--tag-color);display:flex;align-items:center;justify-content:center;
+  }
+  .dir-cat h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.45rem;margin:0 0 4px;color:var(--teal-deep);}
+  .dir-blurb{font-size:0.9rem;color:var(--ink-soft);line-height:1.55;margin:0 0 4px;}
+  .dir-count{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--tag-color);margin:0;}
+  .dir-group{
+    font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--ink-soft);margin:20px 0 6px;font-weight:500;
+  }
+  .dir-row{
+    display:flex;align-items:center;gap:12px;padding:12px 4px;
+    border-bottom:1px solid #E7EAE4;text-decoration:none;color:var(--ink);
+  }
+  .dir-row:last-child{border-bottom:none;}
+  .dir-live:hover{background:var(--paper-2);border-radius:8px;}
+  .dir-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+  .dir-text{flex:1;min-width:0;}
+  .dir-title{font-weight:600;font-size:0.94rem;display:block;}
+  .dir-sub{font-size:0.78rem;color:var(--ink-soft);display:block;margin-top:1px;}
+  .dir-open{font-size:0.8rem;font-weight:600;color:var(--tag-color);flex-shrink:0;}
+  .dir-planned{opacity:0.62;}
+  .dir-pill{
+    font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.05em;
+    text-transform:uppercase;color:var(--ink-soft);background:var(--paper-2);
+    padding:3px 9px;border-radius:100px;flex-shrink:0;
+  }
+  footer{border-top:1px solid var(--line);padding:32px 0 48px;}
+  footer p{font-size:0.85rem;color:var(--ink-soft);line-height:1.6;margin:0 0 6px;}
+  footer .mono{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--ink-soft);}
+</style>
+<style>/* FMG-WRAP-FIX */ .wrap{width:100%;min-width:0;}</style>
+</head>
+<body>
+{% include "nav.html" %}
+<section class="dir-hero">
+<div class="wrap">
+<p class="dir-eyebrow">Topic directory</p>
+<h1>The whole map, one page.</h1>
+<p>Every specialty and every topic — live guides open instantly, planned topics show what's in the pipeline. This is the library's roadmap as much as its index.</p>
+</div>
+</section>
+<nav class="dir-jump">
+<div class="dir-jump-inner">
+<a class="dir-chip" href="#cat-urgent" style="--tag-color:#B0392C">Urgent Care &amp; Emergencies</a>
+<a class="dir-chip" href="#cat-peds" style="--tag-color:#C98A2C">Pediatrics</a>
+<a class="dir-chip" href="#cat-geri" style="--tag-color:#1F5C55">Geriatrics</a>
+<a class="dir-chip" href="#cat-cardio" style="--tag-color:#8A3A4A">Cardiovascular</a>
+<a class="dir-chip" href="#cat-endo" style="--tag-color:#4A6B8A">Endocrine &amp; Metabolic</a>
+<a class="dir-chip" href="#cat-resp" style="--tag-color:#2C7A6B">Respiratory (Adult)</a>
+<a class="dir-chip" href="#cat-womens" style="--tag-color:#7A4A6B">Women's Health</a>
+<a class="dir-chip" href="#cat-mens" style="--tag-color:#3E5C7A">Men's Health</a>
+<a class="dir-chip" href="#cat-mental" style="--tag-color:#5C4A8A">Mental Health</a><a class="dir-chip" href="#cat-counsel" style="--tag-color:#9C4F2E">Counselling &amp; Communication</a>
+<a class="dir-chip" href="#cat-msk" style="--tag-color:#A85C32">Musculoskeletal</a>
+<a class="dir-chip" href="#cat-derm" style="--tag-color:#B08A2C">Dermatology</a>
+<a class="dir-chip" href="#cat-gi" style="--tag-color:#6B7A3E">Gastroenterology</a>
+<a class="dir-chip" href="#cat-infx" style="--tag-color:#7A3E3E">Infectious Disease</a>
+<a class="dir-chip" href="#cat-renal" style="--tag-color:#3E7A7A">Renal &amp; Urology</a>
+<a class="dir-chip" href="#cat-neuro" style="--tag-color:#4A4D8C">Neurology</a>
+<a class="dir-chip" href="#cat-ent" style="--tag-color:#8A6B3A">ENT &amp; Eye</a>
+<a class="dir-chip" href="#cat-heme" style="--tag-color:#7A2C4A">Hematology</a>
+<a class="dir-chip" href="#cat-prevent" style="--tag-color:#2C5C7A">Preventive Care &amp; Screening</a>
+<a class="dir-chip" href="#cat-tcam" style="--tag-color:#5C7A3E">Traditional &amp; Complementary Medicine</a>
+<a class="dir-chip" href="#cat-exams" style="--tag-color:#6B4A8A">OSCE · OSPE · SOE</a>
+<a class="dir-chip" href="#cat-ramadan" style="--tag-color:#8A5C2C">Ramadan &amp; Fasting Medicine</a>
+</div>
+</nav>
+<section class="dir-list">
+<div class="wrap">
+<section class="dir-cat" id="cat-urgent" style="--tag-color:#B0392C">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M12 2L3 7v6c0 5 4 9 9 9s9-4 9-9V7l-9-5z" stroke-linejoin="round"></path><path d="M12 8v8M8 12h8" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="urgent-care-emergencies">Urgent Care &amp; Emergencies</h2>
+<p class="dir-blurb">Point-of-care protocols. Red flags first, condensed steps, live calculators.</p>
+<p class="dir-count">15 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="live-protocols">Live protocols</h3><a class="dir-row dir-live" href="urgent-care.html#bls"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">BLS: Adult &amp; Pediatric</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#anaphylaxis"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Anaphylaxis</span><span class="dir-sub">incl. epinephrine dose calculator</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#chest-pain"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Chest Pain</span><span class="dir-sub">incl. HEART score calculator</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#tia-stroke"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">TIA &amp; Stroke</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#htn-crisis"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Hypertensive Crisis</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#adult-status-epilepticus"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Adult Status Epilepticus</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#adult-hypoglycemia"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Adult Hypoglycemia</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#asthma-exacerbation-adult"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Asthma Exacerbation (Adult, SINA)</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#acute-abdomen"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Acute Abdomen &amp; Renal Colic</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#peds-status-epilepticus"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Pediatric Status Epilepticus</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#febrile-convulsion"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Pediatric Febrile Convulsion</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#febrile-infant"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Febrile Infant ≤90 Days</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#peds-gastro"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Pediatric Gastroenteritis</span><span class="dir-sub">incl. dehydration picker</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#peds-hypoglycemia"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Pediatric Hypoglycemia</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#peds-resp-distress"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Bronchiolitis &amp; Croup</span><span class="dir-sub">incl. PRAM calculator</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Adult sepsis recognition</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Burns &amp; wound care</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Epistaxis</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Head injury triage</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B0392C"></span><span class="dir-text"><span class="dir-title">Heat illness</span><span class="dir-sub">Hajj-season relevant</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-peds" style="--tag-color:#C98A2C">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><circle cx="12" cy="8" r="4"></circle><path d="M5 21c0-3.5 3-6 7-6s7 2.5 7 6" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="pediatrics">Pediatrics</h2>
+<p class="dir-blurb">From newborn to adolescent — growth, common presentations, and the Saudi schedule.</p>
+<p class="dir-count">3 live · 11 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="respiratory">Respiratory</h3><a class="dir-row dir-live" href="asthma.html"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Pediatric Asthma Field Guide</span><span class="dir-sub">GINA 2026 · SINA C-ACT · PRAM calculator</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#peds-resp-distress"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Bronchiolitis &amp; Croup</span><span class="dir-sub">urgent care protocol</span></span><span class="dir-open">Open →</span></a><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Community-acquired pneumonia</span></span><span class="dir-pill">Planned</span></div><h3 class="dir-group" id="newborn-infant">Newborn &amp; infant</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Neonatal jaundice</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Newborn screening in KSA</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Infant feeding &amp; growth faltering</span></span><span class="dir-pill">Planned</span></div><h3 class="dir-group" id="common-presentations">Common presentations</h3><a class="dir-row dir-live" href="urgent-care.html#febrile-infant"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Fever in the infant ≤90 days</span><span class="dir-sub">urgent care protocol</span></span><span class="dir-open">Open →</span></a><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Fever without source (older child)</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Acute otitis media</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Constipation</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Iron deficiency anemia</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">ADHD assessment</span></span><span class="dir-pill">Planned</span></div><h3 class="dir-group" id="prevention">Prevention</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Saudi immunization schedule</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#C98A2C"></span><span class="dir-text"><span class="dir-title">Well-child visits &amp; milestones</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-geri" style="--tag-color:#1F5C55">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M12 2a5 5 0 015 5v2a5 5 0 01-10 0V7a5 5 0 015-5z"></path><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6M17 14v7" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="geriatrics">Geriatrics</h2>
+<p class="dir-blurb">Age-friendly care built on the 4Ms — plus the syndromes that fill a family clinic.</p>
+<p class="dir-count">1 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="live">Live</h3><a class="dir-row dir-live" href="geriatrics.html"><span class="dir-dot" style="background:#1F5C55"></span><span class="dir-text"><span class="dir-title">The Geriatrics Field Guide</span><span class="dir-sub">IHI 4Ms · Beers · STOPP/START · full teaching guide</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-2">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#1F5C55"></span><span class="dir-text"><span class="dir-title">Falls assessment &amp; prevention</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#1F5C55"></span><span class="dir-text"><span class="dir-title">Dementia workup in primary care</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#1F5C55"></span><span class="dir-text"><span class="dir-title">Deprescribing in practice</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#1F5C55"></span><span class="dir-text"><span class="dir-title">Frailty &amp; comprehensive geriatric assessment</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#1F5C55"></span><span class="dir-text"><span class="dir-title">Advance care planning</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-cardio" style="--tag-color:#8A3A4A">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M12 21C7 17 3 13.5 3 9.5 3 6.5 5.5 4 8.5 4c1.7 0 3 .8 3.5 2 .5-1.2 1.8-2 3.5-2C18.5 4 21 6.5 21 9.5c0 4-4 7.5-9 11.5z" stroke-linejoin="round"></path></svg></div>
+<div>
+<h2 id="cardiovascular">Cardiovascular</h2>
+<p class="dir-blurb">The bread and butter of chronic care — pressure, lipids, rhythm, and risk.</p>
+<p class="dir-count">2 live · 6 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="urgent-care-crossover">Urgent care crossover</h3><a class="dir-row dir-live" href="urgent-care.html#chest-pain"><span class="dir-dot" style="background:#8A3A4A"></span><span class="dir-text"><span class="dir-title">Chest Pain</span><span class="dir-sub">HEART score</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#htn-crisis"><span class="dir-dot" style="background:#8A3A4A"></span><span class="dir-text"><span class="dir-title">Hypertensive Crisis</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-3">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A3A4A"></span><span class="dir-text"><span class="dir-title">Hypertension — chronic management</span><span class="dir-sub">Saudi HTN guideline based</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A3A4A"></span><span class="dir-text"><span class="dir-title">Dyslipidemia &amp; ASCVD risk</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A3A4A"></span><span class="dir-text"><span class="dir-title">Stable angina / chronic coronary syndrome</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A3A4A"></span><span class="dir-text"><span class="dir-title">Atrial fibrillation</span><span class="dir-sub">CHA₂DS₂-VASc calculator planned</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A3A4A"></span><span class="dir-text"><span class="dir-title">Heart failure in primary care</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A3A4A"></span><span class="dir-text"><span class="dir-title">Palpitations workup</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-endo" style="--tag-color:#4A6B8A">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="endocrine-metabolic">Endocrine &amp; Metabolic</h2>
+<p class="dir-blurb">Diabetes is the defining chronic disease of Saudi primary care — this is its home.</p>
+<p class="dir-count">2 live · 6 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="urgent-care-crossover-2">Urgent care crossover</h3><a class="dir-row dir-live" href="urgent-care.html#adult-hypoglycemia"><span class="dir-dot" style="background:#4A6B8A"></span><span class="dir-text"><span class="dir-title">Adult Hypoglycemia</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#peds-hypoglycemia"><span class="dir-dot" style="background:#4A6B8A"></span><span class="dir-text"><span class="dir-title">Pediatric Hypoglycemia</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-4">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A6B8A"></span><span class="dir-text"><span class="dir-title">Type 2 diabetes — diagnosis &amp; management</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A6B8A"></span><span class="dir-text"><span class="dir-title">Prediabetes &amp; prevention</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A6B8A"></span><span class="dir-text"><span class="dir-title">Insulin initiation in primary care</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A6B8A"></span><span class="dir-text"><span class="dir-title">Thyroid disorders</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A6B8A"></span><span class="dir-text"><span class="dir-title">Obesity management</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A6B8A"></span><span class="dir-text"><span class="dir-title">Vitamin D deficiency</span><span class="dir-sub">highly prevalent in KSA</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-resp" style="--tag-color:#2C7A6B">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M12 4v7M12 11c0 3-2 5-5 5H5v-4c0-3 2-6 5-6M12 11c0 3 2 5 5 5h2v-4c0-3-2-6-5-6" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div>
+<h2 id="respiratory-adult">Respiratory (Adult)</h2>
+<p class="dir-blurb">Airways, allergy, and the single highest-yield preventive act: smoking cessation.</p>
+<p class="dir-count">3 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="asthma">Asthma</h3><a class="dir-row dir-live" href="adult-asthma.html"><span class="dir-dot" style="background:#2C7A6B"></span><span class="dir-text"><span class="dir-title">Adult Asthma — chronic management</span><span class="dir-sub">SINA 2024 · GINA 2026 · incl. ACT calculator</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#asthma-exacerbation-adult"><span class="dir-dot" style="background:#2C7A6B"></span><span class="dir-text"><span class="dir-title">Asthma Exacerbation (SINA)</span><span class="dir-sub">urgent care protocol</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="counselling.html#smoking"><span class="dir-dot" style="background:#2C7A6B"></span><span class="dir-text"><span class="dir-title">Smoking cessation</span><span class="dir-sub">incl. shisha &amp; medwakh · HSI · Sehhaty clinics</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-5">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C7A6B"></span><span class="dir-text"><span class="dir-title">COPD</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C7A6B"></span><span class="dir-text"><span class="dir-title">Asthma-COPD overlap</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C7A6B"></span><span class="dir-text"><span class="dir-title">Allergic rhinitis</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C7A6B"></span><span class="dir-text"><span class="dir-title">Chronic cough workup</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C7A6B"></span><span class="dir-text"><span class="dir-title">Obstructive sleep apnea screening</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-womens" style="--tag-color:#7A4A6B">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><circle cx="12" cy="9" r="5"></circle><path d="M12 14v7M9 18h6" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="women-s-health">Women's Health</h2>
+<p class="dir-blurb">Antenatal care through menopause — the visits that anchor family practice.</p>
+<p class="dir-count">0 live · 7 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-6">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A4A6B"></span><span class="dir-text"><span class="dir-title">Antenatal care schedule</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A4A6B"></span><span class="dir-text"><span class="dir-title">PCOS</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A4A6B"></span><span class="dir-text"><span class="dir-title">Contraception counseling</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A4A6B"></span><span class="dir-text"><span class="dir-title">Menopause &amp; HRT</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A4A6B"></span><span class="dir-text"><span class="dir-title">Recurrent UTI in women</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A4A6B"></span><span class="dir-text"><span class="dir-title">Abnormal uterine bleeding</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A4A6B"></span><span class="dir-text"><span class="dir-title">Breast complaint triage</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-mens" style="--tag-color:#3E5C7A">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><circle cx="10" cy="14" r="5"></circle><path d="M14 10l6-6M15 4h5v5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div>
+<h2 id="men-s-health">Men's Health</h2>
+<p class="dir-blurb">The visits men delay — LUTS, sexual health, and screening conversations.</p>
+<p class="dir-count">0 live · 3 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-7">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#3E5C7A"></span><span class="dir-text"><span class="dir-title">BPH / lower urinary tract symptoms</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#3E5C7A"></span><span class="dir-text"><span class="dir-title">Erectile dysfunction</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#3E5C7A"></span><span class="dir-text"><span class="dir-title">PSA screening counseling</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-mental" style="--tag-color:#5C4A8A"><div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M9 21v-2H6c-1 0-2-1-2-2v-3H3l2-3c0-4 3-7 7-7 4.5 0 8 3 8 7.5S17 19 13 19v2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div>
+<h2 id="mental-health">Mental Health</h2>
+<p class="dir-blurb">Depression and anxiety present in every clinic — often through the body first.</p>
+<p class="dir-count">8 live · 7 planned</p>
+</div>
+</div><h3 class="dir-group" id="live-2">Live</h3><a class="dir-row dir-live" href="mental-health.html#depression"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Depression</span><span class="dir-sub">incl. PHQ-9 calculator</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="mental-health.html#anxiety"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Anxiety disorders</span><span class="dir-sub">incl. GAD-7 calculator</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="mental-health.html#insomnia"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Insomnia</span><span class="dir-sub">incl. ISI calculator · CBT-I first-line</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="mental-health.html#somatic"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Somatic symptom presentations</span><span class="dir-sub">somatic idioms of distress</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="mental-health.html#bpd"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Borderline personality disorder</span><span class="dir-sub">chronic vs acute risk · good prognosis</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="mental-health.html#suicide-risk"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Suicide risk assessment</span><span class="dir-sub">asking, risk factors, safety planning</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="mental-health.html#schizophrenia"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Schizophrenia &amp; psychosis</span><span class="dir-sub">incl. metabolic monitoring</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="counselling.html"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Counselling in family medicine</span><span class="dir-sub">stages of change · 5A’s · FRAMES · MI · BATHE · bilingual</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-8">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Bipolar disorder</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">PTSD</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">OCD</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">ADHD in adults</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Substance use disorders</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Perinatal mental health</span><span class="dir-sub">EPDS, postpartum depression</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C4A8A"></span><span class="dir-text"><span class="dir-title">Grief &amp; bereavement</span></span><span class="dir-pill">Planned</span></div></section>
+<!-- FMG-CAT-COUNSEL:SECTION --><section class="dir-cat" id="cat-counsel" style="--tag-color:#9C4F2E">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke-linejoin="round"/><path d="M19 9h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1v3l-3.5-3H12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div>
+<h2 id="counselling-communication">Counselling &amp; Communication</h2>
+<p class="dir-blurb">The consultation is the treatment — behaviour change, difficult news and shared decisions.</p>
+<p class="dir-count">6 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="live-cs">Live</h3><a class="dir-row dir-live" href="counselling.html"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Counselling in family medicine</span><span class="dir-sub">foundations · bilingual EN / ع</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="counselling.html#stages"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Stages of change &amp; the 5 A’s</span><span class="dir-sub">readiness ruler · strategy chooser</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="counselling.html#frames"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Brief interventions (FRAMES)</span><span class="dir-sub">alcohol · substances · lifestyle</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="counselling.html#mi"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Motivational interviewing</span><span class="dir-sub">OARS · change talk · rolling with resistance</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="counselling.html#bathe"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">BATHE — the 15-minute psychotherapy</span><span class="dir-sub">psychosocial check in any visit</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="counselling.html#smoking"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Smoking cessation</span><span class="dir-sub">incl. shisha &amp; medwakh · HSI · Sehhaty clinics</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-cs">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Breaking bad news</span><span class="dir-sub">SPIKES</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Shared decision-making</span><span class="dir-sub">risk communication · decision aids</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Weight &amp; physical-activity counselling</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Medication adherence</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#9C4F2E"></span><span class="dir-text"><span class="dir-title">Difficult consultations</span><span class="dir-sub">angry or demanding patient · requests for antibiotics or opioids</span></span><span class="dir-pill">Planned</span></div></section>
+<section class="dir-cat" id="cat-msk" style="--tag-color:#A85C32">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M7 4v6c0 2 1 3 3 3h4c2 0 3 1 3 3v4" stroke-linecap="round"></path><circle cx="7" cy="4" r="2"></circle><circle cx="17" cy="20" r="2"></circle></svg></div>
+<div>
+<h2 id="musculoskeletal">Musculoskeletal</h2>
+<p class="dir-blurb">Back, knees, shoulders — the mechanical complaints that fill every list.</p>
+<p class="dir-count">0 live · 6 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-9">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#A85C32"></span><span class="dir-text"><span class="dir-title">Low back pain</span><span class="dir-sub">red flags &amp; imaging rules</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#A85C32"></span><span class="dir-text"><span class="dir-title">Knee osteoarthritis</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#A85C32"></span><span class="dir-text"><span class="dir-title">Shoulder pain</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#A85C32"></span><span class="dir-text"><span class="dir-title">Gout</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#A85C32"></span><span class="dir-text"><span class="dir-title">Neck pain</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#A85C32"></span><span class="dir-text"><span class="dir-title">Fibromyalgia</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-derm" style="--tag-color:#B08A2C">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="8"></circle><circle cx="9" cy="10" fill="currentColor" r="1"></circle><circle cx="14" cy="14" fill="currentColor" r="1"></circle><circle cx="13" cy="8.5" fill="currentColor" r="0.8"></circle></svg></div>
+<div>
+<h2 id="dermatology">Dermatology</h2>
+<p class="dir-blurb">The most visual specialty in the clinic — pattern recognition, skin of colour, and safe steroids.</p>
+<p class="dir-count">8 live · 7 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="the-six-that-fill-the-clinic">The six that fill the clinic</h3><a class="dir-row dir-live" href="dermatology.html#eczema"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Eczema / atopic dermatitis</span><span class="dir-sub">incl. fingertip-unit calculator</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="dermatology.html#acne"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Acne vulgaris</span><span class="dir-sub">grading &amp; antibiotic stewardship</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="dermatology.html#fungal"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Fungal skin infections</span><span class="dir-sub">tinea by site · steroid-modified tinea</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="dermatology.html#urticaria"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Urticaria</span><span class="dir-sub">incl. UAS7 calculator</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="dermatology.html#psoriasis"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Psoriasis</span><span class="dir-sub">incl. PsA and cardiometabolic screening</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="dermatology.html#pigmentation"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Melasma &amp; pigmentation disorders</span><span class="dir-sub">incl. unregulated lightening creams</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="cross-cutting-tools">Cross-cutting tools</h3><a class="dir-row dir-live" href="dermatology.html#tools"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Topical steroid potency &amp; quantity</span><span class="dir-sub">potency classes + how much to prescribe</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="dermatology.html#own-photos"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Adding your own clinical photos</span><span class="dir-sub">consent, technique, de-identification</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-10">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Scabies &amp; infestations</span><span class="dir-sub">high yield in Hajj/Umrah season</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Skin cancer &amp; the changing lesion</span><span class="dir-sub">incl. acral/nail melanoma in darker skin</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Rosacea &amp; perioral dermatitis</span><span class="dir-sub">incl. steroid-induced</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Vitiligo</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Hair loss &amp; alopecia</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Leg ulcers &amp; venous eczema</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#B08A2C"></span><span class="dir-text"><span class="dir-title">Contact dermatitis &amp; patch testing</span><span class="dir-sub">incl. black henna / PPD</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-gi" style="--tag-color:#6B7A3E">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M9 3v5c0 2 1 3 3 3s4 1 4 4-2 4-4 4H8c-2 0-3-1-3-3" stroke-linecap="round"></path><path d="M15 3v3" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="gastroenterology">Gastroenterology</h2>
+<p class="dir-blurb">Reflux to the right iliac fossa — plus the fatty liver epidemic.</p>
+<p class="dir-count">2 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="urgent-care-crossover-3">Urgent care crossover</h3><a class="dir-row dir-live" href="urgent-care.html#acute-abdomen"><span class="dir-dot" style="background:#6B7A3E"></span><span class="dir-text"><span class="dir-title">Acute Abdomen &amp; Renal Colic</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#peds-gastro"><span class="dir-dot" style="background:#6B7A3E"></span><span class="dir-text"><span class="dir-title">Pediatric Gastroenteritis</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-11">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B7A3E"></span><span class="dir-text"><span class="dir-title">GERD &amp; dyspepsia</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B7A3E"></span><span class="dir-text"><span class="dir-title">H. pylori — test &amp; treat</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B7A3E"></span><span class="dir-text"><span class="dir-title">Irritable bowel syndrome</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B7A3E"></span><span class="dir-text"><span class="dir-title">Chronic constipation</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B7A3E"></span><span class="dir-text"><span class="dir-title">Metabolic-associated fatty liver disease</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-infx" style="--tag-color:#7A3E3E">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="5"></circle><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="infectious-disease">Infectious Disease</h2>
+<p class="dir-blurb">Stewardship, screening, and the infections that are distinctly Saudi.</p>
+<p class="dir-count">0 live · 6 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-12">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A3E3E"></span><span class="dir-text"><span class="dir-title">URTI &amp; antibiotic stewardship</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A3E3E"></span><span class="dir-text"><span class="dir-title">Adult UTI</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A3E3E"></span><span class="dir-text"><span class="dir-title">TB screening &amp; latent TB</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A3E3E"></span><span class="dir-text"><span class="dir-title">Hajj &amp; Umrah health</span><span class="dir-sub">vaccination requirements, mass-gathering medicine</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A3E3E"></span><span class="dir-text"><span class="dir-title">Brucellosis</span><span class="dir-sub">endemic — raw milk counseling</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A3E3E"></span><span class="dir-text"><span class="dir-title">Dengue awareness</span><span class="dir-sub">western region</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-renal" style="--tag-color:#3E7A7A">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M10 4C7 4 5 6.5 5 10s2 6 4 6c1 0 1.5-.5 1.5-1.5V13c0-3 .5-9-.5-9zM14 4c3 0 5 2.5 5 6s-2 6-4 6c-1 0-1.5-.5-1.5-1.5V13c0-3-.5-9 .5-9z" stroke-linejoin="round"></path><path d="M11 16v4M13 16v4" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="renal-urology">Renal &amp; Urology</h2>
+<p class="dir-blurb">Stones and staging — when to watch, when to refer.</p>
+<p class="dir-count">1 live · 3 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="urgent-care-crossover-4">Urgent care crossover</h3><a class="dir-row dir-live" href="urgent-care.html#acute-abdomen"><span class="dir-dot" style="background:#3E7A7A"></span><span class="dir-text"><span class="dir-title">Renal Colic</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-13">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#3E7A7A"></span><span class="dir-text"><span class="dir-title">CKD staging &amp; referral</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#3E7A7A"></span><span class="dir-text"><span class="dir-title">Hematuria workup</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#3E7A7A"></span><span class="dir-text"><span class="dir-title">Kidney stone prevention</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-neuro" style="--tag-color:#4A4D8C">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M12 3c4 0 7 3 7 7 0 2-1 3.5-2 4.5V21h-8v-3H7c-1 0-2-1-2-2v-2H4l1.5-2.5C5 7 8 3 12 3z" stroke-linejoin="round"></path><path d="M10 9h4M12 7v4" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="neurology">Neurology</h2>
+<p class="dir-blurb">Headache, dizziness, and the deficits that can't wait.</p>
+<p class="dir-count">2 live · 4 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="urgent-care-crossover-5">Urgent care crossover</h3><a class="dir-row dir-live" href="urgent-care.html#tia-stroke"><span class="dir-dot" style="background:#4A4D8C"></span><span class="dir-text"><span class="dir-title">TIA &amp; Stroke</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="urgent-care.html#adult-status-epilepticus"><span class="dir-dot" style="background:#4A4D8C"></span><span class="dir-text"><span class="dir-title">Adult Status Epilepticus</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="planned-14">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A4D8C"></span><span class="dir-text"><span class="dir-title">Headache &amp; migraine</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A4D8C"></span><span class="dir-text"><span class="dir-title">Dizziness &amp; vertigo</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A4D8C"></span><span class="dir-text"><span class="dir-title">Peripheral neuropathy</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#4A4D8C"></span><span class="dir-text"><span class="dir-title">Bell's palsy</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-ent" style="--tag-color:#8A6B3A">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M6 10a6 6 0 0112 0c0 2-1 3-2 4s-1.5 2-1.5 3.5a2.5 2.5 0 01-5 0" stroke-linecap="round"></path><path d="M9.5 10a2.5 2.5 0 015 0" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="ent-eye">ENT &amp; Eye</h2>
+<p class="dir-blurb">Ears, sinuses, and the red eye you must not miss.</p>
+<p class="dir-count">0 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-15">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A6B3A"></span><span class="dir-text"><span class="dir-title">Acute sinusitis</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A6B3A"></span><span class="dir-text"><span class="dir-title">Otitis media &amp; externa</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A6B3A"></span><span class="dir-text"><span class="dir-title">Red eye triage</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A6B3A"></span><span class="dir-text"><span class="dir-title">Hearing loss workup</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A6B3A"></span><span class="dir-text"><span class="dir-title">Epistaxis</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-heme" style="--tag-color:#7A2C4A">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M12 3s6 7 6 11a6 6 0 01-12 0c0-4 6-11 6-11z" stroke-linejoin="round"></path></svg></div>
+<div>
+<h2 id="hematology">Hematology</h2>
+<p class="dir-blurb">Anemia and the hemoglobinopathies that shape Saudi preventive medicine.</p>
+<p class="dir-count">0 live · 4 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-16">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A2C4A"></span><span class="dir-text"><span class="dir-title">Iron deficiency anemia</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A2C4A"></span><span class="dir-text"><span class="dir-title">Sickle cell disease in primary care</span><span class="dir-sub">endemic in Eastern &amp; Southern regions</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A2C4A"></span><span class="dir-text"><span class="dir-title">Thalassemia &amp; the premarital screening program</span><span class="dir-sub">mandatory in KSA</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#7A2C4A"></span><span class="dir-text"><span class="dir-title">G6PD deficiency</span><span class="dir-sub">drug &amp; fava bean counseling</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-prevent" style="--tag-color:#2C5C7A">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z" stroke-linejoin="round"></path><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div>
+<h2 id="preventive-care-screening">Preventive Care &amp; Screening</h2>
+<p class="dir-blurb">The quiet work that saves the most lives — organized, scheduled, documented.</p>
+<p class="dir-count">0 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-17">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C5C7A"></span><span class="dir-text"><span class="dir-title">Periodic health examination (Saudi)</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C5C7A"></span><span class="dir-text"><span class="dir-title">Cancer screening summary</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C5C7A"></span><span class="dir-text"><span class="dir-title">Adult immunization</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C5C7A"></span><span class="dir-text"><span class="dir-title">Premarital screening program</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#2C5C7A"></span><span class="dir-text"><span class="dir-title">Travel medicine basics</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-tcam" style="--tag-color:#5C7A3E">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M12 21c-5 0-8-3-8-8 0-6 5-10 8-10s8 4 8 10c0 5-3 8-8 8z" stroke-linejoin="round"></path><path d="M12 7v10M12 11c-2 0-3.5-1-4-2.5M12 14c2 0 3.5-1 4-2.5" stroke-linecap="round"></path></svg></div>
+<div>
+<h2 id="traditional-complementary-medicine">Traditional &amp; Complementary Medicine</h2>
+<p class="dir-blurb">What patients actually use — the evidence, the safety profile, the interactions, and how to counsel with respect.</p>
+<p class="dir-count">0 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-18">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C7A3E"></span><span class="dir-text"><span class="dir-title">Hijama (wet cupping)</span><span class="dir-sub">evidence, safety, NCCAM regulation in KSA</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C7A3E"></span><span class="dir-text"><span class="dir-title">Prophetic medicine in practice</span><span class="dir-sub">black seed, honey, dates, olive oil — evidence &amp; counseling</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C7A3E"></span><span class="dir-text"><span class="dir-title">Herbal safety &amp; drug interactions</span><span class="dir-sub">e.g. Nigella sativa with anticoagulants</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C7A3E"></span><span class="dir-text"><span class="dir-title">Ruqyah &amp; spiritual healing</span><span class="dir-sub">coexisting with clinical care, red flags for delayed presentation</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#5C7A3E"></span><span class="dir-text"><span class="dir-title">Talking with patients about TCAM</span><span class="dir-sub">respectful, non-dismissive counseling frameworks</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-exams" style="--tag-color:#6B4A8A">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><rect height="18" rx="2" width="14" x="5" y="3"></rect><path d="M9 3v2h6V3" stroke-linejoin="round"></path><path d="M9 10l1.5 1.5L13 9M9 15h6" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div>
+<h2 id="osce-ospe-soe">OSCE · OSPE · SOE</h2>
+<p class="dir-blurb">107 stations from a full OSCE manual — 10 built in full, 97 staged and page-referenced.</p>
+<p class="dir-count">13 live · 4 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="fully-built-stations">Fully built stations</h3><a class="dir-row dir-live" href="osce.html#hypertension"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Hypertension</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#diabetes"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Diabetes Mellitus</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#chest-pain"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Chest Pain</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#headache"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Headache</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#stroke-tia"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Stroke / TIA</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#depression"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Depression</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#antenatal"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Antenatal Care</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#well-baby"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Well Baby Clinic</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#acute-abdomen-osce"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Acute Abdomen</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="osce.html#red-eye"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Red Eye</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="also-embedded-in-the-teaching-guides">Also embedded in the teaching guides</h3><a class="dir-row dir-live" href="asthma.html"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Pediatric asthma OSCE stations</span><span class="dir-sub">four stations in the existing field guide</span></span><span class="dir-open">Open →</span></a><a class="dir-row dir-live" href="geriatrics.html"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Geriatrics OSCE-style cases</span><span class="dir-sub">case-based practice throughout</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="staged-97-more-page-referenced">Staged — 97 more, page-referenced</h3><a class="dir-row dir-live" href="osce.html#pipeline"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Full pipeline directory</span><span class="dir-sub">every remaining station title, grouped by specialty, ready to build</span></span><span class="dir-open">Open →</span></a><h3 class="dir-group" id="exam-mechanics">Exam mechanics</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Saudi Board of Family Medicine — format &amp; blueprint</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">Timing strategy &amp; station technique</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">OSPE spot-diagnosis bank</span><span class="dir-sub">will draw on the dermatology atlas and photo slots</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#6B4A8A"></span><span class="dir-text"><span class="dir-title">SOE / structured oral exam question banks</span></span><span class="dir-pill">Planned</span></div>
+</section>
+<section class="dir-cat" id="cat-ramadan" style="--tag-color:#8A5C2C">
+<div class="dir-cat-head">
+<div class="dir-cat-icon"><svg fill="none" height="22" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="M19 13.5A7.5 7.5 0 1110.5 5 6 6 0 0019 13.5z" stroke-linejoin="round"></path><path d="M17 4l.6 1.6L19 6l-1.4.6L17 8l-.6-1.4L15 6l1.4-.4L17 4z" fill="currentColor" stroke="none"></path></svg></div>
+<div>
+<h2 id="ramadan-fasting-medicine">Ramadan &amp; Fasting Medicine</h2>
+<p class="dir-blurb">A month that changes every prescription — risk stratification, timing, and safe fasting.</p>
+<p class="dir-count">0 live · 5 planned</p>
+</div>
+</div>
+<h3 class="dir-group" id="planned-19">Planned</h3><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A5C2C"></span><span class="dir-text"><span class="dir-title">Diabetes &amp; fasting</span><span class="dir-sub">IDF-DAR risk categories, calculator planned</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A5C2C"></span><span class="dir-text"><span class="dir-title">Medication timing in Ramadan</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A5C2C"></span><span class="dir-text"><span class="dir-title">Chronic disease &amp; fasting</span><span class="dir-sub">HTN, CKD, cardiac patients</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A5C2C"></span><span class="dir-text"><span class="dir-title">Pregnancy &amp; fasting</span></span><span class="dir-pill">Planned</span></div><div class="dir-row dir-planned"><span class="dir-dot" style="background:#8A5C2C"></span><span class="dir-text"><span class="dir-title">Exemptions from fasting</span><span class="dir-sub">counseling with fiqh-aware sensitivity</span></span><span class="dir-pill">Planned</span></div>
+</section>
+</div>
+</section>
+<footer>
+<div class="wrap">
+<p>Built by a family physician for the family medicine community — free to use, share, and study from.</p>
+<p class="mono">Planned topics become live as content is added — the structure is ready for all of them.</p>
+</div>
+{% include "credit.html" %}
+</footer>
+</body>
+</html>

@@ -1,0 +1,202 @@
+# Bilingual copy for the quick reference (clinician) and the patient leaflet.
+# Each entry: {'en': ..., 'ar': ...}
+
+QR = {
+ 'title': {'en': 'Counselling in Family Medicine', 'ar': 'الإرشاد في طب الأسرة'},
+ 'kicker': {'en': 'Quick reference · Family Medicine Guides', 'ar': 'مرجع سريع · أدلة طب الأسرة'},
+ 'sub': {'en': 'Five evidence-based strategies for the 5–10-minute consultation', 'ar': 'خمس استراتيجيات مبنية على الدليل لاستشارة مدتها 5–10 دقائق'},
+
+ 'choose_h': {'en': 'Choose the strategy', 'ar': 'اختر الاستراتيجية'},
+ 'choose': {'en': [
+    '<b>Ready and receptive</b> → Five A’s or FRAMES',
+    '<b>Motivation is the problem</b> → identify the stage, then motivational interviewing',
+    '<b>Emotional / psychosocial</b> → BATHE ± medication',
+    '<b>No response after 2–3 brief interventions</b> → refer',
+    'Several behaviours can be addressed together; use the <b>teachable moment</b> (acute illness, pregnancy, new diagnosis).'],
+  'ar': [
+    '<b>مستعد ومتقبّل</b> ← الخطوات الخمس أو FRAMES',
+    '<b>المشكلة في الدافعية</b> ← حدّد المرحلة ثم المقابلة التحفيزية',
+    '<b>مشكلة عاطفية / نفسية اجتماعية</b> ← BATHE مع الدواء عند الحاجة',
+    '<b>لا استجابة بعد 2–3 تدخلات مختصرة</b> ← أحِل',
+    'يمكن معالجة عدة سلوكيات معًا؛ واغتنم <b>اللحظة القابلة للتعلّم</b> (مرض حاد، حمل، تشخيص جديد).']},
+
+ 'stages_h': {'en': 'Stages of change', 'ar': 'مراحل التغيير'},
+ 'stages_head': {'en': ['Stage', 'Recognise', 'Your goal'], 'ar': ['المرحلة', 'التعرّف', 'هدفك']},
+ 'stages': {'en': [
+    ['Precontemplation', 'No plan within 6 months', 'Raise awareness; respect choice'],
+    ['Contemplation', 'Considering within 6 months; ambivalent', 'Explore pros and cons'],
+    ['Preparation', 'Acting within 30 days', 'Concrete plan and date'],
+    ['Action', 'Changed, &lt;6 months', 'Reinforce; problem-solve'],
+    ['Maintenance', 'Changed, &gt;6 months', 'Prevent relapse; normalise lapses']],
+  'ar': [
+    ['ما قبل التفكير', 'لا خطة خلال 6 أشهر', 'ارفع الوعي؛ احترم الاختيار'],
+    ['التفكير', 'يفكر خلال 6 أشهر؛ متردد', 'استكشف الإيجابيات والسلبيات'],
+    ['الاستعداد', 'سيبدأ خلال 30 يومًا', 'خطة وتاريخ محددان'],
+    ['الفعل', 'غيّر منذ أقل من 6 أشهر', 'عزّز؛ حلّ المشكلات'],
+    ['المحافظة', 'غيّر منذ أكثر من 6 أشهر', 'امنع الانتكاس؛ طبِّع الهفوات']]},
+ 'stages_note': {'en': 'Stage-matched interventions are no better than non-staged ones (Cochrane) — use the stage to choose the conversation, and re-ask every visit.',
+                 'ar': 'التدخلات المطابقة للمرحلة ليست أفضل من غيرها (كوكرين) — استخدم المرحلة لاختيار الحوار، وأعد السؤال في كل زيارة.'},
+
+ 'fiveas_h': {'en': 'The Five A’s', 'ar': 'الخطوات الخمس (5A’s)'},
+ 'fiveas': {'en': [
+    ['Ask', 'Every visit, every product'],
+    ['Advise', 'Clear, personal, linked to today — “I recommend…”'],
+    ['Assess', 'Knowledge and willingness to try now'],
+    ['Assist', 'Plan, date, medication, support, leaflet'],
+    ['Arrange', 'Follow-up booked — the step most often missed']],
+  'ar': [
+    ['اسأل', 'في كل زيارة وعن كل منتج'],
+    ['انصح', 'واضحة وشخصية ومرتبطة بمشكلة اليوم — «أنصحك…»'],
+    ['قيِّم', 'المعرفة والاستعداد للمحاولة الآن'],
+    ['ساعد', 'خطة، تاريخ، دواء، دعم، نشرة'],
+    ['رتِّب', 'حجز المتابعة — الخطوة الأكثر إهمالًا']]},
+ 'fiveas_note': {'en': '<b>Not ready?</b> The 5 R’s: Relevance · Risks · Rewards · Roadblocks · Repetition. <b>30 seconds?</b> Ask · Advise · Act.',
+                 'ar': '<b>غير مستعد؟</b> الـ 5R’s: الصلة · المخاطر · المكاسب · العوائق · التكرار. <b>لديك 30 ثانية؟</b> اسأل · انصح · تصرّف.'},
+
+ 'frames_h': {'en': 'FRAMES', 'ar': 'FRAMES'},
+ 'frames': {'en': [
+    ['Feedback', 'Personal risk with their own numbers'],
+    ['Responsibility', '“The choice is yours.”'],
+    ['Advice', 'Clear, neutral, anchored to a standard'],
+    ['Menu', 'Several options to choose from'],
+    ['Empathy', 'Warm, reflective, non-judgemental'],
+    ['Self-efficacy', 'Build on past success']],
+  'ar': [
+    ['التغذية الراجعة', 'الخطر الشخصي بأرقامه هو'],
+    ['المسؤولية', '«القرار قرارك.»'],
+    ['النصيحة', 'واضحة محايدة مستندة إلى معيار'],
+    ['قائمة الخيارات', 'عدة خيارات يختار منها'],
+    ['التعاطف', 'دفء وعكس للمشاعر بلا أحكام'],
+    ['الكفاءة الذاتية', 'ابنِ على نجاحات سابقة']]},
+ 'frames_note': {'en': 'Ask permission before sharing information. Good for harm reduction and chronic-disease feedback.',
+                 'ar': 'اطلب الإذن قبل مشاركة المعلومة. مناسب لتقليل الضرر وللتغذية الراجعة في الأمراض المزمنة.'},
+
+ 'refer_h': {'en': 'Refer — brief counselling is not enough', 'ar': 'أحِل — الإرشاد المختصر لا يكفي'},
+ 'refer': {'en': ['Suicidal thoughts, plan or intent', 'Psychosis, mania, severe depression', 'Dangerous withdrawal risk (alcohol, benzodiazepines, opioids)', 'Domestic violence or child-protection concern', 'Eating disorder with physical instability', 'No response after 2–3 brief interventions'],
+           'ar': ['أفكار أو خطة أو نية انتحارية', 'ذهان، هوس، اكتئاب شديد', 'خطر انسحاب خطير (الكحول، البنزوديازيبينات، الأفيونات)', 'عنف أسري أو قلق على حماية طفل', 'اضطراب أكل مع عدم استقرار جسدي', 'لا استجابة بعد 2–3 تدخلات مختصرة']},
+
+ 'qual_h': {'en': 'The effective counsellor', 'ar': 'المرشد الفعّال'},
+ 'qual': {'en': 'Empathy · genuineness · unconditional positive regard · active listening · self-awareness · respect for autonomy · confidentiality · cultural humility · hope',
+          'ar': 'التعاطف · الصدق · التقبّل غير المشروط · الإصغاء الفعّال · الوعي الذاتي · احترام الاستقلالية · السرّية · التواضع الثقافي · الأمل'},
+
+ 'mi_h': {'en': 'Motivational interviewing', 'ar': 'المقابلة التحفيزية'},
+ 'mi': {'en': [
+    '<b>Spirit:</b> partnership · acceptance · compassion · empowerment (evocation)',
+    '<b>Four tasks:</b> engaging → focusing → evoking → planning',
+    '<b>OARS:</b> Open questions · Affirmations · Reflections · Summaries',
+    '<b>Change talk:</b> DARN (Desire, Ability, Reasons, Need) → CAT (Commitment, Activation, Taking steps). Respond with EARS.',
+    '<b>Elicit–Provide–Elicit</b> to give information; <b>two reflections per question</b>; “and”, not “but”.',
+    'Resist the <b>fixing reflex</b>; reflect sustain talk, never argue.'],
+  'ar': [
+    '<b>الروح:</b> الشراكة · التقبّل · الرحمة · التمكين (الاستخراج)',
+    '<b>المهام الأربع:</b> الإشراك ← التركيز ← الاستخراج ← التخطيط',
+    '<b>OARS:</b> أسئلة مفتوحة · إشادة · عبارات عاكسة · تلخيص',
+    '<b>حديث التغيير:</b> DARN (الرغبة، القدرة، الأسباب، الحاجة) ← CAT (الالتزام، التهيؤ، اتخاذ خطوات). واستجب بـ EARS.',
+    '<b>استخرج–قدِّم–استخرج</b> لتقديم المعلومة؛ <b>عبارتان عاكستان لكل سؤال</b>؛ «و» لا «لكن».',
+    'قاوم <b>نزعة الإصلاح</b>؛ اعكس حديث الاستمرار ولا تجادل أبدًا.']},
+ 'ruler_h': {'en': 'Readiness ruler (0–10)', 'ar': 'مسطرة الاستعداد (0–10)'},
+ 'ruler': {'en': [
+    'Importance 4 or below → work on importance (values, discrepancy).',
+    'Importance 5+ but confidence 4 or below → build self-efficacy.',
+    'Both 7 or above → plan.',
+    'Ask <b>“Why 6 and not 3?”</b> — never “why not 10?”'],
+  'ar': [
+    'الأهمية 4 أو أقل ← اعمل على الأهمية (القيم، التباين).',
+    'الأهمية 5 فأكثر والثقة 4 أو أقل ← ابنِ الكفاءة الذاتية.',
+    'كلاهما 7 أو أكثر ← خطّط.',
+    'اسأل <b>«لماذا 6 وليس 3؟»</b> — لا «لماذا ليس 10؟»']},
+
+ 'bathe_h': {'en': 'BATHE — about 5 minutes', 'ar': 'BATHE — نحو 5 دقائق'},
+ 'bathe': {'en': [
+    ['Background', '“What’s been going on in your life?”'],
+    ['Affect', '“How do you feel about that?”'],
+    ['Troubles', '“What troubles you most about it?”'],
+    ['Handling', '“How are you managing?”'],
+    ['Empathy', '“That sounds really hard.”']],
+  'ar': [
+    ['الخلفية', '«ما الذي يجري في حياتك هذه الأيام؟»'],
+    ['المشاعر', '«كيف تشعر تجاه ذلك؟»'],
+    ['المشكلات', '«ما أكثر ما يزعجك في الأمر؟»'],
+    ['التعامل', '«كيف تتدبّر الأمر؟»'],
+    ['التعاطف', '«يبدو هذا صعبًا فعلًا.»']]},
+ 'bathe_note': {'en': 'Not a full history. Don’t assume the trouble. Problem-focused coping for the solvable; emotion-focused for the uncontrollable.',
+                'ar': 'ليس سيرة مرضية كاملة. لا تفترض المشكلة. تكيّف مركّز على المشكلة لما يمكن حله، ومركّز على المشاعر لما لا يمكن التحكم فيه.'},
+
+ 'tob_h': {'en': 'Tobacco cessation in 10 minutes', 'ar': 'الإقلاع عن التبغ في 10 دقائق'},
+ 'tob': {'en': [
+    'Ask about <b>cigarettes, shisha, vapes, medwakh, smokeless</b>.',
+    'Clozapine / olanzapine levels rise on quitting — reduce and monitor.',
+    'Quit date within 2 weeks · follow up within 1 week · book the <b>Sehhaty</b> cessation clinic.'],
+  'ar': [
+    'اسأل عن <b>السجائر والشيشة والسجائر الإلكترونية والمدواخ والتبغ غير المُدخَّن</b>.',
+    'ترتفع مستويات كلوزابين وأولانزابين عند الإقلاع — خفّض الجرعة وراقب.',
+    'يوم إقلاع خلال أسبوعين · متابعة خلال أسبوع · احجز عيادة الإقلاع في <b>صحتي</b>.']},
+
+ 'hsi_h': {'en': 'Heaviness of Smoking Index', 'ar': 'مؤشر شدة التدخين (HSI)'},
+ 'hsi_head': {'en': ['Points', 'First cigarette after waking', 'Cigarettes / day'], 'ar': ['النقاط', 'أول سيجارة بعد الاستيقاظ', 'السجائر يوميًا']},
+ 'hsi': {'en': [['3', 'within 5 min', '31 or more'], ['2', '6–30 min', '21–30'], ['1', '31–60 min', '11–20'], ['0', 'after 60 min', '10 or fewer']],
+         'ar': [['3', 'خلال 5 دقائق', '31 أو أكثر'], ['2', '6–30 دقيقة', '21–30'], ['1', '31–60 دقيقة', '11–20'], ['0', 'بعد 60 دقيقة', '10 أو أقل']]},
+ 'hsi_note': {'en': 'Total 0–1 low · 2–4 moderate · 5–6 high. Cigarettes only.', 'ar': 'المجموع: 0–1 منخفض · 2–4 متوسط · 5–6 مرتفع. للسجائر فقط.'},
+ 'med_head': {'en': ['Medicine', 'Regimen', 'Caution'], 'ar': ['الدواء', 'النظام', 'تنبيه']},
+ 'med': {'en': [['Varenicline', 'Start 1–2 wk before quit date: 0.5 mg daily days 1–3 · 0.5 mg twice daily days 4–7 · then 1 mg twice daily, 12 weeks', 'Nausea, dreams; CrCl &lt;30 reduce'],
+                ['Combination NRT', '21 mg/24 h patch if &gt;10 a day or first cigarette within 30 min (else 14 mg) + gum, lozenge or inhaler; 8–12 weeks', 'Skin irritation; safe in stable CVD'],
+                ['Bupropion SR', 'Start 1–2 wk before: 150 mg daily × 3 days, then twice daily, 7–12 weeks', 'Not with seizures, eating disorder, MAOI'],
+                ['Cytisine', 'WHO 2024 recommended', 'Check local availability']],
+         'ar': [['فارينيكلين', 'يُبدأ قبل يوم الإقلاع بـ 1–2 أسبوع: 0.5 ملغ يوميًا (الأيام 1–3) · 0.5 ملغ مرتين (الأيام 4–7) · ثم 1 ملغ مرتين لمدة 12 أسبوعًا', 'غثيان، أحلام؛ تُخفض إن كانت التصفية أقل من 30'],
+                ['بدائل النيكوتين المركّبة', 'لصقة 21 ملغ/24 ساعة إن كان أكثر من 10 يوميًا أو أول سيجارة خلال 30 دقيقة (وإلا 14 ملغ) + علكة أو أقراص استحلاب أو جهاز استنشاق؛ 8–12 أسبوعًا', 'تهيّج الجلد؛ آمنة في أمراض القلب المستقرة'],
+                ['بوبروبيون', 'يُبدأ قبل بـ 1–2 أسبوع: 150 ملغ يوميًا × 3 أيام، ثم مرتين يوميًا لمدة 7–12 أسبوعًا', 'لا مع النوبات أو اضطراب الأكل أو مثبطات MAO'],
+                ['سيتيسين', 'توصي به منظمة الصحة العالمية 2024', 'تحقّق من توفره محليًا']]},
+ 'ev_h': {'en': 'Evidence in numbers', 'ar': 'الدليل بالأرقام'},
+ 'ev': {'en': [
+    'MI in primary care: <b>SORT A</b> (weight, BP, alcohol); 10–15% added benefit. For smoking, Cochrane 2019: low-certainty, no clear benefit alone.',
+    'Physician advice: quitting 8.0% vs 4.8%. Advice + medication + support: 15.2% vs 8.6% (USPSTF 2021, A).',
+    'Five A’s, FRAMES, BATHE, stages: <b>SORT B</b>.',
+    'Saudi adults using tobacco: 19.8% (GATS 2019) — men 30.0%, women 4.2%.'],
+  'ar': [
+    'المقابلة التحفيزية في الرعاية الأولية: <b>SORT A</b> (الوزن، الضغط، الكحول)؛ فائدة إضافية 10–15%. وفي التدخين، كوكرين 2019: يقين منخفض ولا فائدة واضحة وحدها.',
+    'نصيحة الطبيب: إقلاع 8.0% مقابل 4.8%. النصيحة + الدواء + الدعم: 15.2% مقابل 8.6% (USPSTF 2021، الدرجة A).',
+    'الخطوات الخمس وFRAMES وBATHE والمراحل: <b>SORT B</b>.',
+    'البالغون المستخدمون للتبغ في المملكة: 19.8% (GATS 2019) — الرجال 30.0%، النساء 4.2%.']},
+
+ 'foot': {'en': 'Searight, Am Fam Physician 2018 · USPSTF 2021 · WHO tobacco cessation guideline 2024 · Cochrane 2010, 2014, 2019 · Miller & Rollnick 2023 · Stuart & Lieberman · GATS 2019 · MOH',
+          'ar': 'Searight، Am Fam Physician 2018 · USPSTF 2021 · إرشادات منظمة الصحة العالمية للإقلاع 2024 · كوكرين 2010، 2014، 2019 · ميلر ورولنيك 2023 · ستيوارت وليبرمان · GATS 2019 · وزارة الصحة'},
+ 'disclaimer': {'en': 'Educational summary for clinicians. Verify doses against the SFDA formulary and local guidance.',
+                'ar': 'ملخص تعليمي للأطباء. تحقّق من الجرعات وفق دليل هيئة الغذاء والدواء والإرشادات المحلية.'},
+}
+
+LF = {
+ 'kicker': {'en': 'Patient information', 'ar': 'معلومات للمريض'},
+ 'title': {'en': 'Your plan to quit smoking', 'ar': 'خطتك للإقلاع عن التدخين'},
+ 'lead': {'en': 'Quitting is the best thing you can do for your health — and you don’t have to rely on willpower alone. <b>Medicine plus support roughly doubles your chances of success.</b>',
+          'ar': 'الإقلاع أفضل ما يمكن أن تقدّمه لصحتك — ولست مضطرًا أن تعتمد على إرادتك وحدها. <b>الدواء مع الدعم يضاعف فرصة نجاحك تقريبًا.</b>'},
+ 'body_h': {'en': 'What happens when you stop', 'ar': 'ماذا يحدث لجسمك حين تتوقف'},
+ 'body': {'en': [['20 minutes', 'Heart rate and blood pressure start to fall'], ['12 hours', 'Carbon monoxide in your blood returns to normal'], ['2–12 weeks', 'Circulation and breathing improve'], ['1–9 months', 'Less cough and breathlessness'], ['1 year', 'Heart-attack risk falls to about half'], ['10 years', 'Lung-cancer risk about half that of a smoker'], ['15 years', 'Heart-disease risk like a non-smoker']],
+          'ar': [['20 دقيقة', 'يبدأ نبض القلب وضغط الدم بالانخفاض'], ['12 ساعة', 'يعود أول أكسيد الكربون في دمك إلى الطبيعي'], ['2–12 أسبوعًا', 'تتحسن الدورة الدموية والتنفس'], ['1–9 أشهر', 'كحة وضيق تنفس أقل'], ['سنة', 'ينخفض خطر الجلطة القلبية إلى النصف تقريبًا'], ['10 سنوات', 'خطر سرطان الرئة نحو نصف خطر المدخن'], ['15 سنة', 'خطر أمراض القلب كغير المدخن']]},
+ 'wd_h': {'en': 'The first weeks: normal and temporary', 'ar': 'الأسابيع الأولى: طبيعية ومؤقتة'},
+ 'wd': {'en': 'You may feel irritable or restless, find it hard to concentrate, sleep badly, feel low or anxious, or be hungrier than usual. These are signs your body is adjusting. They are strongest in the first week and usually ease within 2–4 weeks.',
+        'ar': 'قد تشعر بالعصبية أو عدم الارتياح، أو يصعب عليك التركيز، أو يضطرب نومك، أو تشعر بالحزن أو القلق، أو تزيد شهيتك. هذه علامات على أن جسمك يتكيّف. تكون أقوى في الأسبوع الأول وتخف عادة خلال 2–4 أسابيع.'},
+ 'help_h': {'en': 'Get help — it works', 'ar': 'اطلب المساعدة — فهي تنفع'},
+ 'help': {'en': ['Ask your family doctor about <b>medicine to stop smoking</b> — it makes cravings much easier.', 'Book a <b>smoking-cessation clinic</b> on the <b>Sehhaty</b> app: Appointments → Book a new appointment → in-person or virtual → Smoking-cessation clinic.', 'E-cigarettes, shisha and medwakh are still nicotine addiction. The goal is to be free of all of them.'],
+          'ar': ['اسأل طبيب الأسرة عن <b>أدوية الإقلاع عن التدخين</b> — فهي تجعل الرغبة الملحّة أخف بكثير.', 'احجز في <b>عيادة الإقلاع عن التدخين</b> عبر تطبيق <b>صحتي</b>: المواعيد ← حجز موعد جديد ← حضوري أو افتراضي ← عيادة مكافحة التدخين.', 'السجائر الإلكترونية والشيشة والمدواخ ما زالت إدمانًا على النيكوتين. الهدف أن تتحرر منها كلها.']},
+ 'trig_h': {'en': 'Know your triggers', 'ar': 'اعرف محفّزاتك'},
+ 'trig': {'en': [
+    ['Feelings', 'Stress, sadness, boredom — even joy', 'Breathe 4-5-6: in for 4 seconds, hold 5, out slowly over 6 · walk for a few minutes · write the feeling down · sip water · call a supportive friend'],
+    ['Routine', 'With coffee, driving, after meals, before sleep', 'Get up straight after eating · sugar-free gum or miswak · keep your hands busy · Qur’an or a podcast while driving'],
+    ['People', 'Friends who smoke, gatherings, shisha nights', 'Say “no, thank you” clearly · change where you sit · sit with people who support you'],
+    ['Places', 'Smells, lighters, your usual smoking spot', 'Remove all cigarettes and lighters · air and freshen rooms · choose smoke-free places']],
+  'ar': [
+    ['المشاعر', 'التوتر، الحزن، الملل — وحتى الفرح', 'تنفّس 4-5-6: شهيق 4 ثوانٍ، حبس 5، زفير بطيء خلال 6 · امشِ بضع دقائق · اكتب شعورك · اشرب الماء ببطء · كلّم صديقًا داعمًا'],
+    ['الروتين', 'مع القهوة، أثناء القيادة، بعد الأكل، قبل النوم', 'قم مباشرة بعد الأكل · علك بلا سكر أو مسواك · أشغل يديك · القرآن أو بودكاست أثناء القيادة'],
+    ['الناس', 'أصدقاء مدخنون، الجَمعات، سهرات الشيشة', 'قل «لا، شكرًا» بوضوح · غيّر مكان جلوسك · اجلس مع من يدعمك'],
+    ['المكان', 'الروائح، الولاعات، مكان تدخينك المعتاد', 'تخلّص من كل السجائر والولاعات · هوِّ المكان وعطّره · اختر أماكن يُمنع فيها التدخين']]},
+ 'plan_h': {'en': 'My quit plan', 'ar': 'خطتي للإقلاع'},
+ 'plan': {'en': ['My quit date:', 'My support partner:', 'My reasons to quit:', 'What I will do instead when a craving comes:', 'My follow-up appointment:'],
+          'ar': ['يوم إقلاعي:', 'رفيقي في الرحلة:', 'أسبابي للإقلاع:', 'ما سأفعله بدلًا من التدخين حين تأتي الرغبة:', 'موعد المتابعة:']},
+ 'diary_h': {'en': 'Trigger diary — for 3 to 5 days before your quit date', 'ar': 'سجل المحفّزات — لمدة 3 إلى 5 أيام قبل يوم الإقلاع'},
+ 'diary_cols': {'en': ['Day', 'Time', 'Place', 'Mood', 'Who was with me'], 'ar': ['اليوم', 'الوقت', 'المكان', 'الحالة المزاجية', 'من كان معي']},
+ 'slip_h': {'en': 'A slip is not the end', 'ar': 'الانتكاسة ليست نهاية الرحلة'},
+ 'slip': {'en': 'If you smoke again, don’t give up. Remember why you decided to quit, notice what triggered it, and start again from where you stopped. Tell your doctor — every attempt brings you closer.',
+          'ar': 'إن عدت للتدخين فلا تستسلم. تذكّر سبب قرارك، ولاحظ ما الذي حفّزك، وابدأ من حيث توقفت. أخبر طبيبك — فكل محاولة تقرّبك من هدفك.'},
+ 'foot': {'en': 'Family Medicine Guides · Based on WHO and USPSTF guidance and the national patient guide “Your Journey to Quit Smoking” (Public Health Authority and partners). This leaflet does not replace advice from your doctor.',
+          'ar': 'أدلة طب الأسرة · مبنية على إرشادات منظمة الصحة العالمية وفرقة الخدمات الوقائية الأمريكية والدليل الوطني للمرضى «دليل رحلتك للإقلاع عن التدخين» (هيئة الصحة العامة وشركاؤها). هذه النشرة لا تغني عن استشارة طبيبك.'},
+}
