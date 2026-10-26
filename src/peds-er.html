@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pediatric ER Doses — Family Medicine Guides</title>
+<meta content="Weight-based pediatric ER and urgent-care doses, fluids, KCl and transfusion calculators, PRAM, Westley, CDS and PECARN scores, and when to admit or refer." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Pediatric ER Doses (prefix-free, scoped to #pe) */
+/* Layout: a pocket instrument. Sticky weight bar on top, tabbed panels below, every number recalculates from one weight. */
+:root{
+  --bg:#F4F6F2; --card:#FFFFFF; --ink:#1B2A28; --mute:#4B5D59; --line:#D4DAD1;
+  --accent:#1F5C55; --accent-soft:#E3EEEA;
+  --fix:#B0392C; --fix-soft:#F8E6E3; --upd:#8A5A00; --upd-soft:#FBF1DA; --ok:#2C7A4B; --ok-soft:#E3F2E8;
+  --f-disp:'Fraunces',Georgia,serif;
+  --f-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:980px;margin:0 auto;width:100%;min-width:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+#pe h1,#pe h2,#pe h3{font-family:var(--f-disp);text-wrap:balance;margin:0;line-height:1.2}
+#pe h1{font-size:clamp(1.9rem,4.5vw,2.6rem);font-weight:600;letter-spacing:-0.015em;color:#123C38}
+#pe h2{font-size:1.35rem;font-weight:600;color:#123C38;margin-bottom:.25rem}
+#pe h3{font-size:1.05rem;font-weight:600}
+#pe p{margin:.4rem 0}
+#pe small,.mute{color:var(--mute)}
+.mono,.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+header.top{padding-block:36px 12px}
+.eyebrow{font:500 .72rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.draft{display:inline-block;margin-top:8px;padding:4px 10px;border:1px solid var(--upd);color:var(--upd);background:var(--upd-soft);border-radius:4px;font-size:.8rem}
+
+/* sticky weight bar */
+.bar{position:sticky;top:64px;z-index:80;background:var(--card);border-bottom:1px solid var(--line);transform:translateZ(0);will-change:transform}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;padding-block:10px}
+.field{display:flex;flex-direction:column;gap:2px;min-width:0}
+.field label{font-size:.72rem;color:var(--mute);font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em}
+#pe input,#pe select{font:500 1rem var(--f-mono);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px;min-width:0}
+#pe input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#wt{width:6.5rem;font-size:1.25rem;font-weight:600;border-color:var(--accent)}
+.wt-hint{font-size:.82rem;color:var(--mute);max-width:26rem}
+.btn{font:600 .85rem var(--f-body);border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:6px;padding:7px 12px;cursor:pointer}
+.btn:hover{background:var(--accent-soft)}
+
+/* tabs */
+nav.tabs{display:flex;gap:4px;overflow-x:auto;padding-block:12px 0;scrollbar-width:none}
+nav.tabs button{flex:0 0 auto;font:600 .88rem var(--f-body);padding:8px 12px;border:1px solid var(--line);background:var(--card);color:var(--mute);border-radius:6px 6px 0 0;border-bottom:none;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--ink);background:var(--card);border-color:var(--accent);box-shadow:inset 0 3px 0 var(--accent)}
+main{padding-block:0 40px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:0 8px 8px 8px;padding:18px;display:flex;flex-direction:column;gap:22px}
+@media (max-width:560px){.panel{padding:14px;border-radius:0 0 8px 8px}}
+section.block{display:flex;flex-direction:column;gap:10px;min-width:0}
+.intro{color:var(--mute);max-width:65ch}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+#pe table{border-collapse:collapse;width:100%;font-size:.9rem}
+.tw.wide table{min-width:620px}
+#pe th,#pe td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+#pe th{font:600 .74rem var(--f-mono);text-transform:uppercase;letter-spacing:.05em;color:var(--mute);background:var(--bg)}
+tr:last-child td{border-bottom:none}
+td .dose{font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent)}
+td .capped{display:inline-block;margin-left:4px;font-size:.7rem;padding:1px 5px;border-radius:3px;background:var(--upd-soft);color:var(--upd);font-family:var(--f-mono)}
+.grp td{background:var(--accent-soft);font:700 .76rem var(--f-body);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+
+/* tags */
+.tag{display:inline-block;font:600 .68rem var(--f-mono);text-transform:uppercase;letter-spacing:.05em;padding:2px 6px;border-radius:3px;white-space:nowrap}
+.t-fix{background:var(--fix-soft);color:var(--fix)}
+.t-upd{background:var(--upd-soft);color:var(--upd)}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+
+/* calculators */
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px}
+.card{border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0;background:var(--card)}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.row .field{flex:1 1 7rem}
+.out{background:var(--bg);border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.out .big{font:600 1.35rem var(--f-mono);font-variant-numeric:tabular-nums;color:var(--accent)}
+.out .ln{display:flex;justify-content:space-between;gap:10px;font-size:.9rem}
+.out .ln span:last-child{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.flag{font-size:.84rem;padding:6px 9px;border-radius:5px;border-left:3px solid}
+.flag.bad{background:var(--fix-soft);border-color:var(--fix);color:var(--ink)}
+.flag.warn{background:var(--upd-soft);border-color:var(--upd);color:var(--ink)}
+.flag.good{background:var(--ok-soft);border-color:var(--ok);color:var(--ink)}
+.note{font-size:.84rem;color:var(--mute)}
+
+/* scores */
+.score{border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.item{display:flex;flex-direction:column;gap:4px}
+.item>span{font-weight:600;font-size:.9rem}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opts label{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:6px;padding:6px 9px;font-size:.85rem;cursor:pointer;max-width:100%}
+.opts input{accent-color:var(--accent);margin:0}
+.opts label:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.result{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 12px;border-radius:6px;background:var(--bg)}
+.result .big{font:600 1.6rem var(--f-mono);color:var(--accent)}
+.sev{font:700 .8rem var(--f-body);text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:4px}
+.s-mild{background:var(--ok-soft);color:var(--ok)}
+.s-mod{background:var(--upd-soft);color:var(--upd)}
+.s-sev{background:var(--fix-soft);color:var(--fix)}
+.checks{display:flex;flex-direction:column;gap:6px}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;cursor:pointer}
+.checks input{accent-color:var(--accent);margin-top:3px}
+.seg{display:inline-flex;flex-wrap:wrap;max-width:100%;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:none;background:transparent;color:var(--mute);padding:7px 12px;font:600 .85rem var(--f-body);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--card)}
+
+ul.tight{margin:.2rem 0;padding-left:1.2rem}
+ul.tight li{margin:.15rem 0}
+.pearl{border:1px dashed var(--accent);border-radius:8px;padding:12px 14px;background:var(--accent-soft)}
+.pearl b{font-family:var(--f-disp)}
+footer{padding-block:24px 40px;color:var(--mute);font-size:.84rem;display:flex;flex-direction:column;gap:8px}
+footer .credit{color:var(--ink)}
+ol.src{padding-left:1.2rem;margin:0;font-size:.82rem;color:var(--mute)}
+ol.src li{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+@media (max-width:560px){#drugTable,#resusTable,#sedTable,#seizTable{min-width:0!important}#drugTable thead,#resusTable thead,#sedTable thead,#seizTable thead{display:none}#drugTable tr,#resusTable tr,#sedTable tr,#seizTable tr{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;border-bottom:1px solid var(--line);padding:8px 10px}#drugTable td,#resusTable td,#sedTable td,#seizTable td{border:none;padding:0}#drugTable td:nth-child(2),#resusTable td:nth-child(2),#sedTable td:nth-child(2){grid-column:1/-1;grid-row:2;font-size:.8rem;color:var(--mute)}#drugTable td:nth-child(3),#resusTable td:nth-child(3),#sedTable td:nth-child(3){grid-column:2;grid-row:1;text-align:right}#drugTable td:nth-child(4),#resusTable td:nth-child(4),#sedTable td:nth-child(4){grid-column:1/-1;grid-row:3;font-size:.84rem;margin-top:2px}#drugTable tr.grp{display:block;background:var(--accent-soft)}#seizTable td:nth-child(1){grid-column:1/-1;font-size:.75rem;color:var(--accent)}#seizTable td:nth-child(1):empty{display:none}#seizTable td:nth-child(3){grid-column:1;font-size:.8rem;color:var(--mute)}#seizTable td:nth-child(4){grid-column:2;grid-row:span 2;text-align:right;align-self:center}}
+.panel{scroll-margin-top:240px}
+@media (max-width:560px){#pe .bar .wrap{gap:8px 10px;padding-block:8px}#estBtn{font-size:.8rem;padding:7px 9px}.wt-hint:not(.on){display:none}#wt{width:5.5rem}#age{width:4.5rem!important}}
+[hidden]{display:none!important}
+#pe footer.pe-src{padding-block:8px 24px}
+</style>
+</head>
+<body>
+{% include "nav.html" %}
+<div id="pe">
+<header class="top wrap">
+  <div class="eyebrow">Pediatric ER &amp; urgent care · weight-based</div>
+  <h1>Pediatric ER Doses</h1>
+  <p class="intro">Common pediatric ER and urgent-care doses, checked against current guidelines and turned into a calculator. Enter the child's weight once; every dose, fluid and infusion below updates. Doses are capped at the usual maximum and flagged when the cap applies.</p>
+  <span class="draft">DRAFT · under review · confirm every dose against your hospital formulary before use</span>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="field"><label for="wt">Weight (kg)</label><input id="wt" type="number" inputmode="decimal" min="0.5" max="150" step="0.1" value="14"></div>
+    <div class="field"><label for="age">Age (years)</label><input id="age" type="number" inputmode="decimal" min="0" max="18" step="0.5" value="3" style="width:5.5rem"></div>
+    <button class="btn" id="estBtn" type="button">Estimate from age</button>
+    <div class="wt-hint" id="wtHint">Example child: 14 kg, 3 years. Use a measured weight whenever possible.</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" aria-selected="true" data-tab="review" id="tab-review">What changed</button>
+    <button role="tab" aria-selected="false" data-tab="fluids" id="tab-fluids">Fluids &amp; blood</button>
+    <button role="tab" aria-selected="false" data-tab="drugs" id="tab-drugs">ER drugs</button>
+    <button role="tab" aria-selected="false" data-tab="resus" id="tab-resus">Resus &amp; infusions</button>
+    <button role="tab" aria-selected="false" data-tab="sed" id="tab-sed">Seizure, sedation, pain</button>
+    <button role="tab" aria-selected="false" data-tab="scores" id="tab-scores">Scores</button>
+    <button role="tab" aria-selected="false" data-tab="dispo" id="tab-dispo">Admit / refer</button>
+  </nav>
+
+<main>
+<!-- ============ REVIEW ============ -->
+<div class="panel" role="tabpanel" id="p-review" aria-labelledby="tab-review">
+  <section class="block">
+    <h2>What changed from the common quick-note doses</h2>
+    <p class="intro">Red = a common shorthand that causes dosing errors. Amber = correct idea, needs a limit, an age rule or a newer recommendation. Green = matches current references.</p>
+    <div class="tw wide"><table>
+      <thead><tr><th>Item</th><th>Common note</th><th>Updated</th><th>Basis</th></tr></thead>
+      <tbody>
+      <tr><td><span class="tag t-fix">Fix</span><br>PRBC</td><td>10 mg/kg over 4 h</td><td><b>10–15 mL/kg</b> (unit is mL). Or volume = weight × desired Hb rise (g/dL) × 4. Finish within 4 h of issue. Transfuse at Hb &lt;7 g/dL if stable.</td><td>TAXI 2018 pediatric consensus; BSH 2016</td></tr>
+      <tr><td><span class="tag t-fix">Fix</span><br>Morphine</td><td>Bolus 1 mcg/kg</td><td><b>0.05–0.1 mg/kg IV</b> (50–100 mcg/kg), usual max 4 mg first dose; infants &lt;6 months use a quarter to half. Infusion 10–40 mcg/kg/<b>hour</b>.</td><td>1 mcg/kg is the fentanyl dose; morphine at that dose is 50–100× too low</td></tr>
+      <tr><td><span class="tag t-fix">Fix</span><br>Granisetron IV</td><td>0.1 mg/kg ???</td><td><b>10–40 mcg/kg</b> (0.01–0.04 mg/kg), max 1 mg. Labelled only for chemotherapy nausea, ≥2 y. 0.1 mg/kg is 2.5–10× that.</td><td>FDA label; pediatric CINV trials</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Granisetron PO</td><td>10–20 mcg/kg</td><td>Used at 20–40 mcg/kg in oncology studies; not licensed orally in children. For gastroenteritis vomiting, <b>ondansetron</b> has the trial evidence (0.15 mg/kg, or 2/4/8 mg by weight band).</td><td>Freedman NEJM 2006; Cochrane 2011</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Salbutamol neb</td><td>2.5 mg if &lt;10 kg, 5 mg if &gt;10 kg</td><td><b>2.5 mg if &lt;20 kg, 5 mg if ≥20 kg</b>, every 20 min × 3 in the first hour. The 0.15 mg/kg rule has a 2.5 mg floor and 5 mg ceiling, so it gives the same answer. MDI + spacer is as good in mild–moderate attacks.</td><td>NAEPP EPR-3; SIGN 158; GINA 2026</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Hypertonic saline neb</td><td>3 mL</td><td>3% saline <b>4 mL</b>, for <b>admitted</b> bronchiolitis only. AAP advises against it in the ED. WHO 2026 suggests a trial (conditional, low certainty). Give with or after salbutamol if it causes wheeze.</td><td>AAP 2014 KAS 4a/4b; WHO 2026</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Prednisolone / methylpred</td><td>1–2 mg/kg divided BID</td><td>Prednisolone <b>once daily</b>, 1–2 mg/kg, max 40 mg (20 mg &lt;2 y, 30 mg 2–5 y), 3–5 days. IV methylprednisolone 1–2 mg/kg/day in 2 doses, max 60 mg/day.</td><td>GINA 2026; NAEPP</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Dexamethasone</td><td>0.6 mg/kg</td><td>Add a ceiling. Croup 0.15–0.6 mg/kg PO once, max 10 mg (0.15 mg/kg works as well for mild–moderate). Asthma 0.3–0.6 mg/kg, max 16 mg, 1–2 doses.</td><td>Cochrane croup 2018; Parker 2019</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Ceftriaxone</td><td>50–75 mg/kg</td><td>Max 2 g/dose. Meningitis 100 mg/kg/day (once or split q12h), max 4 g/day. Avoid in neonates with jaundice or IV calcium; use cefotaxime there.</td><td>Product label; AAP Red Book</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Paracetamol</td><td>15 mg/kg</td><td>Max 1 g/dose, 75 mg/kg/day PO (4 g). IV: 15 mg/kg ≥10 kg; 7.5–10 mg/kg &lt;10 kg; max 60 mg/kg/day IV.</td><td>Label; BNFc</td></tr>
+      <tr><td><span class="tag t-ok">OK</span><br>Ibuprofen</td><td>10 mg/kg, PO only</td><td>Correct. Max 400 mg/dose, 40 mg/kg/day; from 3 months and &gt;5 kg. Hold if dehydrated or kidney injury. (An IV form exists for ≥6 months; keeping it PO-only is a sound local rule.)</td><td>BNFc; label</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Fluid bolus</td><td>10–20 mL/kg NS over 30 min</td><td><b>Shock:</b> 10–20 mL/kg isotonic over 5–20 min, reassess after each, up to 40–60 mL/kg in hour 1 if no overload. <b>DKA:</b> 10–20 mL/kg over 20–30 min. <b>Cardiac/malnutrition:</b> 5–10 mL/kg slowly. Balanced crystalloid acceptable.</td><td>AHA/AAP PALS 2025; SSC Children 2020; ISPAD 2022</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Maintenance fluid</td><td>4-2-1 rule</td><td>Rule is right. The <b>fluid</b> should be isotonic (0.9% NaCl or Plasma-Lyte with 5% dextrose and KCl). Hypotonic fluid raises hyponatremia risk.</td><td>AAP 2018 maintenance IVF guideline</td></tr>
+      <tr><td><span class="tag t-ok">OK</span><br>2/3 maintenance</td><td>2 × maint ÷ 3</td><td>Correct. Use for SIADH risk (meningitis, bronchiolitis, post-op, pneumonia).</td><td>—</td></tr>
+      <tr><td><span class="tag t-ok">OK</span><br>KCl check</td><td>KCl × rate × 24 ÷ 500 ÷ wt</td><td>Correct for a 500 mL bag; gives mEq/kg/day (aim 1–2). The calculator generalizes it to any bag and adds concentration (≤40 mEq/L peripheral) and rate (≤0.5 mEq/kg/h) checks.</td><td>AAP 2018; local IV policy</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Albumin</td><td>1 g/kg over 4 h; nephrotic over 1 h</td><td>Volume: 5% albumin 10–20 mL/kg. Nephrotic edema: <b>25% albumin 0.5–1 g/kg over 2–4 h</b>, furosemide 0.5–1 mg/kg mid-way or at the end. A 1-hour infusion risks pulmonary edema; check your unit's protocol.</td><td>IPNA 2022; KDIGO 2021</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Ferrous</td><td>6 mg/kg × 3 months</td><td><b>3 mg/kg/day elemental iron</b> once daily (range 3–6), max 60–120 mg. Recheck Hb at 4 weeks (expect ≥1 g/dL rise), continue ~3 months after Hb normalises. State "elemental" on the order.</td><td>AAP 2010; Powers JAMA 2017</td></tr>
+      <tr><td><span class="tag t-ok">OK</span><br>Epinephrine arrest</td><td>0.01 mg/kg, max 1 mg; ETT 0.1 mg/kg</td><td>Unchanged in 2025. New: in non-shockable rhythms give the first dose as early as possible; in VF/pVT shock first and give epinephrine if a shock cannot be given right away.</td><td>AHA/AAP PALS 2025</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Epinephrine infusion</td><td>0.01–0.5 mcg/kg/min</td><td>Start 0.05–0.1, titrate 0.02–1 mcg/kg/min.</td><td>PALS; Lexicomp range</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Epinephrine IM</td><td>0.01 mg/kg</td><td>Of 1 mg/mL, anterolateral thigh. Max 0.5 mg (0.3 mg prepubertal), repeat every 5–15 min. Autoinjector 0.15 mg for 7.5–25 kg, 0.3 mg ≥25 kg.</td><td>WAO 2020; AAP 2017</td></tr>
+      <tr><td><span class="tag t-ok">OK</span><br>Norepinephrine</td><td>0.05–0.1 start, max 2</td><td>Matches. First-line for warm shock; epinephrine for cold shock.</td><td>SSC Children 2020</td></tr>
+      <tr><td><span class="tag t-ok">OK</span><br>Milrinone</td><td>0.25–0.75 mcg/kg/min</td><td>Matches. Loading dose (50 mcg/kg) usually skipped because of hypotension. Reduce in kidney impairment.</td><td>Label</td></tr>
+      <tr><td><span class="tag t-upd">Update</span><br>Furosemide</td><td>0.5 mg/kg IV push</td><td>0.5–1 mg/kg IV, max 40 mg first dose, q6–12h; max 6 mg/kg/day.</td><td>BNFc; label</td></tr>
+      <tr><td><span class="tag t-upd">Filled</span><br>Midazolam, fentanyl, ketamine</td><td>Blank / "bolus is 1"</td><td>See the Seizure, sedation, pain tab.</td><td>ESETT 2019; ACEP 2011; label</td></tr>
+      <tr><td><span class="tag t-upd">Note</span><br>PRBC tubing</td><td>Add 15 mL</td><td>Prime volume is a blood bank / nursing practice. Write the patient dose and the prime as separate lines so the dose stays clear.</td><td>Local transfusion policy</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+  <section class="block">
+    <div class="pearl"><b>Three changes that matter most at 3 am.</b> PRBC is mL/kg, not mg/kg. Morphine is 0.1 mg/kg, not 1 mcg/kg. Granisetron IV is 0.01 mg/kg, not 0.1 mg/kg. All three are decimal or unit slips, the most common pediatric prescribing error.</div>
+  </section>
+</div>
+
+<!-- ============ FLUIDS ============ -->
+<div class="panel" role="tabpanel" id="p-fluids" aria-labelledby="tab-fluids" hidden>
+  <div class="calc">
+    <div class="card">
+      <h3>Maintenance (Holliday–Segar 4-2-1)</h3>
+      <div class="out" id="maintOut"></div>
+      <p class="note">Fluid: 0.9% NaCl or Plasma-Lyte + D5 + KCl 20 mEq/L (AAP 2018, age 28 days–18 years). Not for neonates, heart/kidney/liver failure, DI, burns or neurosurgery. Adult cap ~100 mL/h.</p>
+    </div>
+    <div class="card">
+      <h3>Bolus</h3>
+      <div class="row">
+        <div class="field"><label for="bolusType">Setting</label>
+          <select id="bolusType">
+            <option value="shock">Shock (septic / hypovolemic)</option>
+            <option value="dehyd">Moderate–severe dehydration</option>
+            <option value="dka">DKA</option>
+            <option value="cardiac">Cardiac disease / severe malnutrition</option>
+          </select></div>
+      </div>
+      <div class="out" id="bolusOut"></div>
+      <p class="note">Write rate and duration in the order comment. Reassess HR, CRT, BP, liver edge and lung crackles after every bolus. Without ICU access and no hypotension, avoid boluses in febrile illness (FEAST).</p>
+    </div>
+    <div class="card">
+      <h3>KCl check</h3>
+      <div class="row">
+        <div class="field"><label for="kMeq">KCl in bag (mEq)</label><input id="kMeq" type="number" inputmode="decimal" value="10"></div>
+        <div class="field"><label for="kBag">Bag volume (mL)</label><input id="kBag" type="number" inputmode="decimal" value="500"></div>
+        <div class="field"><label for="kRate">Rate (mL/h)</label><input id="kRate" type="number" inputmode="decimal" value="48"></div>
+      </div>
+      <button class="btn" type="button" id="kUseMaint">Use maintenance rate</button>
+      <div class="out" id="kOut"></div>
+      <div id="kFlags" style="display:flex;flex-direction:column;gap:6px"></div>
+      <p class="note">Your formula: KCl × rate × 24 ÷ 500 ÷ weight. Here the 500 becomes whatever bag you pick. Add K only after urine output is confirmed (except DKA with K &lt;3.5, per ISPAD).</p>
+    </div>
+    <div class="card">
+      <h3>Packed red cells</h3>
+      <div class="row">
+        <div class="field"><label for="hbNow">Current Hb (g/dL)</label><input id="hbNow" type="number" inputmode="decimal" step="0.1" value="6.2"></div>
+        <div class="field"><label for="hbGoal">Target Hb (g/dL)</label><input id="hbGoal" type="number" inputmode="decimal" step="0.1" value="9"></div>
+      </div>
+      <div class="out" id="prbcOut"></div>
+      <div id="prbcFlags"></div>
+      <p class="note">Formula assumes PRBC Hct ~60% (factor 4; use 5 for Hct ~70%). Sickle cell: do not raise Hb above 10 g/dL (hyperviscosity). Chronic severe anemia: give 5 mL/kg aliquots slowly with furosemide.</p>
+    </div>
+    <div class="card">
+      <h3>Albumin</h3>
+      <div class="out" id="albOut"></div>
+      <p class="note">25% albumin = 0.25 g/mL. Watch BP and breathing during the infusion; stop if crackles or hypertension.</p>
+    </div>
+    <div class="card">
+      <h3>Hypoglycemia</h3>
+      <div class="out" id="glucOut"></div>
+      <p class="note">Treat glucose &lt;70 mg/dL (3.9 mmol/L) with symptoms, or &lt;54 mg/dL. Recheck in 15 min. Draw critical sample (insulin, cortisol, GH, BHB, FFA) before treating if no known cause.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DRUGS ============ -->
+<div class="panel" role="tabpanel" id="p-drugs" aria-labelledby="tab-drugs" hidden>
+  <section class="block">
+    <h2>Common ER drugs</h2>
+    <p class="intro">Doses for the weight above, capped at the usual maximum. Check renal function, allergies and your formulary concentration before giving.</p>
+    <div class="tw wide"><table id="drugTable"><thead><tr><th>Drug · route</th><th>Per kg</th><th>Dose now</th><th>When · age</th></tr></thead><tbody></tbody></table></div>
+  </section>
+</div>
+
+<!-- ============ RESUS ============ -->
+<div class="panel" role="tabpanel" id="p-resus" aria-labelledby="tab-resus" hidden>
+  <section class="block">
+    <h2>Arrest and peri-arrest</h2>
+    <div class="tw wide"><table id="resusTable"><thead><tr><th>Item</th><th>Per kg</th><th>Dose now</th><th>Notes</th></tr></thead><tbody></tbody></table></div>
+  </section>
+  <section class="block">
+    <h2>Infusion rate</h2>
+    <div class="calc">
+      <div class="card">
+        <div class="row">
+          <div class="field"><label for="infDrug">Drug</label>
+            <select id="infDrug">
+              <option value="epi">Epinephrine</option>
+              <option value="norepi">Norepinephrine</option>
+              <option value="milri">Milrinone</option>
+            </select></div>
+          <div class="field"><label for="infDose">Dose (mcg/kg/min)</label><input id="infDose" type="number" inputmode="decimal" step="0.01" value="0.1"></div>
+          <div class="field"><label for="infConc">Syringe (mcg/mL)</label><input id="infConc" type="number" inputmode="decimal" value="20"></div>
+        </div>
+        <div class="out" id="infOut"></div>
+        <div id="infFlags"></div>
+        <p class="note">Rate (mL/h) = dose × weight × 60 ÷ concentration. Enter your pharmacy's standard syringe concentration; the default is an example only.</p>
+      </div>
+      <div class="card">
+        <h3>Which vasoactive</h3>
+        <ul class="tight">
+          <li><b>Cold shock</b> (cool peripheries, weak pulses, low output): epinephrine first.</li>
+          <li><b>Warm shock</b> (bounding pulses, wide pulse pressure): norepinephrine first.</li>
+          <li><b>Catecholamine-resistant, low output with adequate BP</b>: add milrinone.</li>
+          <li>Start through a peripheral line or IO if central access is delayed; do not wait. (SSC Children 2020)</li>
+          <li>Give hydrocortisone if fluid- and vasoactive-refractory, or adrenal risk (chronic steroids).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SEDATION ============ -->
+<div class="panel" role="tabpanel" id="p-sed" aria-labelledby="tab-sed" hidden>
+  <section class="block">
+    <h2>Convulsive status epilepticus</h2>
+    <p class="intro">Start the clock at seizure onset. Glucose check at any step.</p>
+    <div class="tw wide"><table id="seizTable"><thead><tr><th>Time</th><th>Drug · route</th><th>Per kg</th><th>Dose now</th></tr></thead><tbody></tbody></table></div>
+    <p class="note">ESETT (2019): levetiracetam, fosphenytoin and valproate worked equally well (~47%). Choose by context: avoid valproate under 2 years or with suspected metabolic/liver disease or pregnancy; avoid phenytoin in toxin-induced seizures.</p>
+  </section>
+  <section class="block">
+    <h2>Analgesia and procedural sedation</h2>
+    <div class="tw wide"><table id="sedTable"><thead><tr><th>Drug · route</th><th>Per kg</th><th>Dose now</th><th>When · cautions</th></tr></thead><tbody></tbody></table></div>
+    <p class="note">Procedural sedation needs a second clinician for the airway, monitoring (SpO₂, EtCO₂ where available), suction, BVM and reversal agents drawn up. Fasting is not required for ketamine sedation in the ED (ACEP 2014 / ICSA 2020 consensus). Naloxone and flumazenil doses are on the Resus tab.</p>
+  </section>
+</div>
+
+<!-- ============ SCORES ============ -->
+<div class="panel" role="tabpanel" id="p-scores" aria-labelledby="tab-scores" hidden>
+  <div class="calc">
+    <div class="score" id="pram">
+      <h3>PRAM · acute asthma, 2–17 y</h3>
+      <div class="item"><span>Suprasternal retractions</span><div class="opts" data-n="p1"><label><input type="radio" name="p1" value="0" checked>Absent 0</label><label><input type="radio" name="p1" value="2">Present 2</label></div></div>
+      <div class="item"><span>Scalene retractions</span><div class="opts"><label><input type="radio" name="p2" value="0" checked>Absent 0</label><label><input type="radio" name="p2" value="2">Present 2</label></div></div>
+      <div class="item"><span>Air entry</span><div class="opts"><label><input type="radio" name="p3" value="0" checked>Normal 0</label><label><input type="radio" name="p3" value="1">↓ at bases 1</label><label><input type="radio" name="p3" value="2">Widespread ↓ 2</label><label><input type="radio" name="p3" value="3">Absent/minimal 3</label></div></div>
+      <div class="item"><span>Wheeze</span><div class="opts"><label><input type="radio" name="p4" value="0" checked>Absent 0</label><label><input type="radio" name="p4" value="1">Expiratory 1</label><label><input type="radio" name="p4" value="2">Insp + exp 2</label><label><input type="radio" name="p4" value="3">Audible / silent chest 3</label></div></div>
+      <div class="item"><span>SpO₂ (room air)</span><div class="opts"><label><input type="radio" name="p5" value="0" checked>≥95% 0</label><label><input type="radio" name="p5" value="1">92–94% 1</label><label><input type="radio" name="p5" value="2">&lt;92% 2</label></div></div>
+      <div class="result" id="pramRes"></div>
+      <p class="note">Mild 0–3 · moderate 4–7 · severe 8–12. Reassess 60 min after the first hour of treatment; that score predicts admission better than the arrival score. (Ducharme 2008)</p>
+    </div>
+
+    <div class="score" id="westley">
+      <h3>Westley · croup</h3>
+      <div class="item"><span>Level of consciousness</span><div class="opts"><label><input type="radio" name="w1" value="0" checked>Normal 0</label><label><input type="radio" name="w1" value="5">Disoriented 5</label></div></div>
+      <div class="item"><span>Cyanosis</span><div class="opts"><label><input type="radio" name="w2" value="0" checked>None 0</label><label><input type="radio" name="w2" value="4">With agitation 4</label><label><input type="radio" name="w2" value="5">At rest 5</label></div></div>
+      <div class="item"><span>Stridor</span><div class="opts"><label><input type="radio" name="w3" value="0" checked>None 0</label><label><input type="radio" name="w3" value="1">With agitation 1</label><label><input type="radio" name="w3" value="2">At rest 2</label></div></div>
+      <div class="item"><span>Air entry</span><div class="opts"><label><input type="radio" name="w4" value="0" checked>Normal 0</label><label><input type="radio" name="w4" value="1">Decreased 1</label><label><input type="radio" name="w4" value="2">Markedly ↓ 2</label></div></div>
+      <div class="item"><span>Retractions</span><div class="opts"><label><input type="radio" name="w5" value="0" checked>None 0</label><label><input type="radio" name="w5" value="1">Mild 1</label><label><input type="radio" name="w5" value="2">Moderate 2</label><label><input type="radio" name="w5" value="3">Severe 3</label></div></div>
+      <div class="result" id="westRes"></div>
+      <p class="note">All grades: dexamethasone. Moderate–severe: add nebulized epinephrine 0.5 mL/kg of 1 mg/mL (max 5 mL) and observe ≥2–4 h after, since the effect wears off. (Westley 1978; Cochrane 2018)</p>
+    </div>
+
+    <div class="score" id="cds">
+      <h3>Clinical Dehydration Scale · 1–36 months</h3>
+      <div class="item"><span>General appearance</span><div class="opts"><label><input type="radio" name="c1" value="0" checked>Normal 0</label><label><input type="radio" name="c1" value="1">Thirsty, restless or lethargic but irritable when touched 1</label><label><input type="radio" name="c1" value="2">Drowsy, limp, cold, sweaty ± comatose 2</label></div></div>
+      <div class="item"><span>Eyes</span><div class="opts"><label><input type="radio" name="c2" value="0" checked>Normal 0</label><label><input type="radio" name="c2" value="1">Slightly sunken 1</label><label><input type="radio" name="c2" value="2">Very sunken 2</label></div></div>
+      <div class="item"><span>Mucous membranes (tongue)</span><div class="opts"><label><input type="radio" name="c3" value="0" checked>Moist 0</label><label><input type="radio" name="c3" value="1">Sticky 1</label><label><input type="radio" name="c3" value="2">Dry 2</label></div></div>
+      <div class="item"><span>Tears</span><div class="opts"><label><input type="radio" name="c4" value="0" checked>Present 0</label><label><input type="radio" name="c4" value="1">Decreased 1</label><label><input type="radio" name="c4" value="2">Absent 2</label></div></div>
+      <div class="result" id="cdsRes"></div>
+      <div class="out" id="ortOut"></div>
+      <p class="note">0 = no dehydration (&lt;3%) · 1–4 = some (3–6%) · 5–8 = moderate–severe (≥6%). Replaces the non-validated picker on the Urgent Care page. (Friedman 2004; Goldman 2008)</p>
+    </div>
+
+    <div class="score" id="pecarn">
+      <h3>PECARN · minor head injury, GCS 14–15, &lt;24 h</h3>
+      <div class="seg" role="group" aria-label="Age group"><button type="button" data-age="u2" aria-pressed="false">Under 2 y</button><button type="button" data-age="o2" aria-pressed="true">2 y and over</button></div>
+      <div class="checks" id="pecHigh"></div>
+      <div class="checks" id="pecMid"></div>
+      <div class="result" id="pecRes"></div>
+      <p class="note">Severe mechanism: MVC with ejection, rollover or a death in the vehicle; pedestrian or unhelmeted cyclist hit by a vehicle; fall &gt;0.9 m (&lt;2 y) or &gt;1.5 m (≥2 y); head struck by a high-impact object. Rates are clinically important TBI in the derivation cohort. (Kuppermann, Lancet 2009)</p>
+    </div>
+  </div>
+
+  <section class="block">
+    <h2>Febrile infant 8–60 days, well-appearing (AAP 2021)</h2>
+    <div class="tw wide"><table>
+      <thead><tr><th>Age</th><th>Tests</th><th>LP</th><th>Disposition</th></tr></thead>
+      <tbody>
+        <tr><td><b>8–21 d</b></td><td>UA, blood culture, CBC; IMs optional</td><td>Yes, all</td><td>Admit; IV ampicillin + ceftazidime/gentamicin (or cefotaxime); acyclovir if HSV risk</td></tr>
+        <tr><td><b>22–28 d</b></td><td>UA, blood culture, IMs (PCT, ANC, CRP)</td><td>If any IM abnormal; may defer if all normal and UA negative</td><td>IM abnormal → admit + antibiotics. All normal → may observe at home with 24 h review, or admit</td></tr>
+        <tr><td><b>29–60 d</b></td><td>UA, blood culture, IMs</td><td>Consider if IMs abnormal</td><td>UA+ with normal IMs → oral antibiotic, home with follow-up. IMs normal, UA− → home with follow-up in 24–36 h</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Abnormal IMs: PCT &gt;0.5 ng/mL, CRP &gt;20 mg/L, ANC &gt;4000–5200/µL, temperature &gt;38.5 °C. Under 8 days, ill-appearing, preterm or with a focus: outside this pathway → full workup and admit. (Pantell, Pediatrics 2021;148:e2021052228)</p>
+  </section>
+</div>
+
+<!-- ============ DISPO ============ -->
+<div class="panel" role="tabpanel" id="p-dispo" aria-labelledby="tab-dispo" hidden>
+  <section class="block">
+    <h2>When to admit, call PICU or transfer</h2>
+    <div class="tw wide"><table>
+      <thead><tr><th>Condition</th><th>Home if</th><th>Admit if</th><th>PICU / senior now if</th></tr></thead>
+      <tbody>
+        <tr><td><b>Asthma</b></td><td>PRAM ≤3 at 1 h after treatment, SpO₂ ≥94%, salbutamol ≥3–4 h apart, can use spacer</td><td>PRAM ≥4 after 1 h, SpO₂ &lt;92% after treatment, needs salbutamol &lt;2-hourly</td><td>Silent chest, exhaustion, confusion, rising CO₂, PRAM ≥8 despite Mg</td></tr>
+        <tr><td><b>Croup</b></td><td>No stridor at rest 2–4 h after epinephrine</td><td>Stridor at rest after 2 epinephrine nebs, Westley ≥3 persisting, &lt;6 months</td><td>Westley ≥6 not settling, ≥12, hypoxia, drooling/toxic (think tracheitis, epiglottitis)</td></tr>
+        <tr><td><b>Bronchiolitis</b></td><td>Feeding &gt;50% usual, SpO₂ ≥90–92%, no apnoea, reliable carer</td><td>SpO₂ persistently &lt;90–92%, feeding &lt;50%, apnoea, &lt;6–8 weeks, ex-preterm &lt;32 w, CHD, CLD</td><td>Recurrent apnoea, rising work of breathing on HFNC, pCO₂ &gt;60 mmHg</td></tr>
+        <tr><td><b>Gastroenteritis</b></td><td>CDS 0–4 and passes ORT trial (≥ target volume in 4 h)</td><td>Fails ORT/NG, CDS 5–8, Na &lt;130 or &gt;150, bloody diarrhoea with low platelets (HUS)</td><td>Shock not responding to 40 mL/kg</td></tr>
+        <tr><td><b>DKA</b></td><td>—</td><td>All DKA</td><td>pH &lt;7.1, age &lt;5 y, Na corrected &gt;150, cerebral edema signs (headache, bradycardia, rising BP, falling GCS) → 3% saline 2.5–5 mL/kg or mannitol 0.5–1 g/kg</td></tr>
+        <tr><td><b>Febrile infant</b></td><td>29–60 d with normal IMs, UA−, follow-up assured</td><td>All 8–21 d; 22–28 d with abnormal IMs</td><td>Ill-appearing, hypotension, seizure, bulging fontanelle</td></tr>
+        <tr><td><b>Seizure</b></td><td>Simple febrile seizure, back to baseline, focus found, &gt;18 months</td><td>First afebrile seizure with persistent deficit, complex febrile seizure &lt;18 months, poor follow-up</td><td>Status &gt;5 min after 2 benzodiazepines, needs second-line drug, GCS not recovering</td></tr>
+        <tr><td><b>Head injury</b></td><td>PECARN no criteria</td><td>Intermediate risk with worsening or observation not possible</td><td>CT abnormal, GCS ≤13, focal deficit, suspected abuse (involve safeguarding)</td></tr>
+        <tr><td><b>Anaphylaxis</b></td><td>Observe ≥4–6 h after symptoms resolve; 2 autoinjectors, action plan, allergy referral</td><td>Needed ≥2 IM doses, severe reaction, asthma, late presentation</td><td>Refractory after 2 IM doses → epinephrine infusion</td></tr>
+        <tr><td><b>Sickle cell</b> (common in Eastern & Southern regions)</td><td>Pain controlled on oral analgesia, Hb at baseline, afebrile ≥2 y on prophylaxis</td><td>Fever ≥38.5 °C (IV ceftriaxone within 1 h), pain uncontrolled after 2 opioid doses, Hb ↓ ≥2 g/dL</td><td>Acute chest syndrome, stroke signs, splenic sequestration, aplastic crisis</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Transfers: follow your hospital and MOH inter-facility transfer pathway. Prehospital: Saudi Red Crescent 997. Weigh the child at triage; estimated weight should be a temporary measure.</p>
+  </section>
+  <section class="block">
+    <div class="pearl"><b>Board three-liner.</b> 3-year-old, 14 kg, wheeze and PRAM 7 after one salbutamol neb. Give salbutamol 2.5 mg + ipratropium 250 mcg every 20 min × 3, prednisolone 28 mg once daily for 3 days, reassess PRAM at 60 min; if still ≥8, magnesium 700 mg IV over 20 min and call PICU. Learning point: the 1-hour PRAM, not the arrival score, decides disposition.</div>
+  </section>
+</div>
+</main>
+
+<footer class="pe-src">
+  <div>Work in progress — drafted with AI assistance and under review by the editor and colleagues. An educational reference, not a final source. Always confirm against your hospital formulary and current guidelines; doses here do not replace clinical judgement or a pharmacist check.</div>
+  <div><b>Sources</b></div>
+  <ol class="src">
+    <li>AHA/AAP. 2025 Guidelines for CPR and ECC, Part 8: Pediatric Advanced Life Support. Circulation 2025.</li>
+    <li>Weiss SL et al. Surviving Sepsis Campaign international guidelines for septic shock in children. Pediatr Crit Care Med 2020;21:e52–e106.</li>
+    <li>Glaser N et al. ISPAD Clinical Practice Consensus Guidelines 2022: DKA and HHS. Pediatr Diabetes 2022;23:835–856.</li>
+    <li>Feld LG et al. Clinical practice guideline: maintenance IV fluids in children. Pediatrics 2018;142:e20183083.</li>
+    <li>Ralston SL et al. AAP bronchiolitis guideline. Pediatrics 2014;134:e1474. WHO consolidated guidelines: asthma and bronchiolitis in children, 2026.</li>
+    <li>GINA 2026 report; NAEPP EPR-3; SIGN 158 (2019) acute asthma.</li>
+    <li>Ducharme FM et al. PRAM. J Pediatr 2008;152:476–80.</li>
+    <li>Westley CR et al. Am J Dis Child 1978;132:484–7. Gates A et al. Glucocorticoids for croup, Cochrane 2018.</li>
+    <li>Friedman JN et al. J Pediatr 2004;145:201–7. Goldman RD et al. Pediatrics 2008;122:545–9.</li>
+    <li>Kuppermann N et al. PECARN head injury rules. Lancet 2009;374:1160–70.</li>
+    <li>Pantell RH et al. Febrile infants 8–60 days. Pediatrics 2021;148:e2021052228.</li>
+    <li>Kapur J et al. ESETT. N Engl J Med 2019;381:2103–13.</li>
+    <li>Green SM et al. ACEP ketamine sedation guideline. Ann Emerg Med 2011;57:449–61.</li>
+    <li>Freedman SB et al. Ondansetron in gastroenteritis. N Engl J Med 2006;354:1698–705. Granisetron FDA label.</li>
+    <li>Lacroix J et al. TAXI pediatric transfusion recommendations. Pediatr Crit Care Med 2018;19(9S).</li>
+    <li>Baker RD, Greer FR. AAP iron deficiency. Pediatrics 2010;126:1040–50. Powers JM et al. JAMA 2017;317:2297–304.</li>
+    <li>Trautmann A et al. IPNA 2022 steroid-sensitive nephrotic syndrome. Pediatr Nephrol 2023. KDIGO 2021 GN.</li>
+    <li>Cardona V et al. WAO anaphylaxis guidance 2020. Sicherer SH et al. AAP epinephrine autoinjector report. Pediatrics 2017.</li>
+  </ol>
+</footer>
+</div>
+</div>
+<footer>
+{% include "credit.html" %}
+</footer>
+<script>
+{% raw %}(function(){
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const W=()=>{const v=parseFloat($('#wt').value);return v>0?v:0};
+const r=(x,d)=>{if(!isFinite(x))return '—';const p=Math.pow(10,d==null?(x<1?2:x<10?1:0):d);return String(Math.round(x*p)/p)};
+
+/* ---------- tabs ---------- */
+function openTab(id){
+  $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===id)));
+  $$('.panel').forEach(p=>{p.hidden=p.id!=='p-'+id});
+  try{localStorage.setItem('pedsTab',id)}catch(e){}
+  try{history.replaceState(null,'','#'+id)}catch(e){}
+}
+$$('nav.tabs button').forEach(b=>b.addEventListener('click',()=>openTab(b.dataset.tab)));
+let start='review';
+const h=(location.hash||'').slice(1).replace(/^p-/,'');
+if(h && document.getElementById('p-'+h)) start=h; else {try{const s=localStorage.getItem('pedsTab');if(s&&document.getElementById('p-'+s))start=s}catch(e){}}
+openTab(start);
+
+/* ---------- weight estimate (APLS) ---------- */
+$('#estBtn').addEventListener('click',()=>{
+  const a=parseFloat($('#age').value); if(!(a>=0)) return;
+  let w,f;
+  if(a<1){w=(a*12)*0.5+4;f='(months × 0.5) + 4'}
+  else if(a<=5){w=2*a+8;f='(2 × years) + 8'}
+  else if(a<=12){w=3*a+7;f='(3 × years) + 7'}
+  else {w=null}
+  if(w==null){$('#wtHint').classList.add('on');$('#wtHint').textContent='Over 12 years: weigh the child or use a length-based tape.';return}
+  $('#wt').value=r(w,1);
+  $('#wtHint').classList.add('on');$('#wtHint').textContent='Estimated by APLS '+f+' = '+r(w,1)+' kg. Replace with a measured weight or Broselow tape as soon as you can.';
+  update();
+});
+
+/* ---------- dose helper ---------- */
+function dose(perKg,max,unit,min){
+  const w=W(); let d=perKg*w, cap=false, flo=false;
+  if(max!=null && d>max){d=max;cap=true}
+  if(min!=null && d<min){d=min;flo=true}
+  return '<span class="dose">'+r(d)+' '+unit+'</span>'+(cap?'<span class="capped">max</span>':'')+(flo?'<span class="capped">min</span>':'');
+}
+function range(lo,hi,max,unit){
+  const w=W(); let a=lo*w,b=hi*w,cap=false;
+  if(max!=null){if(b>max){b=max;cap=true} if(a>max){a=max}}
+  return '<span class="dose">'+r(a)+'–'+r(b)+' '+unit+'</span>'+(cap?'<span class="capped">max</span>':'');
+}
+
+/* ---------- drug table ---------- */
+const drugs=[
+ {g:'Fever and pain'},
+ {n:'Paracetamol PO/PR',k:'15 mg/kg q4–6h',d:()=>dose(15,1000,'mg'),u:'Max 75 mg/kg/day (4 g). Any age; neonates 10–15 mg/kg q6–8h.'},
+ {n:'Paracetamol IV',k:'15 mg/kg q6h (≥10 kg)',d:()=>W()<10?dose(7.5,null,'mg')+' <small>(7.5–10 mg/kg &lt;10 kg)</small>':dose(15,1000,'mg'),u:'Max 60 mg/kg/day IV. Use only if PO/PR not possible.'},
+ {n:'Ibuprofen PO',k:'10 mg/kg q6–8h',d:()=>dose(10,400,'mg'),u:'≥3 months and >5 kg. Max 40 mg/kg/day. Avoid if dehydrated, AKI, bleeding, varicella.'},
+ {g:'Asthma and wheeze'},
+ {n:'Salbutamol neb',k:'<20 kg 2.5 mg · ≥20 kg 5 mg',d:()=>'<span class="dose">'+(W()<20?'2.5':'5')+' mg</span>',u:'q20 min × 3, then hourly or 2-hourly. Continuous: 0.5 mg/kg/h (max 20 mg/h) in PICU-level care.'},
+ {n:'Salbutamol MDI + spacer (100 mcg)',k:'<6 y 6 puffs · ≥6 y 12 puffs',d:()=>'<span class="dose">'+((parseFloat($('#age').value)||0)<6?'6':'12')+' puffs</span>',u:'q20 min × 3. Equal to nebulizer in mild–moderate attacks; less tachycardia.'},
+ {n:'Ipratropium neb',k:'<20 kg 250 mcg · ≥20 kg 500 mcg',d:()=>'<span class="dose">'+(W()<20?'250':'500')+' mcg</span>',u:'With each of the first 3 salbutamol doses in moderate–severe attacks. No benefit after admission.'},
+ {n:'Prednisolone PO',k:'1–2 mg/kg once daily',d:()=>{const a=parseFloat($('#age').value)||0;const mx=a<2?20:a<6?30:40;return range(1,2,mx,'mg')},u:'3–5 days, no taper. Max 20 mg <2 y, 30 mg 2–5 y, 40 mg ≥6 y (GINA).'},
+ {n:'Dexamethasone PO (asthma)',k:'0.3–0.6 mg/kg',d:()=>range(0.3,0.6,16,'mg'),u:'Once, repeat at 24 h. Max 16 mg. Alternative to a prednisolone course.'},
+ {n:'Methylprednisolone IV',k:'1 mg/kg q12h',d:()=>dose(1,30,'mg'),u:'If vomiting or too unwell for PO. Max 60 mg/day.'},
+ {n:'Magnesium sulfate IV',k:'40–50 mg/kg over 20 min',d:()=>range(40,50,2000,'mg'),u:'Severe asthma not responding after the first hour. Max 2 g. Monitor BP.'},
+ {n:'Hypertonic saline 3% neb',k:'4 mL',d:()=>'<span class="dose">4 mL</span>',u:'Admitted bronchiolitis only, q6–8h. Not in the ED (AAP). May trigger wheeze.'},
+ {g:'Croup'},
+ {n:'Dexamethasone PO/IM (croup)',k:'0.15–0.6 mg/kg once',d:()=>range(0.15,0.6,10,'mg'),u:'All severities. 0.15 mg/kg as good as 0.6 for mild–moderate. Max 10 mg (some protocols 16).'},
+ {n:'Epinephrine neb (1 mg/mL)',k:'0.5 mL/kg',d:()=>dose(0.5,5,'mL'),u:'Moderate–severe croup. Max 5 mL. Observe ≥2–4 h after.'},
+ {g:'Vomiting'},
+ {n:'Ondansetron PO/ODT',k:'0.15 mg/kg or band',d:()=>{const w=W();const b=w<8?null:w<15?2:w<30?4:8;return b?'<span class="dose">'+b+' mg</span>':dose(0.15,null,'mg')},u:'≥6 months. Bands: 8–15 kg 2 mg, 15–30 kg 4 mg, >30 kg 8 mg. Single dose before ORT trial.'},
+ {n:'Ondansetron IV',k:'0.15 mg/kg',d:()=>dose(0.15,4,'mg'),u:'Max 4 mg IV in ED use (8 mg in oncology). QT caution.'},
+ {n:'Granisetron IV',k:'10–40 mcg/kg',d:()=>range(10,40,1000,'mcg'),u:'Labelled ≥2 y for chemotherapy nausea. Not recommended for post-op vomiting in children (QT). If it is your only 5-HT₃ agent, use the low end.'},
+ {g:'Infection'},
+ {n:'Ceftriaxone IV/IM',k:'50–75 mg/kg q24h',d:()=>range(50,75,2000,'mg'),u:'Max 2 g. Avoid <28 days with jaundice or IV calcium (use cefotaxime).'},
+ {n:'Ceftriaxone (meningitis)',k:'100 mg/kg/day',d:()=>dose(100,4000,'mg')+' <small>/day</small>',u:'Once daily or 50 mg/kg q12h. Max 4 g/day. Add vancomycin per local resistance.'},
+ {n:'Amoxicillin PO (AOM, pneumonia)',k:'80–90 mg/kg/day ÷ 2',d:()=>range(40,45,1000,'mg')+' <small>BID</small>',u:'AOM 5–10 days; CAP 5 days (SAFER/CAP-IT). Max 1 g/dose.'},
+ {g:'Other'},
+ {n:'Furosemide IV',k:'0.5–1 mg/kg',d:()=>range(0.5,1,40,'mg'),u:'q6–12h. Max 40 mg first dose; 6 mg/kg/day.'},
+ {n:'Elemental iron PO',k:'3 mg/kg/day',d:()=>range(3,6,120,'mg')+' <small>/day</small>',u:'Once daily, between meals. Recheck Hb at 4 weeks. Continue ~3 months after Hb normal.'},
+];
+function renderDrugs(){
+  $('#drugTable tbody').innerHTML=drugs.map(x=>x.g?'<tr class="grp"><td colspan="4">'+x.g+'</td></tr>':'<tr><td><b>'+x.n+'</b></td><td class="mono">'+x.k+'</td><td>'+x.d()+'</td><td>'+x.u+'</td></tr>').join('');
+}
+
+/* ---------- resus table ---------- */
+const resus=[
+ {n:'Epinephrine IV/IO (0.1 mg/mL)',k:'0.01 mg/kg',d:()=>dose(0.01,1,'mg')+' = '+dose(0.1,10,'mL'),u:'q3–5 min. Non-shockable: first dose as early as possible (2025).'},
+ {n:'Epinephrine ETT (1 mg/mL)',k:'0.1 mg/kg',d:()=>dose(0.1,2.5,'mg'),u:'Only if no IV/IO. Flush with 5 mL NS.'},
+ {n:'Defibrillation',k:'2 J/kg → 4 J/kg',d:()=>{const w=W();return '<span class="dose">'+r(2*w,0)+' J → '+r(4*w,0)+' J</span>'},u:'Later shocks ≥4 J/kg, max 10 J/kg or adult dose. Synchronised cardioversion 0.5–1 J/kg then 2 J/kg.'},
+ {n:'Amiodarone IV',k:'5 mg/kg',d:()=>dose(5,300,'mg'),u:'Refractory VF/pVT after 3rd shock; repeat up to 15 mg/kg total. Or lidocaine 1 mg/kg.'},
+ {n:'Adenosine rapid IV',k:'0.1 → 0.2 mg/kg',d:()=>dose(0.1,6,'mg')+' → '+dose(0.2,12,'mg'),u:'SVT. Rapid push, immediate 5–10 mL flush, proximal line.'},
+ {n:'Atropine IV',k:'0.02 mg/kg',d:()=>dose(0.02,0.5,'mg'),u:'Vagal bradycardia or AV block. No minimum dose since 2020.'},
+ {n:'Epinephrine IM (1 mg/mL)',k:'0.01 mg/kg = 0.01 mL/kg',d:()=>dose(0.01,0.5,'mg')+' = '+dose(0.01,0.5,'mL'),u:'Anaphylaxis, thigh. Max 0.5 mg (0.3 mg prepubertal). Repeat q5–15 min. Autoinjector: '+(W()<25?'0.15 mg':'0.3 mg')+'.'},
+ {n:'Dextrose 10%',k:'2–5 mL/kg',d:()=>range(2,5,250,'mL'),u:'Hypoglycemia. Neonate 2 mL/kg. Then glucose-containing maintenance.'},
+ {n:'Calcium gluconate 10%',k:'0.5 mL/kg (50 mg/kg)',d:()=>dose(0.5,20,'mL'),u:'Hyperkalemia with ECG change, hypocalcemia, CCB toxicity. Over 5–10 min.'},
+ {n:'Naloxone IV/IM/IN',k:'0.1 mg/kg (full reversal)',d:()=>dose(0.1,2,'mg'),u:'Opioid toxicity. Partial reversal after procedural sedation: 1–5 mcg/kg titrated.'},
+ {n:'Flumazenil IV',k:'0.01 mg/kg',d:()=>dose(0.01,0.2,'mg'),u:'Iatrogenic benzodiazepine sedation only. Never in unknown overdose or seizure history.'},
+ {n:'3% saline',k:'2.5–5 mL/kg',d:()=>range(2.5,5,250,'mL'),u:'Raised ICP / DKA cerebral edema, over 10–15 min. Or mannitol 0.5–1 g/kg.'},
+ {n:'ETT size (cuffed)',k:'age/4 + 3.5',d:()=>{const a=parseFloat($('#age').value);if(!(a>=2))return '<span class="dose">3.0–3.5</span> <small>infant</small>';const t=a/4+3.5;return '<span class="dose">'+r(t,1)+' mm</span> · depth '+r(3*t,0)+' cm'},u:'Have half-size above and below ready. Depth = 3 × ETT size at the lip.'},
+];
+function renderResus(){$('#resusTable tbody').innerHTML=resus.map(x=>'<tr><td><b>'+x.n+'</b></td><td class="mono">'+x.k+'</td><td>'+x.d()+'</td><td>'+x.u+'</td></tr>').join('')}
+
+/* ---------- seizure + sedation ---------- */
+const seiz=[
+ {t:'0–5 min',n:'ABC, O₂, glucose, time',k:'—',d:()=>'<span class="dose">D10 '+r(2*W(),0)+'–'+r(5*W(),0)+' mL</span> if glucose &lt;70',},
+ {t:'5 min',n:'Midazolam IM',k:'0.2 mg/kg',d:()=>dose(0.2,10,'mg')},
+ {t:'',n:'Midazolam buccal / IN',k:'0.3 / 0.2 mg/kg',d:()=>dose(0.3,10,'mg')+' / '+dose(0.2,10,'mg')},
+ {t:'',n:'Lorazepam IV',k:'0.1 mg/kg',d:()=>dose(0.1,4,'mg')},
+ {t:'',n:'Diazepam PR',k:'0.5 mg/kg',d:()=>dose(0.5,20,'mg')},
+ {t:'10 min',n:'Repeat benzodiazepine once',k:'same dose',d:()=>'—'},
+ {t:'15–20 min',n:'Levetiracetam IV',k:'60 mg/kg over 5–10 min',d:()=>dose(60,4500,'mg')},
+ {t:'',n:'or Fosphenytoin IV',k:'20 mg PE/kg',d:()=>dose(20,1500,'mg PE')},
+ {t:'',n:'or Phenytoin IV',k:'20 mg/kg over 20 min',d:()=>dose(20,1500,'mg')},
+ {t:'',n:'or Valproate IV',k:'40 mg/kg over 5–10 min',d:()=>dose(40,3000,'mg')},
+ {t:'35–40 min',n:'Refractory: PICU, RSI',k:'midazolam infusion / ketamine / thiopental',d:()=>'—'},
+];
+const sed=[
+ {n:'Fentanyl IN',k:'1.5 mcg/kg',d:()=>dose(1.5,100,'mcg'),u:'Fractures, burns, pre-cannulation. Repeat 0.5–1 mcg/kg once at 10 min. Split between nostrils.'},
+ {n:'Fentanyl IV',k:'1 mcg/kg (0.5–2)',d:()=>dose(1,50,'mcg'),u:'Over 3–5 min (rapid push → chest wall rigidity). Max 50 mcg/dose; repeat q5–10 min.'},
+ {n:'Morphine IV',k:'0.05–0.1 mg/kg',d:()=>{const a=parseFloat($('#age').value)||0;return a<0.5?range(0.025,0.05,1,'mg')+' <small>(&lt;6 mo)</small>':range(0.05,0.1,4,'mg')},u:'q2–4h. Infusion 10–40 mcg/kg/h. Infants &lt;6 months more sensitive; monitor SpO₂.'},
+ {n:'Ketamine IV (PSA)',k:'1–2 mg/kg over 1 min',d:()=>range(1,2,null,'mg'),u:'Dissociative sedation. Repeat 0.5–1 mg/kg. Avoid &lt;3 months, active URTI, psychosis. Have suction; laryngospasm ~0.3%.'},
+ {n:'Ketamine IM (PSA)',k:'4–5 mg/kg',d:()=>range(4,5,null,'mg'),u:'No IV access. Onset 3–5 min; more vomiting.'},
+ {n:'Ketamine IV (analgesia)',k:'0.1–0.3 mg/kg',d:()=>range(0.1,0.3,25,'mg'),u:'Sub-dissociative, opioid-sparing. Over 10–15 min.'},
+ {n:'Ketamine IN (analgesia)',k:'1 mg/kg',d:()=>dose(1,50,'mg'),u:'Alternative to IN fentanyl.'},
+ {n:'Midazolam IN (anxiolysis)',k:'0.2–0.5 mg/kg',d:()=>range(0.2,0.5,10,'mg'),u:'Laceration repair, imaging. Burns on instillation; atomizer preferred.'},
+ {n:'Midazolam IV (sedation)',k:'0.05–0.1 mg/kg',d:()=>range(0.05,0.1,2,'mg'),u:'Titrate q3–5 min. Max 2 mg/dose; total 6 mg (&lt;6 y) or 10 mg (6–12 y).'},
+ {n:'Midazolam infusion',k:'0.05–0.2 mg/kg/h',d:()=>range(0.05,0.2,null,'mg/h'),u:'Ventilated / refractory status (PICU).'},
+];
+function renderSed(){
+  $('#seizTable tbody').innerHTML=seiz.map(x=>'<tr><td class="mono">'+x.t+'</td><td><b>'+x.n+'</b></td><td class="mono">'+x.k+'</td><td>'+x.d()+'</td></tr>').join('');
+  $('#sedTable tbody').innerHTML=sed.map(x=>'<tr><td><b>'+x.n+'</b></td><td class="mono">'+x.k+'</td><td>'+x.d()+'</td><td>'+x.u+'</td></tr>').join('');
+}
+
+/* ---------- fluids ---------- */
+function hs(w){if(w<=10)return 4*w; if(w<=20)return 40+2*(w-10); return Math.min(60+(w-20),100)}
+function renderFluids(){
+  const w=W(), m=hs(w);
+  $('#maintOut').innerHTML='<div class="big">'+r(m,0)+' mL/h</div>'+
+   '<div class="ln"><span>Per day</span><span>'+r(m*24,0)+' mL</span></div>'+
+   '<div class="ln"><span>2/3 maintenance</span><span>'+r(m*2/3,0)+' mL/h</span></div>'+
+   '<div class="ln"><span>1.5 × maintenance</span><span>'+r(m*1.5,0)+' mL/h</span></div>'+
+   '<div class="ln"><span>Rule</span><span>'+(w<=10?'4 × kg':w<=20?'40 + 2 × (kg−10)':'60 + (kg−20)')+'</span></div>';
+  const t=$('#bolusType').value, cfg={
+    shock:[10,20,'over 5–20 min','Reassess after each. Up to 40–60 mL/kg in hour 1 if no hepatomegaly or crackles; start vasoactive early if needed.'],
+    dehyd:[20,20,'over 15–30 min','Then deficit + maintenance over 24 h, or switch to ORT/NG as soon as perfused.'],
+    dka:[10,20,'over 20–30 min','Insulin 0.05–0.1 U/kg/h starting ≥1 h after fluids. No insulin bolus.'],
+    cardiac:[5,10,'over 10–20 min','Listen for crackles and feel for liver edge before repeating.']}[t];
+  const lo=Math.min(cfg[0]*w,1000), hi=Math.min(cfg[1]*w,1000);
+  $('#bolusOut').innerHTML='<div class="big">'+(lo===hi?r(lo,0):r(lo,0)+'–'+r(hi,0))+' mL</div><div class="ln"><span>Isotonic (NS or balanced)</span><span>'+cfg[2]+'</span></div><div class="note">'+cfg[3]+(cfg[1]*w>1000?' Capped at 1000 mL per bolus.':'')+'</div>';
+  if(t==='dka'){
+    const ins=[0.05*w,0.1*w];
+    $('#bolusOut').innerHTML+='<div class="ln"><span>Insulin infusion</span><span>'+r(ins[0],2)+'–'+r(ins[1],2)+' U/h</span></div>';
+  }
+  renderK();
+  // PRBC
+  const now=parseFloat($('#hbNow').value), goal=parseFloat($('#hbGoal').value);
+  let vol=w*(goal-now)*4, f=[];
+  if(!(goal>now)) vol=NaN;
+  const per=vol/w;
+  $('#prbcOut').innerHTML='<div class="big">'+r(vol,0)+' mL</div>'+
+   '<div class="ln"><span>That is</span><span>'+r(per,1)+' mL/kg</span></div>'+
+   '<div class="ln"><span>Standard dose 10–15 mL/kg</span><span>'+r(10*w,0)+'–'+r(15*w,0)+' mL</span></div>'+
+   '<div class="ln"><span>Over 4 h / 3 h</span><span>'+r(vol/4,0)+' / '+r(vol/3,0)+' mL/h</span></div>';
+  if(per>20) f.push('<div class="flag bad">More than 20 mL/kg in one transfusion. Split it, or give 10–15 mL/kg and recheck Hb.</div>');
+  if(goal>10) f.push('<div class="flag warn">Target above 10 g/dL. In sickle cell disease this risks hyperviscosity.</div>');
+  if(vol>300) f.push('<div class="flag warn">Over one adult unit (~250–300 mL); order in whole units where possible.</div>');
+  if(now<5) f.push('<div class="flag warn">Hb below 5 g/dL with chronic anemia: give slowly in 5 mL/kg aliquots and watch for heart failure.</div>');
+  $('#prbcFlags').innerHTML=f.join('');
+  // albumin
+  $('#albOut').innerHTML='<div class="ln"><span>5% albumin (volume) 10–20 mL/kg</span><span>'+r(10*w,0)+'–'+r(20*w,0)+' mL</span></div>'+
+   '<div class="ln"><span>25% albumin 0.5–1 g/kg</span><span>'+r(0.5*w,1)+'–'+r(Math.min(w,100),1)+' g</span></div>'+
+   '<div class="ln"><span>= volume of 25%</span><span>'+r(2*w,0)+'–'+r(Math.min(4*w,400),0)+' mL over 2–4 h</span></div>'+
+   '<div class="ln"><span>+ furosemide 0.5–1 mg/kg</span><span>'+r(Math.min(0.5*w,40),1)+'–'+r(Math.min(w,40),1)+' mg</span></div>';
+  // glucose
+  $('#glucOut').innerHTML='<div class="ln"><span>D10 2–5 mL/kg IV</span><span>'+r(Math.min(2*w,250),0)+'–'+r(Math.min(5*w,250),0)+' mL</span></div>'+
+   '<div class="ln"><span>Neonate D10 2 mL/kg</span><span>'+r(2*w,0)+' mL</span></div>'+
+   '<div class="ln"><span>Oral (conscious) 0.3 g/kg</span><span>'+r(Math.min(0.3*w,15),0)+' g glucose</span></div>'+
+   '<div class="ln"><span>Glucagon IM</span><span>'+(w<25?'0.5 mg':'1 mg')+'</span></div>';
+}
+function renderK(){
+  const w=W(), meq=parseFloat($('#kMeq').value), bag=parseFloat($('#kBag').value), rate=parseFloat($('#kRate').value);
+  const conc=meq/bag*1000, perh=meq/bag*rate, perday=perh*24/w, perkgh=perh/w;
+  $('#kOut').innerHTML='<div class="big">'+r(perday,2)+' mEq/kg/day</div>'+
+   '<div class="ln"><span>Concentration</span><span>'+r(conc,0)+' mEq/L</span></div>'+
+   '<div class="ln"><span>Delivered</span><span>'+r(perh,2)+' mEq/h · '+r(perkgh,3)+' mEq/kg/h</span></div>';
+  const f=[];
+  if(perday>=1 && perday<=2) f.push('<div class="flag good">Within maintenance (1–2 mEq/kg/day).</div>');
+  else if(perday<1) f.push('<div class="flag warn">Below maintenance need (1–2 mEq/kg/day).</div>');
+  else if(perday<=3) f.push('<div class="flag warn">Above maintenance; acceptable only for a deficit with K monitoring.</div>');
+  else f.push('<div class="flag bad">Over 3 mEq/kg/day. Recheck the order.</div>');
+  if(conc>80) f.push('<div class="flag bad">Over 80 mEq/L: central line only.</div>');
+  else if(conc>40) f.push('<div class="flag warn">Over 40 mEq/L: phlebitis risk peripherally; check local maximum.</div>');
+  if(perkgh>0.5) f.push('<div class="flag bad">Over 0.5 mEq/kg/h: needs cardiac monitoring and PICU-level care.</div>');
+  $('#kFlags').innerHTML=f.join('');
+}
+$('#kUseMaint').addEventListener('click',()=>{$('#kRate').value=r(hs(W()),0);renderK()});
+['#kMeq','#kBag','#kRate'].forEach(s=>$(s).addEventListener('input',renderK));
+['#hbNow','#hbGoal','#bolusType'].forEach(s=>$(s).addEventListener('input',renderFluids));
+
+/* ---------- infusion ---------- */
+const infCfg={epi:{lo:0.02,hi:1,start:'0.05–0.1'},norepi:{lo:0.05,hi:2,start:'0.05–0.1'},milri:{lo:0.25,hi:0.75,start:'0.25–0.5'}};
+function renderInf(){
+  const w=W(), k=$('#infDrug').value, d=parseFloat($('#infDose').value), c=parseFloat($('#infConc').value), cf=infCfg[k];
+  const rate=d*w*60/c;
+  $('#infOut').innerHTML='<div class="big">'+r(rate,2)+' mL/h</div>'+
+   '<div class="ln"><span>Delivers</span><span>'+r(d*w,2)+' mcg/min</span></div>'+
+   '<div class="ln"><span>Usual start</span><span>'+cf.start+' mcg/kg/min</span></div>'+
+   '<div class="ln"><span>Range</span><span>'+cf.lo+'–'+cf.hi+' mcg/kg/min</span></div>';
+  $('#infFlags').innerHTML=(d>cf.hi?'<div class="flag bad">Above usual maximum ('+cf.hi+').</div>':d<cf.lo?'<div class="flag warn">Below usual range.</div>':'')+(rate<0.5?'<div class="flag warn">Rate under 0.5 mL/h; dilute further so the pump runs steadily.</div>':'');
+}
+['#infDrug','#infDose','#infConc'].forEach(s=>$(s).addEventListener('input',renderInf));
+
+/* ---------- scores ---------- */
+function sum(prefix,n){let s=0;for(let i=1;i<=n;i++){const e=document.querySelector('input[name="'+prefix+i+'"]:checked');s+=e?+e.value:0}return s}
+function sev(cls,txt){return '<span class="sev '+cls+'">'+txt+'</span>'}
+function renderScores(){
+  const p=sum('p',5);
+  $('#pramRes').innerHTML='<span class="big">'+p+'</span>'+(p<=3?sev('s-mild','Mild'):p<=7?sev('s-mod','Moderate'):sev('s-sev','Severe'))+
+   '<span class="note">'+(p<=3?'Salbutamol; consider oral steroid. Home if sustained.':p<=7?'Salbutamol + ipratropium × 3, oral steroid, reassess at 1 h.':'Back-to-back salbutamol + ipratropium, steroid, IV magnesium, senior/PICU.')+'</span>';
+  const ws=sum('w',5);
+  $('#westRes').innerHTML='<span class="big">'+ws+'</span>'+(ws<=2?sev('s-mild','Mild'):ws<=5?sev('s-mod','Moderate'):ws<=11?sev('s-sev','Severe'):sev('s-sev','Impending failure'))+
+   '<span class="note">'+(ws<=2?'Dexamethasone, home with advice.':ws<=5?'Dexamethasone; nebulized epinephrine if stridor at rest.':ws<=11?'Epinephrine neb + dexamethasone, O₂, admit.':'Airway team now; PICU.')+'</span>';
+  const c=sum('c',4), w=W();
+  $('#cdsRes').innerHTML='<span class="big">'+c+'</span>'+(c===0?sev('s-mild','None'):c<=4?sev('s-mod','Some'):sev('s-sev','Moderate–severe'));
+  $('#ortOut').innerHTML=c===0?'<div class="ln"><span>Replace each stool</span><span>'+r(10*w,0)+' mL ORS</span></div>':
+    c<=4?'<div class="ln"><span>ORS 50 mL/kg over 4 h</span><span>'+r(50*w,0)+' mL</span></div><div class="ln"><span>= every 5 min</span><span>'+r(50*w/48,0)+' mL</span></div><div class="ln"><span>Plus per stool</span><span>'+r(10*w,0)+' mL</span></div>':
+    '<div class="ln"><span>ORS/NG 100 mL/kg over 4 h</span><span>'+r(100*w,0)+' mL</span></div><div class="ln"><span>or IV bolus 20 mL/kg</span><span>'+r(Math.min(20*w,1000),0)+' mL</span></div><div class="note">NG rehydration is as effective as IV with fewer adverse events.</div>';
+}
+$$('#pram input,#westley input,#cds input').forEach(i=>i.addEventListener('change',renderScores));
+
+/* PECARN */
+const pec={
+ u2:{high:['GCS 14 or other signs of altered mental status','Palpable skull fracture'],
+     mid:['Occipital, parietal or temporal scalp hematoma','Loss of consciousness ≥5 s','Severe mechanism of injury','Not acting normally per parent'],
+     risk:['4.4%','0.9%','<0.02%']},
+ o2:{high:['GCS 14 or other signs of altered mental status','Signs of basilar skull fracture'],
+     mid:['Any loss of consciousness','Vomiting','Severe mechanism of injury','Severe headache'],
+     risk:['4.3%','0.9%','<0.05%']}};
+let pAge='o2';
+function renderPecList(){
+  const c=pec[pAge];
+  $('#pecHigh').innerHTML='<b>High-risk</b>'+c.high.map((t,i)=>'<label><input type="checkbox" id="ph'+i+'">'+t+'</label>').join('');
+  $('#pecMid').innerHTML='<b>Intermediate</b>'+c.mid.map((t,i)=>'<label><input type="checkbox" id="pm'+i+'">'+t+'</label>').join('');
+  $$('#pecarn input').forEach(i=>i.addEventListener('change',renderPec));
+  renderPec();
+}
+function renderPec(){
+  const c=pec[pAge], hi=$$('#pecHigh input:checked').length, mi=$$('#pecMid input:checked').length;
+  let h;
+  if(hi) h=sev('s-sev','CT recommended')+'<span class="note">ciTBI risk ~'+c.risk[0]+'.</span>';
+  else if(mi) h=sev('s-mod','Observe or CT')+'<span class="note">ciTBI ~'+c.risk[1]+'. Favour CT if several findings, worsening on observation, age &lt;3 months'+(pAge==='u2'?'':'')+', or parent preference. Otherwise observe 4–6 h.</span>';
+  else h=sev('s-mild','CT not recommended')+'<span class="note">ciTBI '+c.risk[2]+'. Discharge with head-injury advice.</span>';
+  $('#pecRes').innerHTML=h;
+}
+$$('#pecarn .seg button').forEach(b=>b.addEventListener('click',()=>{pAge=b.dataset.age;$$('#pecarn .seg button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderPecList()}));
+
+/* ---------- master update ---------- */
+function update(){renderDrugs();renderResus();renderSed();renderFluids();renderInf();renderScores()}
+['#wt','#age'].forEach(s=>$(s).addEventListener('input',()=>{if(s==='#wt'){$('#wtHint').classList.remove('on')}if(s==='#wt')$('#wtHint').textContent='Using '+r(W(),1)+' kg.';update()}));
+// default KCl rate = maintenance of example weight
+$('#kRate').value=r(hs(W()),0);
+update(); renderPecList();
+})();
+
+window.addEventListener('hashchange',function(){var t=(location.hash||'').slice(1).replace(/^p-/,'');var b=document.querySelector('nav.tabs button[data-tab="'+t+'"]');if(b)b.click();});{% endraw %}
+</script>
+</body>
+</html>
