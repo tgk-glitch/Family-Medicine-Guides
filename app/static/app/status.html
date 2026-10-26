@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>App status · Family Medicine Guides</title>
+<link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/app/app.css">
+<style>
+  :root{--paper:#F4F6F2;--ink:#1B2A28;--ink-soft:#4B5D59;--line:#D4DAD1;--teal:#1F5C55;--teal-deep:#123C38;--amber:#C98A2C;--ok:#1F6B3A;--bad:#A3362B;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;padding:20px 16px 80px;}
+  main{max-width:560px;margin:0 auto;}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:600;color:var(--teal-deep);font-size:1.6rem;margin:4px 0 4px;}
+  .sub{color:var(--ink-soft);margin:0 0 18px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 16px;margin-bottom:14px;}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);}
+  .row:last-child{border-bottom:0;}
+  .k{color:var(--ink-soft);}
+  .v{font-weight:600;text-align:right;}
+  .ok{color:var(--ok);} .bad{color:var(--bad);} .warn{color:#8A5A12;}
+  .big{font-size:1.15rem;padding:14px 16px;border-radius:14px;margin-bottom:14px;font-weight:600;}
+  .big.ok{background:#E6F2EA;} .big.bad{background:#F7E7E4;} .big.warn{background:#F6EEDD;}
+  button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:12px 14px;min-height:44px;cursor:pointer;width:100%;margin-bottom:10px;}
+  .primary{background:var(--teal);color:#fff;} .ghost{background:#fff;color:var(--ink);border:1px solid var(--line);}
+  a{color:var(--teal);}
+  details{margin-top:10px;color:var(--ink-soft);font-size:.9rem;} pre{white-space:pre-wrap;word-break:break-all;}
+</style>
+</head>
+<body>
+<main>
+  <p><a href="/index.html">← Home</a></p>
+  <h1>App status</h1>
+  <p class="sub">Shows whether this device has the app saved for offline use.</p>
+  <div id="summary" class="big warn">Checking…</div>
+  <div class="card" id="rows"></div>
+  <button class="primary" id="save" type="button">Save missing files now</button>
+  <button class="ghost" id="reload" type="button">Check again</button>
+  <details><summary>Details for Claude (send a screenshot if something is wrong)</summary><pre id="details"></pre></details>
+</main>
+<script src="/app/status.js" defer></script>
+</body>
+</html>

@@ -47,6 +47,13 @@ http.createServer((req, res) => {
   let urlPath;
   try { urlPath = decodeURIComponent(new URL(req.url, "http://x").pathname); }
   catch { res.writeHead(400).end(); return; }
+  // FMG_EMULATE_CF=1 copies Cloudflare's "auto-trailing-slash" behaviour (drops .html with a redirect).
+  if (process.env.FMG_EMULATE_CF === "1" && urlPath.endsWith(".html")) {
+    const clean = urlPath.endsWith("/index.html") ? urlPath.slice(0, -"index.html".length) : urlPath.slice(0, -5);
+    const q = new URL(req.url, "http://x").search;
+    res.writeHead(307, { Location: clean + q }).end();
+    return;
+  }
   if (urlPath.endsWith("/")) urlPath += "index.html";
   let file = path.resolve(ROOT, "." + urlPath);
   if (!file.startsWith(ROOT + path.sep)) { res.writeHead(403).end(); return; }

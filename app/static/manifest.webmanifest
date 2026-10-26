@@ -23,6 +23,7 @@
     { "name": "Search", "short_name": "Search", "url": "/index.html#search", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
     { "name": "Urgent care", "short_name": "Urgent", "url": "/urgent-care.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
     { "name": "Pediatric ER doses", "short_name": "Peds ER", "url": "/peds-er.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "App status (offline check)", "short_name": "Status", "url": "/app/status.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
     { "name": "For patients · للمرضى", "short_name": "Patients", "url": "/patients.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
   ]
 }

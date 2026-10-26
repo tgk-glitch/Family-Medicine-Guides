@@ -42,13 +42,31 @@ async function clean(res) {
   return new Response(body, { status: res.status, statusText: res.statusText, headers: res.headers });
 }
 
+// Save every file. One failed file does not stop the rest; the status page
+// (/app/status.html) shows what is saved and can retry the missing ones.
+async function saveAll(onlyMissing) {
+  const cache = await caches.open(CACHE);
+  let saved = 0, failed = 0;
+  for (const url of PRECACHE) {
+    if (onlyMissing && (await cache.match(keyFor(url)))) { saved++; continue; }
+    try {
+      const res = await fetch(url, { cache: "reload", credentials: "same-origin" });
+      if (!keepable(res)) { failed++; continue; }
+      await cache.put(keyFor(url), await clean(res));
+      saved++;
+    } catch (_) { failed++; }
+  }
+  return { saved, failed, total: PRECACHE.length };
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil((async () => {
+    const r = await saveAll(false);
+    // Without the home page and the offline page the app is not usable offline:
+    // fail this install so the browser tries again on the next visit.
     const cache = await caches.open(CACHE);
-    for (const url of PRECACHE) {
-      const res = await fetch(url, { cache: "reload", credentials: "same-origin" });
-      if (!keepable(res)) throw new Error("Not saved: " + url + " (" + res.status + ")");
-      await cache.put(keyFor(url), await clean(res));
+    if (!(await cache.match(keyFor("/index.html"))) || !(await cache.match(keyFor(OFFLINE)))) {
+      throw new Error("Core pages not saved (" + r.saved + "/" + r.total + ")");
     }
   })());
 });
@@ -65,6 +83,19 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("message", (event) => {
   if (event.data === "skipWaiting") self.skipWaiting();
   if (event.data === "version" && event.source) event.source.postMessage({ version: VERSION });
+  if (event.data === "status" && event.source) {
+    const src = event.source;
+    event.waitUntil((async () => {
+      const cache = await caches.open(CACHE);
+      const missing = [];
+      for (const url of PRECACHE) if (!(await cache.match(keyFor(url)))) missing.push(url);
+      src.postMessage({ status: { version: VERSION, total: PRECACHE.length, missing } });
+    })());
+  }
+  if (event.data === "saveMissing" && event.source) {
+    const src = event.source;
+    event.waitUntil(saveAll(true).then((r) => src.postMessage({ saved: r })));
+  }
 });
 
 function timeout(ms) {

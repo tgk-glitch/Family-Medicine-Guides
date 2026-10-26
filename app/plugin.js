@@ -116,7 +116,7 @@ export default function appPlugin(eleventyConfig) {
     );
     fs.writeFileSync(
       path.join(outDir, "app", "version.json"),
-      JSON.stringify({ version, built: new Date().toISOString(), files: files.length }) + "\n"
+      JSON.stringify({ version, built: new Date().toISOString(), files: files.length, list: files }) + "\n"
     );
     const bytes = files.reduce((n, f) => n + fs.statSync(path.join(outDir, f)).size, 0);
     console.log(`[fmg-app] service worker ${version}: ${files.length} files, ${(bytes / 1048576).toFixed(1)} MB saved for offline`);
