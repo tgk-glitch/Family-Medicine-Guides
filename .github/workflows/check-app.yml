@@ -1,5 +1,5 @@
 # Private app repository: checks every upload. It does NOT publish anything.
-# Publishing is done by Cloudflare Pages, behind Cloudflare Access (sign-in required).
+# Publishing is done by Cloudflare Workers Builds, behind Cloudflare Access (sign-in required).
 #
 # Security notes (same rules as the public site):
 # - Only GitHub's official actions, each locked to an exact commit fingerprint.

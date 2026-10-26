@@ -47,7 +47,7 @@ Once installed and opened once, the app keeps working offline even when the serv
 
 ## Option A — on your phone, tablet and other computers
 
-Published by Cloudflare Pages at `https://fmg-app.pages.dev`, locked by Cloudflare Access.
+Published by Cloudflare (Workers static assets, `wrangler.jsonc`) at `https://fmg-app.albaraatgk.workers.dev`, locked by Cloudflare Access (scope: all traffic; policy: Cloudflare account members only — sign-in with your Cloudflare login).
 Setup steps are in the project notes ("Private app — setup steps").
 
 | Device | How to install |

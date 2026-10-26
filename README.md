@@ -1,6 +1,6 @@
 # Family Medicine Guides — private app repository
 
-> **This is the private app copy.** It is not published on GitHub Pages. The app is built with `npm run build:app`, published by Cloudflare Pages behind Cloudflare Access, and only allowed accounts can open it. See **[app/README.md](app/README.md)**. The public website lives in `tgk-glitch/family-medicine-guides`.
+> **This is the private app copy.** It is not published on GitHub Pages. The app is built with `npm run build:app`, published by Cloudflare Workers (static assets) behind Cloudflare Access, and only allowed accounts can open it. See **[app/README.md](app/README.md)**. The public website lives in `tgk-glitch/family-medicine-guides`.
 
 Bilingual (English / العربية) reference site for family physicians in Saudi Arabia, with a public-education section.
 Created and medically supervised by **Dr. Albaraa Albawab**, Family Medicine.
