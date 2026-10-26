@@ -1,0 +1,28 @@
+{
+  "id": "/",
+  "name": "Family Medicine Guides",
+  "short_name": "FM Guides",
+  "description": "Bilingual family medicine reference for Saudi primary care — private development build. Created and medically supervised by Dr. Albaraa Albawab.",
+  "lang": "en",
+  "dir": "auto",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#F4F6F2",
+  "theme_color": "#123C38",
+  "categories": ["medical", "education", "health"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Search", "short_name": "Search", "url": "/index.html#search", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Urgent care", "short_name": "Urgent", "url": "/urgent-care.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Pediatric ER doses", "short_name": "Peds ER", "url": "/peds-er.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "For patients · للمرضى", "short_name": "Patients", "url": "/patients.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

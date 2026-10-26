@@ -1,0 +1,36 @@
+/* Private app helper UI. Everything is prefixed fmgapp- so it cannot clash with page styles. */
+.fmgapp-badge{
+  position:fixed;z-index:2147483000;bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  inset-inline-start:calc(10px + env(safe-area-inset-left,0px));
+  font:600 11px/1 'Inter','IBM Plex Sans Arabic',system-ui,sans-serif;letter-spacing:.02em;
+  color:#fff;background:#123C38;background:rgba(18,60,56,.86);
+  padding:6px 9px;border-radius:999px;pointer-events:none;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.fmgapp-badge[data-offline="1"]{background:#8A5A12;background:rgba(138,90,18,.92);}
+html[lang|="ar"] .fmgapp-badge{letter-spacing:0;font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;}
+
+.fmgapp-toast{
+  position:fixed;z-index:2147483001;left:50%;transform:translateX(-50%);
+  bottom:calc(44px + env(safe-area-inset-bottom,0px));
+  display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);
+  font:500 14px/1.35 'Inter','IBM Plex Sans Arabic',system-ui,sans-serif;
+  color:#1B2A28;background:#fff;border:1px solid #D4DAD1;border-radius:14px;
+  padding:10px 10px 10px 14px;box-shadow:0 8px 28px rgba(18,60,56,.18);
+}
+html[lang|="ar"] .fmgapp-toast{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;padding:10px 14px 10px 10px;}
+.fmgapp-toast-msg{flex:1 1 auto;min-width:0;}
+.fmgapp-toast-btn{
+  flex:none;font:inherit;font-weight:600;color:#fff;background:#1F5C55;border:0;border-radius:10px;
+  padding:8px 12px;cursor:pointer;min-height:36px;
+}
+.fmgapp-toast-btn:focus-visible,.fmgapp-toast-x:focus-visible{outline:2px solid #C98A2C;outline-offset:2px;}
+.fmgapp-toast-x{
+  flex:none;font:400 20px/1 system-ui,sans-serif;color:#4B5D59;background:transparent;border:0;
+  width:36px;height:36px;border-radius:10px;cursor:pointer;
+}
+@media print{.fmgapp-badge,.fmgapp-toast{display:none!important;}}
+@media (prefers-reduced-motion:no-preference){.fmgapp-toast{animation:fmgapp-in .18s ease-out;}}
+@keyframes fmgapp-in{from{opacity:0;transform:translate(-50%,8px);}to{opacity:1;transform:translate(-50%,0);}}
+.fmgapp-badge{transition:opacity .4s ease;}
+.fmgapp-badge.fmgapp-hidden{opacity:0;}

@@ -3,7 +3,7 @@
 # Nothing changes on the site until you approve (Merge) it.
 version: 2
 updates:
-  - package-ecosystem: "github-actions"   # the official steps in deploy.yml
+  - package-ecosystem: "github-actions"   # the official steps in check-app.yml
     directory: "/"
     schedule:
       interval: "monthly"
