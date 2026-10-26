@@ -1,0 +1,17 @@
+// Cloudflare settings for the private app (Workers static assets; no server code).
+// Cloudflare builds the app (npm run build:app) and publishes the _site folder.
+// Who may open it is controlled by Cloudflare Access (dashboard → this Worker → Settings).
+{
+  "name": "fmg-app",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./_site",
+    // Serves /counselling.html at /counselling (the app's offline cache handles both forms).
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  // One public-facing address only (fmg-app.<account>.workers.dev), locked by Access.
+  "workers_dev": true,
+  // No extra preview addresses per upload: fewer URLs to protect.
+  "preview_urls": false
+}
