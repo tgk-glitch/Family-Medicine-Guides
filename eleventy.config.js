@@ -12,7 +12,7 @@ export default function (eleventyConfig) {
   // Copy these as they are, without processing.
   eleventyConfig.addPassthroughCopy("src/downloads");
   eleventyConfig.addPassthroughCopy("src/search-index.js");
-  // eleventyConfig.addPassthroughCopy("src/assets");  // turn on when an assets folder is added
+  eleventyConfig.addPassthroughCopy("src/assets");
 
   return {
     dir: { input: "src", includes: "_includes", output: "_site" },

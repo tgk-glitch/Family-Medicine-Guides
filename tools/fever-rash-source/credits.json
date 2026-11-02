@@ -1,0 +1,162 @@
+{
+ "measles": {
+  "title": "Measles rash PHIL 4497 lores.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Measles_rash_PHIL_4497_lores.jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "",
+  "credit": "http://phil.cdc.gov/phil_images/20030825/1/PHIL_4497_lores.jpg",
+  "desc": "ID#: 4497 \nDescription: This child with measles is showing the characteristic red blotchy rash on his buttocks and back during the 3rd day of the rash.\nMeasles is an acute, highly communicable viral disease with prodromal fever, conjunctivitis, coryza, cough, and Koplik spots on the buccal mucosa. A",
+  "file": "measles.jpg"
+ },
+ "koplik": {
+  "title": "Koplik spots, measles 6111 lores.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Koplik_spots,_measles_6111_lores.jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "CDC",
+  "credit": "http://phil.cdc.gov/PHIL_Images/20040908/4f54ee8f0e5f49f58aaa30c1bc6413ba/6111_lores.jpg",
+  "desc": "This patient presented on the third pre-eruptive day with “Koplik spots” indicative of the beginning onset of measles. In the prodromal or beginning stages, one of the signs of the onset of measles is the eruption of “Koplik spots” on the mucosa of the cheeks and tongue, which appear as irregularly-",
+  "file": "koplik.jpg"
+ },
+ "rubella": {
+  "title": "Rash of rubella on back (crop).JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Rash_of_rubella_on_back_(crop).JPG",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "CDC",
+  "credit": "crop of File:Rash of rubella on skin of child's back.JPG",
+  "desc": "Rash of rubella on skin of child's back.\nDistribution is similar to that of measles but the lesions are less intensely red.\n\nCropped to remove buttocks.",
+  "file": "rubella.jpg"
+ },
+ "mumps": {
+  "title": "Mumps PHIL 130 lores.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Mumps_PHIL_130_lores.jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "Photo Credit:\nContent Providers: CDC/NIP/Barbara Rice",
+  "credit": "This media comes from the Centers for Disease Control and Prevention's Public Health Image Library (PHIL), with identification number #130.\n\n\nNote: Not all PHIL images are public domain; be sure to ch",
+  "desc": "Mumps. Child with mumps.",
+  "file": "mumps.jpg"
+ },
+ "scarlet": {
+  "title": "Scarlet fever rash.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Scarlet_fever_rash.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Whispyhistory",
+  "credit": "Own work",
+  "desc": "Scarlet fever sandpaper rash on neck and trunk of 8-year old with fever, confirmed strep throat and strawberry tongue.",
+  "file": "scarlet.jpg"
+ },
+ "strawberry": {
+  "title": "Strep throat with white strawberry tongue.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Strep_throat_with_white_strawberry_tongue.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Whispyhistory",
+  "credit": "Own work",
+  "desc": "Confirmed Strep throat (Strep pyogenes) with white strawberry tongue, pharyngitis and Forchheimer spots on soft palate in an 8-year old child with fever, sore throat, facial rash and goosebumpy sandpaper rash of body. Day 2 of illness",
+  "file": "strawberry.jpg"
+ },
+ "varicella": {
+  "title": "Varicella.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Varicella.jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "",
+  "credit": "phil.cdc.gov",
+  "desc": "Varicella simplex (Chickenpox) on a child.",
+  "file": "varicella.jpg"
+ },
+ "zoster": {
+  "title": "Herpetic shingles.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Herpetic_shingles.jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "NIAID",
+  "credit": "https://www.flickr.com/photos/niaid/6831064397/in/photostream",
+  "desc": "Shingles rash caused by herpes zoster virus. Credit: NIAID",
+  "file": "zoster.jpg"
+ },
+ "fifth": {
+  "title": "Fifth disease cropped.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Fifth_disease_cropped.jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "Fifth_disease.jpg: Andrew Kerr\nderivative work: Berita",
+  "credit": "This file was derived from:  Fifth disease.jpg:",
+  "desc": "A 16 month old child with Fifth Disease (aka Slapped face, Parvovirus B19).",
+  "file": "fifth.jpg"
+ },
+ "roseola": {
+  "title": "Sestamalattia.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Sestamalattia.JPG",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "Emiliano Burzagli",
+  "credit": "Own work",
+  "desc": "Exanthem subitum (meaning sudden rash), also referred to as roseola infantum (or rose rash of infants), sixth disease (as the sixth rash-causing childhood disease) and (confusingly) baby measles, or three day fever, is a benign disease of children, generally under two years old, whose manifestations",
+  "file": "roseola.jpg"
+ },
+ "impetigo": {
+  "title": "Impetigo.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Impetigo.jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "US Gov",
+  "credit": "http://phil.cdc.gov/phil/home.asp ID#: 5154  US Department of Health and Human Services",
+  "desc": "Skin lesions that proved to be impetigo. Impetigo is usually caused by Group A Streptococcus sp. or Staphylococcus aureus bacteria. Note how the maculopapular lesions resemble syphilis, which is caused by the Gram-negative Treponema pallidum spirochete.",
+  "file": "impetigo.jpg"
+ },
+ "hfmd": {
+  "title": "Characteristic rash of hand, foot, and mouth disease, on human hands.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Characteristic_rash_of_hand,_foot,_and_mouth_disease,_on_human_hands.jpg",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "artist": "James Heilman, MD",
+  "credit": "Own work",
+  "desc": "The rash of hands foot and mouth disease.",
+  "file": "hfmd.jpg"
+ },
+ "ssss": {
+  "title": "OSC Microbio 21 02 SSSS.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:OSC_Microbio_21_02_SSSS.jpg",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "artist": "CNX OpenStax",
+  "credit": "https://cnx.org/contents/5CvTdmJL@4.4",
+  "desc": "Name:\nMicrobiology\nID:\ne42bd376-624b-4c0f-972f-e0c57998e765@4.4\nLanguage:\nEnglish\nSummary:\nSubjects:\nScience and Technology\nKeywords:\nPrint Style:\nLicense:\nCreative Commons Attribution License (by 4.0)\nAuthors:\nOpenStax Microbiology\nCopyright Holders:\nOpenStax Microbiology\nPublishers:\nOpenStax Micro",
+  "file": "ssss.jpg"
+ },
+ "kawasaki": {
+  "title": "Kawasaki symptoms A.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Kawasaki_symptoms_A.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Kawasaki_symptoms.jpg: Dong Soo Kim\nderivative work: Natr (talk)",
+  "credit": "Kawasaki_symptoms.jpg",
+  "desc": "Kawasaki disease: Bilateral, non-exudative conjunctival injection with perilimbal sparing.",
+  "file": "kawasaki.jpg"
+ },
+ "dengue": {
+  "title": "Dengue recovery rash (White islands in red sea).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Dengue_recovery_rash_(White_islands_in_red_sea).jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Ranjan Premaratna. Professor in medicine. Department of medicine. University of kelaniya. Sri Lanka.",
+  "credit": "Email",
+  "desc": "The rash that commonly forms during the recovery from dengue fever with its classic islands of white in a sea of red.",
+  "file": "dengue.jpg"
+ },
+ "mpox": {
+  "title": "12779 lores.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:12779_lores.jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "CDC/ Brian W.J. Mahy, BSc, MA, PhD, ScD, DSc",
+  "credit": "(CDC's Public Health Image Library) Media ID #12779",
+  "desc": "This 1997 image was created during an investigation into an outbreak of monkeypox, which took place in the Democratic Republic of the Congo (DRC), formerly Zaire. Pictured here, was the right arm and torso of a patient, whose skin displayed a number of lesions due to what had been an active case of ",
+  "file": "mpox.jpg"
+ }
+}

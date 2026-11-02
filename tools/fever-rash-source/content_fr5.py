@@ -1,0 +1,201 @@
+from h import ul, ol, p, tbl, blk
+
+# ─────────────────────────────────────────────────────────────
+# 12 · SPECIAL POPULATIONS
+# ─────────────────────────────────────────────────────────────
+SPECIAL = dict(
+    id='special-populations',
+    h_en='Special populations: pregnancy, newborns, immunocompromised, unvaccinated',
+    h_ar='الفئات الخاصة: الحمل، وحديثو الولادة، وضعيفو المناعة، وغير المطعَّمين',
+    sub_en='The child with the rash is often not the person at greatest risk — the person at home is',
+    sub_ar='كثيرًا ما لا يكون الطفل المصاب بالطفح هو الأكثر عرضة للخطر — بل من في البيت',
+    blocks=[
+        blk('special', 'pregnancy-exposure', 'A pregnant woman has been exposed', 'تعرّضت امرأة حامل للعدوى',
+            '<p><b>Ask three questions:</b> what was the exposure (diagnosis, how close, how long), how many weeks pregnant is she, and is she immune (documented vaccines, past infection, booking serology)? Take blood for serology at the first contact — saved booking serum is valuable for comparison.</p>'
+            + tbl(['Exposure', 'Risk to mother', 'Risk to fetus / newborn', 'Action'], [
+                ['<b>Rubella</b>', 'Mild', 'CRS — up to 90% before 11 weeks', 'IgG now; if not immune, repeat serology at 3–4 weeks; fetal medicine if infected. IG not routine.'],
+                ['<b>Measles</b>', 'Pneumonia, death', 'Miscarriage, stillbirth, preterm birth; neonatal measles', 'Non-immune: <b>IVIG 400 mg/kg within 6 days</b>'],
+                ['<b>Varicella</b>', 'Pneumonia (worse in late pregnancy)', 'Fetal varicella syndrome (≤2%, before 20 weeks); severe neonatal varicella if onset −5 to +2 days of delivery', 'IgG within 24–48 h; non-immune: VariZIG within 10 days (US) or aciclovir/valaciclovir from day 7 (UK); aciclovir if rash appears'],
+                ['<b>Parvovirus B19</b>', 'Arthropathy', 'Fetal anaemia, hydrops, loss (≈5–10% if &lt;20 weeks)', 'IgG/IgM; if infected, MCA Doppler every 1–2 weeks for 8–12 weeks'],
+                ['<b>Mumps</b>', 'Usually mild', 'Possible first-trimester miscarriage; no malformations', 'Supportive; no PEP'],
+                ['<b>GAS / scarlet fever</b>', 'Puerperal sepsis risk after delivery', '—', 'Treat if symptomatic; know sepsis signs postpartum'],
+                ['<b>Enterovirus / HFMD</b>', 'Mild', 'Neonatal infection if near term', 'Inform obstetric team if near term'],
+                ['<b>Dengue</b>', 'More severe dengue', 'Preterm birth; vertical transmission near term', 'Refer; paracetamol only'],
+                ['<b>Mpox</b>', 'Variable', 'Miscarriage, stillbirth, congenital mpox', 'Refer; vaccine per national guidance'],
+                ['Roseola, impetigo', '—', 'No specific fetal risk', 'Reassure'],
+            ], wide=True),
+            '<p><b>اطرح ثلاثة أسئلة:</b> ما نوع التعرّض (التشخيص، ومدى القرب، والمدة)، وفي أي أسبوع من الحمل هي، وهل هي محصَّنة (لقاحات موثّقة، أو إصابة سابقة، أو فحوص مصلية عند فتح ملف الحمل)؟ اسحب عيّنة دم للفحص المصلي من أول مراجعة — فمصل فتح الملف المحفوظ مفيد للمقارنة.</p>'
+            + tbl(['التعرّض', 'الخطر على الأم', 'الخطر على الجنين / الوليد', 'الإجراء'], [
+                ['<b>الحصبة الألمانية</b>', 'خفيف', 'المتلازمة الخلقية — حتى 90% قبل 11 أسبوعًا', 'IgG الآن؛ وإن لم تكن محصَّنة يُعاد الفحص بعد 3–4 أسابيع؛ وطب الأجنة إن أصيبت. الغلوبيولين المناعي ليس روتينيًا.'],
+                ['<b>الحصبة</b>', 'التهاب رئوي، ووفاة', 'إجهاض، وولادة جنين ميت، وولادة مبكرة؛ وحصبة وليدية', 'غير المحصَّنة: <b>غلوبيولين مناعي وريدي 400 ملغ/كغ خلال 6 أيام</b>'],
+                ['<b>الجديري المائي</b>', 'التهاب رئوي (أشد في أواخر الحمل)', 'متلازمة الجديري الجنيني (2% أو أقل، قبل 20 أسبوعًا)؛ وجديري وليدي شديد إن بدأ بين 5 أيام قبل الولادة ويومين بعدها', 'IgG خلال 24–48 ساعة؛ وغير المحصَّنة: VariZIG خلال 10 أيام (أمريكا) أو أسيكلوفير/فالاسيكلوفير من اليوم السابع (بريطانيا)؛ والأسيكلوفير إن ظهر الطفح'],
+                ['<b>الفيروس الصغير B19</b>', 'اعتلال مفصلي', 'فقر دم جنيني، واستسقاء، وفقد الجنين (نحو 5–10% قبل 20 أسبوعًا)', 'IgG وIgM&rlm;؛ وإن أصيبت: دوبلر الشريان الدماغي الأوسط كل 1–2 أسبوع لمدة 8–12 أسبوعًا'],
+                ['<b>النكاف</b>', 'خفيف غالبًا', 'إجهاض محتمل في الثلث الأول؛ دون تشوهات', 'داعم؛ ولا وقاية بعد التعرّض'],
+                ['<b>العقديات / الحمّى القرمزية</b>', 'خطر حمّى النفاس بعد الولادة', '—', 'عالج إن ظهرت الأعراض؛ واعرفي علامات الإنتان بعد الولادة'],
+                ['<b>الفيروسات المعوية / مرض اليد والقدم والفم</b>', 'خفيف', 'عدوى وليدية إن كانت قرب الولادة', 'أبلغ فريق التوليد إن كانت قرب الولادة'],
+                ['<b>حمّى الضنك</b>', 'ضنك أشد', 'ولادة مبكرة؛ وانتقال للجنين قرب الولادة', 'إحالة؛ وباراسيتامول فقط'],
+                ['<b>جدري القردة</b>', 'متفاوت', 'إجهاض، وولادة جنين ميت، وجدري قردة خلقي', 'إحالة؛ واللقاح وفق الإرشادات الوطنية'],
+                ['الوردية، والقوباء', '—', 'لا خطر جنيني محدد', 'طمأنة'],
+            ], wide=True)),
+        blk('special', 'newborns', 'Newborns and young infants', 'حديثو الولادة والرضّع الصغار',
+            ul([
+                '<b>Vesicles in a baby under 6 weeks = neonatal herpes simplex until proven otherwise</b> — even without fever, even if the mother has no history of herpes. Same-day hospital assessment for PCR and IV aciclovir.',
+                '<b>Any fever under 3 months</b> follows the febrile infant pathway; a rash does not explain the fever away.',
+                '<b>Maternal varicella</b> from 5 days before to 2 days after birth → VariZIG for the baby; babies of mothers with chickenpox earlier in late pregnancy can still develop varicella and need review.',
+                '<b>Congenital rubella</b>: hearing screen, eyes, heart, and contact precautions until 1 year.',
+                '<b>Infants are too young for MMR and varicella vaccines</b> — protect them by vaccinating everyone around them (“cocooning”) and by early MMR from 6 months during outbreaks or before travel.',
+            ]),
+            ul([
+                '<b>الحويصلات عند رضيع دون 6 أسابيع = هربس بسيط وليدي حتى يثبت العكس</b> — حتى دون حمّى، وحتى إن لم يكن لدى الأم تاريخ هربس. تقييم في المستشفى في اليوم نفسه لفحص PCR وأسيكلوفير وريدي.',
+                '<b>أي حمّى دون 3 أشهر</b> تتبع مسار الرضيع المحموم؛ ولا يكفي الطفح تفسيرًا للحمّى.',
+                '<b>جديري الأم</b> بين 5 أيام قبل الولادة ويومين بعدها ← VariZIG للطفل؛ وأطفال الأمهات المصابات بالجديري قبل ذلك في أواخر الحمل قد يصابون أيضًا ويحتاجون إلى مراجعة.',
+                '<b>الحصبة الألمانية الخلقية</b>: فحص السمع والعينين والقلب، واحتياطات تلامس حتى عمر سنة.',
+                '<b>الرضّع أصغر من سنّ لقاحي MMR والجديري</b> — احمهم بتطعيم كل من حولهم («الشرنقة»)، وبجرعة MMR مبكرة من 6 أشهر في الفاشيات أو قبل السفر.',
+            ])),
+        blk('special', 'immunocompromised', 'Immunocompromised children', 'الأطفال ضعيفو المناعة',
+            ul([
+                '<b>Who:</b> chemotherapy, transplant, high-dose corticosteroids (≥2 mg/kg/day or ≥20 mg/day prednisolone for ≥14 days), biologics, primary immunodeficiency, advanced HIV.',
+                '<b>Presentations are atypical and more severe:</b> measles without rash (giant-cell pneumonia, inclusion-body encephalitis), progressive or haemorrhagic varicella, disseminated zoster, parvovirus red-cell aplasia, HHV-6 encephalitis.',
+                '<b>Act on exposure, not just on disease:</b> measles exposure → IVIG within 6 days regardless of vaccination; varicella exposure → VariZIG within 10 days; early IV aciclovir for varicella or zoster.',
+                '<b>Isolation is longer:</b> airborne for the whole measles illness; airborne + contact for any zoster.',
+                '<b>Live vaccines (MMR, varicella) are contraindicated</b> in significant immunosuppression — but <b>household contacts should receive them</b>. If a vaccinated contact develops a vaccine rash, they avoid contact with the immunocompromised person until it crusts.',
+                '<b>Sickle cell disease and haemolytic anaemias:</b> parvovirus aplastic crisis — FBC and reticulocytes for new pallor with fever.',
+            ]),
+            ul([
+                '<b>من هم:</b> متلقو العلاج الكيميائي، والزراعة، والكورتيزون بجرعات عالية (2 ملغ/كغ يوميًا أو 20 ملغ يوميًا من البريدنيزولون فأكثر لمدة 14 يومًا أو أكثر)، والعلاجات الحيوية، ونقص المناعة الأولي، وفيروس نقص المناعة المتقدم.',
+                '<b>الصورة غير نمطية وأشد:</b> حصبة دون طفح (التهاب رئوي بالخلايا العملاقة، والتهاب دماغ بالأجسام الاشتمالية)، وجديري مترقٍّ أو نزفي، وحزام ناري منتشر، ولاتنسّج الكريات الحمراء بالفيروس B19، والتهاب الدماغ بالهربس البشري 6.',
+                '<b>تصرّف عند التعرّض، لا عند المرض فقط:</b> التعرّض للحصبة ← غلوبيولين مناعي وريدي خلال 6 أيام أيًّا كان التطعيم؛ والتعرّض للجديري ← VariZIG خلال 10 أيام؛ وأسيكلوفير وريدي مبكر للجديري أو الحزام الناري.',
+                '<b>العزل أطول:</b> هوائي طوال مرض الحصبة؛ وهوائي + تلامس لأي حزام ناري.',
+                '<b>اللقاحات الحية (MMR والجديري) ممنوعة</b> مع التثبيط المناعي الواضح — لكن <b>يجب أن يتلقاها المخالطون في البيت</b>. وإن ظهر طفح اللقاح عند مخالط مطعَّم يتجنب الاقتراب من ضعيف المناعة حتى يتقشّر.',
+                '<b>فقر الدم المنجلي وفقر الدم الانحلالي:</b> نوبة اللاتنسّج بالفيروس B19 — تعداد دم وشبكيات عند ظهور شحوب جديد مع حمّى.',
+            ])),
+        blk('special', 'unvaccinated', 'Unvaccinated and under-vaccinated children', 'الأطفال غير المطعَّمين وناقصو التطعيم',
+            ul([
+                '<b>Every fever-with-rash visit is a vaccine visit.</b> Check the card for the child and the siblings.',
+                '<b>Post-exposure windows are short:</b> MMR within 72 hours of measles exposure; varicella vaccine within 3–5 days of varicella exposure. Exclude unvaccinated contacts from school day 5–21 (measles) or day 8–21 (varicella) if they do not receive prophylaxis.',
+                '<b>Catch-up:</b> two doses of MMR and two of varicella at least 4 weeks apart (3 months apart for varicella under 13 years in many schedules) for anyone over 12 months without documentation.',
+                '<b>Hesitant parents:</b> use a guiding, not directing, style — ask what they have heard, share the risk in numbers, respect autonomy, and leave the door open. See <a href="counselling.html#mi">motivational interviewing</a>.',
+            ]),
+            ul([
+                '<b>كل زيارة لحمّى مع طفح هي زيارة تطعيم.</b> راجع بطاقة الطفل وإخوته.',
+                '<b>نوافذ الوقاية بعد التعرّض قصيرة:</b> لقاح MMR خلال 72 ساعة من التعرّض للحصبة؛ ولقاح الجديري خلال 3–5 أيام من التعرّض للجديري. ويُستبعد المخالطون غير المطعَّمين من المدرسة من اليوم 5 إلى 21 (الحصبة) أو من اليوم 8 إلى 21 (الجديري) إن لم يتلقوا الوقاية.',
+                '<b>التطعيم الاستدراكي:</b> جرعتان من MMR وجرعتان من لقاح الجديري بفاصل 4 أسابيع على الأقل (3 أشهر للجديري دون 13 سنة في كثير من الجداول) لكل من تجاوز 12 شهرًا دون توثيق.',
+                '<b>الوالدان المترددان:</b> استخدم أسلوب الإرشاد لا الإملاء — اسأل عمّا سمعاه، وشارك الخطر بالأرقام، واحترم استقلالهما، واترك الباب مفتوحًا. انظر <a href="counselling.html#mi">المقابلة التحفيزية</a>.',
+            ])),
+        blk('note', 'pep-summary', 'Post-exposure prophylaxis at a glance', 'الوقاية بعد التعرّض في لمحة',
+            tbl(['Exposure', 'Vaccine', 'Immunoglobulin / antiviral', 'Window'], [
+                ['Measles', 'MMR (≥6 months)', 'IGIM 0.5 mL/kg (infants &lt;12 months); IVIG 400 mg/kg (pregnant non-immune, immunocompromised)', 'Vaccine ≤72 h; IG ≤6 days'],
+                ['Varicella', 'Varicella vaccine (≥12 months)', 'VariZIG (high risk); aciclovir from day 7–10 as an alternative', 'Vaccine ≤3–5 days; VariZIG ≤10 days'],
+                ['Rubella', 'MMR for future protection (not effective as PEP)', 'IG not routine', '—'],
+                ['Mumps', 'Third MMR dose in outbreaks', '—', '—'],
+                ['Meningococcal', 'Conjugate vaccine if vaccine-preventable serogroup', 'Ciprofloxacin, rifampicin or ceftriaxone', 'Within 24 h'],
+                ['Mpox', 'MVA-BN', 'Tecovirimat not for PEP', 'Ideally ≤4 days (up to 14)'],
+            ], wide=True),
+            tbl(['التعرّض', 'اللقاح', 'الغلوبيولين المناعي / مضاد الفيروسات', 'النافذة'], [
+                ['الحصبة', 'MMR (من 6 أشهر)', 'غلوبيولين عضلي 0.5 مل/كغ (الرضّع دون 12 شهرًا)؛ وغلوبيولين وريدي 400 ملغ/كغ (الحامل غير المحصَّنة وضعيف المناعة)', 'اللقاح خلال 72 ساعة؛ والغلوبيولين خلال 6 أيام'],
+                ['الجديري المائي', 'لقاح الجديري (من 12 شهرًا)', 'VariZIG (عالي الخطورة)؛ والأسيكلوفير من اليوم 7–10 بديلًا', 'اللقاح خلال 3–5 أيام؛ وVariZIG خلال 10 أيام'],
+                ['الحصبة الألمانية', 'MMR للحماية المستقبلية (غير فعّال وقايةً بعد التعرّض)', 'الغلوبيولين ليس روتينيًا', '—'],
+                ['النكاف', 'جرعة ثالثة من MMR في الفاشيات', '—', '—'],
+                ['المكورات السحائية', 'اللقاح المقترن إن كانت المجموعة المصلية مما يقي منه اللقاح', 'سيبروفلوكساسين أو ريفامبيسين أو سيفترياكسون', 'خلال 24 ساعة'],
+                ['جدري القردة', 'MVA-BN', 'التيكوفيريمات ليس للوقاية', 'يُفضَّل خلال 4 أيام (حتى 14)'],
+            ], wide=True)),
+    ])
+
+# ─────────────────────────────────────────────────────────────
+# 13 · PREVENTION & SAUDI CONTEXT
+# ─────────────────────────────────────────────────────────────
+PREVENTION = dict(
+    id='prevention',
+    h_en='Prevention and the Saudi context',
+    h_ar='الوقاية والسياق السعودي',
+    sub_en='Vaccines, mass gatherings, mosquito control and public messages',
+    sub_ar='اللقاحات، والتجمعات الكبرى، ومكافحة البعوض، ورسائل التوعية',
+    blocks=[
+        blk('prev', 'prevention-vaccines', 'Vaccines that prevent the diseases on this page', 'اللقاحات التي تقي من أمراض هذه الصفحة',
+            ul([
+                '<b>MMR</b> — two doses in the second year of life in the current MOH schedule (12 and 18 months); one dose is about 93% effective against measles, two about 97%. Early dose from 6 months in outbreaks or before travel (does not count toward the schedule).',
+                '<b>Varicella</b> — two doses (from 12 months); about 90% effective against any varicella and nearly 100% against severe disease after two doses.',
+                '<b>Meningococcal conjugate (ACWY)</b> — in the national schedule and required for <b>Hajj and Umrah</b> pilgrims; checked at entry.',
+                '<b>No vaccine</b> for GAS, parvovirus, HHV-6, enterovirus (EV-A71 vaccines are used only in China) or Kawasaki disease. A dengue vaccine (TAK-003) is licensed in some countries; follow national guidance.',
+                '<b>Contraindications to live vaccines:</b> pregnancy, significant immunosuppression; delay after immunoglobulin or blood products (e.g. 11 months after Kawasaki IVIG).',
+                'Check the current MOH schedule in Sehhaty or on the MOH website before advising exact ages — schedules are updated.',
+            ]),
+            ul([
+                '<b>MMR</b> — جرعتان في السنة الثانية من العمر في جدول وزارة الصحة الحالي (12 و18 شهرًا)&rlm;؛ وفعالية الجرعة الواحدة نحو 93% ضد الحصبة، والجرعتين نحو 97%. وجرعة مبكرة من 6 أشهر في الفاشيات أو قبل السفر (لا تُحتسب ضمن الجدول).',
+                '<b>الجديري المائي</b> — جرعتان (من 12 شهرًا)&rlm;؛ وفعاليته نحو 90% ضد أي جديري، وتقارب 100% ضد المرض الشديد بعد جرعتين.',
+                '<b>لقاح المكورات السحائية المقترن (ACWY)</b> — ضمن الجدول الوطني ومطلوب <b>لحجاج بيت الله ومعتمريه</b>&rlm;؛ ويُتحقق منه عند الدخول.',
+                '<b>لا لقاح</b> للعقديات المجموعة A، أو الفيروس الصغير B19، أو الهربس البشري 6، أو الفيروسات المعوية (لقاحات EV-A71 تُستخدم في الصين فقط)، أو داء كاواساكي. وهناك لقاح لحمّى الضنك (TAK-003) مرخّص في بعض الدول؛ اتبع الإرشادات الوطنية.',
+                '<b>موانع اللقاحات الحية:</b> الحمل، والتثبيط المناعي الواضح؛ وتأجيلها بعد الغلوبيولين المناعي أو منتجات الدم (مثل 11 شهرًا بعد الغلوبيولين الوريدي لداء كاواساكي).',
+                'راجع جدول وزارة الصحة الحالي في تطبيق «صحتي» أو موقع الوزارة قبل تحديد الأعمار بدقة — فالجداول تُحدَّث.',
+            ])),
+        blk('local', 'prevention-local', 'Saudi context', 'السياق المحلي',
+            ul([
+                '<b>Measles is not gone:</b> imported cases and local clusters continue to be reported, mostly in unvaccinated or incompletely vaccinated children and in areas with high population movement. Regional surveillance reviews (for example, Al-Baha 2020–24) are worth reading for local patterns.',
+                '<b>Mass gatherings:</b> Hajj, Umrah and Ramadan bring millions of visitors; measles, meningococcal disease and respiratory infections can spread rapidly. Ask about travel to Makkah and Madinah and contact with pilgrims.',
+                '<b>Dengue</b> is seasonal in Jeddah, Makkah and Jazan; <b>avoid NSAIDs</b> in any febrile child from these areas until dengue is excluded. Public messages: remove standing water, use screens and repellents.',
+                '<b>Haemoglobinopathies</b> (sickle cell disease, thalassaemia) are common in the Eastern Province and the south-west — parvovirus B19 is a real emergency for these children.',
+                '<b>Consanguinity</b> raises the frequency of primary immunodeficiencies — consider it in recurrent or unusually severe infections.',
+                '<b>MRSA</b> is a significant cause of community skin infection in the region — culture recurrent or non-responding impetigo.',
+            ]),
+            ul([
+                '<b>الحصبة لم تنتهِ:</b> لا تزال تُرصد حالات وافدة وتجمعات محلية، أغلبها عند الأطفال غير المطعَّمين أو ناقصي التطعيم وفي المناطق كثيرة التنقل. وتستحق مراجعات الرصد الإقليمية (مثل الباحة 2020–2024) القراءة لمعرفة الأنماط المحلية.',
+                '<b>التجمعات الكبرى:</b> يجلب الحج والعمرة ورمضان ملايين الزوار؛ وقد تنتشر الحصبة والمكورات السحائية والعدوى التنفسية بسرعة. اسأل عن السفر إلى مكة والمدينة ومخالطة الحجاج.',
+                '<b>حمّى الضنك</b> موسمية في جدة ومكة وجازان؛ <b>تجنّب مضادات الالتهاب غير الستيرويدية</b> عند أي طفل محموم من هذه المناطق حتى تُستبعد الضنك. رسائل التوعية: إزالة المياه الراكدة، واستخدام الشبك والطاردات.',
+                '<b>اعتلالات الهيموغلوبين</b> (فقر الدم المنجلي والثلاسيميا) شائعة في المنطقة الشرقية والجنوب الغربي — والفيروس الصغير B19 طارئ حقيقي لهؤلاء الأطفال.',
+                '<b>زواج الأقارب</b> يرفع تكرار أمراض نقص المناعة الأولية — فكّر فيها عند العدوى المتكررة أو الشديدة على غير المعتاد.',
+                '<b>العنقوديات الذهبية المقاومة للميثيسيلين</b> سبب مهم لعدوى الجلد المجتمعية في المنطقة — اعمل مزرعة للقوباء المتكررة أو غير المستجيبة.',
+            ])),
+        blk('tell', 'prevention-tell', 'Public messages — for leaflets and social media', 'رسائل للعامة — للنشرات ووسائل التواصل',
+            ul([
+                '“Two doses of MMR protect your child from measles, mumps and rubella for life.”',
+                '“Fever with a rash that does not fade when you press a glass on it — go to the emergency department now.”',
+                '“Chickenpox: paracetamol, not ibuprofen. Never aspirin for children.”',
+                '“If you are pregnant and have been near a child with a rash, call your doctor today — don’t wait for symptoms.”',
+                '“Keep a sick child with a rash at home and call ahead before visiting the clinic, so staff can protect others in the waiting room.”',
+            ]),
+            ul([
+                '«جرعتان من لقاح MMR تحميان طفلك من الحصبة والنكاف والحصبة الألمانية مدى الحياة.»',
+                '«حمّى مع طفح لا يختفي حين تضغط عليه بكأس زجاجي — اذهب إلى الطوارئ الآن.»',
+                '«الجديري: باراسيتامول لا إيبوبروفين. ولا أسبرين للأطفال أبدًا.»',
+                '«إن كنتِ حاملًا واقتربتِ من طفل مصاب بطفح، فاتصلي بطبيبك اليوم — لا تنتظري الأعراض.»',
+                '«أبقِ الطفل المريض المصاب بالطفح في البيت واتصل بالعيادة قبل الحضور، ليحمي العاملون الآخرين في غرفة الانتظار.»',
+            ])),
+    ])
+
+# ─────────────────────────────────────────────────────────────
+# SOURCES  (title, url)
+# ─────────────────────────────────────────────────────────────
+SOURCES = [
+    ('<b>Global — infection control</b>', ''),
+    ('Siegel JD, et al; HICPAC. 2007 Guideline for Isolation Precautions: Preventing Transmission of Infectious Agents in Healthcare Settings — Appendix A, Type and Duration of Precautions. CDC (updated 2023).', 'https://www.cdc.gov/infection-control/hcp/isolation-precautions/appendix-a-type-duration.html'),
+    ('UK Health Security Agency. Health protection in children and young people’s settings, including education (exclusion table). Updated 7 September 2026.', 'https://www.gov.uk/government/publications/health-protection-in-schools-and-other-childcare-facilities'),
+    ('<b>Global — disease guidance</b>', ''),
+    ('American Academy of Pediatrics. Red Book: 2024–2027 Report of the Committee on Infectious Diseases. 33rd ed.', 'https://publications.aap.org/redbook'),
+    ('CDC. Measles: clinical overview, vitamin A and post-exposure prophylaxis guidance for clinicians.', 'https://www.cdc.gov/measles/index.html'),
+    ('McLean HQ, et al. Prevention of measles, rubella, congenital rubella syndrome, and mumps: ACIP recommendations. MMWR Recomm Rep 2013;62(RR-4). Marin M, et al. Third dose of MMR in mumps outbreaks. MMWR 2018;67:33–38.', 'https://www.cdc.gov/mmwr/preview/mmwrhtml/rr6204a1.htm'),
+    ('CDC. Mumps: laboratory testing (buccal swab RT-PCR).', 'https://www.cdc.gov/mumps/php/laboratories/index.html'),
+    ('CDC. Chickenpox (varicella): clinical overview, VariZIG and post-exposure prophylaxis.', 'https://www.cdc.gov/chickenpox/site.html'),
+    ('UK Health Security Agency. Guidelines on post-exposure prophylaxis (PEP) for varicella or shingles (2024).', 'https://www.gov.uk/government/publications/post-exposure-prophylaxis-for-chickenpox-and-shingles'),
+    ('Royal College of Obstetricians and Gynaecologists. Chickenpox in Pregnancy (Green-top Guideline 13).', 'https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/chickenpox-in-pregnancy-green-top-guideline-no-13/'),
+    ('NICE Clinical Knowledge Summaries: Chickenpox; Measles; Mumps; Parvovirus B19; Scarlet fever; Roseola.', 'https://cks.nice.org.uk/'),
+    ('NICE. Impetigo: antimicrobial prescribing (NG153, 2020).', 'https://www.nice.org.uk/guidance/ng153'),
+    ('NICE. Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management (NG240, 2024).', 'https://www.nice.org.uk/guidance/ng240'),
+    ('UK Health Security Agency. Meningococcal disease: guidance on public health management (chemoprophylaxis).', 'https://www.gov.uk/government/publications/meningococcal-disease-guidance-on-public-health-management'),
+    ('NICE. Fever in under 5s: assessment and initial management (NG143).', 'https://www.nice.org.uk/guidance/ng143'),
+    ('Shulman ST, et al. Clinical practice guideline for the diagnosis and management of group A streptococcal pharyngitis: 2012 update by the IDSA. Clin Infect Dis 2012;55:e86–102.', 'https://doi.org/10.1093/cid/cis629'),
+    ('Stevens DL, et al. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the IDSA. Clin Infect Dis 2014;59:e10–52.', 'https://doi.org/10.1093/cid/ciu296'),
+    ('McCrindle BW, et al. Diagnosis, treatment, and long-term management of Kawasaki disease: AHA scientific statement (2017) and the 2024 AHA update on Kawasaki disease.', 'https://www.ahajournals.org/doi/10.1161/CIR.0000000000000484'),
+    ('CDC Health Alert Network / MMWR. Increase in parvovirus B19 activity in the United States, 2024–2025. MMWR 2025;74:404.', 'https://www.cdc.gov/mmwr/'),
+    ('Society for Maternal-Fetal Medicine; RCOG. Parvovirus B19 infection in pregnancy — consult series and guidance.', 'https://www.smfm.org/publications'),
+    ('World Health Organization. Dengue: guidelines for diagnosis, treatment, prevention and control (2009) and WHO arboviral disease clinical management guideline (2025).', 'https://www.who.int/health-topics/dengue-and-severe-dengue'),
+    ('World Health Organization. Multi-country outbreak of mpox — external situation reports (2026); clinical management and infection prevention and control for mpox.', 'https://www.who.int/emergencies/situations/mpox-outbreak'),
+    ('World Health Organization. Measles vaccines: WHO position paper (2017); Measles fact sheet (2025).', 'https://www.who.int/news-room/fact-sheets/detail/measles'),
+    ('<b>Local — Saudi Arabia</b>', ''),
+    ('Ministry of Health, Saudi Arabia. National Immunization Schedule (current version, also in the Sehhaty app).', 'https://www.moh.gov.sa/en/healthawareness/educationalcontent/vaccination/pages/vaccination1.aspx'),
+    ('Ministry of Health, Saudi Arabia. Health requirements and recommendations for travellers to Saudi Arabia for Hajj and Umrah (current season).', 'https://www.moh.gov.sa/en/'),
+    ('Public Health Authority (Weqaya), Saudi Arabia. Infectious disease guidelines and surveillance (HESN).', 'https://pha.gov.sa/'),
+    ('Ministry of Health, Saudi Arabia. Dengue fever — health awareness and national guidelines.', 'https://www.moh.gov.sa/en/'),
+    ('Saudi Food and Drug Authority (SFDA). Saudi drug information and registered product list — confirm local availability of VariZIG, IVIG and paediatric formulations.', 'https://www.sfda.gov.sa/en'),
+    ('Alomari A, Al-Qahtani SM. Measles in Al-Baha region, Saudi Arabia, 2020–2024. Int J Environ Res Public Health 2025;22(9):1404.', 'https://www.mdpi.com/journal/ijerph'),
+    ('<b>Images</b> — all from Wikimedia Commons; public domain or Creative Commons licences as credited under each photo. Cropped and resized for this page.', 'https://commons.wikimedia.org/'),
+]
