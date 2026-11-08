@@ -65,6 +65,11 @@ section.block{display:flex;flex-direction:column;gap:10px;min-width:0}
 tr:last-child td{border-bottom:none}
 td .dose{font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent)}
 td .capped{display:inline-block;margin-left:4px;font-size:.7rem;padding:1px 5px;border-radius:3px;background:var(--upd-soft);color:var(--upd);font-family:var(--f-mono)}
+.agebadge{font:600 .82rem var(--f-mono);font-variant-numeric:tabular-nums;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:6px 9px;align-self:center}
+@media (max-width:560px){.bar .wrap{gap:8px 10px}#wt{width:5.5rem}}
+.agef{display:inline-block;margin-left:4px;font:600 .68rem var(--f-mono);padding:1px 5px;border-radius:3px;background:var(--fix-soft);color:var(--fix);white-space:normal}
+#nebTable td small{color:var(--mute)}
+@media (max-width:560px){#nebTable{min-width:0!important}#nebTable thead{display:none}#nebTable tr{display:block;border-bottom:1px solid var(--line);padding:8px 10px}#nebTable td{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:8px;border:none;padding:3px 0}#nebTable td::before{content:attr(data-l);font:600 .68rem var(--f-mono);text-transform:uppercase;letter-spacing:.04em;color:var(--mute);padding-top:2px}#nebTable td:first-child{display:block}#nebTable td:first-child::before{content:none}#nebTable tr.grp{background:var(--accent-soft)}#nebTable tr.grp td{display:block}#nebTable tr.grp td::before{content:none}}
 .grp td{background:var(--accent-soft);font:700 .76rem var(--f-body);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
 
 /* tags */
@@ -139,9 +144,11 @@ ol.src li{margin:.2rem 0}
 <div class="bar">
   <div class="wrap">
     <div class="field"><label for="wt">Weight (kg)</label><input id="wt" type="number" inputmode="decimal" min="0.5" max="150" step="0.1" value="14"></div>
-    <div class="field"><label for="age">Age (years)</label><input id="age" type="number" inputmode="decimal" min="0" max="18" step="0.5" value="3" style="width:5.5rem"></div>
+    <div class="field"><label for="ageY">Years</label><input id="ageY" type="number" inputmode="numeric" min="0" max="18" step="1" value="3" style="width:4.5rem"></div>
+    <div class="field"><label for="ageM">Months</label><input id="ageM" type="number" inputmode="numeric" min="0" max="11" step="1" value="0" style="width:4.5rem"></div>
     <button class="btn" id="estBtn" type="button">Estimate from age</button>
-    <div class="wt-hint" id="wtHint">Example child: 14 kg, 3 years. Use a measured weight whenever possible.</div>
+    <output id="ageOut" class="agebadge">3 y 0 m · 36 months</output>
+    <div class="wt-hint" id="wtHint">Example child: 14 kg, 3 years 0 months. Use a measured weight whenever possible.</div>
   </div>
 </div>
 
@@ -150,6 +157,7 @@ ol.src li{margin:.2rem 0}
     <button role="tab" aria-selected="true" data-tab="review" id="tab-review">What changed</button>
     <button role="tab" aria-selected="false" data-tab="fluids" id="tab-fluids">Fluids &amp; blood</button>
     <button role="tab" aria-selected="false" data-tab="drugs" id="tab-drugs">ER drugs</button>
+    <button role="tab" aria-selected="false" data-tab="nebs" id="tab-nebs">Nebulizers</button>
     <button role="tab" aria-selected="false" data-tab="resus" id="tab-resus">Resus &amp; infusions</button>
     <button role="tab" aria-selected="false" data-tab="sed" id="tab-sed">Seizure, sedation, pain</button>
     <button role="tab" aria-selected="false" data-tab="scores" id="tab-scores">Scores</button>
@@ -188,6 +196,7 @@ ol.src li{margin:.2rem 0}
       <tr><td><span class="tag t-ok">OK</span><br>Norepinephrine</td><td>0.05–0.1 start, max 2</td><td>Matches. First-line for warm shock; epinephrine for cold shock.</td><td>SSC Children 2020</td></tr>
       <tr><td><span class="tag t-ok">OK</span><br>Milrinone</td><td>0.25–0.75 mcg/kg/min</td><td>Matches. Loading dose (50 mcg/kg) usually skipped because of hypotension. Reduce in kidney impairment.</td><td>Label</td></tr>
       <tr><td><span class="tag t-upd">Update</span><br>Furosemide</td><td>0.5 mg/kg IV push</td><td>0.5–1 mg/kg IV, max 40 mg first dose, q6–12h; max 6 mg/kg/day.</td><td>BNFc; label</td></tr>
+      <tr><td><span class="tag t-upd">Added</span><br>Nebulizer volumes</td><td>—</td><td>mL per session for child and adult: saline 0.9%, 3% and 7%, salbutamol, ipratropium, budesonide, epinephrine, magnesium, dornase. See the Nebulizers tab.</td><td>Product labels; BTS 2017; CF Foundation; MAGNETIC 2013</td></tr>
       <tr><td><span class="tag t-upd">Filled</span><br>Midazolam, fentanyl, ketamine</td><td>Blank / "bolus is 1"</td><td>See the Seizure, sedation, pain tab.</td><td>ESETT 2019; ACEP 2011; label</td></tr>
       <tr><td><span class="tag t-upd">Note</span><br>PRBC tubing</td><td>Add 15 mL</td><td>Prime volume is a blood bank / nursing practice. Write the patient dose and the prime as separate lines so the dose stays clear.</td><td>Local transfusion policy</td></tr>
       </tbody>
@@ -262,6 +271,65 @@ ol.src li{margin:.2rem 0}
     <p class="intro">Doses for the weight above, capped at the usual maximum. Check renal function, allergies and your formulary concentration before giving.</p>
     <div class="tw wide"><table id="drugTable"><thead><tr><th>Drug · route</th><th>Per kg</th><th>Dose now</th><th>When · age</th></tr></thead><tbody></tbody></table></div>
   </section>
+</div>
+
+<!-- ============ NEBS ============ -->
+<div class="panel" role="tabpanel" id="p-nebs" aria-labelledby="tab-nebs" hidden>
+  <section class="block">
+    <h2>Nebulizer solutions: mL per session</h2>
+    <p class="intro">Child column uses the weight and age above; adult column is fixed. Volumes assume the strengths listed, which are the common unit-dose vials. Check the strength on the vial you are holding before you draw up.</p>
+    <div class="tw wide"><table id="nebTable"><thead><tr><th>Solution · strength</th><th>This child</th><th>Adult</th><th>How often</th><th>Use · cautions</th></tr></thead><tbody></tbody></table></div>
+  </section>
+  <div class="calc">
+    <div class="card">
+      <h3>Setting up a jet nebulizer</h3>
+      <ul class="tight">
+        <li><b>Fill 3–4 mL in total.</b> About 1 mL stays in the cup, so a smaller fill delivers little. Top up with 0.9% saline.</li>
+        <li><b>Gas flow 6–8 L/min</b> until it sputters, about 5–10 minutes. Tap the cup once near the end.</li>
+        <li><b>Oxygen or air.</b> Oxygen-driven for asthma, bronchiolitis and croup. In COPD or anyone at risk of CO₂ retention, drive with air and give nasal oxygen to SpO₂ 88–92% (BTS 2017).</li>
+        <li><b>Mask or mouthpiece.</b> Tight-fitting mask under about 4–5 years; mouthpiece once the child can seal their lips. A mouthpiece also keeps ipratropium out of the eyes. Blow-by gives almost nothing. A screaming child inhales less; calm first if you can.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Nebulizer or spacer?</h3>
+      <ul class="tight">
+        <li>MDI + spacer works as well as a nebulizer in mild–moderate asthma, with less tachycardia and a shorter ER stay (Cochrane 2013).</li>
+        <li>Salbutamol 100 mcg/puff: 6 puffs under 6 years, 12 puffs from 6 years and adults ≈ one 2.5–5 mg neb. Ipratropium 20 mcg/puff: 4–8 puffs.</li>
+        <li>Use the nebulizer when the patient is too breathless to use a spacer, needs oxygen, or is in life-threatening asthma.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Mixing in one cup</h3>
+      <div class="tw"><table>
+        <tbody>
+          <tr><td>Salbutamol + ipratropium</td><td><span class="tag t-ok">Yes</span></td></tr>
+          <tr><td>Budesonide + salbutamol or ipratropium</td><td><span class="tag t-ok">Yes</span> use within 30 min</td></tr>
+          <tr><td>Hypertonic saline + salbutamol</td><td><span class="tag t-upd">Protocol</span> often premixed in bronchiolitis; or salbutamol first</td></tr>
+          <tr><td>Epinephrine</td><td><span class="tag t-upd">Alone</span></td></tr>
+          <tr><td>Dornase alfa</td><td><span class="tag t-fix">Never mix</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Mixing rules follow the product information (Pulmicort Respules, Atrovent UDV, Pulmozyme). When unsure, give one after the other.</p>
+    </div>
+    <div class="card">
+      <h3>Infection control</h3>
+      <ul class="tight">
+        <li>Nebulization generates aerosols. With suspected MERS-CoV, COVID-19, influenza, TB or measles, use MDI + spacer where possible.</li>
+        <li>If a nebulizer is needed: single room (airborne isolation room where available), door closed, N95 for staff, per Saudi MOH / Weqaya infection-control guidance.</li>
+        <li>One nebulizer kit per patient. Rinse with sterile water and air-dry between doses.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Do not nebulize</h3>
+      <ul class="tight">
+        <li><b>Sterile water</b> as a diluent: hypotonic, triggers bronchospasm. Use 0.9% saline.</li>
+        <li><b>N-acetylcysteine</b>: bronchospasm, no ER role.</li>
+        <li><b>Hypertonic saline in acute asthma</b>, or 7% outside CF/bronchiectasis care.</li>
+        <li><b>Budesonide or other ICS instead of a systemic steroid</b> in an asthma attack.</li>
+        <li><b>Undiluted IV ampoules</b> (magnesium 50%, antibiotics) without a pharmacy-made nebulizer preparation.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <!-- ============ RESUS ============ -->
@@ -425,6 +493,11 @@ ol.src li{margin:.2rem 0}
     <li>Lacroix J et al. TAXI pediatric transfusion recommendations. Pediatr Crit Care Med 2018;19(9S).</li>
     <li>Baker RD, Greer FR. AAP iron deficiency. Pediatrics 2010;126:1040–50. Powers JM et al. JAMA 2017;317:2297–304.</li>
     <li>Trautmann A et al. IPNA 2022 steroid-sensitive nephrotic syndrome. Pediatr Nephrol 2023. KDIGO 2021 GN.</li>
+    <li>O'Driscoll BR et al. BTS guideline for oxygen use in adults. Thorax 2017;72(Suppl 1). Cates CJ et al. Holding chambers versus nebulizers for acute asthma, Cochrane 2013.</li>
+    <li>Powell C et al. MAGNETIC: nebulized magnesium in acute severe childhood asthma. Lancet Respir Med 2013;1:301–8. Goodacre S et al. 3Mg trial. Lancet Respir Med 2013;1:293–300.</li>
+    <li>Mogayzel PJ et al. CF Foundation pulmonary guidelines. Am J Respir Crit Care Med 2013;187:680–9. Hill AT et al. BTS guideline for bronchiectasis in adults. Thorax 2019;74(Suppl 1).</li>
+    <li>Product information: Pulmicort Respules (budesonide), Atrovent UDV (ipratropium), Ventolin Nebules and Respirator Solution (salbutamol), Combivent UDV, Pulmozyme (dornase alfa).</li>
+    <li>Advanced Pediatric Life Support (APLS) 6th ed. weight formulas; AHA/AAP PALS 2025 hypotension thresholds.</li>
     <li>Cardona V et al. WAO anaphylaxis guidance 2020. Sicherer SH et al. AAP epinephrine autoinjector report. Pediatrics 2017.</li>
   </ol>
 </footer>
@@ -437,11 +510,19 @@ ol.src li{margin:.2rem 0}
 {% raw %}(function(){
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const W=()=>{const v=parseFloat($('#wt').value);return v>0?v:0};
+/* age in years (decimal) and whole months, from the years + months boxes */
+const AM=()=>{const y=parseInt($('#ageY').value,10)||0, m=parseInt($('#ageM').value,10)||0;return Math.max(0,y*12+m)};
+const A=()=>AM()/12;
+const ageTxt=()=>{const t=AM(),y=Math.floor(t/12),m=t%12;return (y?y+' y ':'')+m+' m'};
+/* red flag in a dose cell when the child is younger than the drug's lower age limit */
+const minAge=(mo,txt)=>AM()<mo?' <span class="agef">'+(txt||('not under '+(mo>=12?(mo/12)+' y':mo+' mo')))+'</span>':'';
 const r=(x,d)=>{if(!isFinite(x))return '—';const p=Math.pow(10,d==null?(x<1?2:x<10?1:0):d);return String(Math.round(x*p)/p)};
 
 /* ---------- tabs ---------- */
 function openTab(id){
   $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===id)));
+  const ab=document.querySelector('nav.tabs button[data-tab="'+id+'"]'), nv=document.querySelector('nav.tabs');
+  if(ab&&nv){const l=ab.offsetLeft-nv.offsetLeft, rgt=l+ab.offsetWidth; if(l<nv.scrollLeft||rgt>nv.scrollLeft+nv.clientWidth) nv.scrollLeft=Math.max(0,l-16);}
   $$('.panel').forEach(p=>{p.hidden=p.id!=='p-'+id});
   try{localStorage.setItem('pedsTab',id)}catch(e){}
   try{history.replaceState(null,'','#'+id)}catch(e){}
@@ -454,11 +535,11 @@ openTab(start);
 
 /* ---------- weight estimate (APLS) ---------- */
 $('#estBtn').addEventListener('click',()=>{
-  const a=parseFloat($('#age').value); if(!(a>=0)) return;
+  const mo=AM(), y=Math.floor(mo/12);
   let w,f;
-  if(a<1){w=(a*12)*0.5+4;f='(months × 0.5) + 4'}
-  else if(a<=5){w=2*a+8;f='(2 × years) + 8'}
-  else if(a<=12){w=3*a+7;f='(3 × years) + 7'}
+  if(mo<12){w=0.5*mo+4;f='(0.5 × '+mo+' months) + 4'}
+  else if(y<=5){w=2*y+8;f='(2 × '+y+' years) + 8'}
+  else if(y<=12){w=3*y+7;f='(3 × '+y+' years) + 7'}
   else {w=null}
   if(w==null){$('#wtHint').classList.add('on');$('#wtHint').textContent='Over 12 years: weigh the child or use a length-based tape.';return}
   $('#wt').value=r(w,1);
@@ -484,12 +565,12 @@ const drugs=[
  {g:'Fever and pain'},
  {n:'Paracetamol PO/PR',k:'15 mg/kg q4–6h',d:()=>dose(15,1000,'mg'),u:'Max 75 mg/kg/day (4 g). Any age; neonates 10–15 mg/kg q6–8h.'},
  {n:'Paracetamol IV',k:'15 mg/kg q6h (≥10 kg)',d:()=>W()<10?dose(7.5,null,'mg')+' <small>(7.5–10 mg/kg &lt;10 kg)</small>':dose(15,1000,'mg'),u:'Max 60 mg/kg/day IV. Use only if PO/PR not possible.'},
- {n:'Ibuprofen PO',k:'10 mg/kg q6–8h',d:()=>dose(10,400,'mg'),u:'≥3 months and >5 kg. Max 40 mg/kg/day. Avoid if dehydrated, AKI, bleeding, varicella.'},
+ {n:'Ibuprofen PO',k:'10 mg/kg q6–8h',d:()=>dose(10,400,'mg')+minAge(3),u:'≥3 months and >5 kg. Max 40 mg/kg/day. Avoid if dehydrated, AKI, bleeding, varicella.'},
  {g:'Asthma and wheeze'},
- {n:'Salbutamol neb',k:'<20 kg 2.5 mg · ≥20 kg 5 mg',d:()=>'<span class="dose">'+(W()<20?'2.5':'5')+' mg</span>',u:'q20 min × 3, then hourly or 2-hourly. Continuous: 0.5 mg/kg/h (max 20 mg/h) in PICU-level care.'},
- {n:'Salbutamol MDI + spacer (100 mcg)',k:'<6 y 6 puffs · ≥6 y 12 puffs',d:()=>'<span class="dose">'+((parseFloat($('#age').value)||0)<6?'6':'12')+' puffs</span>',u:'q20 min × 3. Equal to nebulizer in mild–moderate attacks; less tachycardia.'},
+ {n:'Salbutamol neb',k:'<20 kg 2.5 mg · ≥20 kg 5 mg',d:()=>'<span class="dose">'+(W()<20?'2.5':'5')+' mg</span>',u:'q20 min × 3, then 1–4 hourly. Continuous 0.5 mg/kg/h (NAEPP; local protocols cap 10–20 mg/h) in HDU/PICU. mL per session: Nebulizers tab.'},
+ {n:'Salbutamol MDI + spacer (100 mcg)',k:'<6 y 6 puffs · ≥6 y 12 puffs',d:()=>'<span class="dose">'+(A()<6?'6':'12')+' puffs</span>',u:'q20 min × 3. Equal to nebulizer in mild–moderate attacks; less tachycardia.'},
  {n:'Ipratropium neb',k:'<20 kg 250 mcg · ≥20 kg 500 mcg',d:()=>'<span class="dose">'+(W()<20?'250':'500')+' mcg</span>',u:'With each of the first 3 salbutamol doses in moderate–severe attacks. No benefit after admission.'},
- {n:'Prednisolone PO',k:'1–2 mg/kg once daily',d:()=>{const a=parseFloat($('#age').value)||0;const mx=a<2?20:a<6?30:40;return range(1,2,mx,'mg')},u:'3–5 days, no taper. Max 20 mg <2 y, 30 mg 2–5 y, 40 mg ≥6 y (GINA).'},
+ {n:'Prednisolone PO',k:'1–2 mg/kg once daily',d:()=>{const a=A();const mx=a<2?20:a<6?30:40;return range(1,2,mx,'mg')},u:'3–5 days, no taper. Max 20 mg <2 y, 30 mg 2–5 y, 40 mg ≥6 y (GINA).'},
  {n:'Dexamethasone PO (asthma)',k:'0.3–0.6 mg/kg',d:()=>range(0.3,0.6,16,'mg'),u:'Once, repeat at 24 h. Max 16 mg. Alternative to a prednisolone course.'},
  {n:'Methylprednisolone IV',k:'1 mg/kg q12h',d:()=>dose(1,30,'mg'),u:'If vomiting or too unwell for PO. Max 60 mg/day.'},
  {n:'Magnesium sulfate IV',k:'40–50 mg/kg over 20 min',d:()=>range(40,50,2000,'mg'),u:'Severe asthma not responding after the first hour. Max 2 g. Monitor BP.'},
@@ -498,11 +579,11 @@ const drugs=[
  {n:'Dexamethasone PO/IM (croup)',k:'0.15–0.6 mg/kg once',d:()=>range(0.15,0.6,10,'mg'),u:'All severities. 0.15 mg/kg as good as 0.6 for mild–moderate. Max 10 mg (some protocols 16).'},
  {n:'Epinephrine neb (1 mg/mL)',k:'0.5 mL/kg',d:()=>dose(0.5,5,'mL'),u:'Moderate–severe croup. Max 5 mL. Observe ≥2–4 h after.'},
  {g:'Vomiting'},
- {n:'Ondansetron PO/ODT',k:'0.15 mg/kg or band',d:()=>{const w=W();const b=w<8?null:w<15?2:w<30?4:8;return b?'<span class="dose">'+b+' mg</span>':dose(0.15,null,'mg')},u:'≥6 months. Bands: 8–15 kg 2 mg, 15–30 kg 4 mg, >30 kg 8 mg. Single dose before ORT trial.'},
- {n:'Ondansetron IV',k:'0.15 mg/kg',d:()=>dose(0.15,4,'mg'),u:'Max 4 mg IV in ED use (8 mg in oncology). QT caution.'},
- {n:'Granisetron IV',k:'10–40 mcg/kg',d:()=>range(10,40,1000,'mcg'),u:'Labelled ≥2 y for chemotherapy nausea. Not recommended for post-op vomiting in children (QT). If it is your only 5-HT₃ agent, use the low end.'},
+ {n:'Ondansetron PO/ODT',k:'0.15 mg/kg or band',d:()=>{const w=W();const b=w<8?null:w<15?2:w<30?4:8;return (b?'<span class="dose">'+b+' mg</span>':dose(0.15,null,'mg'))+minAge(6)},u:'≥6 months. Bands: 8–15 kg 2 mg, 15–30 kg 4 mg, >30 kg 8 mg. Single dose before ORT trial.'},
+ {n:'Ondansetron IV',k:'0.15 mg/kg',d:()=>dose(0.15,4,'mg')+minAge(1,'under 1 mo: specialist'),u:'Max 4 mg IV in ED use (8 mg in oncology). QT caution.'},
+ {n:'Granisetron IV',k:'10–40 mcg/kg',d:()=>range(10,40,1000,'mcg')+minAge(24),u:'Labelled ≥2 y for chemotherapy nausea. Not recommended for post-op vomiting in children (QT). If it is your only 5-HT₃ agent, use the low end.'},
  {g:'Infection'},
- {n:'Ceftriaxone IV/IM',k:'50–75 mg/kg q24h',d:()=>range(50,75,2000,'mg'),u:'Max 2 g. Avoid <28 days with jaundice or IV calcium (use cefotaxime).'},
+ {n:'Ceftriaxone IV/IM',k:'50–75 mg/kg q24h',d:()=>range(50,75,2000,'mg')+minAge(1,'neonate: check bilirubin/Ca, prefer cefotaxime'),u:'Max 2 g. Avoid <28 days with jaundice or IV calcium (use cefotaxime).'},
  {n:'Ceftriaxone (meningitis)',k:'100 mg/kg/day',d:()=>dose(100,4000,'mg')+' <small>/day</small>',u:'Once daily or 50 mg/kg q12h. Max 4 g/day. Add vancomycin per local resistance.'},
  {n:'Amoxicillin PO (AOM, pneumonia)',k:'80–90 mg/kg/day ÷ 2',d:()=>range(40,45,1000,'mg')+' <small>BID</small>',u:'AOM 5–10 days; CAP 5 days (SAFER/CAP-IT). Max 1 g/dose.'},
  {g:'Other'},
@@ -511,6 +592,79 @@ const drugs=[
 ];
 function renderDrugs(){
   $('#drugTable tbody').innerHTML=drugs.map(x=>x.g?'<tr class="grp"><td colspan="4">'+x.g+'</td></tr>':'<tr><td><b>'+x.n+'</b></td><td class="mono">'+x.k+'</td><td>'+x.d()+'</td><td>'+x.u+'</td></tr>').join('');
+}
+
+
+/* ---------- nebulizers ---------- */
+const mlTxt=v=>'<span class="dose">'+v+'</span>';
+const nebs=[
+ {g:'Bronchodilators'},
+ {n:'Salbutamol nebule',s:'2.5 mg/2.5 mL · 5 mg/2.5 mL',
+  c:()=>W()<20?mlTxt('2.5 mg = 2.5 mL')+'<br><small>2.5 mg/2.5 mL nebule + 0.5–1 mL NaCl 0.9%</small>':mlTxt('5 mg = 2.5 mL')+'<br><small>5 mg/2.5 mL nebule + 0.5–1 mL NaCl 0.9%</small>',
+  a:mlTxt('2.5–5 mg = 2.5 mL')+'<br><small>nebule ± NaCl to 3–4 mL</small>',
+  f:'Attack: every 20 min × 3, then 1–4 hourly. Continuous: child 0.5 mg/kg/h, adult 10–15 mg/h (HDU).',
+  u:'Asthma, COPD, hyperkalemia (adult 10–20 mg). Not for bronchiolitis (AAP). Watch K⁺, lactate, tachycardia.'},
+ {n:'Salbutamol respirator solution',s:'5 mg/mL (0.5%)',
+  c:()=>W()<20?mlTxt('0.5 mL')+' + 2.5 mL NaCl<br><small>= 2.5 mg, fill 3 mL</small>':mlTxt('1 mL')+' + 2–3 mL NaCl<br><small>= 5 mg, fill 3–4 mL</small>',
+  a:mlTxt('0.5–1 mL')+' + 2–3 mL NaCl<br><small>= 2.5–5 mg</small>',
+  f:'As above.',u:'Multi-dose bottle: always dilute. A slip between mL and mg here gives a 5× overdose.'},
+ {n:'Ipratropium bromide UDV',s:'250 mcg/1 mL · 500 mcg/2 mL',
+  c:()=>(W()<20?mlTxt('250 mcg = 1 mL'):mlTxt('500 mcg = 2 mL'))+'<br><small>add to the salbutamol cup</small>',
+  a:mlTxt('500 mcg = 2 mL'),
+  f:'Asthma: with each of the first 3 salbutamol nebs (first hour only). COPD: 6–8 hourly.',
+  u:'Moderate–severe asthma, COPD. No benefit after admission in asthma. Mouthpiece in angle-closure glaucoma (mydriasis). Hold the patient\'s LAMA (tiotropium) while using it. SIGN uses age bands: under 2 y 125–250 mcg, 2–12 y 250 mcg.'},
+ {n:'Salbutamol + ipratropium vial',s:'2.5 mg + 500 mcg / 2.5 mL (Combivent UDV)',
+  c:()=>A()<12?'<small>Not licensed under 12 y. Use the two vials separately.</small>':mlTxt('1 vial = 2.5 mL'),
+  a:mlTxt('1 vial = 2.5 mL'),
+  f:'Attack: every 20 min × 3. COPD: 6–8 hourly.',
+  u:'Saves drawing up two vials. Check whether your pharmacy stocks it.'},
+ {g:'Inhaled steroid'},
+ {n:'Budesonide respules',s:'0.25 mg/2 mL · 0.5 mg/2 mL · 1 mg/2 mL',
+  c:()=>'<b>Croup:</b> '+mlTxt('2 mg = 4 mL')+' <small>(two 1 mg/2 mL)</small><br><b>Asthma maintenance:</b> '+(AM()<12?'<small>under 12 months: specialist only (US label 12 m–8 y)</small>':mlTxt('0.25–0.5 mg = 2 mL')+' <small>BID</small>'),
+  a:'<b>Maintenance:</b> '+mlTxt('0.5–1 mg = 2 mL')+' BID<br><small>up to 2 mg BID in severe disease (BNF)</small>',
+  f:'Croup: single dose. Maintenance: twice daily, max 1 mg/day (child, US label).',
+  u:'Croup: use when oral or IM dexamethasone cannot be given; dexamethasone is as good or better (Cochrane 2018). Not a substitute for a systemic steroid in an asthma attack. Not in ultrasonic nebulizers. Wipe face and rinse mouth after.'},
+ {g:'Saline solutions'},
+ {n:'Sodium chloride 0.9%',s:'2.5–5 mL ampoules',
+  c:()=>mlTxt('top up to 3 mL'),a:mlTxt('top up to 3–4 mL'),
+  f:'With each drug neb.',
+  u:'Diluent. On its own (3–5 mL) it only humidifies and loosens secretions, with little evidence of benefit; it is the placebo arm in most trials.'},
+ {n:'Hypertonic saline 3%',s:'4 mL vials',
+  c:()=>(AM()<24?mlTxt('4 mL')+'<br><small>admitted bronchiolitis</small>':'<small>Not for asthma or croup. Over 2 y: CF/bronchiectasis team.</small>'),
+  a:mlTxt('4 mL')+'<br><small>sputum clearance</small>',
+  f:'Bronchiolitis: every 6–8 h (inpatient protocols vary, up to 4-hourly).',
+  u:'Bronchiolitis: inpatients only; AAP advises against it in the ER; WHO 2026 suggests a trial (low certainty). Can cause wheeze: give salbutamol first or premix if your protocol does. Stop if work of breathing rises.'},
+ {n:'Hypertonic saline 7%',s:'4 mL vials',
+  c:()=>A()>=6?mlTxt('4 mL')+' <small>BID</small>':'<small>Under 6 y: CF team only.</small>',
+  a:mlTxt('4 mL')+' <small>BID</small>',
+  f:'Twice daily, after salbutamol, before physiotherapy.',
+  u:'Cystic fibrosis (CF Foundation) and adult bronchiectasis (BTS 2019). First dose supervised with spirometry: stop if FEV₁ falls ≥15%.'},
+ {g:'Upper airway'},
+ {n:'Epinephrine (L-adrenaline)',s:'1 mg/mL (1:1000)',
+  c:()=>{const v=Math.min(0.5*W(),5);return mlTxt(r(v,1)+' mL')+' <small>= '+r(v,1)+' mg undiluted</small>'+(v<3?'<br><small>top up with NaCl to 3 mL</small>':'')},
+  a:mlTxt('5 mL = 5 mg')+'<br><small>undiluted</small>',
+  f:'May repeat after 15–20 min; observe ≥2–4 h after the last dose.',
+  u:'Child: moderate–severe croup (0.5 mL/kg, max 5 mL). Adult: upper-airway edema (angiedema, post-extubation stridor) as an add-on. In anaphylaxis, IM epinephrine comes first.'},
+ {n:'Racemic epinephrine',s:'2.25%',
+  c:()=>{const v=Math.min(0.05*W(),0.5);return mlTxt(r(v,2)+' mL')+' + 3 mL NaCl'},
+  a:mlTxt('0.5 mL')+' + 3 mL NaCl',
+  f:'As above.',
+  u:'Same effect as L-epinephrine 1 mg/mL. Often not stocked in Saudi hospitals; check before writing it.'},
+ {g:'Add-ons and specialist'},
+ {n:'Magnesium sulfate, isotonic',s:'151 mg/2.5 mL (pharmacy-made)',
+  c:()=>A()>=2?mlTxt('150 mg = 2.5 mL')+'<br><small>added to each of the first 3 salbutamol + ipratropium nebs</small>':'<small>Under 2 y: not studied.</small>',
+  a:'<small>Not recommended (3Mg trial: no benefit). Use IV magnesium.</small>',
+  f:'First hour only.',
+  u:'Severe acute asthma in children, especially if SpO₂ &lt;92% or symptoms &lt;6 h (MAGNETIC 2013; small benefit). GINA: not routine. IV magnesium has better evidence.'},
+ {n:'Dornase alfa',s:'2.5 mg/2.5 mL',
+  c:()=>A()>=5?mlTxt('2.5 mg = 2.5 mL')+' <small>once daily</small>':'<small>Under 5 y: CF team.</small>',
+  a:mlTxt('2.5 mg = 2.5 mL')+' <small>once daily</small>',
+  f:'Once daily (some twice).',
+  u:'Cystic fibrosis only. Jet nebulizer, never mixed, refrigerated. No role in non-CF bronchiectasis (harmful in adults).'},
+];
+function renderNebs(){
+  $('#nebTable tbody').innerHTML=nebs.map(x=>x.g?'<tr class="grp"><td colspan="5">'+x.g+'</td></tr>':
+   '<tr><td data-l="Solution"><b>'+x.n+'</b><br><small class="mono">'+x.s+'</small></td><td data-l="This child"><div>'+x.c()+'</div></td><td data-l="Adult"><div>'+x.a+'</div></td><td data-l="How often"><div>'+x.f+'</div></td><td data-l="Use"><div>'+x.u+'</div></td></tr>').join('');
 }
 
 /* ---------- resus table ---------- */
@@ -527,7 +681,8 @@ const resus=[
  {n:'Naloxone IV/IM/IN',k:'0.1 mg/kg (full reversal)',d:()=>dose(0.1,2,'mg'),u:'Opioid toxicity. Partial reversal after procedural sedation: 1–5 mcg/kg titrated.'},
  {n:'Flumazenil IV',k:'0.01 mg/kg',d:()=>dose(0.01,0.2,'mg'),u:'Iatrogenic benzodiazepine sedation only. Never in unknown overdose or seizure history.'},
  {n:'3% saline',k:'2.5–5 mL/kg',d:()=>range(2.5,5,250,'mL'),u:'Raised ICP / DKA cerebral edema, over 10–15 min. Or mannitol 0.5–1 g/kg.'},
- {n:'ETT size (cuffed)',k:'age/4 + 3.5',d:()=>{const a=parseFloat($('#age').value);if(!(a>=2))return '<span class="dose">3.0–3.5</span> <small>infant</small>';const t=a/4+3.5;return '<span class="dose">'+r(t,1)+' mm</span> · depth '+r(3*t,0)+' cm'},u:'Have half-size above and below ready. Depth = 3 × ETT size at the lip.'},
+ {n:'ETT size (cuffed)',k:'age/4 + 3.5 (≥2 y)',d:()=>{const mo=AM(),y=Math.floor(mo/12);if(mo<12)return '<span class="dose">3.0–3.5 mm</span> <small>(&lt;1 y)</small> · depth ~'+(mo<3?'9–10':'10–11')+' cm';if(y<2)return '<span class="dose">3.5–4.0 mm</span> <small>(1–2 y)</small> · depth ~11–12 cm';const t=Math.round((y/4+3.5)*2)/2;return '<span class="dose">'+r(t,1)+' mm</span> · depth '+r(3*t,0)+' cm'},u:'Have half-size above and below ready. Depth = 3 × ETT size at the lip.'},
+ {n:'Hypotension threshold (PALS)',k:'SBP by age',d:()=>{const mo=AM(),y=Math.floor(mo/12);const v=mo<1?60:mo<12?70:y<=10?70+2*y:90;return '<span class="dose">SBP &lt; '+v+' mmHg</span>'},u:'Term neonate &lt;60 · 1–12 months &lt;70 · 1–10 y &lt;70 + (2 × age in years) · &gt;10 y &lt;90. Hypotension is a late sign of shock.'},
 ];
 function renderResus(){$('#resusTable tbody').innerHTML=resus.map(x=>'<tr><td><b>'+x.n+'</b></td><td class="mono">'+x.k+'</td><td>'+x.d()+'</td><td>'+x.u+'</td></tr>').join('')}
 
@@ -542,14 +697,14 @@ const seiz=[
  {t:'15–20 min',n:'Levetiracetam IV',k:'60 mg/kg over 5–10 min',d:()=>dose(60,4500,'mg')},
  {t:'',n:'or Fosphenytoin IV',k:'20 mg PE/kg',d:()=>dose(20,1500,'mg PE')},
  {t:'',n:'or Phenytoin IV',k:'20 mg/kg over 20 min',d:()=>dose(20,1500,'mg')},
- {t:'',n:'or Valproate IV',k:'40 mg/kg over 5–10 min',d:()=>dose(40,3000,'mg')},
+ {t:'',n:'or Valproate IV',k:'40 mg/kg over 5–10 min',d:()=>dose(40,3000,'mg')+minAge(24,'avoid under 2 y')},
  {t:'35–40 min',n:'Refractory: PICU, RSI',k:'midazolam infusion / ketamine / thiopental',d:()=>'—'},
 ];
 const sed=[
  {n:'Fentanyl IN',k:'1.5 mcg/kg',d:()=>dose(1.5,100,'mcg'),u:'Fractures, burns, pre-cannulation. Repeat 0.5–1 mcg/kg once at 10 min. Split between nostrils.'},
  {n:'Fentanyl IV',k:'1 mcg/kg (0.5–2)',d:()=>dose(1,50,'mcg'),u:'Over 3–5 min (rapid push → chest wall rigidity). Max 50 mcg/dose; repeat q5–10 min.'},
- {n:'Morphine IV',k:'0.05–0.1 mg/kg',d:()=>{const a=parseFloat($('#age').value)||0;return a<0.5?range(0.025,0.05,1,'mg')+' <small>(&lt;6 mo)</small>':range(0.05,0.1,4,'mg')},u:'q2–4h. Infusion 10–40 mcg/kg/h. Infants &lt;6 months more sensitive; monitor SpO₂.'},
- {n:'Ketamine IV (PSA)',k:'1–2 mg/kg over 1 min',d:()=>range(1,2,null,'mg'),u:'Dissociative sedation. Repeat 0.5–1 mg/kg. Avoid &lt;3 months, active URTI, psychosis. Have suction; laryngospasm ~0.3%.'},
+ {n:'Morphine IV',k:'0.05–0.1 mg/kg',d:()=>{const a=A();return a<0.5?range(0.025,0.05,1,'mg')+' <small>(&lt;6 mo)</small>':range(0.05,0.1,4,'mg')},u:'q2–4h. Infusion 10–40 mcg/kg/h. Infants &lt;6 months more sensitive; monitor SpO₂.'},
+ {n:'Ketamine IV (PSA)',k:'1–2 mg/kg over 1 min',d:()=>range(1,2,null,'mg')+minAge(3),u:'Dissociative sedation. Repeat 0.5–1 mg/kg. Avoid &lt;3 months, active URTI, psychosis. Have suction; laryngospasm ~0.3%.'},
  {n:'Ketamine IM (PSA)',k:'4–5 mg/kg',d:()=>range(4,5,null,'mg'),u:'No IV access. Onset 3–5 min; more vomiting.'},
  {n:'Ketamine IV (analgesia)',k:'0.1–0.3 mg/kg',d:()=>range(0.1,0.3,25,'mg'),u:'Sub-dissociative, opioid-sparing. Over 10–15 min.'},
  {n:'Ketamine IN (analgesia)',k:'1 mg/kg',d:()=>dose(1,50,'mg'),u:'Alternative to IN fentanyl.'},
@@ -686,11 +841,12 @@ function renderPec(){
 $$('#pecarn .seg button').forEach(b=>b.addEventListener('click',()=>{pAge=b.dataset.age;$$('#pecarn .seg button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderPecList()}));
 
 /* ---------- master update ---------- */
-function update(){renderDrugs();renderResus();renderSed();renderFluids();renderInf();renderScores()}
-['#wt','#age'].forEach(s=>$(s).addEventListener('input',()=>{if(s==='#wt'){$('#wtHint').classList.remove('on')}if(s==='#wt')$('#wtHint').textContent='Using '+r(W(),1)+' kg.';update()}));
+function syncPec(){const want=AM()<24?'u2':'o2';if(want!==pAge){pAge=want;$$('#pecarn .seg button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.age===want)));renderPecList()}}
+function update(){renderDrugs();renderNebs();renderResus();renderSed();renderFluids();renderInf();renderScores();$('#ageOut').textContent=ageTxt()+' · '+AM()+' months'}
+['#wt','#ageY','#ageM'].forEach(s=>$(s).addEventListener('input',()=>{if(s==='#ageM'){const m=parseInt($('#ageM').value,10);if(m>11){$('#ageY').value=(parseInt($('#ageY').value,10)||0)+Math.floor(m/12);$('#ageM').value=m%12}}if(s==='#wt'){$('#wtHint').classList.remove('on')}if(s==='#wt')$('#wtHint').textContent='Using '+r(W(),1)+' kg.';update();if(s!=='#wt')syncPec()}));
 // default KCl rate = maintenance of example weight
 $('#kRate').value=r(hs(W()),0);
-update(); renderPecList();
+update(); renderPecList(); syncPec();
 })();
 
 window.addEventListener('hashchange',function(){var t=(location.hash||'').slice(1).replace(/^p-/,'');var b=document.querySelector('nav.tabs button[data-tab="'+t+'"]');if(b)b.click();});{% endraw %}
