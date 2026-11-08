@@ -7,7 +7,7 @@
 <meta content="Weight-based pediatric ER and urgent-care doses, fluids, KCl and transfusion calculators, PRAM, Westley, CDS and PECARN scores, and when to admit or refer." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=IBM+Plex+Sans+Arabic:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
 /* Pediatric ER Doses (prefix-free, scoped to #pe) */
 /* Layout: a pocket instrument. Sticky weight bar on top, tabbed panels below, every number recalculates from one weight. */
@@ -65,6 +65,20 @@ section.block{display:flex;flex-direction:column;gap:10px;min-width:0}
 tr:last-child td{border-bottom:none}
 td .dose{font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent)}
 td .capped{display:inline-block;margin-left:4px;font-size:.7rem;padding:1px 5px;border-radius:3px;background:var(--upd-soft);color:var(--upd);font-family:var(--f-mono)}
+[hidden]{display:none!important}
+.fmg-ar{display:none}
+html[data-lang="ar"] .fmg-en{display:none}
+html[data-lang="ar"] .fmg-ar{display:revert}
+[lang="ar"]{font-family:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif;letter-spacing:0;text-transform:none}
+html[data-lang="ar"] h1,html[data-lang="ar"] h2,html[data-lang="ar"] h3,html[data-lang="ar"] .eyebrow,html[data-lang="ar"] .intro.fmg-ar,html[data-lang="ar"] html[data-lang="ar"] .agebadge{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;direction:rtl}
+.arnote{direction:rtl;text-align:right;line-height:1.5}
+html[data-lang="ar"] .eyebrow{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;letter-spacing:0}
+html[data-lang="ar"] .field label{text-transform:none;letter-spacing:0;font-size:.8rem}
+.langsw{display:inline-flex;max-width:100%;flex-wrap:wrap;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:8px 0 4px}
+.langsw button{border:none;background:transparent;color:var(--mute);padding:6px 12px;font:600 .82rem var(--f-body);cursor:pointer}
+.langsw button[lang="ar"]{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif}
+.langsw button[aria-pressed="true"]{background:var(--accent);color:var(--card)}
+.arnote{font-size:.9rem;color:var(--mute);margin:.5rem 0 0;max-width:65ch}
 .agebadge{font:600 .82rem var(--f-mono);font-variant-numeric:tabular-nums;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:6px 9px;align-self:center}
 @media (max-width:560px){.bar .wrap{gap:8px 10px}#wt{width:5.5rem}}
 .agef{display:inline-block;margin-left:4px;font:600 .68rem var(--f-mono);padding:1px 5px;border-radius:3px;background:var(--fix-soft);color:var(--fix);white-space:normal}
@@ -135,41 +149,45 @@ ol.src li{margin:.2rem 0}
 {% include "nav.html" %}
 <div id="pe">
 <header class="top wrap">
-  <div class="eyebrow">Pediatric ER &amp; urgent care · weight-based</div>
-  <h1>Pediatric ER Doses</h1>
-  <p class="intro">Common pediatric ER and urgent-care doses, checked against current guidelines and turned into a calculator. Enter the child's weight once; every dose, fluid and infusion below updates. Doses are capped at the usual maximum and flagged when the cap applies.</p>
-  <span class="draft">DRAFT · under review · confirm every dose against your hospital formulary before use</span>
+  <div class="eyebrow"><span class="fmg-en">Pediatric ER &amp; urgent care · weight-based</span><span class="fmg-ar" lang="ar">طوارئ ورعاية عاجلة للأطفال · حسب الوزن</span></div>
+  <div class="langsw" role="group" aria-label="Language"><button type="button" data-fmg-lang="en">English</button><button type="button" data-fmg-lang="ar" lang="ar">العربية</button></div>
+  <h1><span class="fmg-en">Pediatric ER Doses</span><span class="fmg-ar" lang="ar">جرعات طوارئ الأطفال</span></h1>
+  <p class="intro fmg-en">Common pediatric ER and urgent-care doses, checked against current guidelines and turned into a calculator. Enter the child's weight once; every dose, fluid and infusion below updates. Doses are capped at the usual maximum and flagged when the cap applies.</p>
+    <p class="intro fmg-ar" lang="ar">جرعات الطوارئ والرعاية العاجلة الشائعة للأطفال، مراجَعة وفق أحدث الإرشادات ومحوّلة إلى حاسبة. أدخل وزن الطفل مرة واحدة فتتحدّث كل الجرعات والسوائل والتسريبات أدناه، مع حدّ أقصى للجرعة وتنبيه عند بلوغه.</p>
+  <span class="draft"><span class="fmg-en">DRAFT · under review · confirm every dose against your hospital formulary before use</span><span class="fmg-ar" lang="ar">مسودة · قيد المراجعة · تحقّق من كل جرعة مقابل دليل الأدوية في مستشفاك قبل الاستخدام</span></span>
+  <p class="fmg-ar arnote" lang="ar">أسماء الأدوية والجرعات والجداول تبقى بالإنجليزية كما تُكتب في الوصفة والملف الطبي، لتجنّب أخطاء النقل والترجمة. النشرات الموجّهة للأهل متوفرة كاملة بالعربية.</p>
 </header>
 
 <div class="bar">
   <div class="wrap">
-    <div class="field"><label for="wt">Weight (kg)</label><input id="wt" type="number" inputmode="decimal" min="0.5" max="150" step="0.1" value="14"></div>
-    <div class="field"><label for="ageY">Years</label><input id="ageY" type="number" inputmode="numeric" min="0" max="18" step="1" value="3" style="width:4.5rem"></div>
-    <div class="field"><label for="ageM">Months</label><input id="ageM" type="number" inputmode="numeric" min="0" max="11" step="1" value="0" style="width:4.5rem"></div>
-    <button class="btn" id="estBtn" type="button">Estimate from age</button>
+    <div class="field"><label for="wt"><span class="fmg-en">Weight (kg)</span><span class="fmg-ar" lang="ar">الوزن (كغ)</span></label><input id="wt" type="number" inputmode="decimal" min="0.5" max="150" step="0.1" value="14"></div>
+    <div class="field"><label for="ageY"><span class="fmg-en">Years</span><span class="fmg-ar" lang="ar">سنوات</span></label><input id="ageY" type="number" inputmode="numeric" min="0" max="18" step="1" value="3" style="width:4.5rem"></div>
+    <div class="field"><label for="ageM"><span class="fmg-en">Months</span><span class="fmg-ar" lang="ar">أشهر</span></label><input id="ageM" type="number" inputmode="numeric" min="0" max="11" step="1" value="0" style="width:4.5rem"></div>
+    <button class="btn" id="estBtn" type="button"><span class="fmg-en">Estimate from age</span><span class="fmg-ar" lang="ar">تقدير الوزن من العمر</span></button>
     <output id="ageOut" class="agebadge">3 y 0 m · 36 months</output>
-    <div class="wt-hint" id="wtHint">Example child: 14 kg, 3 years 0 months. Use a measured weight whenever possible.</div>
+    <div class="wt-hint" id="wtHint"><span class="fmg-en">Example child: 14 kg, 3 years 0 months. Use a measured weight whenever possible.</span><span class="fmg-ar" lang="ar">مثال: طفل وزنه 14 كغ وعمره 3 سنوات. استخدم الوزن الفعلي كلما أمكن.</span></div>
   </div>
 </div>
 
 <div class="wrap">
   <nav class="tabs" role="tablist" aria-label="Sections">
-    <button role="tab" aria-selected="true" data-tab="review" id="tab-review">What changed</button>
-    <button role="tab" aria-selected="false" data-tab="fluids" id="tab-fluids">Fluids &amp; blood</button>
-    <button role="tab" aria-selected="false" data-tab="drugs" id="tab-drugs">ER drugs</button>
-    <button role="tab" aria-selected="false" data-tab="nebs" id="tab-nebs">Nebulizers</button>
-    <button role="tab" aria-selected="false" data-tab="resus" id="tab-resus">Resus &amp; infusions</button>
-    <button role="tab" aria-selected="false" data-tab="sed" id="tab-sed">Seizure, sedation, pain</button>
-    <button role="tab" aria-selected="false" data-tab="scores" id="tab-scores">Scores</button>
-    <button role="tab" aria-selected="false" data-tab="dispo" id="tab-dispo">Admit / refer</button>
+    <button role="tab" aria-selected="true" data-tab="review" id="tab-review"><span class="fmg-en">What changed</span><span class="fmg-ar" lang="ar">ما الجديد</span></button>
+    <button role="tab" aria-selected="false" data-tab="fluids" id="tab-fluids"><span class="fmg-en">Fluids &amp; blood</span><span class="fmg-ar" lang="ar">السوائل والدم</span></button>
+    <button role="tab" aria-selected="false" data-tab="drugs" id="tab-drugs"><span class="fmg-en">ER drugs</span><span class="fmg-ar" lang="ar">أدوية الطوارئ</span></button>
+    <button role="tab" aria-selected="false" data-tab="nebs" id="tab-nebs"><span class="fmg-en">Nebulizers</span><span class="fmg-ar" lang="ar">جهاز البخار</span></button>
+    <button role="tab" aria-selected="false" data-tab="resus" id="tab-resus"><span class="fmg-en">Resus &amp; infusions</span><span class="fmg-ar" lang="ar">الإنعاش والتسريب</span></button>
+    <button role="tab" aria-selected="false" data-tab="sed" id="tab-sed"><span class="fmg-en">Seizure, sedation, pain</span><span class="fmg-ar" lang="ar">التشنّج والتهدئة والألم</span></button>
+    <button role="tab" aria-selected="false" data-tab="scores" id="tab-scores"><span class="fmg-en">Scores</span><span class="fmg-ar" lang="ar">المقاييس</span></button>
+    <button role="tab" aria-selected="false" data-tab="dispo" id="tab-dispo"><span class="fmg-en">Admit / refer</span><span class="fmg-ar" lang="ar">التنويم والإحالة</span></button>
   </nav>
 
 <main>
 <!-- ============ REVIEW ============ -->
 <div class="panel" role="tabpanel" id="p-review" aria-labelledby="tab-review">
   <section class="block">
-    <h2>What changed from the common quick-note doses</h2>
-    <p class="intro">Red = a common shorthand that causes dosing errors. Amber = correct idea, needs a limit, an age rule or a newer recommendation. Green = matches current references.</p>
+    <h2><span class="fmg-en">What changed from the common quick-note doses</span><span class="fmg-ar" lang="ar">ما الذي تغيّر في جرعات الملاحظات الشائعة</span></h2>
+    <p class="intro fmg-en">Red = a common shorthand that causes dosing errors. Amber = correct idea, needs a limit, an age rule or a newer recommendation. Green = matches current references.</p>
+    <p class="intro fmg-ar" lang="ar">الأحمر: اختصار شائع يسبب أخطاء في الجرعات. الأصفر: الفكرة صحيحة لكنها تحتاج حدًا أقصى أو شرطًا للعمر أو توصية أحدث. الأخضر: مطابق للمراجع الحالية.</p>
     <div class="tw wide"><table>
       <thead><tr><th>Item</th><th>Common note</th><th>Updated</th><th>Basis</th></tr></thead>
       <tbody>
@@ -196,6 +214,7 @@ ol.src li{margin:.2rem 0}
       <tr><td><span class="tag t-ok">OK</span><br>Norepinephrine</td><td>0.05–0.1 start, max 2</td><td>Matches. First-line for warm shock; epinephrine for cold shock.</td><td>SSC Children 2020</td></tr>
       <tr><td><span class="tag t-ok">OK</span><br>Milrinone</td><td>0.25–0.75 mcg/kg/min</td><td>Matches. Loading dose (50 mcg/kg) usually skipped because of hypotension. Reduce in kidney impairment.</td><td>Label</td></tr>
       <tr><td><span class="tag t-upd">Update</span><br>Furosemide</td><td>0.5 mg/kg IV push</td><td>0.5–1 mg/kg IV, max 40 mg first dose, q6–12h; max 6 mg/kg/day.</td><td>BNFc; label</td></tr>
+      <tr><td><span class="tag t-upd">Added</span><br>GINA 2026</td><td>—</td><td>Oxygen only below SpO₂ 92%, upper target 95% (≥92% under 6 with severe wheeze); PRAM strongly recommended for every child; epinephrine before bronchodilators when anaphylaxis and asthma overlap; shake the inhaler before every puff.</td><td>GINA 2026 report</td></tr>
       <tr><td><span class="tag t-upd">Added</span><br>Nebulizer volumes</td><td>—</td><td>mL per session for child and adult: saline 0.9%, 3% and 7%, salbutamol, ipratropium, budesonide, epinephrine, magnesium, dornase. See the Nebulizers tab.</td><td>Product labels; BTS 2017; CF Foundation; MAGNETIC 2013</td></tr>
       <tr><td><span class="tag t-upd">Filled</span><br>Midazolam, fentanyl, ketamine</td><td>Blank / "bolus is 1"</td><td>See the Seizure, sedation, pain tab.</td><td>ESETT 2019; ACEP 2011; label</td></tr>
       <tr><td><span class="tag t-upd">Note</span><br>PRBC tubing</td><td>Add 15 mL</td><td>Prime volume is a blood bank / nursing practice. Write the patient dose and the prime as separate lines so the dose stays clear.</td><td>Local transfusion policy</td></tr>
@@ -211,12 +230,12 @@ ol.src li{margin:.2rem 0}
 <div class="panel" role="tabpanel" id="p-fluids" aria-labelledby="tab-fluids" hidden>
   <div class="calc">
     <div class="card">
-      <h3>Maintenance (Holliday–Segar 4-2-1)</h3>
+      <h3><span class="fmg-en">Maintenance (Holliday–Segar 4-2-1)</span><span class="fmg-ar" lang="ar">سوائل المداومة (هوليداي–سيغار 4-2-1)</span></h3>
       <div class="out" id="maintOut"></div>
       <p class="note">Fluid: 0.9% NaCl or Plasma-Lyte + D5 + KCl 20 mEq/L (AAP 2018, age 28 days–18 years). Not for neonates, heart/kidney/liver failure, DI, burns or neurosurgery. Adult cap ~100 mL/h.</p>
     </div>
     <div class="card">
-      <h3>Bolus</h3>
+      <h3><span class="fmg-en">Bolus</span><span class="fmg-ar" lang="ar">الجرعة السريعة من السوائل</span></h3>
       <div class="row">
         <div class="field"><label for="bolusType">Setting</label>
           <select id="bolusType">
@@ -230,7 +249,7 @@ ol.src li{margin:.2rem 0}
       <p class="note">Write rate and duration in the order comment. Reassess HR, CRT, BP, liver edge and lung crackles after every bolus. Without ICU access and no hypotension, avoid boluses in febrile illness (FEAST).</p>
     </div>
     <div class="card">
-      <h3>KCl check</h3>
+      <h3><span class="fmg-en">KCl check</span><span class="fmg-ar" lang="ar">التحقق من البوتاسيوم</span></h3>
       <div class="row">
         <div class="field"><label for="kMeq">KCl in bag (mEq)</label><input id="kMeq" type="number" inputmode="decimal" value="10"></div>
         <div class="field"><label for="kBag">Bag volume (mL)</label><input id="kBag" type="number" inputmode="decimal" value="500"></div>
@@ -242,7 +261,7 @@ ol.src li{margin:.2rem 0}
       <p class="note">Your formula: KCl × rate × 24 ÷ 500 ÷ weight. Here the 500 becomes whatever bag you pick. Add K only after urine output is confirmed (except DKA with K &lt;3.5, per ISPAD).</p>
     </div>
     <div class="card">
-      <h3>Packed red cells</h3>
+      <h3><span class="fmg-en">Packed red cells</span><span class="fmg-ar" lang="ar">كريات الدم الحمراء المركّزة</span></h3>
       <div class="row">
         <div class="field"><label for="hbNow">Current Hb (g/dL)</label><input id="hbNow" type="number" inputmode="decimal" step="0.1" value="6.2"></div>
         <div class="field"><label for="hbGoal">Target Hb (g/dL)</label><input id="hbGoal" type="number" inputmode="decimal" step="0.1" value="9"></div>
@@ -252,12 +271,12 @@ ol.src li{margin:.2rem 0}
       <p class="note">Formula assumes PRBC Hct ~60% (factor 4; use 5 for Hct ~70%). Sickle cell: do not raise Hb above 10 g/dL (hyperviscosity). Chronic severe anemia: give 5 mL/kg aliquots slowly with furosemide.</p>
     </div>
     <div class="card">
-      <h3>Albumin</h3>
+      <h3><span class="fmg-en">Albumin</span><span class="fmg-ar" lang="ar">الألبومين</span></h3>
       <div class="out" id="albOut"></div>
       <p class="note">25% albumin = 0.25 g/mL. Watch BP and breathing during the infusion; stop if crackles or hypertension.</p>
     </div>
     <div class="card">
-      <h3>Hypoglycemia</h3>
+      <h3><span class="fmg-en">Hypoglycemia</span><span class="fmg-ar" lang="ar">انخفاض السكر</span></h3>
       <div class="out" id="glucOut"></div>
       <p class="note">Treat glucose &lt;70 mg/dL (3.9 mmol/L) with symptoms, or &lt;54 mg/dL. Recheck in 15 min. Draw critical sample (insulin, cortisol, GH, BHB, FFA) before treating if no known cause.</p>
     </div>
@@ -267,8 +286,9 @@ ol.src li{margin:.2rem 0}
 <!-- ============ DRUGS ============ -->
 <div class="panel" role="tabpanel" id="p-drugs" aria-labelledby="tab-drugs" hidden>
   <section class="block">
-    <h2>Common ER drugs</h2>
-    <p class="intro">Doses for the weight above, capped at the usual maximum. Check renal function, allergies and your formulary concentration before giving.</p>
+    <h2><span class="fmg-en">Common ER drugs</span><span class="fmg-ar" lang="ar">أدوية الطوارئ الشائعة</span></h2>
+    <p class="intro fmg-en">Doses for the weight above, capped at the usual maximum. Check renal function, allergies and your formulary concentration before giving.</p>
+    <p class="intro fmg-ar" lang="ar">الجرعات حسب الوزن المُدخل، ولا تتجاوز الحد الأقصى المعتاد. تحقّق من وظائف الكلى والحساسية وتركيز الدواء في مستشفاك قبل الإعطاء.</p>
     <div class="tw wide"><table id="drugTable"><thead><tr><th>Drug · route</th><th>Per kg</th><th>Dose now</th><th>When · age</th></tr></thead><tbody></tbody></table></div>
   </section>
 </div>
@@ -276,30 +296,32 @@ ol.src li{margin:.2rem 0}
 <!-- ============ NEBS ============ -->
 <div class="panel" role="tabpanel" id="p-nebs" aria-labelledby="tab-nebs" hidden>
   <section class="block">
-    <h2>Nebulizer solutions: mL per session</h2>
-    <p class="intro">Child column uses the weight and age above; adult column is fixed. Volumes assume the strengths listed, which are the common unit-dose vials. Check the strength on the vial you are holding before you draw up.</p>
+    <h2><span class="fmg-en">Nebulizer solutions: mL per session</span><span class="fmg-ar" lang="ar">محاليل جهاز البخار: الكمية بالمليلتر لكل جلسة</span></h2>
+    <p class="intro fmg-en">Child column uses the weight and age above; adult column is fixed. Volumes assume the strengths listed, which are the common unit-dose vials. Check the strength on the vial you are holding before you draw up.</p>
+    <p class="intro fmg-ar" lang="ar">عمود الطفل يُحسب من الوزن والعمر المُدخلَين، وعمود البالغ ثابت. الكميات مبنية على التركيزات المذكورة، وهي العبوات الأحادية الشائعة. تأكّد من التركيز المكتوب على العبوة التي بيدك قبل السحب.</p>
     <div class="tw wide"><table id="nebTable"><thead><tr><th>Solution · strength</th><th>This child</th><th>Adult</th><th>How often</th><th>Use · cautions</th></tr></thead><tbody></tbody></table></div>
   </section>
   <div class="calc">
     <div class="card">
-      <h3>Setting up a jet nebulizer</h3>
+      <h3><span class="fmg-en">Setting up a jet nebulizer</span><span class="fmg-ar" lang="ar">تجهيز جهاز البخار</span></h3>
       <ul class="tight">
         <li><b>Fill 3–4 mL in total.</b> About 1 mL stays in the cup, so a smaller fill delivers little. Top up with 0.9% saline.</li>
         <li><b>Gas flow 6–8 L/min</b> until it sputters, about 5–10 minutes. Tap the cup once near the end.</li>
-        <li><b>Oxygen or air.</b> Oxygen-driven for asthma, bronchiolitis and croup. In COPD or anyone at risk of CO₂ retention, drive with air and give nasal oxygen to SpO₂ 88–92% (BTS 2017).</li>
+        <li><b>Oxygen or air.</b> Oxygen-driven for asthma, bronchiolitis and croup. In asthma give oxygen only if SpO₂ is below 92% and aim no higher than 95%; under 6 years with severe wheeze keep it at 92% or above (GINA 2026). In COPD or anyone at risk of CO₂ retention, drive with air and give nasal oxygen to SpO₂ 88–92% (BTS 2017).</li>
         <li><b>Mask or mouthpiece.</b> Tight-fitting mask under about 4–5 years; mouthpiece once the child can seal their lips. A mouthpiece also keeps ipratropium out of the eyes. Blow-by gives almost nothing. A screaming child inhales less; calm first if you can.</li>
       </ul>
     </div>
     <div class="card">
-      <h3>Nebulizer or spacer?</h3>
+      <h3><span class="fmg-en">Nebulizer or spacer?</span><span class="fmg-ar" lang="ar">جهاز البخار أم البخاخ مع الحجرة؟</span></h3>
       <ul class="tight">
         <li>MDI + spacer works as well as a nebulizer in mild–moderate asthma, with less tachycardia and a shorter ER stay (Cochrane 2013).</li>
         <li>Salbutamol 100 mcg/puff: 6 puffs under 6 years, 12 puffs from 6 years and adults ≈ one 2.5–5 mg neb. Ipratropium 20 mcg/puff: 4–8 puffs.</li>
+        <li>Shake a salbutamol inhaler right before <b>every</b> puff; an unshaken suspension can deliver very high or very low doses (GINA 2026).</li>
         <li>Use the nebulizer when the patient is too breathless to use a spacer, needs oxygen, or is in life-threatening asthma.</li>
       </ul>
     </div>
     <div class="card">
-      <h3>Mixing in one cup</h3>
+      <h3><span class="fmg-en">Mixing in one cup</span><span class="fmg-ar" lang="ar">الخلط في كأس واحدة</span></h3>
       <div class="tw"><table>
         <tbody>
           <tr><td>Salbutamol + ipratropium</td><td><span class="tag t-ok">Yes</span></td></tr>
@@ -312,7 +334,7 @@ ol.src li{margin:.2rem 0}
       <p class="note">Mixing rules follow the product information (Pulmicort Respules, Atrovent UDV, Pulmozyme). When unsure, give one after the other.</p>
     </div>
     <div class="card">
-      <h3>Infection control</h3>
+      <h3><span class="fmg-en">Infection control</span><span class="fmg-ar" lang="ar">مكافحة العدوى</span></h3>
       <ul class="tight">
         <li>Nebulization generates aerosols. With suspected MERS-CoV, COVID-19, influenza, TB or measles, use MDI + spacer where possible.</li>
         <li>If a nebulizer is needed: single room (airborne isolation room where available), door closed, N95 for staff, per Saudi MOH / Weqaya infection-control guidance.</li>
@@ -320,7 +342,7 @@ ol.src li{margin:.2rem 0}
       </ul>
     </div>
     <div class="card">
-      <h3>Do not nebulize</h3>
+      <h3><span class="fmg-en">Do not nebulize</span><span class="fmg-ar" lang="ar">لا تُعطى بجهاز البخار</span></h3>
       <ul class="tight">
         <li><b>Sterile water</b> as a diluent: hypotonic, triggers bronchospasm. Use 0.9% saline.</li>
         <li><b>N-acetylcysteine</b>: bronchospasm, no ER role.</li>
@@ -330,16 +352,26 @@ ol.src li{margin:.2rem 0}
       </ul>
     </div>
   </div>
+
+  <div class="pearl"><b>Board three-liner (croup).</b> 2-year-old, 12 kg, barking cough with stridor at rest, Westley 5. Dexamethasone 7.2 mg PO (0.6 mg/kg; 0.15 mg/kg is enough if mild) plus nebulized L-epinephrine 1 mg/mL 5 mL undiluted (0.5 mL/kg, capped), oxygen-driven, then observe 2–4 h and admit if stridor at rest returns. FM learning point: give the steroid even when epinephrine works, because epinephrine wears off in about 2 hours; nebulized budesonide 2 mg is the fallback only when oral or IM dexamethasone is impossible.</div>
+  <div class="pearl" id="parentsBox"><b><span class="fmg-en">For parents: leaflets in English and Arabic</span><span class="fmg-ar" lang="ar">للأهل: نشرات بالعربية والإنجليزية</span></b>
+    <p class="fmg-en">Hand these out at discharge, printed or as a WhatsApp card. Go through the dose with the carer using their own bottle and syringe, write the mL on the plan, and ask them to show you the dose (teach-back).</p>
+    <p class="fmg-ar" lang="ar">أعطِها للأهل عند الخروج، مطبوعة أو بطاقة واتساب. راجع الجرعة مع مقدّم الرعاية باستخدام عبوته ومحقنته، واكتب الكمية بالمليلتر في الخطة، واطلب منه أن يريك كيف يسحب الجرعة.</p>
+    <ul class="tight">
+      <li><a href="patients.html#leaflet-fever-medicine-child"><span class="fmg-en">Fever and pain medicine for your child</span><span class="fmg-ar" lang="ar">خافض الحرارة والمسكّن لطفلك</span></a> · <a href="downloads/leaflets/fever-medicine-child-en.pdf">EN PDF</a> · <a href="downloads/leaflets/fever-medicine-child-ar.pdf">AR PDF</a></li>
+      <li><a href="patients.html#leaflet-spacer-nebulizer"><span class="fmg-en">Using a spacer or a nebulizer at home</span><span class="fmg-ar" lang="ar">استخدام البخاخ مع الحجرة أو جهاز البخار في المنزل</span></a> · <a href="downloads/leaflets/spacer-nebulizer-en.pdf">EN PDF</a> · <a href="downloads/leaflets/spacer-nebulizer-ar.pdf">AR PDF</a></li>
+    </ul>
+  </div>
 </div>
 
 <!-- ============ RESUS ============ -->
 <div class="panel" role="tabpanel" id="p-resus" aria-labelledby="tab-resus" hidden>
   <section class="block">
-    <h2>Arrest and peri-arrest</h2>
+    <h2><span class="fmg-en">Arrest and peri-arrest</span><span class="fmg-ar" lang="ar">توقّف القلب وما حوله</span></h2>
     <div class="tw wide"><table id="resusTable"><thead><tr><th>Item</th><th>Per kg</th><th>Dose now</th><th>Notes</th></tr></thead><tbody></tbody></table></div>
   </section>
   <section class="block">
-    <h2>Infusion rate</h2>
+    <h2><span class="fmg-en">Infusion rate</span><span class="fmg-ar" lang="ar">سرعة التسريب</span></h2>
     <div class="calc">
       <div class="card">
         <div class="row">
@@ -357,7 +389,7 @@ ol.src li{margin:.2rem 0}
         <p class="note">Rate (mL/h) = dose × weight × 60 ÷ concentration. Enter your pharmacy's standard syringe concentration; the default is an example only.</p>
       </div>
       <div class="card">
-        <h3>Which vasoactive</h3>
+        <h3><span class="fmg-en">Which vasoactive</span><span class="fmg-ar" lang="ar">أيّ دواء رافع للضغط</span></h3>
         <ul class="tight">
           <li><b>Cold shock</b> (cool peripheries, weak pulses, low output): epinephrine first.</li>
           <li><b>Warm shock</b> (bounding pulses, wide pulse pressure): norepinephrine first.</li>
@@ -373,13 +405,14 @@ ol.src li{margin:.2rem 0}
 <!-- ============ SEDATION ============ -->
 <div class="panel" role="tabpanel" id="p-sed" aria-labelledby="tab-sed" hidden>
   <section class="block">
-    <h2>Convulsive status epilepticus</h2>
-    <p class="intro">Start the clock at seizure onset. Glucose check at any step.</p>
+    <h2><span class="fmg-en">Convulsive status epilepticus</span><span class="fmg-ar" lang="ar">الحالة الصرعية التشنّجية</span></h2>
+    <p class="intro fmg-en">Start the clock at seizure onset. Glucose check at any step.</p>
+    <p class="intro fmg-ar" lang="ar">ابدأ حساب الوقت من بداية التشنّج، وافحص السكر في أي خطوة.</p>
     <div class="tw wide"><table id="seizTable"><thead><tr><th>Time</th><th>Drug · route</th><th>Per kg</th><th>Dose now</th></tr></thead><tbody></tbody></table></div>
     <p class="note">ESETT (2019): levetiracetam, fosphenytoin and valproate worked equally well (~47%). Choose by context: avoid valproate under 2 years or with suspected metabolic/liver disease or pregnancy; avoid phenytoin in toxin-induced seizures.</p>
   </section>
   <section class="block">
-    <h2>Analgesia and procedural sedation</h2>
+    <h2><span class="fmg-en">Analgesia and procedural sedation</span><span class="fmg-ar" lang="ar">تسكين الألم والتهدئة للإجراءات</span></h2>
     <div class="tw wide"><table id="sedTable"><thead><tr><th>Drug · route</th><th>Per kg</th><th>Dose now</th><th>When · cautions</th></tr></thead><tbody></tbody></table></div>
     <p class="note">Procedural sedation needs a second clinician for the airway, monitoring (SpO₂, EtCO₂ where available), suction, BVM and reversal agents drawn up. Fasting is not required for ketamine sedation in the ED (ACEP 2014 / ICSA 2020 consensus). Naloxone and flumazenil doses are on the Resus tab.</p>
   </section>
@@ -389,18 +422,18 @@ ol.src li{margin:.2rem 0}
 <div class="panel" role="tabpanel" id="p-scores" aria-labelledby="tab-scores" hidden>
   <div class="calc">
     <div class="score" id="pram">
-      <h3>PRAM · acute asthma, 2–17 y</h3>
+      <h3><span class="fmg-en">PRAM · acute asthma, 2–17 y</span><span class="fmg-ar" lang="ar">PRAM · نوبة الربو، 2–17 سنة</span></h3>
       <div class="item"><span>Suprasternal retractions</span><div class="opts" data-n="p1"><label><input type="radio" name="p1" value="0" checked>Absent 0</label><label><input type="radio" name="p1" value="2">Present 2</label></div></div>
       <div class="item"><span>Scalene retractions</span><div class="opts"><label><input type="radio" name="p2" value="0" checked>Absent 0</label><label><input type="radio" name="p2" value="2">Present 2</label></div></div>
       <div class="item"><span>Air entry</span><div class="opts"><label><input type="radio" name="p3" value="0" checked>Normal 0</label><label><input type="radio" name="p3" value="1">↓ at bases 1</label><label><input type="radio" name="p3" value="2">Widespread ↓ 2</label><label><input type="radio" name="p3" value="3">Absent/minimal 3</label></div></div>
       <div class="item"><span>Wheeze</span><div class="opts"><label><input type="radio" name="p4" value="0" checked>Absent 0</label><label><input type="radio" name="p4" value="1">Expiratory 1</label><label><input type="radio" name="p4" value="2">Insp + exp 2</label><label><input type="radio" name="p4" value="3">Audible / silent chest 3</label></div></div>
       <div class="item"><span>SpO₂ (room air)</span><div class="opts"><label><input type="radio" name="p5" value="0" checked>≥95% 0</label><label><input type="radio" name="p5" value="1">92–94% 1</label><label><input type="radio" name="p5" value="2">&lt;92% 2</label></div></div>
       <div class="result" id="pramRes"></div>
-      <p class="note">Mild 0–3 · moderate 4–7 · severe 8–12. Reassess 60 min after the first hour of treatment; that score predicts admission better than the arrival score. (Ducharme 2008)</p>
+      <p class="note">Mild 0–3 · moderate 4–7 · severe 8–12. Reassess 60 min after the first hour of treatment; that score predicts admission better than the arrival score. (Ducharme 2008) GINA 2026 now strongly recommends a validated score such as PRAM for every child under 18 with an exacerbation.</p>
     </div>
 
     <div class="score" id="westley">
-      <h3>Westley · croup</h3>
+      <h3><span class="fmg-en">Westley · croup</span><span class="fmg-ar" lang="ar">Westley · الخانوق</span></h3>
       <div class="item"><span>Level of consciousness</span><div class="opts"><label><input type="radio" name="w1" value="0" checked>Normal 0</label><label><input type="radio" name="w1" value="5">Disoriented 5</label></div></div>
       <div class="item"><span>Cyanosis</span><div class="opts"><label><input type="radio" name="w2" value="0" checked>None 0</label><label><input type="radio" name="w2" value="4">With agitation 4</label><label><input type="radio" name="w2" value="5">At rest 5</label></div></div>
       <div class="item"><span>Stridor</span><div class="opts"><label><input type="radio" name="w3" value="0" checked>None 0</label><label><input type="radio" name="w3" value="1">With agitation 1</label><label><input type="radio" name="w3" value="2">At rest 2</label></div></div>
@@ -411,7 +444,7 @@ ol.src li{margin:.2rem 0}
     </div>
 
     <div class="score" id="cds">
-      <h3>Clinical Dehydration Scale · 1–36 months</h3>
+      <h3><span class="fmg-en">Clinical Dehydration Scale · 1–36 months</span><span class="fmg-ar" lang="ar">مقياس الجفاف السريري · 1–36 شهرًا</span></h3>
       <div class="item"><span>General appearance</span><div class="opts"><label><input type="radio" name="c1" value="0" checked>Normal 0</label><label><input type="radio" name="c1" value="1">Thirsty, restless or lethargic but irritable when touched 1</label><label><input type="radio" name="c1" value="2">Drowsy, limp, cold, sweaty ± comatose 2</label></div></div>
       <div class="item"><span>Eyes</span><div class="opts"><label><input type="radio" name="c2" value="0" checked>Normal 0</label><label><input type="radio" name="c2" value="1">Slightly sunken 1</label><label><input type="radio" name="c2" value="2">Very sunken 2</label></div></div>
       <div class="item"><span>Mucous membranes (tongue)</span><div class="opts"><label><input type="radio" name="c3" value="0" checked>Moist 0</label><label><input type="radio" name="c3" value="1">Sticky 1</label><label><input type="radio" name="c3" value="2">Dry 2</label></div></div>
@@ -422,7 +455,7 @@ ol.src li{margin:.2rem 0}
     </div>
 
     <div class="score" id="pecarn">
-      <h3>PECARN · minor head injury, GCS 14–15, &lt;24 h</h3>
+      <h3><span class="fmg-en">PECARN · minor head injury, GCS 14–15, &lt;24 h</span><span class="fmg-ar" lang="ar">PECARN · إصابة الرأس البسيطة، GCS 14–15، خلال 24 ساعة</span></h3>
       <div class="seg" role="group" aria-label="Age group"><button type="button" data-age="u2" aria-pressed="false">Under 2 y</button><button type="button" data-age="o2" aria-pressed="true">2 y and over</button></div>
       <div class="checks" id="pecHigh"></div>
       <div class="checks" id="pecMid"></div>
@@ -432,7 +465,7 @@ ol.src li{margin:.2rem 0}
   </div>
 
   <section class="block">
-    <h2>Febrile infant 8–60 days, well-appearing (AAP 2021)</h2>
+    <h2><span class="fmg-en">Febrile infant 8–60 days, well-appearing (AAP 2021)</span><span class="fmg-ar" lang="ar">الرضيع المحموم بعمر 8–60 يومًا وحالته العامة جيدة (AAP 2021)</span></h2>
     <div class="tw wide"><table>
       <thead><tr><th>Age</th><th>Tests</th><th>LP</th><th>Disposition</th></tr></thead>
       <tbody>
@@ -448,11 +481,11 @@ ol.src li{margin:.2rem 0}
 <!-- ============ DISPO ============ -->
 <div class="panel" role="tabpanel" id="p-dispo" aria-labelledby="tab-dispo" hidden>
   <section class="block">
-    <h2>When to admit, call PICU or transfer</h2>
+    <h2><span class="fmg-en">When to admit, call PICU or transfer</span><span class="fmg-ar" lang="ar">متى ننوّم الطفل أو نستدعي العناية المركزة أو نحوّله</span></h2>
     <div class="tw wide"><table>
       <thead><tr><th>Condition</th><th>Home if</th><th>Admit if</th><th>PICU / senior now if</th></tr></thead>
       <tbody>
-        <tr><td><b>Asthma</b></td><td>PRAM ≤3 at 1 h after treatment, SpO₂ ≥94%, salbutamol ≥3–4 h apart, can use spacer</td><td>PRAM ≥4 after 1 h, SpO₂ &lt;92% after treatment, needs salbutamol &lt;2-hourly</td><td>Silent chest, exhaustion, confusion, rising CO₂, PRAM ≥8 despite Mg</td></tr>
+        <tr><td><b>Asthma</b></td><td>PRAM ≤3 at 1 h after treatment, SpO₂ ≥92% on room air (GINA 2026: oxygen only below 92%), lung function rechecked before discharge where possible, salbutamol ≥3–4 h apart, can use spacer</td><td>PRAM ≥4 after 1 h, SpO₂ &lt;92% after treatment, needs salbutamol &lt;2-hourly</td><td>Silent chest, exhaustion, confusion, rising CO₂, PRAM ≥8 despite Mg</td></tr>
         <tr><td><b>Croup</b></td><td>No stridor at rest 2–4 h after epinephrine</td><td>Stridor at rest after 2 epinephrine nebs, Westley ≥3 persisting, &lt;6 months</td><td>Westley ≥6 not settling, ≥12, hypoxia, drooling/toxic (think tracheitis, epiglottitis)</td></tr>
         <tr><td><b>Bronchiolitis</b></td><td>Feeding &gt;50% usual, SpO₂ ≥90–92%, no apnoea, reliable carer</td><td>SpO₂ persistently &lt;90–92%, feeding &lt;50%, apnoea, &lt;6–8 weeks, ex-preterm &lt;32 w, CHD, CLD</td><td>Recurrent apnoea, rising work of breathing on HFNC, pCO₂ &gt;60 mmHg</td></tr>
         <tr><td><b>Gastroenteritis</b></td><td>CDS 0–4 and passes ORT trial (≥ target volume in 4 h)</td><td>Fails ORT/NG, CDS 5–8, Na &lt;130 or &gt;150, bloody diarrhoea with low platelets (HUS)</td><td>Shock not responding to 40 mL/kg</td></tr>
@@ -480,7 +513,7 @@ ol.src li{margin:.2rem 0}
     <li>Weiss SL et al. Surviving Sepsis Campaign international guidelines for septic shock in children. Pediatr Crit Care Med 2020;21:e52–e106.</li>
     <li>Glaser N et al. ISPAD Clinical Practice Consensus Guidelines 2022: DKA and HHS. Pediatr Diabetes 2022;23:835–856.</li>
     <li>Feld LG et al. Clinical practice guideline: maintenance IV fluids in children. Pediatrics 2018;142:e20183083.</li>
-    <li>Ralston SL et al. AAP bronchiolitis guideline. Pediatrics 2014;134:e1474. WHO consolidated guidelines: asthma and bronchiolitis in children, 2026.</li>
+    <li>Ralston SL et al. AAP bronchiolitis guideline. Pediatrics 2014;134:e1474. Borland ML et al. Australasian Bronchiolitis Guideline: 2025 update. J Paediatr Child Health 2025;61:1197–215. WHO consolidated guidelines: asthma and bronchiolitis in children, 2026.</li>
     <li>GINA 2026 report; NAEPP EPR-3; SIGN 158 (2019) acute asthma.</li>
     <li>Ducharme FM et al. PRAM. J Pediatr 2008;152:476–80.</li>
     <li>Westley CR et al. Am J Dis Child 1978;132:484–7. Gates A et al. Glucocorticoids for croup, Cochrane 2018.</li>
@@ -518,6 +551,22 @@ const ageTxt=()=>{const t=AM(),y=Math.floor(t/12),m=t%12;return (y?y+' y ':'')+m
 const minAge=(mo,txt)=>AM()<mo?' <span class="agef">'+(txt||('not under '+(mo>=12?(mo/12)+' y':mo+' mo')))+'</span>':'';
 const r=(x,d)=>{if(!isFinite(x))return '—';const p=Math.pow(10,d==null?(x<1?2:x<10?1:0):d);return String(Math.round(x*p)/p)};
 
+/* ---------- language (same keys as the site's bilingual pages) ---------- */
+const root=document.documentElement;
+const isAr=()=>root.getAttribute('data-lang')==='ar';
+const L=(en,ar)=>isAr()?ar:en;
+function setLang(lang,persist){
+  lang=lang==='ar'?'ar':'en';
+  root.setAttribute('data-lang',lang);root.setAttribute('lang',lang);
+  if(persist!==false){try{localStorage.setItem('fmgLang',lang)}catch(e){}}
+  document.querySelectorAll('[data-fmg-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.getAttribute('data-fmg-lang')===lang)));
+  if(typeof update==='function'&&window.__pedsReady){update();$('#wtHint').textContent=L('Using '+r(W(),1)+' kg.','الوزن المستخدم: '+r(W(),1)+' كغ.')}
+}
+document.querySelectorAll('[data-fmg-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-fmg-lang'))));
+(function(){let q=null,st='en';try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
+  if(q==='ar'||q==='en')st=q;else{try{st=localStorage.getItem('fmgLang')||'en'}catch(e){}}
+  setLang(st,q?false:true);})();
+
 /* ---------- tabs ---------- */
 function openTab(id){
   $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===id)));
@@ -541,9 +590,9 @@ $('#estBtn').addEventListener('click',()=>{
   else if(y<=5){w=2*y+8;f='(2 × '+y+' years) + 8'}
   else if(y<=12){w=3*y+7;f='(3 × '+y+' years) + 7'}
   else {w=null}
-  if(w==null){$('#wtHint').classList.add('on');$('#wtHint').textContent='Over 12 years: weigh the child or use a length-based tape.';return}
+  if(w==null){$('#wtHint').textContent=L('Over 12 years: weigh the child or use a length-based tape.','فوق 12 سنة: زِن الطفل أو استخدم شريط القياس حسب الطول.');return}
   $('#wt').value=r(w,1);
-  $('#wtHint').classList.add('on');$('#wtHint').textContent='Estimated by APLS '+f+' = '+r(w,1)+' kg. Replace with a measured weight or Broselow tape as soon as you can.';
+  $('#wtHint').textContent=L('Estimated by APLS '+f+' = '+r(w,1)+' kg. Replace with a measured weight or Broselow tape as soon as you can.','تقدير APLS: '+f+' = '+r(w,1)+' كغ. استبدله بوزن فعلي أو شريط بروزلو في أقرب وقت.');
   update();
 });
 
@@ -633,7 +682,7 @@ const nebs=[
   c:()=>(AM()<24?mlTxt('4 mL')+'<br><small>admitted bronchiolitis</small>':'<small>Not for asthma or croup. Over 2 y: CF/bronchiectasis team.</small>'),
   a:mlTxt('4 mL')+'<br><small>sputum clearance</small>',
   f:'Bronchiolitis: every 6–8 h (inpatient protocols vary, up to 4-hourly).',
-  u:'Bronchiolitis: inpatients only; AAP advises against it in the ER; WHO 2026 suggests a trial (low certainty). Can cause wheeze: give salbutamol first or premix if your protocol does. Stop if work of breathing rises.'},
+  u:'Bronchiolitis: inpatients only; AAP advises against it in the ER; the Australasian guideline does not recommend it; WHO 2026 suggests a trial (low certainty). Can cause wheeze: give salbutamol first or premix if your protocol does. Stop if work of breathing rises.'},
  {n:'Hypertonic saline 7%',s:'4 mL vials',
   c:()=>A()>=6?mlTxt('4 mL')+' <small>BID</small>':'<small>Under 6 y: CF team only.</small>',
   a:mlTxt('4 mL')+' <small>BID</small>',
@@ -675,7 +724,7 @@ const resus=[
  {n:'Amiodarone IV',k:'5 mg/kg',d:()=>dose(5,300,'mg'),u:'Refractory VF/pVT after 3rd shock; repeat up to 15 mg/kg total. Or lidocaine 1 mg/kg.'},
  {n:'Adenosine rapid IV',k:'0.1 → 0.2 mg/kg',d:()=>dose(0.1,6,'mg')+' → '+dose(0.2,12,'mg'),u:'SVT. Rapid push, immediate 5–10 mL flush, proximal line.'},
  {n:'Atropine IV',k:'0.02 mg/kg',d:()=>dose(0.02,0.5,'mg'),u:'Vagal bradycardia or AV block. No minimum dose since 2020.'},
- {n:'Epinephrine IM (1 mg/mL)',k:'0.01 mg/kg = 0.01 mL/kg',d:()=>dose(0.01,0.5,'mg')+' = '+dose(0.01,0.5,'mL'),u:'Anaphylaxis, thigh. Max 0.5 mg (0.3 mg prepubertal). Repeat q5–15 min. Autoinjector: '+(W()<25?'0.15 mg':'0.3 mg')+'.'},
+ {n:'Epinephrine IM (1 mg/mL)',k:'0.01 mg/kg = 0.01 mL/kg',d:()=>dose(0.01,0.5,'mg')+' = '+dose(0.01,0.5,'mL'),u:'Anaphylaxis, thigh. Max 0.5 mg (0.3 mg prepubertal). Repeat q5–15 min. Anaphylaxis with wheeze: epinephrine first, then bronchodilators (GINA 2026). Autoinjector: '+(W()<25?'0.15 mg':'0.3 mg')+'.'},
  {n:'Dextrose 10%',k:'2–5 mL/kg',d:()=>range(2,5,250,'mL'),u:'Hypoglycemia. Neonate 2 mL/kg. Then glucose-containing maintenance.'},
  {n:'Calcium gluconate 10%',k:'0.5 mL/kg (50 mg/kg)',d:()=>dose(0.5,20,'mL'),u:'Hyperkalemia with ECG change, hypocalcemia, CCB toxicity. Over 5–10 min.'},
  {n:'Naloxone IV/IM/IN',k:'0.1 mg/kg (full reversal)',d:()=>dose(0.1,2,'mg'),u:'Opioid toxicity. Partial reversal after procedural sedation: 1–5 mcg/kg titrated.'},
@@ -842,11 +891,11 @@ $$('#pecarn .seg button').forEach(b=>b.addEventListener('click',()=>{pAge=b.data
 
 /* ---------- master update ---------- */
 function syncPec(){const want=AM()<24?'u2':'o2';if(want!==pAge){pAge=want;$$('#pecarn .seg button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.age===want)));renderPecList()}}
-function update(){renderDrugs();renderNebs();renderResus();renderSed();renderFluids();renderInf();renderScores();$('#ageOut').textContent=ageTxt()+' · '+AM()+' months'}
-['#wt','#ageY','#ageM'].forEach(s=>$(s).addEventListener('input',()=>{if(s==='#ageM'){const m=parseInt($('#ageM').value,10);if(m>11){$('#ageY').value=(parseInt($('#ageY').value,10)||0)+Math.floor(m/12);$('#ageM').value=m%12}}if(s==='#wt'){$('#wtHint').classList.remove('on')}if(s==='#wt')$('#wtHint').textContent='Using '+r(W(),1)+' kg.';update();if(s!=='#wt')syncPec()}));
+function update(){renderDrugs();renderNebs();renderResus();renderSed();renderFluids();renderInf();renderScores();$('#ageOut').textContent=L(ageTxt()+' · '+AM()+' months','العمر بالأشهر: '+AM())}
+['#wt','#ageY','#ageM'].forEach(s=>$(s).addEventListener('input',()=>{if(s==='#ageM'){const m=parseInt($('#ageM').value,10);if(m>11){$('#ageY').value=(parseInt($('#ageY').value,10)||0)+Math.floor(m/12);$('#ageM').value=m%12}}if(s==='#wt'){$('#wtHint').classList.remove('on')}if(s==='#wt')$('#wtHint').textContent=L('Using '+r(W(),1)+' kg.','الوزن المستخدم: '+r(W(),1)+' كغ.');update();if(s!=='#wt')syncPec()}));
 // default KCl rate = maintenance of example weight
 $('#kRate').value=r(hs(W()),0);
-update(); renderPecList(); syncPec();
+update(); renderPecList(); syncPec(); window.__pedsReady=true;
 })();
 
 window.addEventListener('hashchange',function(){var t=(location.hash||'').slice(1).replace(/^p-/,'');var b=document.querySelector('nav.tabs button[data-tab="'+t+'"]');if(b)b.click();});{% endraw %}

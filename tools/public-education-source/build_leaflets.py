@@ -93,6 +93,8 @@ p {{ margin: 0 0 2mm; }}
 ul {{ margin: 0 0 2mm; padding-{'right' if ar else 'left'}: 6mm; padding-{'left' if ar else 'right'}: 0; }}
 li {{ margin-bottom: 0.8mm; }}
 ul.two {{ columns: 2; column-gap: 8mm; }}
+ol.steps {{ margin: 0 0 2mm; padding-{'right' if ar else 'left'}: 6mm; padding-{'left' if ar else 'right'}: 0; }}
+ol.steps li {{ margin: 0 0 0.6mm; }}
 ul.two li {{ break-inside: avoid; }}
 b {{ font-weight: 700; }}
 .box {{ border-radius: 3mm; padding: 3mm 4.6mm 2.8mm; margin: 2.6mm 0; }}
@@ -197,6 +199,8 @@ def render_blocks(blocks, lang, tone):
             cur.append('<ul class="two">' + ''.join(f'<li>{f(i)}</li>' for i in b[1]) + '</ul>')
         elif bt == 'ul':
             cur.append('<ul>' + ''.join(f'<li>{f(i)}</li>' for i in b[1]) + '</ul>')
+        elif bt == 'ol':  # numbered steps (added 8 Nov 2026 for the spacer/nebulizer leaflet)
+            cur.append('<ol class="steps">' + ''.join(f'<li>{f(i)}</li>' for i in b[1]) + '</ol>')
         elif bt == 'table':
             head = ''.join(f'<th>{f(c)}</th>' for c in b[1])
             rows = ''.join('<tr>' + ''.join(f'<td>{f(c)}</td>' for c in r) + '</tr>' for r in b[2])
@@ -273,7 +277,7 @@ def leaflet_html(L, lang, draft=True, only_record=False):
             foot = (f'<div class="foot">'
                     f'<div class="who"><span class="mark">AA</span><div><b>{t["prepared"]}</b><br>{t["role"]}</div></div>'
                     f'<p>{t["disc"]} {t["ai_draft"] if draft else t["ai_final"]}</p>'
-                    f'<p><b>{t["updated"]}:</b> {REVIEWED[lang]} · <b>{t["nextr"]}:</b> {NEXT_REVIEW[lang]}</p>'
+                    f'<p><b>{t["updated"]}:</b> {L.get("reviewed", REVIEWED)[lang]} · <b>{t["nextr"]}:</b> {L.get("next_review", NEXT_REVIEW)[lang]}</p>'
                     f'<p><b>{t["sources"]}:</b></p><ol class="srcs">{srcs}</ol>'
                     f'<div class="numbers"><span>{t["emergency"]} · {t["advice"]}</span>{pn}</div></div>')
         elif rs is not None and i >= rs:

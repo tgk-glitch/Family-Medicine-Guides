@@ -10,6 +10,13 @@ ROOT = Path(__file__).resolve().parent.parent / "src"
 src = Path(sys.argv[1]).read_text(encoding="utf-8")
 
 # ---------- 1. page ----------
+PARENTS = """
+    <p class="fmg-en">Hand these out at discharge, printed or as a WhatsApp card. Go through the dose with the carer using their own bottle and syringe, write the mL on the plan, and ask them to show you the dose (teach-back).</p>
+    <p class="fmg-ar" lang="ar">أعطِها للأهل عند الخروج، مطبوعة أو بطاقة واتساب. راجع الجرعة مع مقدّم الرعاية باستخدام عبوته ومحقنته، واكتب الكمية بالمليلتر في الخطة، واطلب منه أن يريك كيف يسحب الجرعة.</p>
+    <ul class="tight">
+      <li><a href="patients.html#leaflet-fever-medicine-child"><span class="fmg-en">Fever and pain medicine for your child</span><span class="fmg-ar" lang="ar">خافض الحرارة والمسكّن لطفلك</span></a> · <a href="downloads/leaflets/fever-medicine-child-en.pdf">EN PDF</a> · <a href="downloads/leaflets/fever-medicine-child-ar.pdf">AR PDF</a></li>
+      <li><a href="patients.html#leaflet-spacer-nebulizer"><span class="fmg-en">Using a spacer or a nebulizer at home</span><span class="fmg-ar" lang="ar">استخدام البخاخ مع الحجرة أو جهاز البخار في المنزل</span></a> · <a href="downloads/leaflets/spacer-nebulizer-en.pdf">EN PDF</a> · <a href="downloads/leaflets/spacer-nebulizer-ar.pdf">AR PDF</a></li>
+    </ul>"""
 css = re.search(r"<style>(.*?)</style>", src, re.S).group(1)
 body = src.split("</style>", 1)[1]
 script = re.search(r"<script>(.*?)</script>", body, re.S).group(1)
@@ -53,15 +60,21 @@ markup = markup.replace("<footer>", '<footer class="pe-src">', 1)
 markup = re.sub(r"<title>.*?</title>\s*", "", markup)
 markup = re.sub(r'<meta name="claude:viewport-fit-sides"[^>]*>\s*', "", markup)
 markup = re.sub(r"<link [^>]*>\s*", "", markup)
-markup = markup.replace("<span class=\"draft\">DRAFT · AI-assisted · awaiting review against your hospital formulary (Lexicomp/UpToDate) before clinical use</span>",
-                        "<span class=\"draft\">DRAFT · under review · confirm every dose against your hospital formulary before use</span>")
+markup = markup.replace("DRAFT · AI-assisted · awaiting review against your hospital formulary (Lexicomp/UpToDate) before clinical use",
+                        "DRAFT · under review · confirm every dose against your hospital formulary before use")
+markup = markup.replace("مسودة · بمساعدة الذكاء الاصطناعي · بانتظار المراجعة مقابل دليل الأدوية في مستشفاك قبل الاستخدام السريري",
+                        "مسودة · قيد المراجعة · تحقّق من كل جرعة مقابل دليل الأدوية في مستشفاك قبل الاستخدام")
+# parent leaflets: real links on the site
+markup = re.sub(r'(<div class="pearl" id="parentsBox">.*?</b>).*?(\n  </div>)', lambda m: m.group(1) + PARENTS + m.group(2), markup, count=1, flags=re.S)
 markup = markup.replace("Your quick note, checked against current guidelines and turned into a calculator.",
                         "Common pediatric ER and urgent-care doses, checked against current guidelines and turned into a calculator.")
-markup = markup.replace('<h2>Your note, line by line</h2>', '<h2>What changed from the common quick-note doses</h2>')
+markup = markup.replace('<span class="fmg-en">Your note, line by line</span><span class="fmg-ar" lang="ar">ملاحظتك سطرًا بسطر</span>',
+                        '<span class="fmg-en">What changed from the common quick-note doses</span><span class="fmg-ar" lang="ar">ما الذي تغيّر في جرعات الملاحظات الشائعة</span>')
+markup = markup.replace('الأحمر: قد يسبب خطأً في الجرعة كما كُتب.', 'الأحمر: اختصار شائع يسبب أخطاء في الجرعات.')
 markup = markup.replace("Red = could cause a dosing error as written.", "Red = a common shorthand that causes dosing errors.")
 markup = markup.replace("<th>Your note</th>", "<th>Common note</th>")
 
-markup = markup.replace("<h1>Peds ER Doses</h1>", "<h1>Pediatric ER Doses</h1>")
+markup = markup.replace('<h1><span class="fmg-en">Peds ER Doses</span>', '<h1><span class="fmg-en">Pediatric ER Doses</span>')
 markup = markup.replace(">Estimate weight from age<", ">Estimate from age<")
 script = script.replace("$('#wtHint').textContent='Estimated by APLS '", "$('#wtHint').classList.add('on');$('#wtHint').textContent='Estimated by APLS '")
 script = script.replace("$('#wtHint').textContent='Over 12 years", "$('#wtHint').classList.add('on');$('#wtHint').textContent='Over 12 years")
@@ -82,7 +95,7 @@ page = f"""<!DOCTYPE html>
 <meta content="Weight-based pediatric ER and urgent-care doses, fluids, KCl and transfusion calculators, PRAM, Westley, CDS and PECARN scores, and when to admit or refer." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=IBM+Plex+Sans+Arabic:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
 /* Pediatric ER Doses (prefix-free, scoped to #pe) */
 {css.strip()}
@@ -155,29 +168,22 @@ if "peds-er.html" not in t:
     t = t.replace('<p class="dir-count">3 live · 11 planned</p>', '<p class="dir-count">4 live · 11 planned</p>', 1)
     cat.write_text(t, encoding="utf-8")
 
-# ---------- 3. search index ----------
+# ---------- 3. search index (all peds-er entries rebuilt each run) ----------
 si = ROOT / "search-index.js"; t = si.read_text(encoding="utf-8")
-if True:
-    G = dict(guide="peds-er.html", guideTitle="Pediatric ER Doses", tag="#C98A2C")
-    E = [
-     ("p-review", "What changed from common quick-note doses", "PRBC 10–15 mL/kg not mg/kg; morphine 0.05–0.1 mg/kg; granisetron IV 10–40 mcg/kg; salbutamol 2.5 mg under 20 kg; prednisolone once daily; dexamethasone and ceftriaxone maximums; elemental iron 3 mg/kg/day.", "dose errors corrections morphine granisetron prbc"),
-     ("p-fluids", "Pediatric fluids, KCl and transfusion calculator", "Holliday–Segar 4-2-1 maintenance, 2/3 maintenance, shock/DKA/cardiac boluses, KCl mEq/kg/day check, PRBC volume from Hb, albumin, hypoglycemia D10.", "maintenance bolus potassium kcl blood transfusion albumin dextrose"),
-     ("p-nebs", "Nebulizer doses in mL: child and adult", "Salbutamol, ipratropium, budesonide, normal saline 0.9%, hypertonic saline 3% and 7%, epinephrine (croup, angioedema), racemic epinephrine, isotonic magnesium, dornase alfa: mL per session, fill volume, mixing, oxygen vs air, infection control.", "nebuliser neb volume ml hypertonic saline budesonide pulmicort atrovent ventolin combivent adrenaline croup cystic fibrosis"),
-     ("p-drugs", "Pediatric ER drug doses by weight", "Paracetamol, ibuprofen, salbutamol, ipratropium, prednisolone, dexamethasone, magnesium, ondansetron, granisetron, ceftriaxone, amoxicillin, furosemide, iron — capped at maximum doses.", "acetaminophen paracetamol ibuprofen steroids antiemetic antibiotics"),
-     ("p-resus", "Pediatric resuscitation and vasoactive infusions", "Epinephrine arrest and IM anaphylaxis, defibrillation joules, amiodarone, adenosine, atropine, naloxone, 3% saline, ETT size; epinephrine, norepinephrine and milrinone infusion rate calculator.", "pals epinephrine adrenaline noradrenaline milrinone inotrope cardiac arrest"),
-     ("p-sed", "Pediatric status epilepticus, sedation and analgesia", "Midazolam, lorazepam, levetiracetam, fosphenytoin, valproate timeline; fentanyl IN/IV, morphine, ketamine sedation and analgesia doses.", "seizure benzodiazepine ketamine fentanyl morphine midazolam procedural sedation"),
-     ("p-scores", "Pediatric scores: PRAM, Westley, CDS, PECARN", "Asthma PRAM, croup Westley, Clinical Dehydration Scale with ORT volumes, PECARN head CT rule, AAP 2021 febrile infant 8–60 days.", "asthma croup dehydration head injury febrile infant score calculator"),
-     ("p-dispo", "Pediatric ER: when to admit, call PICU or refer", "Disposition criteria for asthma, croup, bronchiolitis, gastroenteritis, DKA, febrile infant, seizure, head injury, anaphylaxis and sickle cell.", "admission discharge referral picu transfer disposition"),
-    ]
-    new = [dict(G, id=i, heading=h, snippet=s_, kw=k) for i, h, s_, k in E if '"guide": "peds-er.html", "guideTitle": "Pediatric ER Doses", "tag": "#C98A2C", "id": "%s"' % i not in t]
-    add = ", ".join(json.dumps(e, ensure_ascii=False) for e in new)
-    t = t.rstrip()
-    if not new:
-        add = None
-    assert t.endswith("];"), t[-40:]
-    if add:
-        t = t[:-2].rstrip() + ", " + add + "];\n"
-        si.write_text(t, encoding="utf-8")
+pre, arr, post = t[:t.index("[")], json.loads(t[t.index("["):t.rindex("]") + 1]), t[t.rindex("]") + 1:]
+G = dict(guide="peds-er.html", guideTitle="Pediatric ER Doses", tag="#C98A2C")
+E = [
+ ("p-review", "What changed from common quick-note doses", "ما الذي تغيّر في جرعات الملاحظات الشائعة", "PRBC 10–15 mL/kg not mg/kg; morphine 0.05–0.1 mg/kg; granisetron IV 10–40 mcg/kg; salbutamol 2.5 mg under 20 kg; prednisolone once daily; GINA 2026 oxygen targets; elemental iron 3 mg/kg/day.", "dose errors corrections morphine granisetron prbc gina 2026"),
+ ("p-fluids", "Pediatric fluids, KCl and transfusion calculator", "حاسبة السوائل والبوتاسيوم ونقل الدم للأطفال", "Holliday–Segar 4-2-1 maintenance, 2/3 maintenance, shock/DKA/cardiac boluses, KCl mEq/kg/day check, PRBC volume from Hb, albumin, hypoglycemia D10.", "maintenance bolus potassium kcl blood transfusion albumin dextrose"),
+ ("p-drugs", "Pediatric ER drug doses by weight and age", "جرعات أدوية الطوارئ للأطفال حسب الوزن والعمر", "Paracetamol, ibuprofen, salbutamol, ipratropium, prednisolone, dexamethasone, magnesium, ondansetron, granisetron, ceftriaxone, amoxicillin, furosemide, iron — capped at maximum doses, age limits flagged.", "acetaminophen paracetamol ibuprofen steroids antiemetic antibiotics age months"),
+ ("p-nebs", "Nebulizer doses in mL: child and adult", "جرعات جهاز البخار بالمليلتر للطفل والبالغ", "Salbutamol, ipratropium, budesonide, normal saline 0.9%, hypertonic saline 3% and 7%, epinephrine (croup, angioedema), racemic epinephrine, isotonic magnesium, dornase alfa: mL per session, fill volume, mixing, oxygen vs air, infection control.", "nebuliser neb volume ml hypertonic saline budesonide pulmicort atrovent ventolin combivent adrenaline croup cystic fibrosis"),
+ ("p-resus", "Pediatric resuscitation and vasoactive infusions", "إنعاش الأطفال وتسريب الأدوية الرافعة للضغط", "Epinephrine arrest and IM anaphylaxis, defibrillation joules, amiodarone, adenosine, atropine, naloxone, 3% saline, ETT size by age, hypotension threshold; epinephrine, norepinephrine and milrinone infusion rates.", "pals epinephrine adrenaline noradrenaline milrinone inotrope cardiac arrest ett"),
+ ("p-sed", "Pediatric status epilepticus, sedation and analgesia", "الحالة الصرعية والتهدئة وتسكين الألم عند الأطفال", "Midazolam, lorazepam, levetiracetam, fosphenytoin, valproate timeline; fentanyl IN/IV, morphine, ketamine sedation and analgesia doses.", "seizure benzodiazepine ketamine fentanyl morphine midazolam procedural sedation"),
+ ("p-scores", "Pediatric scores: PRAM, Westley, CDS, PECARN", "مقاييس الأطفال: PRAM وWestley والجفاف وPECARN", "Asthma PRAM, croup Westley, Clinical Dehydration Scale with ORT volumes, PECARN head CT rule, AAP 2021 febrile infant 8–60 days.", "asthma croup dehydration head injury febrile infant score calculator"),
+ ("p-dispo", "Pediatric ER: when to admit, call PICU or refer", "طوارئ الأطفال: متى ننوّم أو نستدعي العناية المركزة أو نحوّل", "Disposition criteria for asthma, croup, bronchiolitis, gastroenteritis, DKA, febrile infant, seizure, head injury, anaphylaxis and sickle cell; parent leaflets.", "admission discharge referral picu transfer disposition leaflet"),
+]
+arr = [e for e in arr if e.get("guide") != "peds-er.html"] + [dict(G, id=i, heading=h, snippet=sn, headingAr=ha, kw=k) for i, h, ha, sn, k in E]
+si.write_text(pre + json.dumps(arr, ensure_ascii=False) + post, encoding="utf-8")
 # subtitles on an already-wired site
 for f, a, b in [("_includes/nav.html", "weight-based calculator · scores · disposition", "weight-based doses · nebulizers · scores"),
                 ("categories.html", "weight-based doses, fluids, infusions, scores<", "weight-based doses, fluids, infusions, nebulizers, scores<")]:

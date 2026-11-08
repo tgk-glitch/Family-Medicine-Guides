@@ -333,3 +333,7 @@ LEAFLETS.append(dict(
 # The home BP leaflet became a guide + record (records_content.py), 15 Oct 2026.
 from records_content import BP as _BP, GLUCOSE as _GLUCOSE
 LEAFLETS += [_BP, _GLUCOSE]
+
+# Parent leaflets for the Pediatric ER Doses page (added 8 Nov 2026)
+from peds_leaflets import PEDS_LEAFLETS
+LEAFLETS += PEDS_LEAFLETS
