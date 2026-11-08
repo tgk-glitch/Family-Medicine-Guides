@@ -1,3 +1,0 @@
-# Private development build — not for search engines or AI crawlers.
-User-agent: *
-Disallow: /
