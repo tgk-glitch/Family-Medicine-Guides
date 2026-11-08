@@ -117,7 +117,7 @@ page = page.replace("Lancet Hematol", "Lancet Haematol")
 CHEV = '<svg class="fmg-chev" width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 def nav_row(color):
     return (f'<a href="peds-er.html" class="fmg-row"><span class="fmg-row-main"><span class="fmg-row-dot" style="background:{color}"></span>'
-            '<span class="fmg-row-text"><span class="fmg-row-label">Pediatric ER Doses</span><span class="fmg-row-sub">weight-based calculator · scores · disposition</span></span></span>'
+            '<span class="fmg-row-text"><span class="fmg-row-label">Pediatric ER Doses</span><span class="fmg-row-sub">weight-based doses · nebulizers · scores</span></span></span>'
             + CHEV + '</a>\n')
 
 nav = ROOT / "_includes/nav.html"; t = nav.read_text(encoding="utf-8")
@@ -147,7 +147,7 @@ if "peds-er.html" not in t:
         return (f'<a class="dir-row dir-live" href="peds-er.html"><span class="dir-dot" style="background:{color}"></span><span class="dir-text">'
                 f'<span class="dir-title">Pediatric ER Doses</span><span class="dir-sub">{sub}</span></span><span class="dir-open">Open →</span></a>')
     t = t.replace('<h3 class="dir-group" id="live-protocols">Live protocols</h3>',
-                  '<h3 class="dir-group" id="live-protocols">Live protocols</h3>' + dir_row("#B0392C", "weight-based doses, fluids, infusions, scores"), 1)
+                  '<h3 class="dir-group" id="live-protocols">Live protocols</h3>' + dir_row("#B0392C", "weight-based doses, fluids, infusions, nebulizers, scores"), 1)
     t = t.replace('<h3 class="dir-group" id="respiratory">Respiratory</h3>',
                   '<h3 class="dir-group" id="emergency-dosing">Emergency dosing</h3>' + dir_row("#C98A2C", "calculator · PRAM · Westley · CDS · PECARN · admit/refer")
                   + '<h3 class="dir-group" id="respiratory">Respiratory</h3>', 1)
@@ -157,21 +157,34 @@ if "peds-er.html" not in t:
 
 # ---------- 3. search index ----------
 si = ROOT / "search-index.js"; t = si.read_text(encoding="utf-8")
-if '"guide": "peds-er.html"' not in t:
+if True:
     G = dict(guide="peds-er.html", guideTitle="Pediatric ER Doses", tag="#C98A2C")
     E = [
      ("p-review", "What changed from common quick-note doses", "PRBC 10–15 mL/kg not mg/kg; morphine 0.05–0.1 mg/kg; granisetron IV 10–40 mcg/kg; salbutamol 2.5 mg under 20 kg; prednisolone once daily; dexamethasone and ceftriaxone maximums; elemental iron 3 mg/kg/day.", "dose errors corrections morphine granisetron prbc"),
      ("p-fluids", "Pediatric fluids, KCl and transfusion calculator", "Holliday–Segar 4-2-1 maintenance, 2/3 maintenance, shock/DKA/cardiac boluses, KCl mEq/kg/day check, PRBC volume from Hb, albumin, hypoglycemia D10.", "maintenance bolus potassium kcl blood transfusion albumin dextrose"),
+     ("p-nebs", "Nebulizer doses in mL: child and adult", "Salbutamol, ipratropium, budesonide, normal saline 0.9%, hypertonic saline 3% and 7%, epinephrine (croup, angioedema), racemic epinephrine, isotonic magnesium, dornase alfa: mL per session, fill volume, mixing, oxygen vs air, infection control.", "nebuliser neb volume ml hypertonic saline budesonide pulmicort atrovent ventolin combivent adrenaline croup cystic fibrosis"),
      ("p-drugs", "Pediatric ER drug doses by weight", "Paracetamol, ibuprofen, salbutamol, ipratropium, prednisolone, dexamethasone, magnesium, ondansetron, granisetron, ceftriaxone, amoxicillin, furosemide, iron — capped at maximum doses.", "acetaminophen paracetamol ibuprofen steroids antiemetic antibiotics"),
      ("p-resus", "Pediatric resuscitation and vasoactive infusions", "Epinephrine arrest and IM anaphylaxis, defibrillation joules, amiodarone, adenosine, atropine, naloxone, 3% saline, ETT size; epinephrine, norepinephrine and milrinone infusion rate calculator.", "pals epinephrine adrenaline noradrenaline milrinone inotrope cardiac arrest"),
      ("p-sed", "Pediatric status epilepticus, sedation and analgesia", "Midazolam, lorazepam, levetiracetam, fosphenytoin, valproate timeline; fentanyl IN/IV, morphine, ketamine sedation and analgesia doses.", "seizure benzodiazepine ketamine fentanyl morphine midazolam procedural sedation"),
      ("p-scores", "Pediatric scores: PRAM, Westley, CDS, PECARN", "Asthma PRAM, croup Westley, Clinical Dehydration Scale with ORT volumes, PECARN head CT rule, AAP 2021 febrile infant 8–60 days.", "asthma croup dehydration head injury febrile infant score calculator"),
      ("p-dispo", "Pediatric ER: when to admit, call PICU or refer", "Disposition criteria for asthma, croup, bronchiolitis, gastroenteritis, DKA, febrile infant, seizure, head injury, anaphylaxis and sickle cell.", "admission discharge referral picu transfer disposition"),
     ]
-    new = [dict(G, id=i, heading=h, snippet=s, kw=k) for i, h, s, k in E]
+    new = [dict(G, id=i, heading=h, snippet=s_, kw=k) for i, h, s_, k in E if '"guide": "peds-er.html", "guideTitle": "Pediatric ER Doses", "tag": "#C98A2C", "id": "%s"' % i not in t]
     add = ", ".join(json.dumps(e, ensure_ascii=False) for e in new)
     t = t.rstrip()
+    if not new:
+        add = None
     assert t.endswith("];"), t[-40:]
-    t = t[:-2].rstrip() + ", " + add + "];\n"
-    si.write_text(t, encoding="utf-8")
+    if add:
+        t = t[:-2].rstrip() + ", " + add + "];\n"
+        si.write_text(t, encoding="utf-8")
+# subtitles on an already-wired site
+for f, a, b in [("_includes/nav.html", "weight-based calculator · scores · disposition", "weight-based doses · nebulizers · scores"),
+                ("categories.html", "weight-based doses, fluids, infusions, scores<", "weight-based doses, fluids, infusions, nebulizers, scores<")]:
+    q = ROOT / f; x = q.read_text(encoding="utf-8")
+    if a in x: q.write_text(x.replace(a, b), encoding="utf-8")
+idx = ROOT / "index.html"; x = idx.read_text(encoding="utf-8")
+if "nebulizer" not in x:
+    x = x.replace("pediatric er doses weight-based calculator fluids kcl prbc infusion ", "pediatric er doses weight-based calculator fluids kcl prbc infusion nebulizer budesonide hypertonic saline ", 1)
+    idx.write_text(x, encoding="utf-8")
 print("done")
