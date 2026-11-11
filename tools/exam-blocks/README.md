@@ -24,3 +24,9 @@ Left in place on purpose (they are clinical cautions or worked cases, not exam b
 1. Set `"showExamBlocks": true` in `src/_data/site.json`.
 2. Add the entries listed under `removed` in `hidden-search-entries.json` back into `src/search-index.js`, and put back the snippet listed under `changed`.
 3. `npm run build` and `npm run check`.
+
+## OSCE Station Bank page: switched off (12 Nov 2026)
+
+`src/_data/site.json` -> `"showOsce": false`. While it is `false`, `osce.html` is not published and its links are left out of the menu, the homepage and the directory. Its 62 search entries are kept in `hidden-osce-search-entries.json`.
+
+The page follows the structure of a published book by another author. Before switching it back on, credit the author and ask permission.

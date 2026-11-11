@@ -162,8 +162,8 @@ img{max-width:100%;height:auto;}
       <a href="asthma.html" class="quick-pill" style="--pc:#C98A2C"><span class="quick-dot"></span>Pediatric Asthma</a>
       <a href="peds-er.html" class="quick-pill" style="--pc:#B0392C"><span class="quick-dot"></span>Pediatric ER Doses</a>
       <a href="dermatology.html" class="quick-pill" style="--pc:#B08A2C"><span class="quick-dot"></span>Dermatology</a>
-      <a href="osce.html" class="quick-pill" style="--pc:#6B4A8A"><span class="quick-dot"></span>OSCE Station Bank</a>
-      <a href="mental-health.html" class="quick-pill" style="--pc:#5C4A8A"><span class="quick-dot"></span>Mental Health</a>
+      {% if site.showOsce %}<a href="osce.html" class="quick-pill" style="--pc:#6B4A8A"><span class="quick-dot"></span>OSCE Station Bank</a>
+{% endif %}      <a href="mental-health.html" class="quick-pill" style="--pc:#5C4A8A"><span class="quick-dot"></span>Mental Health</a>
       <a href="counselling.html" class="quick-pill" style="--pc:#9C4F2E"><span class="quick-dot"></span>Counselling · EN / ع</a>
       <a href="urgent-care.html" class="quick-pill" style="--pc:#B0392C"><span class="quick-dot"></span>Urgent Care · 15 protocols</a>
       <a href="patients.html" class="quick-pill" style="--pc:#2B6A8C"><span class="quick-dot"></span>For patients · للمرضى</a>
@@ -343,13 +343,13 @@ img{max-width:100%;height:auto;}
         <span class="cat-count">5 planned</span>
       </a>
 
-      <a href="categories.html#cat-exams" class="cat-card" style="--tag-color:#6B4A8A" data-tags="osce · ospe · soe hypertension  diabetes mellitus  chest pain  headache  stroke / tia  depression  antenatal care  well baby clinic  acute abdomen  red eye  pediatric asthma osce stations four stations in the existing field guide geriatrics osce-style cases case-based practice throughout full pipeline directory every remaining station title, grouped by specialty, ready to build saudi board of family medicine: format &amp; blueprint  timing strategy &amp; station technique  ospe spot-diagnosis bank will draw on the dermatology atlas and photo slots soe / structured oral exam question banks ">
+      {% if site.showOsce %}<a href="categories.html#cat-exams" class="cat-card" style="--tag-color:#6B4A8A" data-tags="osce · ospe · soe hypertension  diabetes mellitus  chest pain  headache  stroke / tia  depression  antenatal care  well baby clinic  acute abdomen  red eye  pediatric asthma osce stations four stations in the existing field guide geriatrics osce-style cases case-based practice throughout full pipeline directory every remaining station title, grouped by specialty, ready to build saudi board of family medicine: format &amp; blueprint  timing strategy &amp; station technique  ospe spot-diagnosis bank will draw on the dermatology atlas and photo slots soe / structured oral exam question banks ">
         <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3" stroke-linejoin="round"/><path d="M9 10l1.5 1.5L13 9M9 15h6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>OSCE · OSPE · SOE</h3>
         <p>107 stations from a full OSCE manual: 10 built in full, 97 staged and page-referenced.</p>
         <span class="cat-count">13 live · 4 planned</span>
       </a>
-
+{% endif %}
       <a href="categories.html#cat-ramadan" class="cat-card" style="--tag-color:#8A5C2C" data-tags="ramadan &amp; fasting medicine diabetes &amp; fasting idf-dar risk categories, calculator planned medication timing in ramadan  chronic disease &amp; fasting htn, ckd, cardiac patients pregnancy &amp; fasting  exemptions from fasting counseling with fiqh-aware sensitivity">
         <div class="cat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 13.5A7.5 7.5 0 1110.5 5 6 6 0 0019 13.5z" stroke-linejoin="round"/><path d="M17 4l.6 1.6L19 6l-1.4.6L17 8l-.6-1.4L15 6l1.4-.4L17 4z" fill="currentColor" stroke="none"/></svg></div>
         <h3>Ramadan &amp; Fasting Medicine</h3>
