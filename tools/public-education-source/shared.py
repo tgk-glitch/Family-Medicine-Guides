@@ -34,7 +34,7 @@ def rtlfix(s):
 
 def bi(en, ar, tag='span', cls='', attrs=''):
     """Bilingual pair. Only use on elements whose default display is right
-    (span, p, ul, ol, h*, plain div) — the i18n layer reverts display."""
+    (span, p, ul, ol, h*, plain div): the i18n layer reverts display."""
     c = (' ' + cls) if cls else ''
     a = (' ' + attrs) if attrs else ''
     return (f'<{tag} class="fmg-en{c}"{a}>{en}</{tag}>'
@@ -130,7 +130,7 @@ CREDIT_BLOCK = f"""<!-- FMG-CREDIT:START -->
     <div class="fmg-credit-body fmg-credit-en" lang="en" dir="ltr">
       <p class="fmg-credit-role">{ROLE_EN.replace('&', '&amp;')}</p>
       <p class="fmg-credit-name">Created and medically supervised by {EDITOR_EN}</p>
-      <p class="fmg-credit-note">{SPECIALTY_EN} · <b>Work in progress</b> — drafted with AI assistance and under review by the editor and colleagues. An educational reference, not a final source; it does not replace a clinical assessment. <a href="about.html">About this site &amp; how content is reviewed</a></p>
+      <p class="fmg-credit-note">{SPECIALTY_EN} · <b>Work in progress</b>: drafted with AI assistance and under review by the editor and colleagues. An educational reference, not a final source; it does not replace a clinical assessment. <a href="about.html">About this site &amp; how content is reviewed</a></p>
     </div>
     <div class="fmg-credit-body fmg-credit-ar" lang="ar" dir="rtl">
       <p class="fmg-credit-role">{ROLE_AR}</p>

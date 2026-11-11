@@ -47,7 +47,7 @@ HOME_BAND = """<!-- FMG-PUBLIC:START -->
         <span class="fmg-public-eyebrow" style="display:block">For patients &amp; families</span>
         <span class="fmg-public-h" style="display:block">Your health, explained clearly</span>
         <span class="fmg-public-ar" style="display:block" lang="ar" dir="rtl">صحتك… بكلمات واضحة</span>
-        <span class="fmg-public-p" style="display:block">Leaflets and WhatsApp-size summary cards — iron deficiency and fasting Ramadan with diabetes — plus home blood pressure and blood sugar guides with record sheets to bring to every visit, and urgent help numbers.</span>
+        <span class="fmg-public-p" style="display:block">Leaflets and WhatsApp-size summary cards, iron deficiency and fasting Ramadan with diabetes, plus home blood pressure and blood sugar guides with record sheets to bring to every visit, and urgent help numbers.</span>
       </span>
       <span class="fmg-public-go">Open leaflets →</span>
     </a>

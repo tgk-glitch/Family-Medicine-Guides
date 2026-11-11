@@ -15,7 +15,7 @@ from peds_leaflets import PEDS_LEAFLETS
 def card(L):
     s = L["slug"]
     return f"""<article class="pt-card" id="leaflet-{s}" style="--c:{L['tone']}">
-<div class="pt-card-top"><span class="fmg-en pt-topic">{L['topic_en']}</span><span class="fmg-ar pt-topic" lang="ar">{L['topic_ar']}</span><span class="fmg-en pt-status">Draft — under clinical review</span><span class="fmg-ar pt-status" lang="ar">مسودة — قيد المراجعة السريرية</span></div>
+<div class="pt-card-top"><span class="fmg-en pt-topic">{L['topic_en']}</span><span class="fmg-ar pt-topic" lang="ar">{L['topic_ar']}</span><span class="fmg-en pt-status">Draft: under clinical review</span><span class="fmg-ar pt-status" lang="ar">مسودة: قيد المراجعة السريرية</span></div>
 <h3 class="fmg-en">{L['title_en']}</h3><h3 class="fmg-ar" lang="ar">{L['title_ar']}</h3>
 <p class="fmg-en">{L['card_en']}</p><p class="fmg-ar" lang="ar">{L['card_ar']}</p>
 <div class="pt-dl">
@@ -42,7 +42,7 @@ for L in PEDS_LEAFLETS:
     key = ("patients.html", "leaflet-" + L["slug"])
     if key not in have:
         arr.append(dict(guide="patients.html", guideTitle="For patients & families", tag=L["tone"], id=key[1],
-                        heading=L["title_en"] + " — patient leaflet", snippet=L["card_en"],
-                        headingAr=L["title_ar"] + " — نشرة للمريض", snippetAr=L["card_ar"]))
+                        heading=L["title_en"] + ": patient leaflet", snippet=L["card_en"],
+                        headingAr=L["title_ar"] + ": نشرة للمريض", snippetAr=L["card_ar"]))
 si.write_text(pre + json.dumps(arr, ensure_ascii=False) + post, encoding="utf-8")
 print("done")

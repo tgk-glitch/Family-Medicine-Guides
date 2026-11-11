@@ -1,4 +1,4 @@
-"""Home monitoring records — 2-page guide + 2-page record the patient fills in
+"""Home monitoring records: 2-page guide + 2-page record the patient fills in
 and brings to every visit. English and Arabic. Western digits throughout.
 
 Extra block types (see build_leaflets.render_blocks):
@@ -21,8 +21,8 @@ BP = dict(
     record=True,
     title_en="Checking your blood pressure at home",
     title_ar="قياس ضغط الدم في المنزل",
-    sub_en="How to measure, how to write it down, and when to get help — with a record to bring to every visit",
-    sub_ar="كيف تقيس، وكيف تسجّل، ومتى تطلب المساعدة — مع سجل تُحضره في كل زيارة",
+    sub_en="How to measure, how to write it down, and when to get help: with a record to bring to every visit",
+    sub_ar="كيف تقيس، وكيف تسجّل، ومتى تطلب المساعدة: مع سجل تُحضره في كل زيارة",
     card_en="How to measure and record, when a reading is urgent, and a 2-page record to fill in and bring to every visit.",
     card_ar="طريقة القياس والتسجيل، ومتى تكون القراءة طارئة، وسجل من صفحتين تملؤه وتُحضره في كل زيارة.",
     sources=[
@@ -34,18 +34,18 @@ BP = dict(
     ],
     en=[
         ('key', "The 5 things to remember", [
-            "Use a validated <b>upper-arm cuff</b> — not a wrist device or smartwatch.",
+            "Use a validated <b>upper-arm cuff</b>: not a wrist device or smartwatch.",
             "<b>Sit quietly for 5 minutes</b>, then take <b>2 readings, 1 minute apart</b>.",
             "Before each visit, measure <b>morning and evening for 7 days</b>.",
             "Write down <b>every</b> reading, high or low. Bring this record, your device and your medicines to every visit.",
-            "<b>180/120 or higher</b> with chest pain, weakness or trouble speaking — <b>call 997</b>.",
+            "<b>180/120 or higher</b> with chest pain, weakness or trouble speaking: <b>call 997</b>.",
         ]),
         ('h', "Why check at home?"),
         ('p', "Blood pressure is often higher at the clinic than at home. Home readings show your usual blood pressure "
               "and help your doctor decide on your treatment."),
         ('h', "Which device should I use?"),
         ('ul', [
-            "An automatic <b>upper-arm</b> monitor that is <b>validated</b> — ask your doctor or pharmacist, or check the STRIDE BP list.",
+            "An automatic <b>upper-arm</b> monitor that is <b>validated</b>: ask your doctor or pharmacist, or check the STRIDE BP list.",
             "The cuff must fit your arm. A large arm needs a large cuff.",
             "Wrist monitors and smartwatches are not accurate enough yet.",
         ]),
@@ -56,24 +56,24 @@ BP = dict(
             ["Sit quietly for 5 minutes.", "Rest your arm on a table at the level of your heart."],
             ["In the morning: measure before your medicines and before breakfast.", "Cuff on bare skin, just above the elbow. Do not talk."],
         ]),
-        ('p', "Use the same arm each time — the one your doctor tells you. If the monitor shows a heart symbol for an "
+        ('p', "Use the same arm each time: the one your doctor tells you. If the monitor shows a heart symbol for an "
               "irregular heartbeat, write <b>IHB</b> in the notes."),
         ('break',),
         ('h', "When should I measure?"),
         ('table', ["When", "How often"], [
             ["The 7 days before each visit", "Every day: <b>2 readings in the morning</b> and <b>2 in the evening</b>."],
             ["After a change in your blood pressure medicine", "The same 7-day plan, when your doctor tells you."],
-            ["When your blood pressure is under control", "1–2 days a week, or the 7 days before each visit — as your doctor advises."],
+            ["When your blood pressure is under control", "1–2 days a week, or the 7 days before each visit: as your doctor advises."],
             ["When you feel unwell (dizzy, headache)", "Measure, write it down with how you feel, and follow the box below."],
         ]),
         ('h', "How do I write it down?"),
         ('ul', [
-            "Write the date and <b>every</b> reading exactly as shown, high or low, as top/bottom — for example <b>128/82</b>. Do not round.",
+            "Write the date and <b>every</b> reading exactly as shown, high or low, as top/bottom: for example <b>128/82</b>. Do not round.",
             "Use the notes to say if you missed a medicine, felt unwell, or the monitor showed IHB.",
-            "Do not change your medicines because of one reading. Bring the record — and your monitor or app — to your visit.",
+            "Do not change your medicines because of one reading. Bring the record, and your monitor or app, to your visit.",
         ]),
         ('h', "What do my numbers mean?"),
-        ('p', "For most adults the target is <b>below 130/80</b>. Some people need a lower target and some older adults a higher one — your doctor will write yours on the record."),
+        ('p', "For most adults the target is <b>below 130/80</b>. Some people need a lower target and some older adults a higher one: your doctor will write yours on the record."),
         ('tiers', [
             ('now', "Call 997 or go to the emergency department", [
                 "<b>180/120 or higher</b> with chest pain, shortness of breath, weakness or numbness, trouble speaking, "
@@ -100,7 +100,7 @@ BP = dict(
         ('clinic', "For the clinic", ["Average of days 2–7", "Number of readings", "Reviewed by / date"]),
         ('break',),
         ('strip', "Between visits", "Bring to every visit"),
-        ('hint', "Use this page for readings on other days — when your doctor asks, when you feel unwell, or after a medicine change."),
+        ('hint', "Use this page for readings on other days: when your doctor asks, when you feel unwell, or after a medicine change."),
         ('grid', "", ["Date", "Time", "Reading", "Pulse", "Medicines taken today? (✓ / ✗)", "How I felt / notes"],
          14, {'widths': [12, 10, 15, 10, 15, 38], 'h': 12.4}),
         ('lines', "Questions for my next visit", 3),
@@ -189,13 +189,13 @@ GLUCOSE = dict(
     record=True,
     title_en="Checking your blood sugar at home",
     title_ar="قياس السكر في المنزل",
-    sub_en="How to check, how to write it down, and when to get help — with a record to bring to every visit",
-    sub_ar="كيف تقيس، وكيف تسجّل، ومتى تطلب المساعدة — مع سجل تُحضره في كل زيارة",
+    sub_en="How to check, how to write it down, and when to get help: with a record to bring to every visit",
+    sub_ar="كيف تقيس، وكيف تسجّل، ومتى تطلب المساعدة: مع سجل تُحضره في كل زيارة",
     card_en="How and when to check, targets, low sugar and sick days, when to go to the emergency department, and a 2-page record.",
     card_ar="كيف ومتى تقيس، والأهداف، وهبوط السكر وأيام المرض، ومتى تذهب إلى الطوارئ، وسجل من صفحتين.",
     sources=[
-        "American Diabetes Association. Standards of Care in Diabetes — 2026, Sections 6 (glycemic goals, hypoglycemia, hyperglycemic crises, intercurrent illness) and 7 (diabetes technology). Diabetes Care 2026;49(Suppl 1); Summary of Revisions doi:10.2337/dc26-SREV",
-        "Saudi Ministry of Health. Diabetes and being sick — health awareness (moh.gov.sa)",
+        "American Diabetes Association. Standards of Care in Diabetes: 2026, Sections 6 (glycemic goals, hypoglycemia, hyperglycemic crises, intercurrent illness) and 7 (diabetes technology). Diabetes Care 2026;49(Suppl 1); Summary of Revisions doi:10.2337/dc26-SREV",
+        "Saudi Ministry of Health. Diabetes and being sick: health awareness (moh.gov.sa)",
         "Joint British Diabetes Societies. Sick day rules and SGLT2 inhibitor patient guidance (2025)",
         "IDF-DAR Practical Guidelines: Diabetes and Ramadan, 2021; 2026 risk calculator update",
     ],
@@ -208,15 +208,15 @@ GLUCOSE = dict(
             "Bring this record, your meter and your medicines to <b>every visit</b>.",
         ]),
         ('h', "When should I check?"),
-        ('table', ["My treatment", "Usual checks — your doctor may change this"], [
+        ('table', ["My treatment", "Usual checks: your doctor may change this"], [
             ["Insulin with meals (several injections a day)", "Before meals and at bedtime; sometimes 2 hours after meals."],
             ["Long-acting insulin once a day, or gliclazide or glimepiride", "Before breakfast every day, and whenever you feel low or unwell."],
-            ["Other tablets or weekly injections only", "As your doctor advises — often a few times a week."],
+            ["Other tablets or weekly injections only", "As your doctor advises, often a few times a week."],
             ["Any treatment", "When you feel shaky, sweaty or confused; more often when sick or fasting (see the Ramadan leaflet). Before driving if you use insulin, gliclazide or glimepiride."],
         ], [42, 58]),
         ('h', "How do I check?"),
         ('ul', [
-            "Wash your hands with soap and water and dry them — sugar on your fingers gives a false high.",
+            "Wash your hands with soap and water and dry them: sugar on your fingers gives a false high.",
             "Use the side of a fingertip, and change fingers each time.",
             "Use strips that are in date. Use a new lancet each time, never share it, and put used lancets in a hard plastic bottle.",
             "Using a sensor (CGM)? Bring the app report, and keep your meter to check when a reading does not match how you feel.",
@@ -230,7 +230,7 @@ GLUCOSE = dict(
         ('break',),
         ('h', "Low sugar: below 70 mg/dL"),
         ('ul', [
-            "Signs: shaking, sweating, hunger, fast heartbeat, confusion. Some people feel nothing — check if unsure.",
+            "Signs: shaking, sweating, hunger, fast heartbeat, confusion. Some people feel nothing: check if unsure.",
             "Take <b>15 g of fast sugar</b>: 3 teaspoons of sugar in water, half a cup (120 ml) of regular juice, or glucose tablets. Always carry some with you.",
             "Check again after <b>15 minutes</b>. If still below 70, repeat. When it is above 70, eat a snack or your meal.",
             "Write every low on page 4, and tell your doctor.",
@@ -239,7 +239,7 @@ GLUCOSE = dict(
         ('ul', [
             "Check your sugar <b>every 4 hours</b>, day and night.",
             "Drink a glass of water or a sugar-free drink every hour.",
-            "<b>Never stop insulin</b> — you may need more.",
+            "<b>Never stop insulin</b>: you may need more.",
             "Some tablets may need a pause while you cannot eat or drink, such as metformin, dapagliflozin or empagliflozin, "
             "and some blood pressure or water tablets. Only do this if your doctor has given you a sick-day plan.",
             "Type 1 diabetes, or sugar above 300: check ketones if you have strips.",
@@ -249,8 +249,8 @@ GLUCOSE = dict(
                 "Low sugar that does not improve after 2 treatments, or the person is confused, very drowsy or fitting. "
                 "Do not give food or drink to someone who cannot swallow.",
                 "Vomiting, and you cannot keep fluids down.",
-                "Sugar above 300 with tummy pain, vomiting, fast deep breathing or drowsiness — or medium or high ketones.",
-                "On dapagliflozin or empagliflozin with vomiting, tummy pain or fast breathing — <b>even if your sugar is normal</b>.",
+                "Sugar above 300 with tummy pain, vomiting, fast deep breathing or drowsiness, or medium or high ketones.",
+                "On dapagliflozin or empagliflozin with vomiting, tummy pain or fast breathing: <b>even if your sugar is normal</b>.",
             ]),
             ('today', "Contact your clinic today (or call 937)", [
                 "Sugar stays above 250, or before-meal readings stay above 240 for more than a day.",
