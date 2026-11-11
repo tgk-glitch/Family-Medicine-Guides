@@ -158,8 +158,8 @@ QR = {
     'الخطوات الخمس وFRAMES وBATHE والمراحل: <b>SORT B</b>.',
     'البالغون المستخدمون للتبغ في المملكة: 19.8% (GATS 2019): الرجال 30.0%، النساء 4.2%.']},
 
- 'foot': {'en': 'Searight, Am Fam Physician 2018 · USPSTF 2021 · WHO tobacco cessation guideline 2024 · Cochrane 2010, 2014, 2019 · Miller & Rollnick 2023 · Stuart & Lieberman · GATS 2019 · MOH',
-          'ar': 'Searight، Am Fam Physician 2018 · USPSTF 2021 · إرشادات منظمة الصحة العالمية للإقلاع 2024 · كوكرين 2010، 2014، 2019 · ميلر ورولنيك 2023 · ستيوارت وليبرمان · GATS 2019 · وزارة الصحة'},
+ 'foot': {'en': 'Searight, Am Fam Physician 2018 · USPSTF 2021 · WHO tobacco cessation guideline 2024 · Cochrane 2010, 2014, 2019 · Miller & Rollnick 2023 · Stuart & Lieberman · GATS 2019 · MOH<br><b>Founder &amp; Medical Editor.</b> Created and medically supervised by Dr. Albaraa Albawab, Family Medicine. Work in progress: drafted with AI assistance and under review by the editor and colleagues. An educational reference, not a final source; it does not replace a clinical assessment.',
+          'ar': 'Searight، Am Fam Physician 2018 · USPSTF 2021 · إرشادات منظمة الصحة العالمية للإقلاع 2024 · كوكرين 2010، 2014، 2019 · ميلر ورولنيك 2023 · ستيوارت وليبرمان · GATS 2019 · وزارة الصحة<br><b>المؤسس والمحرر الطبي.</b> إعداد وإشراف طبي: د. البراء البواب، طب الأسرة. عمل قيد التطوير: صيغت المسودات بمساعدة الذكاء الاصطناعي، وتخضع للمراجعة من المحرر والزملاء. مرجع تعليمي وليس مصدرًا نهائيًا، ولا يغني عن التقييم السريري.'},
  'disclaimer': {'en': 'Educational summary for clinicians. Verify doses against the SFDA formulary and local guidance.',
                 'ar': 'ملخص تعليمي للأطباء. تحقّق من الجرعات وفق دليل هيئة الغذاء والدواء والإرشادات المحلية.'},
 }
@@ -197,6 +197,6 @@ LF = {
  'slip_h': {'en': 'A slip is not the end', 'ar': 'الانتكاسة ليست نهاية الرحلة'},
  'slip': {'en': 'If you smoke again, don’t give up. Remember why you decided to quit, notice what triggered it, and start again from where you stopped. Tell your doctor: every attempt brings you closer.',
           'ar': 'إن عدت للتدخين فلا تستسلم. تذكّر سبب قرارك، ولاحظ ما الذي حفّزك، وابدأ من حيث توقفت. أخبر طبيبك: فكل محاولة تقرّبك من هدفك.'},
- 'foot': {'en': 'Family Medicine Guides · Based on WHO and USPSTF guidance and the national patient guide “Your Journey to Quit Smoking” (Public Health Authority and partners). This leaflet does not replace advice from your doctor.',
-          'ar': 'أدلة طب الأسرة · مبنية على إرشادات منظمة الصحة العالمية وفرقة الخدمات الوقائية الأمريكية والدليل الوطني للمرضى «دليل رحلتك للإقلاع عن التدخين» (هيئة الصحة العامة وشركاؤها). هذه النشرة لا تغني عن استشارة طبيبك.'},
+ 'foot': {'en': 'Family Medicine Guides · Based on WHO and USPSTF guidance and the national patient guide “Your Journey to Quit Smoking” (Public Health Authority and partners). This leaflet does not replace advice from your doctor. Prepared and medically supervised by Dr. Albaraa Albawab, Family Medicine. Written with AI assistance, checked by the medical editor, and still under review with colleagues.',
+          'ar': 'أدلة طب الأسرة · مبنية على إرشادات منظمة الصحة العالمية وفرقة الخدمات الوقائية الأمريكية والدليل الوطني للمرضى «دليل رحلتك للإقلاع عن التدخين» (هيئة الصحة العامة وشركاؤها). هذه النشرة لا تغني عن استشارة طبيبك. إعداد وإشراف طبي: د. البراء البواب، طب الأسرة. صيغت بمساعدة الذكاء الاصطناعي، وراجعها المحرر الطبي، وما زالت قيد المراجعة مع الزملاء.'},
 }

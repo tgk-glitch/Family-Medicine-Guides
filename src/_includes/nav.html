@@ -5,6 +5,7 @@
     --n-teal:#1F5C55; --n-teal-deep:#123C38; --n-amber:#C98A2C; --n-card:#FFFFFF;
     box-sizing:border-box; font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     position:sticky; top:0; z-index:900;
+    -webkit-transform:translateZ(0); transform:translateZ(0); will-change:transform;  /* iOS: keeps the sticky bar attached during pinch-zoom */
     background:rgba(244,246,242,0.94);
     -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
     border-bottom:1px solid var(--n-line); padding:13px 20px;

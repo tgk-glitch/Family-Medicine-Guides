@@ -16,6 +16,8 @@
     --amber:#C98A2C; --red:#B0392C; --card:#FFFFFF; --radius:14px;
   }
   *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  button,a{-webkit-tap-highlight-color:transparent;}
   html{scroll-behavior:smooth;}
   h2,h3{scroll-margin-top:170px;}
   .uc-topic{scroll-margin-top:150px;}
@@ -36,18 +38,20 @@
 
   /* ---------- QUICK JUMP ---------- */
   .uc-jump{
-    position:sticky;top:64px;z-index:80;background:rgba(244,246,242,0.96);backdrop-filter:blur(6px);
+    position:sticky;top:64px;z-index:80;background:rgba(244,246,242,0.96);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);padding:12px 0;
+    transform:translateZ(0);will-change:transform;
   }
   .uc-jump-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;}
   .uc-chip{
     --tag-color:#1F5C55;
     flex-shrink:0;font-family:'Inter',sans-serif;font-weight:600;font-size:0.78rem;
-    color:var(--tag-color);background:color-mix(in srgb, var(--tag-color) 10%, white);
-    border:1px solid color-mix(in srgb, var(--tag-color) 30%, white);
+    color:var(--tag-color);background:#EDF2EE;background:color-mix(in srgb, var(--tag-color) 10%, white);
+    border:1px solid var(--line);border:1px solid color-mix(in srgb, var(--tag-color) 30%, white);
     padding:7px 13px;border-radius:100px;text-decoration:none;white-space:nowrap;
   }
-  .uc-chip:hover{background:color-mix(in srgb, var(--tag-color) 18%, white);}
+  .uc-chip:hover{background:#E1E9E4;background:color-mix(in srgb, var(--tag-color) 18%, white);}
 
   /* ---------- TOPIC ---------- */
   .uc-list{padding:28px 0 90px;display:flex;flex-direction:column;gap:36px;}
@@ -60,7 +64,7 @@
   .uc-topic-head{margin-bottom:16px;}
   .uc-cat-pill{
     display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;
-    text-transform:uppercase;color:var(--tag-color);background:color-mix(in srgb, var(--tag-color) 12%, white);
+    text-transform:uppercase;color:var(--tag-color);background:#EDF2EE;background:color-mix(in srgb, var(--tag-color) 12%, white);
     padding:4px 10px;border-radius:100px;font-weight:600;margin-bottom:10px;
   }
   .uc-topic-head h2{
@@ -105,7 +109,7 @@
 
   /* ---------- INTERACTIVE TOOLS ---------- */
   .uc-tool{
-    background:var(--paper-2);border:1.5px dashed color-mix(in srgb, var(--tag-color) 40%, var(--line));
+    background:var(--paper-2);border:1.5px dashed var(--line);border:1.5px dashed color-mix(in srgb, var(--tag-color) 40%, var(--line));
     border-radius:14px;padding:20px 20px 22px;margin:0 0 22px;
   }
   .uc-tool-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
@@ -148,7 +152,7 @@
 {% include "nav.html" %}
 <section class="uc-hero">
 <div class="wrap">
-<p class="uc-eyebrow">Point-of-care · PMBAH, Medina</p>
+<p class="uc-eyebrow">Point-of-care</p>
 <h1>Urgent Care Quick Guides</h1>
 <p>Fifteen protocols for the primary care / urgent care setting. Every guide opens with its ER-activation criteria first: read that before anything else. Condensed steps and dosing follow.</p>
 </div>
