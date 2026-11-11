@@ -1,0 +1,501 @@
+{
+ "note": "Search entries for the OSCE page, removed while site.showOsce is false. Add them back to src/search-index.js when the page is switched on again.",
+ "removed": [
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "the-skeleton-every-station-shares",
+   "heading": "The skeleton every station shares",
+   "snippet": "Introduce & rapport → History → Red flags → Physical exam → Investigations → Management → Plan & closing This structure repeats across all 107 stations in the source manual, which "
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "hypertension-2",
+   "heading": "Hypertension",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport: name, age, marital status, occupation."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history",
+   "heading": "• History",
+   "snippet": "Chief complaint: open-ended, then clarify. Most patients are asymptomatic: this is often a routine or follow-up visit, not a presenting complaint. HPI: SOCRATES if symptomatic. I"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination",
+   "heading": "🩺 Physical Examination",
+   "snippet": "General: BP, HR, RR, temp, height, weight, BMI, waist circumference. Stage Criteria Elevated SBP 120–129 and DBP <80 Stage 1 SBP 130–139 or DBP 80–89 Stage 2 SBP ≥140 or DBP ≥90 Cr"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations",
+   "heading": "🔬 Investigations",
+   "snippet": "Initial: CBC · U&E, Ca, urea, creatinine + eGFR · fasting lipids & glucose · TSH/fT4 · urinalysis + urine albumin:creatinine ratio · CXR · ECG. Additional: renal/aortic ultrasound,"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management",
+   "heading": "💊 Management",
+   "snippet": "Non-pharm: DASH diet, sodium <1500 mg/day, weight loss 5–10%, exercise ≥30 min most days, smoking cessation. Pharmacological threshold: Stage 1 + ASCVD risk ≥10%, or Stage 2: trea"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Confirm understanding: self-management support, home BP monitoring. Explain red flags and safety-net. Medication counseling: timing, dosing, managing side effects. Periodic health"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "diabetes-mellitus",
+   "heading": "Diabetes Mellitus",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-2",
+   "heading": "• History",
+   "snippet": "HPI: SOCRATES , plus ask specifically whether this presentation is hyperglycemic, hypoglycemic, DKA, or HHS. Hyperglycemic: polyuria, polydipsia, polyphagia, weight loss. Hypoglyc"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-2",
+   "heading": "🩺 Physical Examination",
+   "snippet": "General: BP, HR, RR, temp, height, weight, BMI, waist circumference. Skin: acanthosis nigricans, skin tags. Eyes: visual acuity. Mouth: hygiene, ulcers, candidiasis, leukoplakia. N"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-2",
+   "heading": "🔬 Investigations",
+   "snippet": "Diagnostic criterion Threshold HbA1c ≥6.5% Fasting plasma glucose ≥126 mg/dL Random plasma glucose ≥200 mg/dL (with classic symptoms/crisis) 2-h OGTT ≥200 mg/dL Fasting lipids (ASC"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-2",
+   "heading": "💊 Management",
+   "snippet": "Non-pharm: diet (address barriers; limit protein 0.8 g/kg if CKD); exercise ≥150 min/week moderate-vigorous over ≥3 days, no >2 consecutive rest days, plus 2–3 resistance sessions/"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-2",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Self-management support; home glucose monitoring if starting insulin; CGM encouraged for insulin-treated patients. Medication timing, dosing, side-effect management; foot care educ"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "chest-pain-2",
+   "heading": "Chest Pain",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-3",
+   "heading": "• History",
+   "snippet": "SOCRATES; the differential lives almost entirely in this mnemonic for chest pain: Feature Points toward Sudden onset MI, PE, aortic dissection Gradual onset Stable angina, GERD Cr"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-3",
+   "heading": "🩺 Physical Examination",
+   "snippet": "General: appearance (anxiety, pallor, sweating, tremor), BP in both arms (dissection), HR character/regularity, RR, temp. Cardiac: scars/pacemaker, JVP, apex beat displacement, hea"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-3",
+   "heading": "🔬 Investigations",
+   "snippet": "Urgent (all suspected ACS): 12-lead ECG within 10 minutes · troponin I/T · CXR (pneumothorax, pneumonia, widened mediastinum) · CBC, electrolytes, renal function · SpO₂/ABG if hypo"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-3",
+   "heading": "💊 Management",
+   "snippet": "⚠ ACS/angina: MONA-BASH M orphine (2–4 mg IV, titrate) · O xygen (if hypoxic only) · N itroglycerin 0.4 mg q5min ×3 (avoid in severe AS, HCM, suspected RV infarct, hypotension, ma"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-3",
+   "heading": "✅ Plan & Closing",
+   "snippet": "ER admission: ACS, PE, dissection, pneumothorax, severe pneumonia. Refer: cardiology (risk modification, stress testing, post-ACS), GI (refractory GERD), psychiatry (recurrent pani"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "headache-2",
+   "heading": "Headache",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-4",
+   "heading": "• History",
+   "snippet": "SOCRATES , with headache-specific detail: Feature Points toward Unilateral throbbing ± aura Migraine Bilateral, tight/pressure band Tension Unilateral retro-orbital, red watery eye"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-4",
+   "heading": "🩺 Physical Examination",
+   "snippet": "General: BP, HR, RR, temp, height, weight, BMI, waist circumference. Head & neck: temporal artery tenderness (arteritis), frontal/maxillary sinus tenderness, TMJ tenderness/crepitu"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-4",
+   "heading": "🔬 Investigations",
+   "snippet": "Not indicated for primary headaches. CBC/CRP/ESR if temporal arteritis suspected. CT/MRI if red flags present. LP if infection, malignancy, or hemorrhage suspected."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-4",
+   "heading": "💊 Management",
+   "snippet": "Type Acute treatment Tension 1st: paracetamol 500–1000 mg or ibuprofen 400–800 mg q4–6h PRN. 2nd: caffeine-combination analgesic. Chronic (>7–9 days/mo): amitriptyline 10 mg nocte,"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-4",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Explain red flags using SNOOP4; headache diary; trigger avoidance. Refer: psychology/CBT (tension), neurology (cluster), rheumatology + ophthalmology (giant cell arteritis). Neurol"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "stroke-tia-2",
+   "heading": "Stroke / TIA",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-5",
+   "heading": "• History",
+   "snippet": "SOCRATES for the deficit, plus: any previous attacks and action taken. Onset time is the single most important data point: it sets the thrombolysis window. BE-FAST: Balance (sudde"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-5",
+   "heading": "🩺 Physical Examination",
+   "snippet": "General: BP, HR, RR, temp, height, weight, BMI, waist circumference. Full neurological exam: power, tone, sensation, reflexes, cranial nerves, meningeal signs if suspected. Fundosc"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-5",
+   "heading": "🔬 Investigations",
+   "snippet": "Initial: non-contrast CT brain within 20 minutes (rule out hemorrhage; this is the single highest-yield answer in this station) · glucose (rule out hypoglycemia mimicking stroke) "
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-5",
+   "heading": "💊 Management",
+   "snippet": "⚠ At the PHC: what NOT to do Recognize early with BE-FAST; stabilize ABCs; check glucose immediately. Do NOT give aspirin or any oral medication. Do NOT attempt to lower blood pre"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-5",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Explain red flags/safety-net (sudden weakness, speech difficulty, facial droop: call EMS, don't wait). Refer: neurology, physio/OT/speech therapy, cardiology (embolic source), end"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "depression-2",
+   "heading": "Depression",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport: this station rewards a gentle, non-judgemental opening more than any other."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-6",
+   "heading": "• History",
+   "snippet": "Onset and duration of depressed mood: ≥2 weeks is the diagnostic threshold. Ask about previous episodes. SIG E CAPS; depressive symptoms (maps directly to PHQ-9): S leep change ·"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-6",
+   "heading": "🩺 Physical Examination",
+   "snippet": "General: appearance (grooming), vital signs, BMI. Screen for hypothyroidism and neurological deficits. Mental Status Exam: mood ('sad, low'; in the patient's own words), affect (r"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-6",
+   "heading": "🔬 Investigations",
+   "snippet": "Not required to diagnose depression. Order only to exclude organic mimics: CBC (anemia), electrolytes, TFTs (hypothyroidism), B12/folate if indicated, pregnancy test, urine toxicol"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-6",
+   "heading": "💊 Management",
+   "snippet": "Non-pharm: CBT is first-line for mild–moderate depression. Exercise, sleep hygiene, social engagement, family involvement. Pharm: 2nd-generation antidepressant (SSRI/SNRI) first-li"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-6",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Explain red flags (suicidal thoughts) and safety-net explicitly: don't skip this even if risk seems low. Periodic health maintenance; if postpartum, screen at 4–6 weeks or the 2-m"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "antenatal-care",
+   "heading": "Antenatal Care",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-7",
+   "heading": "• History",
+   "snippet": "Trimester Expected physiological changes 1st (1–13 wk) Nausea, vomiting, breast tenderness, fatigue, urinary frequency, mood change, constipation, mild cramps, headache, back pain "
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-7",
+   "heading": "🩺 Physical Examination",
+   "snippet": "General: pallor, jaundice, cyanosis, edema; BP at every visit; height, weight, BMI. Pre-eclampsia signs: headache, visual blurring, RUQ tenderness, excessive swelling. Thyroid, var"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-7",
+   "heading": "🔬 Investigations",
+   "snippet": "Booking visit (≤12wk): CBC, ferritin, vitamin D · blood group + Rh · indirect Coombs if Rh– · urinalysis + culture · fasting glucose/HbA1c · HIV, HBsAg, HCAb, syphilis, rubella IgG"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-7",
+   "heading": "💊 Management",
+   "snippet": "Trimester Focus & supplements 1st (≤12wk) Confirm pregnancy/dating; baseline labs; identify risk factors; manage N&V; counsel on teratogen avoidance. Folic acid 400 mcg/day (5 mg i"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-7",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Explain red flags/safety-net. Periodic health maintenance appropriate to gestational age. Gestational age Visit frequency Up to 28 wk Every 4 weeks 28–36 wk Every 2 weeks >36 wk We"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "well-baby-clinic",
+   "heading": "Well Baby Clinic",
+   "snippet": "👋 Introduce yourself, confirm identity, build rapport with the parent/caregiver, and engage the child directly if age-appropriate."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-8",
+   "heading": "• History",
+   "snippet": "Perinatal history; three phases: prenatal (maternal HTN/DM/infections/GDM/pre-eclampsia, exposures, pregnancy complications); natal (gestational age, delivery mode/presentation, b"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-8",
+   "heading": "🩺 Physical Examination",
+   "snippet": "General: alertness, parent interaction; growth chart (height, weight, head circumference) plotted against age norms. Head (fontanelles, shape, sutures) · eyes (red reflex, tracking"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-8",
+   "heading": "🔬 Investigations",
+   "snippet": "Not routine unless indicated: Hb/Hct at 9–12mo (esp. if preterm/low birth weight) · lead screening if risk factors · urinalysis if UTI suspected · TFTs if growth/developmental conc"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-8",
+   "heading": "💊 Management",
+   "snippet": "🎓 Safety counseling: commonly tested details Rear-facing car seat until age 2, ideally until the seat's weight limit (30–36 kg). Infant walkers discouraged; no developmental bene"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-8",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Explain red flags/safety-net. Periodic health maintenance and routine visit schedule (2, 4, 6, 9, 12 months). Refer to pediatrician: developmental delay in any domain, poor weight "
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "acute-abdomen",
+   "heading": "Acute Abdomen",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport: assess for distress/instability before proceeding."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-9",
+   "heading": "• History",
+   "snippet": "Site by diagnosis: epigastric (pancreatitis, PUD), RUQ (biliary), periumbilical→RIF migration (appendicitis), LLQ (diverticulitis), suprapubic (bladder/gynae), flank (renal). Onset"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-9",
+   "heading": "🩺 Physical Examination",
+   "snippet": "Inspect (distension, scars, Cullen's/Grey-Turner's ecchymosis) → auscultate (high-pitched = obstruction, absent = late peritonitis) → percuss (tympany = obstruction, dullness = mas"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-9",
+   "heading": "🔬 Investigations",
+   "snippet": "Initial: CBC, U&E, LFTs, amylase/lipase, lactate, CRP, coagulation profile, glucose (exclude DKA), blood cultures if septic, calcium (hypercalcemia mimics acute abdomen), urinalysi"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-9",
+   "heading": "💊 Management",
+   "snippet": "General initial steps, every acute abdomen: ABCs, IV crystalloid if hypotensive, NPO, NG decompression if obstruction suspected, urinary catheter to monitor output, adequate analge"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-9",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Explain red flags/safety-net. Periodic health maintenance. Refer immediately (surgical): peritonitis, perforation, strangulation, appendicitis with peritonitis, obstructed/strangul"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "red-eye-2",
+   "heading": "Red Eye",
+   "snippet": "👋 Introduce yourself, confirm identity, and build rapport."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "history-10",
+   "heading": "• History",
+   "snippet": "One eye or both; sudden vs gradual; character of redness (diffuse, sectoral, ciliary flush) and discharge (watery, purulent, mucous); relation to contact lens use or trauma; worse "
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "physical-examination-10",
+   "heading": "🩺 Physical Examination",
+   "snippet": "Visual acuity first (Snellen/Rosenbaum): decreased acuity flags a serious cause (keratitis, glaucoma). External inspection (eyelid swelling/redness/discharge) → conjunctiva/sclera"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "investigations-10",
+   "heading": "🔬 Investigations",
+   "snippet": "Usually clinical. If severe/red flag: corneal scraping + culture (suspected keratitis), CBC/CRP if systemic infection, orbital CT/MRI if orbital cellulitis. Autoimmune screen (ANA,"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "management-10",
+   "heading": "💊 Management",
+   "snippet": "Stop contact lens use; avoid rubbing; hand hygiene, avoid sharing towels. Situation Treatment Viral conjunctivitis Self-limiting; lubricants, cold compresses Bacterial conjunctivi"
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "plan-closing-10",
+   "heading": "✅ Plan & Closing",
+   "snippet": "Explain expected course (conjunctivitis resolves in 1–2 weeks) and explicit safety-net: return if no improvement in 2–3 days, or new pain/vision loss/photophobia/systemic symptoms."
+  },
+  {
+   "guide": "osce.html",
+   "guideTitle": "OSCE Station Bank",
+   "tag": "#6B4A8A",
+   "id": "the-other-97-staged-and-coming",
+   "heading": "The other 97; staged and coming",
+   "snippet": "Every remaining station title from the source manual, grouped by specialty with its page reference. These will be built out to the same depth over the next several updates; tell m"
+  }
+ ]
+}
