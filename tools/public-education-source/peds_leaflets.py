@@ -16,7 +16,7 @@ FEVER_SOURCES = [
 ]
 SPACER_SOURCES = [
     "Global Initiative for Asthma (GINA). Global Strategy for Asthma Management and Prevention, 2026 update",
-    "Al-Moamary MS, et al. The Saudi Initiative for Asthma (SINA) — 2021 update. Ann Thorac Med 2021;16:4–56",
+    "Al-Moamary MS, et al. The Saudi Initiative for Asthma (SINA) - 2021 update. Ann Thorac Med 2021;16:4–56",
     "Cates CJ, et al. Holding chambers (spacers) versus nebulisers for beta-agonist treatment of acute asthma. Cochrane Database Syst Rev 2013",
     "Product information: salbutamol, ipratropium and budesonide nebules; spacer and nebulizer manufacturer instructions",
 ]
@@ -25,10 +25,10 @@ DOSE_HDR_EN = ["Child's weight", "Paracetamol drops 100 mg/mL", "Paracetamol syr
 DOSE_HDR_AR = ["وزن الطفل", "قطرة باراسيتامول 100 ملغ/مل", "شراب باراسيتامول 120 ملغ/5 مل", "شراب باراسيتامول 250 ملغ/5 مل", "شراب إيبوبروفين 100 ملغ/5 مل"]
 # weight kg, drops mL, 120/5 mL, 250/5 mL, ibuprofen mL
 _ROWS = [(6, "0.9", "3.5", "1.5", "3"), (8, "1.2", "5", "2", "4"),
-         (10, "1.5", "6", "3", "5"), (12, "1.8", "7.5", "3.5", "6"), (15, "—", "9", "4.5", "7.5"),
-         (20, "—", "12.5", "6", "10"), (25, "—", "15.5", "7.5", "12.5"), (30, "—", "18.5", "9", "15")]
-DOSE_ROWS_EN = [[f"{w} kg", d if d == "—" else d + " mL", a + " mL", b + " mL", i + " mL"] for w, d, a, b, i in _ROWS]
-DOSE_ROWS_AR = [[f"{w} كغ", d if d == "—" else d + " مل", a + " مل", b + " مل", i + " مل"] for w, d, a, b, i in _ROWS]
+         (10, "1.5", "6", "3", "5"), (12, "1.8", "7.5", "3.5", "6"), (15, "-", "9", "4.5", "7.5"),
+         (20, "-", "12.5", "6", "10"), (25, "-", "15.5", "7.5", "12.5"), (30, "-", "18.5", "9", "15")]
+DOSE_ROWS_EN = [[f"{w} kg", d if d == "-" else d + " mL", a + " mL", b + " mL", i + " mL"] for w, d, a, b, i in _ROWS]
+DOSE_ROWS_AR = [[f"{w} كغ", d if d == "-" else d + " مل", a + " مل", b + " مل", i + " مل"] for w, d, a, b, i in _ROWS]
 
 REV = {"en": "November 2026", "ar": "نوفمبر 2026"}
 NEXT = {"en": "November 2027, or sooner if guidance changes", "ar": "نوفمبر 2027، أو قبل ذلك إذا تغيّرت التوصيات"}
@@ -43,7 +43,7 @@ PEDS_LEAFLETS.append(dict(
     guide="peds-er.html",
     title_en="Fever and pain medicine for your child",
     title_ar="خافض الحرارة والمسكّن لطفلك",
-    sub_en="The right dose for your child's weight — and when to get help",
+    sub_en="The right dose for your child's weight, and when to get help",
     sub_ar="الجرعة الصحيحة حسب وزن طفلك، ومتى تطلب المساعدة",
     card_en="Paracetamol and ibuprofen by weight, measuring the dose, how often, and warning signs.",
     card_ar="الباراسيتامول والإيبوبروفين حسب الوزن، قياس الجرعة، عدد المرات، وعلامات الخطر.",
@@ -72,7 +72,7 @@ PEDS_LEAFLETS.append(dict(
             "Do not sponge with cold water or alcohol. It makes children shiver and does not help.",
             "Offer drinks often. Breastfeed as usual.",
         ]),
-        ('help', "Get help now — call 997 or go to the emergency department if your child:", [
+        ('help', "Get help now: call 997 or go to the emergency department if your child:", [
             "Is under 3 months old with a temperature of 38 °C or more.",
             "Is very sleepy, floppy, or hard to wake.",
             "Is breathing fast or hard, or grunting.",
@@ -144,7 +144,7 @@ PEDS_LEAFLETS.append(dict(
     guide="peds-er.html#nebs",
     title_en="Using a spacer or a nebulizer at home",
     title_ar="استخدام البخاخ مع الحجرة (السبيسر) أو جهاز البخار في المنزل",
-    sub_en="Get the medicine into the lungs — and know when to get help",
+    sub_en="Get the medicine into the lungs, and know when to get help",
     sub_ar="أوصل الدواء إلى الرئتين، واعرف متى تطلب المساعدة",
     card_en="Spacer steps, nebulizer steps, cleaning, triggers at home, and warning signs.",
     card_ar="خطوات استخدام الحجرة، خطوات جهاز البخار، التنظيف، مثيرات الربو في المنزل، وعلامات الخطر.",
@@ -187,7 +187,7 @@ PEDS_LEAFLETS.append(dict(
             "<b>Dust storms</b>: keep windows closed and your child indoors.",
             "Dust, cockroaches and pets in the bedroom; strong perfumes and cleaning sprays.",
         ]),
-        ('help', "Get help now — call 997 or go to the emergency department if your child:", [
+        ('help', "Get help now: call 997 or go to the emergency department if your child:", [
             "Is too breathless to talk, feed or play.",
             "Has blue or grey lips.",
             "Has the skin between or under the ribs sucking in hard.",

@@ -51,7 +51,7 @@ def about():
 {LANG_SWITCH}
 {bi('About this site', 'عن الموقع', 'p', p + '-eyebrow fmg-eyebrow')}
 {bi('A free family medicine reference for Saudi primary care', 'مرجع مجاني في طب الأسرة للرعاية الأولية في المملكة', 'h1')}
-{bi('Field guides, point-of-care tools and patient leaflets — in English and Arabic — for family physicians, trainees, and the families they care for.',
+{bi('Field guides, point-of-care tools and patient leaflets (in English and Arabic) for family physicians, trainees, and the families they care for.',
     'أدلة ميدانية، وأدوات تُستخدم عند المريض، ونشرات توعوية، بالعربية والإنجليزية، لأطباء الأسرة والمتدربين والأسر التي يرعونها.', 'p')}
 </div></header>"""
     j = jump(p, [('editor', 'Medical editor', 'المحرر الطبي'), ('how-we-work', 'How content is made', 'إعداد المحتوى'), ('acknowledgements', 'Acknowledgements', 'شكر وتقدير'),
@@ -78,7 +78,7 @@ def about():
              g, t, tag)
 
     how_en = ul([
-        '<b>Saudi guidance first.</b> Pages start from Saudi sources where they exist — the Ministry of Health, the Saudi Commission for Health Specialties, the Saudi Food and Drug Authority, and national societies such as the Saudi Thoracic Society (SINA) — and then the international guidelines family physicians use (for example WHO, NICE, GINA, ADA, ACC/AHA, ESC and USPSTF).',
+        '<b>Saudi guidance first.</b> Pages start from Saudi sources where they exist: the Ministry of Health, the Saudi Commission for Health Specialties, the Saudi Food and Drug Authority, and national societies such as the Saudi Thoracic Society (SINA), and then the international guidelines family physicians use (for example WHO, NICE, GINA, ADA, ACC/AHA, ESC and USPSTF).',
         '<b>Latest guidance, checked at the time of writing.</b> Every page is checked for guideline updates when it is written, and its sources are listed on the page.',
         '<b>AI-assisted drafting, human review.</b> AI tools help compile, summarise and filter the source material and write the first draft of each page and leaflet. Every item is then checked one by one against the original guidelines by the medical editor and reviewed with colleagues in family medicine.',
         '<b>Sources are credited.</b> Pages credit the guidelines, papers and teaching material they draw on (see Acknowledgements).',
@@ -132,12 +132,12 @@ def about():
                 'وتُذكر الأدوية بأسمائها العلمية.', 'p'), g, t, tag)
 
     s5 = sec(p, 'disclaimer', 'Important', 'تنبيه مهم',
-             'What this site is — and is not', 'ما هذا الموقع، وما ليس هو',
+             'What this site is, and is not', 'ما هذا الموقع، وما ليس هو',
              block(p, 'flag', 'Medical disclaimer', 'إخلاء المسؤولية الطبية',
                    ul(['This site is a <b>work in progress</b> and is not a final source of information.',
                        'This is an educational reference. It does not replace an individual clinical assessment, local protocols, or the full guidelines it summarises.',
                        'Clinicians should check doses, thresholds and drug availability against current Saudi product information before prescribing.',
-                       'Patients and families should not start, stop or change any treatment based on this site alone — talk to your own doctor.',
+                       'Patients and families should not start, stop or change any treatment based on this site alone: talk to your own doctor.',
                        'In an emergency, call <b>997</b> (or <b>911</b> where the unified number operates). For health advice, call the Ministry of Health on <b>937</b>.']),
                    ul(['هذا الموقع <b>عمل قيد التطوير</b>، وليس مصدرًا نهائيًا للمعلومات.',
                        'هذا مرجع تعليمي، ولا يغني عن التقييم السريري الفردي، ولا عن البروتوكولات المحلية، ولا عن الإرشادات الكاملة التي يلخّصها.',
@@ -173,7 +173,7 @@ html[lang|="ar"] .{p}-role{{font-family:inherit;letter-spacing:0;text-transform:
     body = (hero + j + f'<main class="wrap"><div class="{p}-list fmg-list">{s1}{s2}{s_ack}{s3}{s4}{s5}{s6}</div></main>'
             + footer('Last updated October 2026.', 'آخر تحديث: أكتوبر 2026.'))
     return page(title='About · Family Medicine Guides', p=p, tone=tone, tone_soft=soft, tone_line=line,
-                description='About Family Medicine Guides — created and medically supervised by Dr. Albaraa Albawab. How content is prepared, sourced and reviewed.',
+                description='About Family Medicine Guides: created and medically supervised by Dr. Albaraa Albawab. How content is prepared, sourced and reviewed.',
                 nav=NAV, body=body, extra_css=css)
 
 
@@ -200,16 +200,16 @@ def patients():
                  ('for-clinicians', 'For clinicians', 'للأطباء')])
 
     nums = f"""<div class="{p}-nums">
-<div class="{p}-num"><b>997</b>{bi('Ambulance — Saudi Red Crescent', 'الإسعاف — هيئة الهلال الأحمر')}</div>
+<div class="{p}-num"><b>997</b>{bi('Ambulance: Saudi Red Crescent', 'الإسعاف: هيئة الهلال الأحمر')}</div>
 <div class="{p}-num"><b>911</b>{bi('Unified emergency number, where it operates', 'الرقم الموحد للطوارئ، حيث يعمل')}</div>
-<div class="{p}-num"><b>937</b>{bi('Health advice, Ministry of Health — 24 hours', 'الاستشارات الصحية، وزارة الصحة — على مدار الساعة')}</div>
+<div class="{p}-num"><b>937</b>{bi('Health advice, Ministry of Health: 24 hours', 'الاستشارات الصحية، وزارة الصحة: على مدار الساعة')}</div>
 <div class="{p}-num"><b>920033360</b>{bi('Mental health counselling (NCMH)', 'الاستشارات النفسية (المركز الوطني لتعزيز الصحة النفسية)')}</div>
 </div>"""
     s1 = sec(p, 'urgent-help', 'Urgent help', 'مساعدة عاجلة',
-             'Call first — read later', 'اتصل أولًا، واقرأ لاحقًا',
+             'Call first: read later', 'اتصل أولًا، واقرأ لاحقًا',
              nums + block(p, 'flag', 'Call 997 or go to the emergency department now for:', 'اتصل بـ 997 أو اذهب إلى الطوارئ فورًا في الحالات التالية:',
                           ul(['Chest pain or pressure, especially with sweating or shortness of breath.',
-                              'Signs of stroke: a drooping face, a weak arm or leg, or trouble speaking — even if they go away.',
+                              'Signs of stroke: a drooping face, a weak arm or leg, or trouble speaking, even if they go away.',
                               'Severe difficulty breathing, or lips turning blue.',
                               'Fainting, a seizure, heavy bleeding, or a severe allergic reaction.',
                               'Thoughts of ending your life or harming yourself.']),
@@ -232,10 +232,10 @@ def patients():
             rec = (f'<a class="{p}-btn" href="downloads/leaflets/{s}-en-record.pdf" download>{bi("Record sheets only · English", "صفحات السجل فقط · الإنجليزية")}</a>'
                    f'<a class="{p}-btn" href="downloads/leaflets/{s}-ar-record.pdf" download>{bi("Record sheets only · Arabic", "صفحات السجل فقط · العربية")}</a>')
         ENTRIES.append(dict(guide=g, guideTitle=t, tag=L['tone'], id='leaflet-' + s,
-                            heading=L['title_en'] + ' — patient leaflet', snippet=L['card_en'],
-                            headingAr=L['title_ar'] + ' — نشرة للمريض', snippetAr=L['card_ar']))
+                            heading=L['title_en'] + ': patient leaflet', snippet=L['card_en'],
+                            headingAr=L['title_ar'] + ': نشرة للمريض', snippetAr=L['card_ar']))
         cards.append(f"""<article class="{p}-card" id="leaflet-{s}" style="--c:{L['tone']}">
-<div class="{p}-card-top">{bi(L['topic_en'], L['topic_ar'], 'span', p + '-topic')}{bi('Draft — under clinical review', 'مسودة — قيد المراجعة السريرية', 'span', p + '-status')}</div>
+<div class="{p}-card-top">{bi(L['topic_en'], L['topic_ar'], 'span', p + '-topic')}{bi('Draft: under clinical review', 'مسودة: قيد المراجعة السريرية', 'span', p + '-status')}</div>
 {bi(L['title_en'], L['title_ar'], 'h3')}
 {bi(L['card_en'], L['card_ar'], 'p')}
 <div class="{p}-dl">
@@ -248,11 +248,11 @@ def patients():
 </article>""")
     if existing('downloads/quit-smoking-leaflet-en.pdf') and existing('downloads/quit-smoking-leaflet-ar.pdf'):
         ENTRIES.append(dict(guide=g, guideTitle=t, tag='#9C4F2E', id='leaflet-quit-smoking',
-                            heading='Quitting smoking — patient leaflet', snippet='Your quit plan, triggers, medicines and support from MOH cessation clinics.',
-                            headingAr='الإقلاع عن التدخين — نشرة للمريض', snippetAr='خطة الإقلاع، والمحفّزات، والأدوية، والدعم من عيادات الإقلاع.'))
+                            heading='Quitting smoking: patient leaflet', snippet='Your quit plan, triggers, medicines and support from MOH cessation clinics.',
+                            headingAr='الإقلاع عن التدخين: نشرة للمريض', snippetAr='خطة الإقلاع، والمحفّزات، والأدوية، والدعم من عيادات الإقلاع.'))
         cs = existing('counselling.html#smoking', 'counselling.html') or 'categories.html#cat-resp'
         cards.append(f"""<article class="{p}-card" id="leaflet-quit-smoking" style="--c:#9C4F2E">
-<div class="{p}-card-top">{bi('Smoking', 'التدخين', 'span', p + '-topic')}{bi('Draft — under clinical review', 'مسودة — قيد المراجعة السريرية', 'span', p + '-status')}</div>
+<div class="{p}-card-top">{bi('Smoking', 'التدخين', 'span', p + '-topic')}{bi('Draft: under clinical review', 'مسودة: قيد المراجعة السريرية', 'span', p + '-status')}</div>
 {bi('Quitting smoking', 'الإقلاع عن التدخين', 'h3')}
 {bi('Your quit plan, triggers, medicines that improve your chances, and support from MOH cessation clinics.', 'خطة الإقلاع، والمحفّزات، والأدوية التي ترفع فرص النجاح، والدعم من عيادات الإقلاع في وزارة الصحة.', 'p')}
 <div class="{p}-dl">
@@ -275,9 +275,9 @@ def patients():
 <a class="{p}-guide" href="adult-asthma.html">{bi('Clinician guide for this topic →', 'دليل الطبيب لهذا الموضوع ←')}</a>
 </div>"""
     ENTRIES.append(dict(guide=g, guideTitle=t, tag='#2C7A6B', id='leaflet-asthma-sts',
-                        heading='Asthma action plan and control test — official Saudi material',
+                        heading='Asthma action plan and control test: official Saudi material',
                         snippet='Saudi Thoracic Society (SINA) patient materials in Arabic and English.',
-                        headingAr='الربو: خطة العمل واختبار التحكم — مادة سعودية رسمية',
+                        headingAr='الربو: خطة العمل واختبار التحكم: مادة سعودية رسمية',
                         snippetAr='مواد الجمعية السعودية لأمراض الصدر للمرضى بالعربية والإنجليزية.'))
     s2 = sec(p, 'leaflets', 'Leaflets', 'النشرات التوعوية',
              'Each with a WhatsApp-size summary card. Monitoring guides include record sheets to fill in and bring to every visit.', 'لكل نشرة بطاقة ملخّص بحجم مناسب للواتساب، ولأدلة القياس المنزلي صفحات سجل تُملأ وتُحضر في كل زيارة.',
@@ -289,10 +289,10 @@ def patients():
     s3 = sec(p, 'trusted-sources', 'Trusted Saudi sources', 'مصادر سعودية موثوقة',
              'Where to look next', 'إلى أين تتجه بعد ذلك',
              f'<div class="fmg-en">' + ul([
-                 '<b>Ministry of Health awareness platform</b> — health topics and seasonal guidance, including Ramadan and Hajj. <a href="https://www.moh.gov.sa/en/awarenessplateform/SeasonalAndFestivalHealth/Pages/Ramadan-Health.aspx" rel="noopener" target="_blank">Ramadan health (MOH)</a>',
-                 '<b>Sehhaty app</b> — book appointments, see your results, and join virtual clinics, including the quit-smoking clinic.',
-                 '<b>937</b> — Ministry of Health advice line, 24 hours a day.',
-                 '<b>Saudi Thoracic Society</b> — official asthma materials for patients. <a href="https://saudithoracicsociety.org/sina/" rel="noopener" target="_blank">SINA patient tools</a>',
+                 '<b>Ministry of Health awareness platform</b>: health topics and seasonal guidance, including Ramadan and Hajj. <a href="https://www.moh.gov.sa/en/awarenessplateform/SeasonalAndFestivalHealth/Pages/Ramadan-Health.aspx" rel="noopener" target="_blank">Ramadan health (MOH)</a>',
+                 '<b>Sehhaty app</b>: book appointments, see your results, and join virtual clinics, including the quit-smoking clinic.',
+                 '<b>937</b>: Ministry of Health advice line, 24 hours a day.',
+                 '<b>Saudi Thoracic Society</b>: official asthma materials for patients. <a href="https://saudithoracicsociety.org/sina/" rel="noopener" target="_blank">SINA patient tools</a>',
              ]) + '</div><div class="fmg-ar" lang="ar">' + rtlfix(ul([
                  '<b>منصة التوعية في وزارة الصحة</b>: موضوعات صحية وإرشادات موسمية، منها رمضان والحج. <a href="https://www.moh.gov.sa/en/awarenessplateform/SeasonalAndFestivalHealth/Pages/Ramadan-Health.aspx" rel="noopener" target="_blank">الصحة في رمضان (وزارة الصحة)</a>',
                  '<b>تطبيق صحتي</b>: لحجز المواعيد، والاطلاع على النتائج، والعيادات الافتراضية، ومنها عيادة الإقلاع عن التدخين.',
@@ -306,7 +306,7 @@ def patients():
                  'Bring all your medicines, or photos of their boxes.',
                  'Write down your top 2–3 questions before you go.',
                  'Ask three questions: <b>What is my main problem? What do I need to do? Why is it important?</b>',
-                 'Say it back in your own words to check you have understood — your doctor will welcome it.',
+                 'Say it back in your own words to check you have understood: your doctor will welcome it.',
                  'Bring a family member if you like, and tell the clinic which language you prefer.',
              ]) + '</div><div class="fmg-ar" lang="ar">' + rtlfix(ul([
                  'أحضر كل أدويتك، أو صورًا لعلبها.',
@@ -317,10 +317,10 @@ def patients():
              ])) + '</div>', g, t, tag)
 
     clin_en = ul([
-        '<b>Go through the five key messages together</b>, then fill in the "My plan" box with the patient — the actual tablet, dose and next test.',
+        '<b>Go through the five key messages together</b>, then fill in the "My plan" box with the patient: the actual tablet, dose and next test.',
         '<b>Use teach-back:</b> "So I know I explained it well, how will you take your tablets tomorrow?" Correct, then ask again.',
         '<b>Match the language</b> to the person who will use the leaflet. Many households need both versions. For carers who read neither, use a professional interpreter, not a child.',
-        '<b>Involve family</b> with the patient\'s agreement — decisions are often shared at home.',
+        '<b>Involve family</b> with the patient\'s agreement: decisions are often shared at home.',
         '<b>Choose the format:</b> print A4 double-sided for older adults; send the PDF or summary card by WhatsApp after the visit for younger patients and carers; read the key box aloud when literacy is limited.',
         '<b>Time it:</b> give the Ramadan leaflet 6–8 weeks before Ramadan, at the pre-Ramadan risk visit.',
         '<b>Monitoring records:</b> write the target, arm or meter, and medicines on the record before the patient leaves. At the next visit, review the record during clerking, fill the "For the clinic" box (home BP average of days 2–7; glucose lows and fasting average), document it in the file, and hand over fresh record sheets.',
@@ -382,7 +382,7 @@ html[lang|="ar"] .{p}-topic{{font-family:inherit;letter-spacing:0;text-transform
             + footer('Emergency numbers as published by the Saudi Red Crescent Authority and the Ministry of Health. Leaflet sources are listed on each leaflet.',
                      'أرقام الطوارئ وفق ما تنشره هيئة الهلال الأحمر السعودي ووزارة الصحة. وتُذكر مصادر كل نشرة عليها.'))
     return page(title='For patients & families · Family Medicine Guides', p=p, tone=tone, tone_soft=soft, tone_line=line,
-                description='Plain-language patient leaflets in Arabic and English — iron deficiency, Ramadan and diabetes, home blood pressure — plus urgent help numbers in Saudi Arabia.',
+                description='Plain-language patient leaflets in Arabic and English (iron deficiency, Ramadan and diabetes, home blood pressure) plus urgent help numbers in Saudi Arabia.',
                 nav=NAV, body=body, extra_css=css)
 
 

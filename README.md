@@ -14,9 +14,26 @@ Live site: https://tgk-glitch.github.io/Family-Medicine-Guides/
 | `src/_includes/credit.html` | The footer credit block, used by every page |
 | `eleventy.config.js` | Settings for Eleventy, the tool that assembles the site |
 | `.github/workflows/deploy.yml` | Builds and publishes the site automatically after every upload |
-| `tools/` | Python build scripts for leaflets, About and Patients pages, counselling wiring (not published) |
+| `tools/` | Python build scripts for leaflets, About and Patients pages, counselling wiring, and `check-style.mjs` (not published) |
 
-Every upload to `main` triggers a build (Actions tab), and the site updates about a minute later.
+Every merge to `main` triggers a build (Actions tab), and the site updates about a minute later.
+
+## How changes are made
+
+1. Changes are made on a **new branch**, never directly on `main`.
+2. The site is built locally (`npm run build`) and the style check is run (`npm run check`). Both must pass.
+3. A summary of every file changed is reviewed and approved by the medical editor.
+4. Only then is the branch merged to `main`, which publishes it.
+
+Clinical content (doses, thresholds, recommendations, red flags) is supplied or approved by the medical editor before it goes live.
+
+## Writing rules
+
+- **No em dashes** (the long dash) anywhere: pages, leaflets, scripts. Use a colon, comma, semicolon, full stop or parentheses. In page titles use `|`. In an empty table cell use `-`. En dashes are for ranges only (6–11 years).
+- `npm run check` fails if an em dash, a hospital or employer name, or an email address appears in the pages.
+- English and Arabic carry the same content. Shared parts (menu, footer credit, search index, directory) are edited once in their shared file.
+- Topic counts and live/planned badges are read from `src/categories.html`; the homepage cards must match it.
+- Printable leaflets carry no website address.
 
 To preview on your own computer (optional): install Node.js 24 LTS, then in this folder run `npm install` once and `npm start`, and open http://localhost:8080
 

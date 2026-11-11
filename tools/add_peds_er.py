@@ -91,7 +91,7 @@ page = f"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Pediatric ER Doses — Family Medicine Guides</title>
+<title>Pediatric ER Doses | Family Medicine Guides</title>
 <meta content="Weight-based pediatric ER and urgent-care doses, fluids, KCl and transfusion calculators, PRAM, Westley, CDS and PECARN scores, and when to admit or refer." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -175,7 +175,7 @@ G = dict(guide="peds-er.html", guideTitle="Pediatric ER Doses", tag="#C98A2C")
 E = [
  ("p-review", "What changed from common quick-note doses", "ما الذي تغيّر في جرعات الملاحظات الشائعة", "PRBC 10–15 mL/kg not mg/kg; morphine 0.05–0.1 mg/kg; granisetron IV 10–40 mcg/kg; salbutamol 2.5 mg under 20 kg; prednisolone once daily; GINA 2026 oxygen targets; elemental iron 3 mg/kg/day.", "dose errors corrections morphine granisetron prbc gina 2026"),
  ("p-fluids", "Pediatric fluids, KCl and transfusion calculator", "حاسبة السوائل والبوتاسيوم ونقل الدم للأطفال", "Holliday–Segar 4-2-1 maintenance, 2/3 maintenance, shock/DKA/cardiac boluses, KCl mEq/kg/day check, PRBC volume from Hb, albumin, hypoglycemia D10.", "maintenance bolus potassium kcl blood transfusion albumin dextrose"),
- ("p-drugs", "Pediatric ER drug doses by weight and age", "جرعات أدوية الطوارئ للأطفال حسب الوزن والعمر", "Paracetamol, ibuprofen, salbutamol, ipratropium, prednisolone, dexamethasone, magnesium, ondansetron, granisetron, ceftriaxone, amoxicillin, furosemide, iron — capped at maximum doses, age limits flagged.", "acetaminophen paracetamol ibuprofen steroids antiemetic antibiotics age months"),
+ ("p-drugs", "Pediatric ER drug doses by weight and age", "جرعات أدوية الطوارئ للأطفال حسب الوزن والعمر", "Paracetamol, ibuprofen, salbutamol, ipratropium, prednisolone, dexamethasone, magnesium, ondansetron, granisetron, ceftriaxone, amoxicillin, furosemide, iron: capped at maximum doses, age limits flagged.", "acetaminophen paracetamol ibuprofen steroids antiemetic antibiotics age months"),
  ("p-nebs", "Nebulizer doses in mL: child and adult", "جرعات جهاز البخار بالمليلتر للطفل والبالغ", "Salbutamol, ipratropium, budesonide, normal saline 0.9%, hypertonic saline 3% and 7%, epinephrine (croup, angioedema), racemic epinephrine, isotonic magnesium, dornase alfa: mL per session, fill volume, mixing, oxygen vs air, infection control.", "nebuliser neb volume ml hypertonic saline budesonide pulmicort atrovent ventolin combivent adrenaline croup cystic fibrosis"),
  ("p-resus", "Pediatric resuscitation and vasoactive infusions", "إنعاش الأطفال وتسريب الأدوية الرافعة للضغط", "Epinephrine arrest and IM anaphylaxis, defibrillation joules, amiodarone, adenosine, atropine, naloxone, 3% saline, ETT size by age, hypotension threshold; epinephrine, norepinephrine and milrinone infusion rates.", "pals epinephrine adrenaline noradrenaline milrinone inotrope cardiac arrest ett"),
  ("p-sed", "Pediatric status epilepticus, sedation and analgesia", "الحالة الصرعية والتهدئة وتسكين الألم عند الأطفال", "Midazolam, lorazepam, levetiracetam, fosphenytoin, valproate timeline; fentanyl IN/IV, morphine, ketamine sedation and analgesia doses.", "seizure benzodiazepine ketamine fentanyl morphine midazolam procedural sedation"),

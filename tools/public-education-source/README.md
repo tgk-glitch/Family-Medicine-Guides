@@ -1,4 +1,4 @@
-# Public education & credits — source scripts
+# Public education & credits: source scripts
 
 Built 13 Oct 2026 against the 10-page public repo (HEAD 7ebf037).
 

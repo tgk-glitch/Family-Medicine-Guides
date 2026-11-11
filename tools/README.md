@@ -12,3 +12,12 @@ Order used to produce Family-Medicine-Guides/:
 5. `python3 add_counselling_category.py SITE`: new top-level category (homepage card, directory section, menu panel; 22 categories).
 
 On the full 17-page copy from the main PC (counselling.html is already there): run steps 3–5.
+
+## Update, 11 Nov 2026: master instructions v2.1 applied
+
+- **No em dashes.** Every script, content file and page was converted (colon, comma, semicolon or parentheses; `|` in page titles; `-` in empty cells). `npm run check` (`tools/check-style.mjs`) fails if one comes back.
+- **Leaflets rebuilt** from these sources so the PDFs and cards carry no em dash:
+  - `public-education-source/build_leaflets.py SRC` and `build_peds_leaflets.py SRC`, where `SRC` is the site's `src/` folder.
+  - `counselling-source/build_pdfs.py` (quick reference and quit-smoking leaflet). These two now carry the credit and AI-assistance lines in the footer. Note: this script still has fixed working paths at the top (`S`, `OUT`); edit them before running.
+- Fonts: `npm pack @fontsource/inter@5.3.0 @fontsource/fraunces@5.3.0 @fontsource/ibm-plex-sans-arabic@5.3.0`, unpack each to a folder named after the tarball, and point `FMG_FONTS` at the parent folder.
+- The one-off wiring scripts in this folder (`update_site.py`, `add_counselling_category.py`, `add_peds_er.py`, `add_peds_leaflets_site.py`) were written for earlier layouts. They are kept as a record. Do not re-run them without checking their anchors against the current pages.

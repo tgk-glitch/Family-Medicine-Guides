@@ -36,7 +36,7 @@ FONT_CSS = "\n".join([
 
 T = {
     'en': dict(label="Patient information", brand="Family Medicine Guides",
-               draft="Draft — pending clinical review",
+               draft="Draft: pending clinical review",
                prepared=f"Prepared and medically supervised by {EDITOR_EN}, {SPECIALTY_EN}",
                role=f"{ROLE_EN}, Family Medicine Guides",
                updated="Last updated", nextr="Next review", sources="Sources",
@@ -49,7 +49,7 @@ T = {
                bring="Bring this record, your device and your medicines to every visit.",
                now="Now", today="Today", visit="Next visit", eg="e.g."),
     'ar': dict(label="معلومات للمريض", brand="أدلة طب الأسرة",
-               draft="مسودة — قيد المراجعة السريرية",
+               draft="مسودة: قيد المراجعة السريرية",
                prepared=f"إعداد وإشراف طبي: {EDITOR_AR}، {SPECIALTY_AR}",
                role=f"{ROLE_AR}، أدلة طب الأسرة",
                updated="آخر تحديث", nextr="المراجعة القادمة", sources="المصادر",
@@ -173,7 +173,7 @@ def fill(lbl, cls=''):
 
 
 def render_blocks(blocks, lang, tone):
-    """Returns (pages, record_start) — record_start is the index of the first
+    """Returns (pages, record_start): record_start is the index of the first
     record page (blocks after ('break', 'record')), or None."""
     pages, cur, record_start = [], [], None
     t = T[lang]

@@ -7,7 +7,7 @@ def syl(w):
     w=re.sub(r'(?:[^laeiouy]es|ed|[^laeiouy]e)$','',w); w=re.sub(r'^y','',w)
     return max(1,len(re.findall(r'[aeiouy]{1,2}',w)))
 def fk(text):
-    sents=[s for s in re.split(r'[.!?:;—]+\s|\n',text) if s.strip()]
+    sents=[s for s in re.split(r'[.!?:;]+\s|\n',text) if s.strip()]
     words=re.findall(r"[A-Za-z][A-Za-z'\-]*|\d+",text)
     s=sum(syl(w) for w in words)
     return 0.39*len(words)/len(sents)+11.8*s/len(words)-15.59, len(words)/len(sents)
