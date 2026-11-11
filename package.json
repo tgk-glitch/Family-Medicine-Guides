@@ -2,11 +2,12 @@
   "name": "family-medicine-guides",
   "version": "1.0.0",
   "private": true,
-  "description": "Family Medicine Guides — bilingual reference site for family physicians in Saudi Arabia. Created and medically supervised by Dr. Albaraa Albawab.",
+  "description": "Family Medicine Guides: bilingual reference site for family physicians in Saudi Arabia. Created and medically supervised by Dr. Albaraa Albawab.",
   "type": "module",
   "scripts": {
     "build": "eleventy",
-    "start": "eleventy --serve"
+    "start": "eleventy --serve",
+    "check": "node tools/check-style.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.6"

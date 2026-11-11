@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Urgent Care Quick Guides — Family Medicine Guides</title>
-<meta content="Point-of-care urgent care protocols — red flags first, condensed steps, at-a-glance dosing." name="description"/>
+<title>Urgent Care Quick Guides | Family Medicine Guides</title>
+<meta content="Point-of-care urgent care protocols | red flags first, condensed steps, at-a-glance dosing." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
@@ -16,6 +16,8 @@
     --amber:#C98A2C; --red:#B0392C; --card:#FFFFFF; --radius:14px;
   }
   *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  button,a{-webkit-tap-highlight-color:transparent;}
   html{scroll-behavior:smooth;}
   h2,h3{scroll-margin-top:170px;}
   .uc-topic{scroll-margin-top:150px;}
@@ -36,18 +38,20 @@
 
   /* ---------- QUICK JUMP ---------- */
   .uc-jump{
-    position:sticky;top:64px;z-index:80;background:rgba(244,246,242,0.96);backdrop-filter:blur(6px);
+    position:sticky;top:64px;z-index:80;background:rgba(244,246,242,0.96);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);padding:12px 0;
+    transform:translateZ(0);will-change:transform;
   }
   .uc-jump-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;}
   .uc-chip{
     --tag-color:#1F5C55;
     flex-shrink:0;font-family:'Inter',sans-serif;font-weight:600;font-size:0.78rem;
-    color:var(--tag-color);background:color-mix(in srgb, var(--tag-color) 10%, white);
-    border:1px solid color-mix(in srgb, var(--tag-color) 30%, white);
+    color:var(--tag-color);background:#EDF2EE;background:color-mix(in srgb, var(--tag-color) 10%, white);
+    border:1px solid var(--line);border:1px solid color-mix(in srgb, var(--tag-color) 30%, white);
     padding:7px 13px;border-radius:100px;text-decoration:none;white-space:nowrap;
   }
-  .uc-chip:hover{background:color-mix(in srgb, var(--tag-color) 18%, white);}
+  .uc-chip:hover{background:#E1E9E4;background:color-mix(in srgb, var(--tag-color) 18%, white);}
 
   /* ---------- TOPIC ---------- */
   .uc-list{padding:28px 0 90px;display:flex;flex-direction:column;gap:36px;}
@@ -60,7 +64,7 @@
   .uc-topic-head{margin-bottom:16px;}
   .uc-cat-pill{
     display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;
-    text-transform:uppercase;color:var(--tag-color);background:color-mix(in srgb, var(--tag-color) 12%, white);
+    text-transform:uppercase;color:var(--tag-color);background:#EDF2EE;background:color-mix(in srgb, var(--tag-color) 12%, white);
     padding:4px 10px;border-radius:100px;font-weight:600;margin-bottom:10px;
   }
   .uc-topic-head h2{
@@ -105,7 +109,7 @@
 
   /* ---------- INTERACTIVE TOOLS ---------- */
   .uc-tool{
-    background:var(--paper-2);border:1.5px dashed color-mix(in srgb, var(--tag-color) 40%, var(--line));
+    background:var(--paper-2);border:1.5px dashed var(--line);border:1.5px dashed color-mix(in srgb, var(--tag-color) 40%, var(--line));
     border-radius:14px;padding:20px 20px 22px;margin:0 0 22px;
   }
   .uc-tool-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
@@ -148,9 +152,9 @@
 {% include "nav.html" %}
 <section class="uc-hero">
 <div class="wrap">
-<p class="uc-eyebrow">Point-of-care · PMBAH, Medina</p>
+<p class="uc-eyebrow">Point-of-care</p>
 <h1>Urgent Care Quick Guides</h1>
-<p>Fifteen protocols for the primary care / urgent care setting. Every guide opens with its ER-activation criteria first — read that before anything else. Condensed steps and dosing follow.</p>
+<p>Fifteen protocols for the primary care / urgent care setting. Every guide opens with its ER-activation criteria first: read that before anything else. Condensed steps and dosing follow.</p>
 </div>
 </section>
 <nav class="uc-jump">
@@ -161,14 +165,14 @@
 <a class="uc-chip" href="#febrile-convulsion" style="--tag-color:#C98A2C">Pediatric Febrile Convulsion</a>
 <a class="uc-chip" href="#peds-gastro" style="--tag-color:#C98A2C">Pediatric Gastroenteritis</a>
 <a class="uc-chip" href="#peds-hypoglycemia" style="--tag-color:#C98A2C">Pediatric Hypoglycemia</a>
-<a class="uc-chip" href="#peds-resp-distress" style="--tag-color:#C98A2C">Pediatric Respiratory Distress — Bronchiolitis &amp; Croup</a>
+<a class="uc-chip" href="#peds-resp-distress" style="--tag-color:#C98A2C">Pediatric Respiratory Distress: Bronchiolitis &amp; Croup</a>
 <a class="uc-chip" href="#febrile-infant" style="--tag-color:#C98A2C">Febrile Infant (≤90 Days)</a>
 <a class="uc-chip" href="#adult-status-epilepticus" style="--tag-color:#4A4D8C">Adult Status Epilepticus</a>
 <a class="uc-chip" href="#adult-hypoglycemia" style="--tag-color:#1F5C55">Adult Hypoglycemia</a>
 <a class="uc-chip" href="#htn-crisis" style="--tag-color:#1F5C55">Hypertensive Crisis</a>
 <a class="uc-chip" href="#chest-pain" style="--tag-color:#1F5C55">Chest Pain</a>
 <a class="uc-chip" href="#acute-abdomen" style="--tag-color:#1F5C55">Acute Abdomen &amp; Renal Colic</a>
-<a class="uc-chip" href="#asthma-exacerbation-adult" style="--tag-color:#1F5C55">Asthma Exacerbation (Adult) — SINA</a>
+<a class="uc-chip" href="#asthma-exacerbation-adult" style="--tag-color:#1F5C55">Asthma Exacerbation (Adult): SINA</a>
 <a class="uc-chip" href="#tia-stroke" style="--tag-color:#4A4D8C">TIA &amp; Stroke</a>
 </div>
 </nav>
@@ -182,13 +186,13 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>Unresponsive + absent/abnormal breathing (gasping) + no definite pulse within 10 seconds</li><li>If uncertain whether a pulse is present — start CPR. Do not delay.</li><li>Witnessed sudden collapse — activate EMS and get the AED immediately, then start CPR</li></ul>
+<ul><li>Unresponsive + absent/abnormal breathing (gasping) + no definite pulse within 10 seconds</li><li>If uncertain whether a pulse is present: start CPR. Do not delay.</li><li>Witnessed sudden collapse: activate EMS and get the AED immediately, then start CPR</li></ul>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Recognize &amp; activate (0–30 sec)</h4>
-<ul><li>Check responsiveness, breathing, and pulse simultaneously — max 10 seconds.</li><li>Pulse check: carotid/femoral in adult/child; brachial in infant.</li><li>Call for help: request AED/defibrillator, oxygen, bag-mask, crash cart.</li></ul>
+<ul><li>Check responsiveness, breathing, and pulse simultaneously: max 10 seconds.</li><li>Pulse check: carotid/femoral in adult/child; brachial in infant.</li><li>Call for help: request AED/defibrillator, oxygen, bag-mask, crash cart.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -202,14 +206,14 @@
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>Ventilation</h4>
-<ul><li>Pulse present, not breathing normally: adult 1 breath/6 sec; child/infant 1 breath/2–3 sec.</li><li>Advanced airway: continuous compressions, ventilate without pausing.</li><li>Each breath over ~1 second with visible chest rise — avoid hyperventilation.</li></ul>
+<ul><li>Pulse present, not breathing normally: adult 1 breath/6 sec; child/infant 1 breath/2–3 sec.</li><li>Advanced airway: continuous compressions, ventilate without pausing.</li><li>Each breath over ~1 second with visible chest rise: avoid hyperventilation.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">4</div>
 <div class="uc-step-body">
 <h4>AED / defibrillator</h4>
-<ul><li>Attach as soon as available — minimize hands-off time.</li><li>Children &lt;8y: pediatric attenuator/pads if available, otherwise standard adult AED.</li><li>Clear patient → shock if advised → resume CPR immediately for 2 minutes.</li><li>Do NOT delay AED for IV access, medications, or intubation attempts.</li></ul>
+<ul><li>Attach as soon as available: minimize hands-off time.</li><li>Children &lt;8y: pediatric attenuator/pads if available, otherwise standard adult AED.</li><li>Clear patient → shock if advised → resume CPR immediately for 2 minutes.</li><li>Do NOT delay AED for IV access, medications, or intubation attempts.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -268,42 +272,42 @@
 <div class="uc-step">
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
-<h4>Diagnostic criteria — ONE of three</h4>
-<ul><li>Acute onset with skin/mucosal involvement <b>AND</b> respiratory compromise or reduced BP.</li><li>TWO or more of: skin/mucosal signs, respiratory compromise, reduced BP, persistent GI symptoms — after a <i>likely</i> allergen.</li><li>Reduced BP after a <i>known</i> allergen: adult SBP &lt;90 or &gt;30% drop; child — age-specific low SBP or &gt;30% drop.</li></ul>
+<h4>Diagnostic criteria: ONE of three</h4>
+<ul><li>Acute onset with skin/mucosal involvement <b>AND</b> respiratory compromise or reduced BP.</li><li>TWO or more of: skin/mucosal signs, respiratory compromise, reduced BP, persistent GI symptoms: after a <i>likely</i> allergen.</li><li>Reduced BP after a <i>known</i> allergen: adult SBP &lt;90 or &gt;30% drop; child: age-specific low SBP or &gt;30% drop.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
-<h4>First 60 seconds — treat first</h4>
-<ul><li><b>IM epinephrine into the mid-outer thigh immediately</b> — repeat every 5 min if ABC problems persist.</li><li>Call EMS, state "anaphylaxis," request ALS, prepare AED/BLS.</li><li>Remove trigger, stop any infusion, lie flat with legs raised (left-lateral if pregnant/vomiting).</li><li><b>PHC/UCC rule: IM epinephrine has no absolute contraindication in anaphylaxis. Antihistamines, steroids, inhalers, or nebulizers must never delay it.</b></li></ul>
+<h4>First 60 seconds: treat first</h4>
+<ul><li><b>IM epinephrine into the mid-outer thigh immediately</b>: repeat every 5 min if ABC problems persist.</li><li>Call EMS, state "anaphylaxis," request ALS, prepare AED/BLS.</li><li>Remove trigger, stop any infusion, lie flat with legs raised (left-lateral if pregnant/vomiting).</li><li><b>PHC/UCC rule: IM epinephrine has no absolute contraindication in anaphylaxis. Antihistamines, steroids, inhalers, or nebulizers must never delay it.</b></li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>While waiting for EMS</h4>
-<ul><li>High-flow oxygen if hypoxic/distressed/shock.</li><li>IV/IO access — do not delay epinephrine for this.</li><li>Normal saline bolus for hypotension/shock: adult 500–1000 mL rapid; child 20 mL/kg IV/IO, repeat as needed.</li><li>Monitor vitals, SpO₂, ECG; be ready for BLS/CPR and AED.</li></ul>
+<ul><li>High-flow oxygen if hypoxic/distressed/shock.</li><li>IV/IO access: do not delay epinephrine for this.</li><li>Normal saline bolus for hypotension/shock: adult 500–1000 mL rapid; child 20 mL/kg IV/IO, repeat as needed.</li><li>Monitor vitals, SpO₂, ECG; be ready for BLS/CPR and AED.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">4</div>
 <div class="uc-step-body">
-<h4>Adjuncts — supportive only, after epinephrine</h4>
-<div class="uc-table-wrap"><table><thead><tr><th>Medication</th><th>Adult dose</th><th>Pediatric dose</th><th>Use</th></tr></thead><tbody><tr><td>Salbutamol neb</td><td>5 mg, repeat/continuous</td><td>&lt;20 kg: 2.5 mg · ≥20 kg: 5 mg</td><td>Persistent wheeze/bronchospasm after epi</td></tr><tr><td>Diphenhydramine</td><td>25–50 mg PO/IM/IV</td><td>1 mg/kg (max 50 mg)</td><td>Itch/urticaria only</td></tr><tr><td>Hydrocortisone</td><td>200 mg IV/IM</td><td>4 mg/kg (max 200 mg)</td><td>Not routine — refractory/delayed-onset reactions</td></tr><tr><td>Glucagon</td><td>1–2 mg IV/IM, may repeat</td><td>20–30 mcg/kg (max 1 mg)</td><td>Refractory hypotension in beta-blocker patients</td></tr></tbody></table></div>
+<h4>Adjuncts: supportive only, after epinephrine</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Medication</th><th>Adult dose</th><th>Pediatric dose</th><th>Use</th></tr></thead><tbody><tr><td>Salbutamol neb</td><td>5 mg, repeat/continuous</td><td>&lt;20 kg: 2.5 mg · ≥20 kg: 5 mg</td><td>Persistent wheeze/bronchospasm after epi</td></tr><tr><td>Diphenhydramine</td><td>25–50 mg PO/IM/IV</td><td>1 mg/kg (max 50 mg)</td><td>Itch/urticaria only</td></tr><tr><td>Hydrocortisone</td><td>200 mg IV/IM</td><td>4 mg/kg (max 200 mg)</td><td>Not routine: refractory/delayed-onset reactions</td></tr><tr><td>Glucagon</td><td>1–2 mg IV/IM, may repeat</td><td>20–30 mcg/kg (max 1 mg)</td><td>Refractory hypotension in beta-blocker patients</td></tr></tbody></table></div>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">5</div>
 <div class="uc-step-body">
 <h4>Refractory anaphylaxis</h4>
-<ul><li>Ongoing ABC problems despite 2 appropriate IM epinephrine doses → urgent ALS/ED, usually IV epinephrine infusion (0.05–0.1 mcg/kg/min titrated).</li><li>Prepare for airway failure: stridor, laryngeal swelling, exhaustion, cyanosis — notify ED early.</li></ul>
+<ul><li>Ongoing ABC problems despite 2 appropriate IM epinephrine doses → urgent ALS/ED, usually IV epinephrine infusion (0.05–0.1 mcg/kg/min titrated).</li><li>Prepare for airway failure: stridor, laryngeal swelling, exhaustion, cyanosis: notify ED early.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">6</div>
 <div class="uc-step-body">
-<h4>Disposition — never discharge from PHC/UCC</h4>
+<h4>Disposition: never discharge from PHC/UCC</h4>
 <ul><li>All patients treated for anaphylaxis are transferred to ED for observation (usually ≥4–6h; longer if severe/multiple epi doses).</li><li>Before ED discharge: epinephrine auto-injector prescription, written action plan, allergy referral.</li></ul>
 </div>
 </div>
@@ -316,27 +320,27 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>Continuous convulsive seizure &gt;5 minutes, OR ≥2 seizures without return to baseline between</li><li>Any child not returning to neurological baseline</li><li>Seizure persisting after 2 appropriate benzodiazepine doses — activate EMS/ED regardless of further therapy</li></ul>
+<ul><li>Continuous convulsive seizure &gt;5 minutes, OR ≥2 seizures without return to baseline between</li><li>Any child not returning to neurological baseline</li><li>Seizure persisting after 2 appropriate benzodiazepine doses: activate EMS/ED regardless of further therapy</li></ul>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Rapid assessment (0–5 min)</h4>
-<ul><li>Time the seizure and call for help early.</li><li>Lateral/recovery position, suction PRN, oxygen to keep SpO₂ ≥94%.</li><li><b>Do not</b> place objects in the mouth or restrain.</li><li>Capillary glucose immediately — if low, D10W 5 mL/kg IV/IO.</li><li>Estimate weight, establish IV/IO, attach monitors.</li></ul>
+<ul><li>Time the seizure and call for help early.</li><li>Lateral/recovery position, suction PRN, oxygen to keep SpO₂ ≥94%.</li><li><b>Do not</b> place objects in the mouth or restrain.</li><li>Capillary glucose immediately: if low, D10W 5 mL/kg IV/IO.</li><li>Estimate weight, establish IV/IO, attach monitors.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
 <h4>First-line: benzodiazepines (5–20 min)</h4>
-<div class="uc-table-wrap"><table><thead><tr><th>No IV/IO access</th><th>IV/IO access established</th></tr></thead><tbody><tr><td><b>Midazolam IM</b> 0.2 mg/kg (max 10 mg), mid-outer thigh</td><td><b>Lorazepam IV</b> 0.1 mg/kg (max 4 mg) over 2–5 min; may repeat once at 5–10 min</td></tr><tr><td>Midazolam intranasal/buccal 0.3 mg/kg (max 10 mg)</td><td>Alt: Diazepam IV 0.15–0.2 mg/kg (max 10 mg); may repeat once</td></tr><tr><td>Diazepam rectal 0.3–0.5 mg/kg (max 20 mg) if midazolam unavailable</td><td></td></tr></tbody></table></div><p class="uc-note">Maximum 2 benzodiazepine doses total, including any given pre-hospital. Activate EMS/transfer concurrently — do not delay for medication.</p>
+<div class="uc-table-wrap"><table><thead><tr><th>No IV/IO access</th><th>IV/IO access established</th></tr></thead><tbody><tr><td><b>Midazolam IM</b> 0.2 mg/kg (max 10 mg), mid-outer thigh</td><td><b>Lorazepam IV</b> 0.1 mg/kg (max 4 mg) over 2–5 min; may repeat once at 5–10 min</td></tr><tr><td>Midazolam intranasal/buccal 0.3 mg/kg (max 10 mg)</td><td>Alt: Diazepam IV 0.15–0.2 mg/kg (max 10 mg); may repeat once</td></tr><tr><td>Diazepam rectal 0.3–0.5 mg/kg (max 20 mg) if midazolam unavailable</td><td></td></tr></tbody></table></div><p class="uc-note">Maximum 2 benzodiazepine doses total, including any given pre-hospital. Activate EMS/transfer concurrently: do not delay for medication.</p>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
-<h4>Second-line (20–40 min) — typically ED/PICU</h4>
-<div class="uc-table-wrap"><table><thead><tr><th>Drug</th><th>Dose</th></tr></thead><tbody><tr><td>Levetiracetam</td><td>60 mg/kg IV (max 4,500 mg) over 5–15 min</td></tr><tr><td>Fosphenytoin</td><td>20 mg PE/kg IV (max 1,500 mg PE) — cardiac monitoring</td></tr><tr><td>Valproic acid</td><td>40 mg/kg IV (max 3,000 mg) — avoid in liver disease, caution &lt;2y</td></tr><tr><td>Phenytoin</td><td>20 mg/kg IV (max 1,500 mg), ≤1 mg/kg/min — cardiac monitoring</td></tr><tr><td>Phenobarbital</td><td>20 mg/kg IV (max 1,000 mg) — risk of respiratory depression</td></tr></tbody></table></div>
+<h4>Second-line (20–40 min): typically ED/PICU</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Drug</th><th>Dose</th></tr></thead><tbody><tr><td>Levetiracetam</td><td>60 mg/kg IV (max 4,500 mg) over 5–15 min</td></tr><tr><td>Fosphenytoin</td><td>20 mg PE/kg IV (max 1,500 mg PE): cardiac monitoring</td></tr><tr><td>Valproic acid</td><td>40 mg/kg IV (max 3,000 mg): avoid in liver disease, caution &lt;2y</td></tr><tr><td>Phenytoin</td><td>20 mg/kg IV (max 1,500 mg), ≤1 mg/kg/min: cardiac monitoring</td></tr><tr><td>Phenobarbital</td><td>20 mg/kg IV (max 1,000 mg): risk of respiratory depression</td></tr></tbody></table></div>
 </div>
 </div>
 <div class="uc-step">
@@ -368,21 +372,21 @@
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
 <h4>Classify</h4>
-<div class="uc-table-wrap"><table><thead><tr><th>Simple</th><th>Complex</th></tr></thead><tbody><tr><td>Generalized tonic-clonic</td><td>Focal features or deficit</td></tr><tr><td>Duration &lt;15 min</td><td>Duration ≥15 min</td></tr><tr><td>Single seizure per illness/24h</td><td>Recurrent within 24h/same illness</td></tr><tr><td>Full recovery &lt;1 hour</td><td>Altered mental state &gt;1 hour</td></tr></tbody></table></div><p class="uc-note">Prolonged/febrile status (&gt;30 min or recurrent without recovery) — manage as status epilepticus and transfer.</p>
+<div class="uc-table-wrap"><table><thead><tr><th>Simple</th><th>Complex</th></tr></thead><tbody><tr><td>Generalized tonic-clonic</td><td>Focal features or deficit</td></tr><tr><td>Duration &lt;15 min</td><td>Duration ≥15 min</td></tr><tr><td>Single seizure per illness/24h</td><td>Recurrent within 24h/same illness</td></tr><tr><td>Full recovery &lt;1 hour</td><td>Altered mental state &gt;1 hour</td></tr></tbody></table></div><p class="uc-note">Prolonged/febrile status (&gt;30 min or recurrent without recovery): manage as status epilepticus and transfer.</p>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>Treatment</h4>
-<ul><li>Active seizure &gt;5 min: midazolam IN/buccal 0.3 mg/kg (max 10 mg) OR lorazepam IV/IO 0.1 mg/kg (max 4 mg). Max 2 doses total.</li><li>Treat fever source; antipyretic for comfort — does <b>not</b> prevent recurrence.</li><li>Simple febrile seizure: no routine bloods, EEG, imaging, or LP.</li><li>LP if meningitis/encephalitis suspected, or immunization incomplete/antibiotics may mask signs.</li><li>Anti-epileptic prophylaxis is not routinely recommended after a simple febrile seizure.</li></ul>
+<ul><li>Active seizure &gt;5 min: midazolam IN/buccal 0.3 mg/kg (max 10 mg) OR lorazepam IV/IO 0.1 mg/kg (max 4 mg). Max 2 doses total.</li><li>Treat fever source; antipyretic for comfort: does <b>not</b> prevent recurrence.</li><li>Simple febrile seizure: no routine bloods, EEG, imaging, or LP.</li><li>LP if meningitis/encephalitis suspected, or immunization incomplete/antibiotics may mask signs.</li><li>Anti-epileptic prophylaxis is not routinely recommended after a simple febrile seizure.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">4</div>
 <div class="uc-step-body">
 <h4>Disposition &amp; parent advice</h4>
-<ul><li>Discharge if simple, back to baseline, fever source managed, follow-up arranged.</li><li>Consult/transfer if complex, prolonged, respiratory/hemodynamic compromise, age &lt;6 months, uncertain diagnosis.</li><li>Parent advice: lateral position, time it, no restraint/objects in mouth — call EMS if &gt;5 min, breathing difficulty, blue color, injury, first seizure, or not waking.</li></ul>
+<ul><li>Discharge if simple, back to baseline, fever source managed, follow-up arranged.</li><li>Consult/transfer if complex, prolonged, respiratory/hemodynamic compromise, age &lt;6 months, uncertain diagnosis.</li><li>Parent advice: lateral position, time it, no restraint/objects in mouth: call EMS if &gt;5 min, breathing difficulty, blue color, injury, first seizure, or not waking.</li></ul>
 </div>
 </div>
 </section>
@@ -401,7 +405,7 @@
 <span class="uc-tool-badge">Interactive</span>
 <h4>Dehydration Severity Picker</h4>
 </div>
-<p class="uc-tool-sub">Select the closest match for each sign — the overall estimate is a clinical gestalt, not a validated composite score</p>
+<p class="uc-tool-sub">Select the closest match for each sign: the overall estimate is a clinical gestalt, not a validated composite score</p>
 <div class="uc-heart-grid" id="dehydrationGrid">
 <div class="uc-heart-row">
 <label>Mental status</label>
@@ -460,8 +464,8 @@
         else level = 0;
         var labels = [
           ['Minimal / no dehydration (&lt;3% loss)', '#1F5C55'],
-          ['Mild–moderate dehydration (3–9% loss) — consider ORT trial', '#C98A2C'],
-          ['Severe dehydration (&gt;9% loss) — red flag, prepare for EMS/ED', '#B0392C']
+          ['Mild–moderate dehydration (3–9% loss): consider ORT trial', '#C98A2C'],
+          ['Severe dehydration (&gt;9% loss): red flag, prepare for EMS/ED', '#B0392C']
         ];
         r.innerHTML = '<b>Estimated:</b> ' + labels[level][0];
         r.style.borderColor = labels[level][1];
@@ -474,7 +478,7 @@
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Triage</h4>
-<ul><li>Accurate naked weight — critical for fluid calculations.</li><li>Vitals: HR, RR, BP, temperature (≥38.5°C warrants closer evaluation for alternative infection).</li><li>Hydration history: wet diapers/24h, emesis/stool frequency, oral tolerance.</li></ul>
+<ul><li>Accurate naked weight: critical for fluid calculations.</li><li>Vitals: HR, RR, BP, temperature (≥38.5°C warrants closer evaluation for alternative infection).</li><li>Hydration history: wet diapers/24h, emesis/stool frequency, oral tolerance.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -488,7 +492,7 @@
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>Hydration management</h4>
-<ul><li>Minimal: continue regular diet/breastfeeding; ORS 10 mL/kg per loose stool/emesis.</li><li>Mild–moderate: ORT trial in clinic — ORS 50–100 mL/kg over 3–4h, small frequent volumes (5 mL q1–2min).</li><li>Ondansetron 0.15 mg/kg (max 8 mg) single dose PO — for &gt;6 months with persistent vomiting interfering with ORT.</li><li><b>Anti-diarrheals (e.g. loperamide) are contraindicated in pediatrics. Avoid routine antibiotics.</b></li></ul>
+<ul><li>Minimal: continue regular diet/breastfeeding; ORS 10 mL/kg per loose stool/emesis.</li><li>Mild–moderate: ORT trial in clinic: ORS 50–100 mL/kg over 3–4h, small frequent volumes (5 mL q1–2min).</li><li>Ondansetron 0.15 mg/kg (max 8 mg) single dose PO: for &gt;6 months with persistent vomiting interfering with ORT.</li><li><b>Anti-diarrheals (e.g. loperamide) are contraindicated in pediatrics. Avoid routine antibiotics.</b></li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -507,27 +511,27 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>Altered mental status, seizures, coma, or extreme lethargy — unsafe to swallow</li><li>Glucose often &lt;54 mg/dL with any severe symptom</li><li>Failure to fully regain consciousness, or inability to tolerate oral intake after correction</li></ul>
+<ul><li>Altered mental status, seizures, coma, or extreme lethargy: unsafe to swallow</li><li>Glucose often &lt;54 mg/dL with any severe symptom</li><li>Failure to fully regain consciousness, or inability to tolerate oral intake after correction</li></ul>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Severity</h4>
-<div class="uc-table-wrap"><table><thead><tr><th></th><th>Mild–Moderate</th><th>Severe</th></tr></thead><tbody><tr><td>Glucose</td><td>&lt;70 mg/dL (&lt;3.9 mmol/L)</td><td>Often &lt;54 mg/dL, or any level with severe symptoms</td></tr><tr><td>Symptoms</td><td>Tremor, pallor, sweating, hunger, tachycardia, irritability</td><td>Seizures, coma, extreme lethargy</td></tr><tr><td>Mentation</td><td>Alert, safe to swallow</td><td>Altered — unsafe to swallow</td></tr></tbody></table></div>
+<div class="uc-table-wrap"><table><thead><tr><th></th><th>Mild–Moderate</th><th>Severe</th></tr></thead><tbody><tr><td>Glucose</td><td>&lt;70 mg/dL (&lt;3.9 mmol/L)</td><td>Often &lt;54 mg/dL, or any level with severe symptoms</td></tr><tr><td>Symptoms</td><td>Tremor, pallor, sweating, hunger, tachycardia, irritability</td><td>Seizures, coma, extreme lethargy</td></tr><tr><td>Mentation</td><td>Alert, safe to swallow</td><td>Altered: unsafe to swallow</td></tr></tbody></table></div>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
 <h4>Conscious &amp; able to swallow</h4>
-<ul><li>Fast-acting carbohydrate 10–15 g: 120 mL juice/soda, 3–4 glucose tablets, or 1 tbsp sugar/corn syrup.</li><li><b>No honey in infants &lt;1 year — botulism risk.</b></li><li>Recheck glucose in exactly 15 minutes; repeat dose if still &lt;70 mg/dL.</li></ul>
+<ul><li>Fast-acting carbohydrate 10–15 g: 120 mL juice/soda, 3–4 glucose tablets, or 1 tbsp sugar/corn syrup.</li><li><b>No honey in infants &lt;1 year: botulism risk.</b></li><li>Recheck glucose in exactly 15 minutes; repeat dose if still &lt;70 mg/dL.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>Unconscious / seizing / unsafe to swallow</h4>
-<ul><li>Recovery position — <b>no oral fluids or food.</b></li><li>No IV access: Glucagon IM/SC — &lt;25 kg (&lt;12y): 0.5 mg · ≥25 kg (≥12y): 1.0 mg. Activate EMS.</li><li>IV access: D10W (preferred) 2–5 mL/kg IV bolus over 3–5 min, OR D25W 2 mL/kg. <b>Avoid D50W in children</b> (vein sclerosis, rebound).</li><li>Flush line with saline; recheck glucose after 5 minutes.</li></ul>
+<ul><li>Recovery position: <b>no oral fluids or food.</b></li><li>No IV access: Glucagon IM/SC; &lt;25 kg (&lt;12y): 0.5 mg · ≥25 kg (≥12y): 1.0 mg. Activate EMS.</li><li>IV access: D10W (preferred) 2–5 mL/kg IV bolus over 3–5 min, OR D25W 2 mL/kg. <b>Avoid D50W in children</b> (vein sclerosis, rebound).</li><li>Flush line with saline; recheck glucose after 5 minutes.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -541,7 +545,7 @@
 <section class="uc-topic" id="peds-resp-distress" style="--tag-color:#C98A2C">
 <div class="uc-topic-head">
 <span class="uc-cat-pill">Pediatric Emergency</span>
-<h2 id="pediatric-respiratory-distress-bronchiolitis-croup">Pediatric Respiratory Distress — Bronchiolitis &amp; Croup</h2>
+<h2 id="pediatric-respiratory-distress-bronchiolitis-croup">Pediatric Respiratory Distress: Bronchiolitis &amp; Croup</h2>
 <p class="uc-source">Source: NICE NG9; RCH Bronchiolitis/Croup CPG; Queensland Paediatric EC; AAP Bronchiolitis</p>
 </div>
 <div class="uc-redflag">
@@ -551,9 +555,9 @@
 <div class="uc-tool" id="tool-pram">
 <div class="uc-tool-head">
 <span class="uc-tool-badge">Interactive</span>
-<h4>PRAM Score — Pediatric Respiratory Assessment Measure</h4>
+<h4>PRAM Score: Pediatric Respiratory Assessment Measure</h4>
 </div>
-<p class="uc-tool-sub">Validated ages 2–17 for wheeze/asthma-type respiratory distress — use alongside clinical judgment for bronchiolitis, where it is less validated</p>
+<p class="uc-tool-sub">Validated ages 2–17 for wheeze/asthma-type respiratory distress: use alongside clinical judgment for bronchiolitis, where it is less validated</p>
 <div class="uc-heart-grid" id="pramGrid">
 <div class="uc-heart-row">
 <label>Suprasternal retractions</label>
@@ -596,7 +600,7 @@
 </select>
 </div>
 </div>
-<div class="uc-tool-result uc-tool-result-active" id="pramResult">Score: 0 / 12 — Mild</div>
+<div class="uc-tool-result uc-tool-result-active" id="pramResult">Score: 0 / 12: Mild</div>
 </div>
 <script>
     (function(){
@@ -609,7 +613,7 @@
         if (total <= 3){ risk = 'Mild'; cls='#1F5C55'; }
         else if (total <= 7){ risk = 'Moderate'; cls='#C98A2C'; }
         else { risk = 'Severe'; cls='#B0392C'; }
-        r.innerHTML = '<b>Score: ' + total + ' / 12</b> — ' + risk;
+        r.innerHTML = '<b>Score: ' + total + ' / 12</b>: ' + risk;
         r.style.borderColor = cls;
       }
       selects.forEach(function(s){ s.addEventListener('change', calc); });
@@ -634,7 +638,7 @@
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>Bronchiolitis management</h4>
-<ul><li>Minimal handling; oxygen if SpO₂ &lt;90% (≥6wk) or &lt;92% (&lt;6wk/cardiopulmonary disease).</li><li>No routine suctioning — only if secretions cause distress/feeding difficulty/apnea.</li><li>Small frequent feeds/ORS if safe; stop oral feeds if severe distress or aspiration risk.</li><li>Lower threshold to transfer: age &lt;3mo, prematurity &lt;32wk, chronic lung/heart disease, feeding 50–75%, caregiver/access concerns.</li></ul>
+<ul><li>Minimal handling; oxygen if SpO₂ &lt;90% (≥6wk) or &lt;92% (&lt;6wk/cardiopulmonary disease).</li><li>No routine suctioning: only if secretions cause distress/feeding difficulty/apnea.</li><li>Small frequent feeds/ORS if safe; stop oral feeds if severe distress or aspiration risk.</li><li>Lower threshold to transfer: age &lt;3mo, prematurity &lt;32wk, chronic lung/heart disease, feeding 50–75%, caregiver/access concerns.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -660,27 +664,27 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>Any infant ≤28 days with fever ≥38.0°C — always urgent ED transfer</li><li>Poor perfusion, shock, mottling, apnea, grunting, SpO₂ &lt;92%, hypoglycemia</li><li>Lethargy, inconsolable irritability, seizures, bulging fontanelle, abnormal tone</li><li>Non-blanching rash/petechiae, neck stiffness, temperature instability &lt;36.5°C</li><li>Any ill-appearing infant at any age</li></ul>
+<ul><li>Any infant ≤28 days with fever ≥38.0°C: always urgent ED transfer</li><li>Poor perfusion, shock, mottling, apnea, grunting, SpO₂ &lt;92%, hypoglycemia</li><li>Lethargy, inconsolable irritability, seizures, bulging fontanelle, abnormal tone</li><li>Non-blanching rash/petechiae, neck stiffness, temperature instability &lt;36.5°C</li><li>Any ill-appearing infant at any age</li></ul>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Assessment</h4>
-<ul><li>Confirm fever — rectal preferred; don't dismiss reliable caregiver-reported fever.</li><li>Pediatric Assessment Triangle: work of breathing, circulation/perfusion, mental status.</li><li>Full exposure exam: fontanelle, skin/rash, joints, ears/throat, abdomen, hydration.</li><li>A viral URI, positive viral test, or recent vaccination reduces but does not eliminate serious bacterial infection risk.</li></ul>
+<ul><li>Confirm fever: rectal preferred; don't dismiss reliable caregiver-reported fever.</li><li>Pediatric Assessment Triangle: work of breathing, circulation/perfusion, mental status.</li><li>Full exposure exam: fontanelle, skin/rash, joints, ears/throat, abdomen, hydration.</li><li>A viral URI, positive viral test, or recent vaccination reduces but does not eliminate serious bacterial infection risk.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
 <h4>Age-based risk &amp; action</h4>
-<div class="uc-table-wrap"><table><thead><tr><th>Age</th><th>Risk &amp; action</th></tr></thead><tbody><tr><td>0–7 days</td><td>Neonatal fever = emergency. EMS/ED now — full sepsis workup + empiric IV antibiotics usually required.</td></tr><tr><td>8–28 days</td><td>Highest invasive bacterial infection risk. ED/pediatric assessment — blood/urine/CSF, admission common.</td></tr><tr><td>29–60 days</td><td>Still urgent. ED risk stratification with urine, blood culture, inflammatory markers. LP/admission per pathway.</td></tr><tr><td>61–90 days</td><td>Lower but not zero risk. Urine assessment at minimum; ED/peds if no source, red flag, abnormal vitals, or poor follow-up.</td></tr></tbody></table></div><p class="uc-note">PHC/UCC rule: a febrile infant &lt;3 months should not be discharged without senior pediatric/ED advice and a documented same-day plan.</p>
+<div class="uc-table-wrap"><table><thead><tr><th>Age</th><th>Risk &amp; action</th></tr></thead><tbody><tr><td>0–7 days</td><td>Neonatal fever = emergency. EMS/ED now: full sepsis workup + empiric IV antibiotics usually required.</td></tr><tr><td>8–28 days</td><td>Highest invasive bacterial infection risk. ED/pediatric assessment: blood/urine/CSF, admission common.</td></tr><tr><td>29–60 days</td><td>Still urgent. ED risk stratification with urine, blood culture, inflammatory markers. LP/admission per pathway.</td></tr><tr><td>61–90 days</td><td>Lower but not zero risk. Urine assessment at minimum; ED/peds if no source, red flag, abnormal vitals, or poor follow-up.</td></tr></tbody></table></div><p class="uc-note">PHC/UCC rule: a febrile infant &lt;3 months should not be discharged without senior pediatric/ED advice and a documented same-day plan.</p>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>While awaiting transfer</h4>
-<ul><li>Check glucose immediately in any ill, lethargic, hypothermic, or seizing infant.</li><li>Don't delay ED transfer to collect urine; avoid bag specimens for culture decisions.</li><li>If septic/shock: isotonic crystalloid 10–20 mL/kg, reassess; don't delay life-saving antibiotics for cultures.</li><li>Antipyretics for comfort only — avoid ibuprofen &lt;3 months.</li></ul>
+<ul><li>Check glucose immediately in any ill, lethargic, hypothermic, or seizing infant.</li><li>Don't delay ED transfer to collect urine; avoid bag specimens for culture decisions.</li><li>If septic/shock: isotonic crystalloid 10–20 mL/kg, reassess; don't delay life-saving antibiotics for cultures.</li><li>Antipyretics for comfort only: avoid ibuprofen &lt;3 months.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -699,27 +703,27 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>Continuous seizure &gt;5 minutes, OR ≥2 seizures without full recovery between</li><li>Seizure persisting after first-line therapy — activate EMS concurrently, don't wait</li><li>Respiratory depression post-benzodiazepine — be ready to support ventilation</li></ul>
+<ul><li>Continuous seizure &gt;5 minutes, OR ≥2 seizures without full recovery between</li><li>Seizure persisting after first-line therapy: activate EMS concurrently, don't wait</li><li>Respiratory depression post-benzodiazepine: be ready to support ventilation</li></ul>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Rapid assessment (0–5 min)</h4>
-<ul><li>Note exact seizure start time.</li><li>Maintain airway, oxygen to SpO₂ ≥94%, recovery position — <b>do not</b> place objects in mouth.</li><li>Capillary glucose immediately (treat if &lt;70 mg/dL), IV access, continuous monitors.</li></ul>
+<ul><li>Note exact seizure start time.</li><li>Maintain airway, oxygen to SpO₂ ≥94%, recovery position: <b>do not</b> place objects in mouth.</li><li>Capillary glucose immediately (treat if &lt;70 mg/dL), IV access, continuous monitors.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
 <h4>First-line therapy (5–20 min)</h4>
-<div class="uc-table-wrap"><table><thead><tr><th>No IV access</th><th>IV access established</th></tr></thead><tbody><tr><td>Midazolam IM 10 mg (mid-outer thigh, vastus lateralis)</td><td>Lorazepam IV 4 mg (rate 2 mg/min); may repeat once at 5–10 min</td></tr><tr><td>Diazepam rectal 0.2–0.5 mg/kg (max 20 mg) if IM unavailable</td><td>Alt: Diazepam IV 10 mg (rate 5 mg/min)</td></tr></tbody></table></div><p class="uc-note">Activate EMS and initiate transfer concurrently — do not delay for medication administration.</p>
+<div class="uc-table-wrap"><table><thead><tr><th>No IV access</th><th>IV access established</th></tr></thead><tbody><tr><td>Midazolam IM 10 mg (mid-outer thigh, vastus lateralis)</td><td>Lorazepam IV 4 mg (rate 2 mg/min); may repeat once at 5–10 min</td></tr><tr><td>Diazepam rectal 0.2–0.5 mg/kg (max 20 mg) if IM unavailable</td><td>Alt: Diazepam IV 10 mg (rate 5 mg/min)</td></tr></tbody></table></div><p class="uc-note">Activate EMS and initiate transfer concurrently: do not delay for medication administration.</p>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
-<h4>Second-line (20–40 min) — typically ED</h4>
-<div class="uc-table-wrap"><table><thead><tr><th>Drug</th><th>Dose</th></tr></thead><tbody><tr><td>Levetiracetam</td><td>60 mg/kg IV (max 4,500 mg) over 15 min</td></tr><tr><td>Valproic acid</td><td>40 mg/kg IV (max 3,000 mg) over 10 min — avoid in pregnancy/severe liver disease</td></tr><tr><td>Fosphenytoin</td><td>20 mg PE/kg IV (max 1,500 mg PE) over 10 min — cardiac monitoring</td></tr><tr><td>Phenytoin</td><td>20 mg/kg IV (max 1,500 mg), ≤50 mg/min — cardiac monitoring</td></tr><tr><td>Phenobarbital</td><td>20 mg/kg IV (max 1,000 mg), 50–100 mg/min — respiratory depression risk</td></tr></tbody></table></div>
+<h4>Second-line (20–40 min): typically ED</h4>
+<div class="uc-table-wrap"><table><thead><tr><th>Drug</th><th>Dose</th></tr></thead><tbody><tr><td>Levetiracetam</td><td>60 mg/kg IV (max 4,500 mg) over 15 min</td></tr><tr><td>Valproic acid</td><td>40 mg/kg IV (max 3,000 mg) over 10 min: avoid in pregnancy/severe liver disease</td></tr><tr><td>Fosphenytoin</td><td>20 mg PE/kg IV (max 1,500 mg PE) over 10 min: cardiac monitoring</td></tr><tr><td>Phenytoin</td><td>20 mg/kg IV (max 1,500 mg), ≤50 mg/min: cardiac monitoring</td></tr><tr><td>Phenobarbital</td><td>20 mg/kg IV (max 1,000 mg), 50–100 mg/min: respiratory depression risk</td></tr></tbody></table></div>
 </div>
 </div>
 <div class="uc-step">
@@ -738,7 +742,7 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>Altered mental status, seizures, coma — unsafe to swallow (Level 3)</li><li>Failure to fully regain consciousness despite glucose correction</li><li>Recurrent hypoglycemia in clinic despite adequate oral intake, or no caregiver at home</li></ul>
+<ul><li>Altered mental status, seizures, coma: unsafe to swallow (Level 3)</li><li>Failure to fully regain consciousness despite glucose correction</li><li>Recurrent hypoglycemia in clinic despite adequate oral intake, or no caregiver at home</li></ul>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">1</div>
@@ -750,15 +754,15 @@
 <div class="uc-step">
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
-<h4>Conscious &amp; able to swallow — Rule of 15</h4>
-<ul><li>15 g fast-acting carbohydrate: 4 glucose tablets (preferred), 120 mL juice/regular soda, or 1 tbsp sugar/honey/corn syrup.</li><li>Avoid high-fat treats (chocolate, milk) — they delay absorption.</li><li>Recheck glucose in exactly 15 minutes; repeat 15g if still &lt;70 mg/dL.</li></ul>
+<h4>Conscious &amp; able to swallow: Rule of 15</h4>
+<ul><li>15 g fast-acting carbohydrate: 4 glucose tablets (preferred), 120 mL juice/regular soda, or 1 tbsp sugar/honey/corn syrup.</li><li>Avoid high-fat treats (chocolate, milk): they delay absorption.</li><li>Recheck glucose in exactly 15 minutes; repeat 15g if still &lt;70 mg/dL.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>Unconscious / unsafe to swallow</h4>
-<ul><li>Recovery position — no oral fluids or food.</li><li>No IV access: Glucagon 1 mg IM/SC stat. Activate EMS if no recovery within 15 min.</li><li>IV access: D50W 50 mL IV over 3–5 min (or D10W 250 mL). Flush line; recheck glucose at 5 min.</li></ul>
+<ul><li>Recovery position: no oral fluids or food.</li><li>No IV access: Glucagon 1 mg IM/SC stat. Activate EMS if no recovery within 15 min.</li><li>IV access: D50W 50 mL IV over 3–5 min (or D10W 250 mL). Flush line; recheck glucose at 5 min.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -790,21 +794,21 @@
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
 <h4>Assess target organ damage (TOD)</h4>
-<ul><li>12-lead ECG — LVH, acute ischemia, arrhythmia.</li><li>Consider U&amp;E, creatinine, urinalysis if resources permit.</li></ul>
+<ul><li>12-lead ECG: LVH, acute ischemia, arrhythmia.</li><li>Consider U&amp;E, creatinine, urinalysis if resources permit.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
-<h4>Hypertensive EMERGENCY — BP &gt;180/120 WITH TOD</h4>
-<ul><li><b>Activate EMS immediately</b> for ED transfer.</li><li>IV access if possible while waiting; oxygen only if SpO₂ &lt;90%.</li><li><b>Do NOT attempt to rapidly lower BP with oral agents in clinic — can precipitate cerebral, coronary, or renal ischemia.</b></li></ul>
+<h4>Hypertensive EMERGENCY: BP &gt;180/120 WITH TOD</h4>
+<ul><li><b>Activate EMS immediately</b> for ED transfer.</li><li>IV access if possible while waiting; oxygen only if SpO₂ &lt;90%.</li><li><b>Do NOT attempt to rapidly lower BP with oral agents in clinic: can precipitate cerebral, coronary, or renal ischemia.</b></li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">4</div>
 <div class="uc-step-body">
-<h4>Severe asymptomatic HTN (urgency) — BP &gt;180/120 WITHOUT TOD</h4>
-<ul><li>Identify/treat triggers: pain, anxiety, urinary retention, medication non-adherence.</li><li>Target: gradual reduction ≤20–25% within the first few hours.</li><li>Restart home meds if missed; if starting new therapy use gradual oral agents (e.g. Captopril 25 mg, Amlodipine 5 mg).</li><li><b>Never use sublingual nifedipine</b> — high risk of unpredictable BP drop → stroke/MI.</li></ul>
+<h4>Severe asymptomatic HTN (urgency): BP &gt;180/120 WITHOUT TOD</h4>
+<ul><li>Identify/treat triggers: pain, anxiety, urinary retention, medication non-adherence.</li><li>Target: gradual reduction ≤20–25% within the first few hours.</li><li>Restart home meds if missed; if starting new therapy use gradual oral agents (e.g. Captopril 25 mg, Amlodipine 5 mg).</li><li><b>Never use sublingual nifedipine</b>: high risk of unpredictable BP drop → stroke/MI.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -823,7 +827,7 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>STEMI, new LBBB, or obvious ischemic changes on ECG → activate EMS immediately</li><li>Any of the "Deadly Six": ACS, PE, aortic dissection, tamponade, pneumothorax, esophageal rupture</li><li>BP difference &gt;20 mmHg between arms — think aortic dissection</li><li>Angina equivalents in women/elderly/diabetics: unexplained dyspnea, diaphoresis, nausea, fatigue, atypical-location pain</li></ul>
+<ul><li>STEMI, new LBBB, or obvious ischemic changes on ECG → activate EMS immediately</li><li>Any of the "Deadly Six": ACS, PE, aortic dissection, tamponade, pneumothorax, esophageal rupture</li><li>BP difference &gt;20 mmHg between arms: think aortic dissection</li><li>Angina equivalents in women/elderly/diabetics: unexplained dyspnea, diaphoresis, nausea, fatigue, atypical-location pain</li></ul>
 </div>
 <div class="uc-tool" id="tool-heart">
 <div class="uc-tool-head">
@@ -873,7 +877,7 @@
 </select>
 </div>
 </div>
-<div class="uc-tool-result uc-tool-result-active" id="heartResult">Score: 0 / 10 — Low risk (1.7% MACE)</div>
+<div class="uc-tool-result uc-tool-result-active" id="heartResult">Score: 0 / 10: Low risk (1.7% MACE)</div>
 </div>
 <script>
     (function(){
@@ -883,10 +887,10 @@
         var total = 0;
         selects.forEach(function(s){ total += parseInt(s.value,10); });
         var risk, cls;
-        if (total <= 3){ risk = 'Low risk (1.7% MACE) — consider discharge if clinically appropriate'; cls='#1F5C55'; }
-        else if (total <= 6){ risk = 'Moderate risk (16.6% MACE) — observation / transfer indicated'; cls='#C98A2C'; }
-        else { risk = 'High risk (50.1% MACE) — urgent transfer indicated'; cls='#B0392C'; }
-        r.innerHTML = '<b>Score: ' + total + ' / 10</b> — ' + risk;
+        if (total <= 3){ risk = 'Low risk (1.7% MACE): consider discharge if clinically appropriate'; cls='#1F5C55'; }
+        else if (total <= 6){ risk = 'Moderate risk (16.6% MACE): observation / transfer indicated'; cls='#C98A2C'; }
+        else { risk = 'High risk (50.1% MACE): urgent transfer indicated'; cls='#B0392C'; }
+        r.innerHTML = '<b>Score: ' + total + ' / 10</b>: ' + risk;
         r.style.borderColor = cls;
       }
       selects.forEach(function(s){ s.addEventListener('change', calc); });
@@ -897,7 +901,7 @@
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Immediate triage (0–2 min)</h4>
-<ul><li>Bypass waiting room — immediate rooming.</li><li>Vitals in both arms; SpO₂.</li><li>Oxygen only if SpO₂ &lt;90% or respiratory distress — routine O₂ can worsen coronary ischemia.</li></ul>
+<ul><li>Bypass waiting room: immediate rooming.</li><li>Vitals in both arms; SpO₂.</li><li>Oxygen only if SpO₂ &lt;90% or respiratory distress: routine O₂ can worsen coronary ischemia.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -925,14 +929,14 @@
 <div class="uc-step-num">5</div>
 <div class="uc-step-body">
 <h4>HEART Score for major cardiac events</h4>
-<div class="uc-table-wrap"><table><thead><tr><th>Parameter</th><th>0 pts</th><th>1 pt</th><th>2 pts</th></tr></thead><tbody><tr><td>History</td><td>Slightly suspicious</td><td>Moderately suspicious</td><td>Highly suspicious</td></tr><tr><td>ECG</td><td>Normal</td><td>Nonspecific repolarization</td><td>Significant ST depression</td></tr><tr><td>Age</td><td>&lt;45</td><td>45–64</td><td>≥65</td></tr><tr><td>Risk factors*</td><td>None</td><td>1–2</td><td>≥3 or known CAD</td></tr><tr><td>Troponin</td><td>≤normal</td><td>1–3× normal</td><td>&gt;3× normal</td></tr></tbody></table></div><p class="uc-note">*HTN, hypercholesterolemia, DM, obesity, smoking, family history. 0–3: low risk (1.7% MACE) — consider discharge. 4–6: moderate (16.6%) — observe/transfer. 7–10: high (50.1%) — urgent transfer.</p>
+<div class="uc-table-wrap"><table><thead><tr><th>Parameter</th><th>0 pts</th><th>1 pt</th><th>2 pts</th></tr></thead><tbody><tr><td>History</td><td>Slightly suspicious</td><td>Moderately suspicious</td><td>Highly suspicious</td></tr><tr><td>ECG</td><td>Normal</td><td>Nonspecific repolarization</td><td>Significant ST depression</td></tr><tr><td>Age</td><td>&lt;45</td><td>45–64</td><td>≥65</td></tr><tr><td>Risk factors*</td><td>None</td><td>1–2</td><td>≥3 or known CAD</td></tr><tr><td>Troponin</td><td>≤normal</td><td>1–3× normal</td><td>&gt;3× normal</td></tr></tbody></table></div><p class="uc-note">*HTN, hypercholesterolemia, DM, obesity, smoking, family history. 0–3: low risk (1.7% MACE): consider discharge. 4–6: moderate (16.6%): observe/transfer. 7–10: high (50.1%): urgent transfer.</p>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">6</div>
 <div class="uc-step-body">
 <h4>Disposition</h4>
-<ul><li>Transfer: any ischemic ECG changes, hemodynamic instability, or Deadly Six suspicion.</li><li>Discharge only with a clear benign non-cardiac cause, normal ECG and vitals — strict return precautions, follow-up 24–48h.</li></ul>
+<ul><li>Transfer: any ischemic ECG changes, hemodynamic instability, or Deadly Six suspicion.</li><li>Discharge only with a clear benign non-cardiac cause, normal ECG and vitals: strict return precautions, follow-up 24–48h.</li></ul>
 </div>
 </div>
 </section>
@@ -944,19 +948,19 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>Signs of peritonitis: involuntary guarding, board-like abdomen</li><li>Pulsatile abdominal mass — suspected AAA</li><li>Severe pain disproportionate to exam findings — think ischemia</li><li>Signs of obstruction (vomiting, obstipation, distension), or fever with tenderness</li></ul>
+<ul><li>Signs of peritonitis: involuntary guarding, board-like abdomen</li><li>Pulsatile abdominal mass: suspected AAA</li><li>Severe pain disproportionate to exam findings: think ischemia</li><li>Signs of obstruction (vomiting, obstipation, distension), or fever with tenderness</li></ul>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Triage</h4>
-<ul><li>Check HR, BP, RR, mental status — bypass to ED immediately if unstable.</li><li>Focused history: onset, migration, radiation to groin/testicle (colic), vomiting, fever, bowel/urinary change.</li><li>Exam: inspect for distension, auscultate, percuss for tympany, palpate for tenderness/guarding/rebound.</li></ul>
+<ul><li>Check HR, BP, RR, mental status: bypass to ED immediately if unstable.</li><li>Focused history: onset, migration, radiation to groin/testicle (colic), vomiting, fever, bowel/urinary change.</li><li>Exam: inspect for distension, auscultate, percuss for tympany, palpate for tenderness/guarding/rebound.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
-<h4>Renal colic — specific management</h4>
+<h4>Renal colic: specific management</h4>
 <ul><li>Presentation: sudden severe flank pain radiating to groin, nausea/vomiting, hematuria.</li><li>Diagnostics: dipstick urinalysis, U&amp;E/creatinine.</li><li><b>NSAIDs are first-line</b> for renal colic pain, absent contraindications.</li><li>Hydration: oral fluids if not vomiting; antiemetics + observe otherwise.</li></ul>
 </div>
 </div>
@@ -964,7 +968,7 @@
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>When to refer</h4>
-<ul><li>Failure to control pain or persistent intractable vomiting.</li><li>Evidence of infection/urosepsis, single or obstructed kidney, suspected high-grade obstruction.</li><li>Pregnancy — requires obstetric/specialist consult.</li><li>Any red flag from triage above.</li></ul>
+<ul><li>Failure to control pain or persistent intractable vomiting.</li><li>Evidence of infection/urosepsis, single or obstructed kidney, suspected high-grade obstruction.</li><li>Pregnancy: requires obstetric/specialist consult.</li><li>Any red flag from triage above.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -978,7 +982,7 @@
 <section class="uc-topic" id="asthma-exacerbation-adult" style="--tag-color:#1F5C55">
 <div class="uc-topic-head">
 <span class="uc-cat-pill">Adult Emergency</span>
-<h2 id="asthma-exacerbation-adult-sina">Asthma Exacerbation (Adult) — SINA</h2>
+<h2 id="asthma-exacerbation-adult-sina">Asthma Exacerbation (Adult): SINA</h2>
 <p class="uc-source">Source: SINA 2024 Guidelines</p>
 </div>
 <div class="uc-redflag">
@@ -1010,14 +1014,14 @@
 <div class="uc-step-num">4</div>
 <div class="uc-step-body">
 <h4>Disposition</h4>
-<ul><li>Adequate → discharge with 4-hourly bronchodilator plan, ICS/LABA, inhaler technique review, written action plan, follow-up.</li><li>Partial → continue steroids (oral 1mg/kg or IV hydrocortisone 200mg/day), observe for fatigue; escalate if no improvement by 4h.</li><li>Poor → continue bronchodilators/steroids, ICU consultation for possible admission.</li><li>Every exacerbation is a red flag — review maintenance therapy before the patient leaves. See the <a href="adult-asthma.html" style="color:inherit;font-weight:600">Adult Asthma chronic guide</a>.</li></ul>
+<ul><li>Adequate → discharge with 4-hourly bronchodilator plan, ICS/LABA, inhaler technique review, written action plan, follow-up.</li><li>Partial → continue steroids (oral 1mg/kg or IV hydrocortisone 200mg/day), observe for fatigue; escalate if no improvement by 4h.</li><li>Poor → continue bronchodilators/steroids, ICU consultation for possible admission.</li><li>Every exacerbation is a red flag: review maintenance therapy before the patient leaves. See the <a href="adult-asthma.html" style="color:inherit;font-weight:600">Adult Asthma chronic guide</a>.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">5</div>
 <div class="uc-step-body">
 <h4>GINA 2026 divergences worth knowing</h4>
-<ul><li><b>Oxygen:</b> GINA 2026 revised thresholds <i>down</i> — supplemental O₂ not recommended unless SpO₂ &lt;92%, and if given, the upper target is 95%. The SINA figures above are more liberal; decide locally which your service follows and document it.</li><li><b>SABA:</b> GINA 2026 doses are more conservative than historically, citing over-treatment and SABA toxicity including lactic acidosis — which causes compensatory hyperventilation easily misread as worsening asthma, prompting still more SABA.</li><li><b>Reassess after the first dose</b> rather than writing up multiple back-to-back doses unreviewed.</li><li><b>If anaphylaxis features coexist:</b> give IM epinephrine first, then bronchodilators.</li><li><b>Shake the salbutamol inhaler before every actuation</b> — otherwise a new inhaler can deliver ultra-high doses, a well-used one too little.</li></ul>
+<ul><li><b>Oxygen:</b> GINA 2026 revised thresholds <i>down</i>: supplemental O₂ not recommended unless SpO₂ &lt;92%, and if given, the upper target is 95%. The SINA figures above are more liberal; decide locally which your service follows and document it.</li><li><b>SABA:</b> GINA 2026 doses are more conservative than historically, citing over-treatment and SABA toxicity including lactic acidosis, which causes compensatory hyperventilation easily misread as worsening asthma, prompting still more SABA.</li><li><b>Reassess after the first dose</b> rather than writing up multiple back-to-back doses unreviewed.</li><li><b>If anaphylaxis features coexist:</b> give IM epinephrine first, then bronchodilators.</li><li><b>Shake the salbutamol inhaler before every actuation</b>: otherwise a new inhaler can deliver ultra-high doses, a well-used one too little.</li></ul>
 </div>
 </div>
 </section>
@@ -1029,34 +1033,34 @@
 </div>
 <div class="uc-redflag">
 <div class="uc-redflag-label">🚑 Refer to ER / Activate EMS now if</div>
-<ul><li>Any ONGOING focal neurological deficit → treat as STROKE until proven otherwise</li><li>Persistent deficit, decreased LOC, seizure at onset, thunderclap headache, anticoagulant use</li><li>TIA (fully resolved symptoms) is STILL a medical emergency — needs same-day assessment</li></ul>
+<ul><li>Any ONGOING focal neurological deficit → treat as STROKE until proven otherwise</li><li>Persistent deficit, decreased LOC, seizure at onset, thunderclap headache, anticoagulant use</li><li>TIA (fully resolved symptoms) is STILL a medical emergency: needs same-day assessment</li></ul>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">1</div>
 <div class="uc-step-body">
 <h4>Rapid recognition (0–5 min)</h4>
-<ul><li>Time the onset — Last Known Well (LKW), ask family/witness.</li><li>Screen with FAST/BE-FAST: face, arm, speech, balance, eyes, time.</li><li>ABCs, lateral position if vomiting/reduced consciousness, oxygen only if SpO₂ &lt;94%.</li><li>Capillary glucose immediately; consider mimics — hypo/hyperglycemia, post-ictal Todd's, migraine with aura, Bell's palsy, peripheral vertigo.</li></ul>
+<ul><li>Time the onset: Last Known Well (LKW), ask family/witness.</li><li>Screen with FAST/BE-FAST: face, arm, speech, balance, eyes, time.</li><li>ABCs, lateral position if vomiting/reduced consciousness, oxygen only if SpO₂ &lt;94%.</li><li>Capillary glucose immediately; consider mimics: hypo/hyperglycemia, post-ictal Todd's, migraine with aura, Bell's palsy, peripheral vertigo.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">2</div>
 <div class="uc-step-body">
 <h4>Persistent deficit or unclear recovery</h4>
-<ul><li><b>Activate EMS/stroke code</b> — immediate transfer to stroke-capable ED, never by private car.</li><li>Pre-alert ED: LKW/onset, deficits, glucose, BP, anticoagulant use, baseline function.</li><li>IV thrombolysis window: most time-sensitive within 4.5h from LKW; selected wake-up/4.5–9h patients may qualify after imaging. Thrombectomy up to 24h for selected LVO.</li></ul>
+<ul><li><b>Activate EMS/stroke code</b>: immediate transfer to stroke-capable ED, never by private car.</li><li>Pre-alert ED: LKW/onset, deficits, glucose, BP, anticoagulant use, baseline function.</li><li>IV thrombolysis window: most time-sensitive within 4.5h from LKW; selected wake-up/4.5–9h patients may qualify after imaging. Thrombectomy up to 24h for selected LVO.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">3</div>
 <div class="uc-step-body">
 <h4>Completely resolved symptoms (suspected TIA)</h4>
-<ul><li>Still urgent — same-day stroke/ED assessment, ideally within 24h.</li><li><b>No aspirin in PHC/UCC</b> before imaging excludes hemorrhage.</li><li>Do not use ABCD2 score to delay referral.</li></ul>
+<ul><li>Still urgent: same-day stroke/ED assessment, ideally within 24h.</li><li><b>No aspirin in PHC/UCC</b> before imaging excludes hemorrhage.</li><li>Do not use ABCD2 score to delay referral.</li></ul>
 </div>
 </div>
 <div class="uc-step">
 <div class="uc-step-num">4</div>
 <div class="uc-step-body">
 <h4>While awaiting EMS</h4>
-<ul><li>Keep NPO, support airway, lateral position if reduced consciousness/vomiting.</li><li>Do NOT rapidly lower BP unless hypertensive emergency/dissection/ACS — thrombolysis-candidate target &lt;185/110.</li><li><b>No antithrombotics, no oral intake, no IM injections/sedatives</b> before imaging.</li><li>Fluctuating or partially-recovering deficits can still be stroke — don't be falsely reassured.</li></ul>
+<ul><li>Keep NPO, support airway, lateral position if reduced consciousness/vomiting.</li><li>Do NOT rapidly lower BP unless hypertensive emergency/dissection/ACS: thrombolysis-candidate target &lt;185/110.</li><li><b>No antithrombotics, no oral intake, no IM injections/sedatives</b> before imaging.</li><li>Fluctuating or partially-recovering deficits can still be stroke: don't be falsely reassured.</li></ul>
 </div>
 </div>
 <div class="uc-step">
@@ -1071,8 +1075,8 @@
 </section>
 <footer>
 <div class="wrap">
-<p>Built by a family physician for the family medicine community — free to use, share, and study from.</p>
-<p class="mono">Point-of-care reference only — always follow local protocol and clinical judgment.</p>
+<p>Built by a family physician for the family medicine community: free to use, share, and study from.</p>
+<p class="mono">Point-of-care reference only: always follow local protocol and clinical judgment.</p>
 </div>
 {% include "credit.html" %}
 </footer>

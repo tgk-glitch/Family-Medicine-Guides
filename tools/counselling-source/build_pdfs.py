@@ -68,7 +68,7 @@ th,td{padding:1.8mm 2.2mm;}
 .card{padding:4.5mm 5mm;}
 li{margin-bottom:1.8mm;}
 .write{height:7.5mm;}
-.diary td{height:7.8mm;}
+.diary td{height:7.5mm;}
 .foot{font-size:7.5pt;}
 '''
 def doc(lang, body, extra=''):

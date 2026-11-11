@@ -19,13 +19,13 @@ ICON = ('<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="cur
         '<path d="M19 9h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1v3l-3.5-3H12" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 TITLE = 'Counselling &amp; Communication'
-BLURB = 'The consultation is the treatment — behaviour change, difficult news and shared decisions.'
+BLURB = 'The consultation is the treatment: behaviour change, difficult news and shared decisions.'
 LIVE = [  # (href, title, sub)
     ('counselling.html', 'Counselling in family medicine', 'foundations · bilingual EN / ع'),
     ('counselling.html#stages', 'Stages of change &amp; the 5 A’s', 'readiness ruler · strategy chooser'),
     ('counselling.html#frames', 'Brief interventions (FRAMES)', 'alcohol · substances · lifestyle'),
     ('counselling.html#mi', 'Motivational interviewing', 'OARS · change talk · rolling with resistance'),
-    ('counselling.html#bathe', 'BATHE — the 15-minute psychotherapy', 'psychosocial check in any visit'),
+    ('counselling.html#bathe', 'BATHE: the 15-minute psychotherapy', 'psychosocial check in any visit'),
     ('counselling.html#smoking', 'Smoking cessation', 'incl. shisha &amp; medwakh · HSI · Sehhaty clinics'),
 ]
 PLANNED = [

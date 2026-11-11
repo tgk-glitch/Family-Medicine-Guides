@@ -70,8 +70,8 @@ TOOLS = {
 <div class="cs-result" id="hsiResult" aria-live="polite"></div>
 </div>''' % (
     bi_inline('Interactive', 'تفاعلي'), bi_inline('Heaviness of Smoking Index (HSI)', 'مؤشر شدة التدخين (HSI)'),
-    bi_inline('Two questions from the Fagerström test. Score 0–6. Validated for cigarettes — not for shisha, medwakh or e-cigarettes.',
-              'سؤالان من اختبار فاغرستروم. الدرجة من 0 إلى 6. مُتحقَّق منه للسجائر — لا للشيشة أو المدواخ أو السجائر الإلكترونية.'),
+    bi_inline('Two questions from the Fagerström test. Score 0–6. Validated for cigarettes, not for shisha, medwakh or e-cigarettes.',
+              'سؤالان من اختبار فاغرستروم. الدرجة من 0 إلى 6. مُتحقَّق منه للسجائر: لا للشيشة أو المدواخ أو السجائر الإلكترونية.'),
     bi_inline('Time to first cigarette after waking', 'الوقت حتى أول سيجارة بعد الاستيقاظ'),
     bi_inline('Cigarettes per day', 'عدد السجائر في اليوم')),
 }
@@ -133,9 +133,9 @@ def build_entries():
                         snippet=s['sub_en'], snippetAr=s['sub_ar'], body=sec_text_en, bodyAr=sec_text_ar))
         for b in s['blocks']:
             if b['kind'] == 'tool':
-                tool_text = {'tool-chooser': ('Strategy chooser — stage of change and which counselling strategy to lead with', 'أداة اختيار الاستراتيجية — مرحلة التغيير وأي استراتيجية إرشاد تبدأ بها'),
-                             'tool-ruler': ('Readiness ruler — importance and confidence 0–10, motivational interviewing follow-up questions', 'مسطرة الاستعداد — الأهمية والثقة من 0 إلى 10 وأسئلة المتابعة في المقابلة التحفيزية'),
-                             'tool-hsi': ('Heaviness of Smoking Index — nicotine dependence score and NRT patch strength', 'مؤشر شدة التدخين — درجة الاعتماد على النيكوتين وقوة لصقة بدائل النيكوتين')}[b['id']]
+                tool_text = {'tool-chooser': ('Strategy chooser (stage of change and which counselling strategy to lead with', 'أداة اختيار الاستراتيجية) مرحلة التغيير وأي استراتيجية إرشاد تبدأ بها'),
+                             'tool-ruler': ('Readiness ruler (importance and confidence 0–10, motivational interviewing follow-up questions', 'مسطرة الاستعداد) الأهمية والثقة من 0 إلى 10 وأسئلة المتابعة في المقابلة التحفيزية'),
+                             'tool-hsi': ('Heaviness of Smoking Index (nicotine dependence score and NRT patch strength', 'مؤشر شدة التدخين) درجة الاعتماد على النيكوتين وقوة لصقة بدائل النيكوتين')}[b['id']]
                 raw.append(dict(id=b['id'], heading=b['t_en'] + ' · ' + s['h_en'], headingAr=b['t_ar'] + ' · ' + s['h_ar'],
                                 snippet=tool_text[0], snippetAr=tool_text[1], body='', bodyAr=''))
                 continue
@@ -194,7 +194,7 @@ def downloads():
     ]
     links = ''.join('<a class="cs-dl" href="%s" download>%s</a>' % (h, bi_inline('⤓ ' + en, '⤓ ' + ar)) for h, en, ar in items)
     return '<div class="cs-downloads"><p class="cs-dl-label">%s</p><div class="cs-dl-row">%s</div></div>' % (
-        bi_inline('Printable — two-page clinician quick reference and a patient leaflet to hand over', 'للطباعة — مرجع سريع للطبيب من صفحتين ونشرة لتسليمها للمريض'), links)
+        bi_inline('Printable (two-page clinician quick reference and a patient leaflet to hand over', 'للطباعة) مرجع سريع للطبيب من صفحتين ونشرة لتسليمها للمريض'), links)
 
 def page():
     chips = ''.join('<a class="%s-chip" href="#%s">%s</a>' % (P, s['id'], bi_inline(s['h_en'] if s['id'] != 'smoking' else 'Tobacco cessation',
@@ -213,17 +213,17 @@ def page():
 %s
 </div></section>''' % (
         bi_inline('Counselling · primary care', 'الإرشاد · الرعاية الأولية'),
-        bi_inline('Counselling is a clinical skill — and it fits in ten minutes', 'الإرشاد مهارة سريرية — وتتسع لها عشر دقائق'),
-        bi_block('<p>Family physicians counsel all day: on smoking, weight, adherence, grief, stress. This guide sets out the five evidence-based strategies built for primary care — <b>stages of change, the Five A’s, FRAMES, motivational interviewing and BATHE</b> — what each assumes, when it fits, and what the evidence actually shows. The last part applies all of them to the conversation with the highest yield in Saudi practice: <b>stopping tobacco</b>.</p><p>Each part follows the same skeleton: <b>at a glance → how it works → evidence → traps → what to say → local context.</b></p>',
-                 '<p>يُرشد طبيب الأسرة مرضاه طوال اليوم: في التدخين والوزن والالتزام بالعلاج والحزن والضغوط. يعرض هذا الدليل الاستراتيجيات الخمس المبنية على الدليل والمصممة للرعاية الأولية — <b>مراحل التغيير، والخطوات الخمس، وFRAMES، والمقابلة التحفيزية، وBATHE</b> — وما يفترضه كلٌّ منها، ومتى يناسب، وما يقوله الدليل فعلًا. ويطبّقها الجزء الأخير جميعًا على الحوار الأعلى مردودًا في الممارسة السعودية: <b>الإقلاع عن التبغ</b>.</p><p>يتبع كل جزء الهيكل نفسه: <b>لمحة سريعة ← كيف يعمل ← الدليل ← الأخطاء ← ماذا تقول ← السياق المحلي.</b></p>'),
+        bi_inline('Counselling is a clinical skill (and it fits in ten minutes', 'الإرشاد مهارة سريرية) وتتسع لها عشر دقائق'),
+        bi_block('<p>Family physicians counsel all day: on smoking, weight, adherence, grief, stress. This guide sets out the five evidence-based strategies built for primary care: <b>stages of change, the Five A’s, FRAMES, motivational interviewing and BATHE</b>: what each assumes, when it fits, and what the evidence actually shows. The last part applies all of them to the conversation with the highest yield in Saudi practice: <b>stopping tobacco</b>.</p><p>Each part follows the same skeleton: <b>at a glance → how it works → evidence → traps → what to say → local context.</b></p>',
+                 '<p>يُرشد طبيب الأسرة مرضاه طوال اليوم: في التدخين والوزن والالتزام بالعلاج والحزن والضغوط. يعرض هذا الدليل الاستراتيجيات الخمس المبنية على الدليل والمصممة للرعاية الأولية: <b>مراحل التغيير، والخطوات الخمس، وFRAMES، والمقابلة التحفيزية، وBATHE</b>: وما يفترضه كلٌّ منها، ومتى يناسب، وما يقوله الدليل فعلًا. ويطبّقها الجزء الأخير جميعًا على الحوار الأعلى مردودًا في الممارسة السعودية: <b>الإقلاع عن التبغ</b>.</p><p>يتبع كل جزء الهيكل نفسه: <b>لمحة سريعة ← كيف يعمل ← الدليل ← الأخطاء ← ماذا تقول ← السياق المحلي.</b></p>'),
         downloads())
     return '''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Counselling — Family Medicine Guides</title>
-<meta content="Counselling in family medicine: stages of change, the Five A's, FRAMES, motivational interviewing and BATHE — with a strategy chooser, readiness ruler and tobacco-cessation guide for Saudi practice. English and Arabic." name="description"/>
+<title>Counselling | Family Medicine Guides</title>
+<meta content="Counselling in family medicine: stages of change, the Five A's, FRAMES, motivational interviewing and BATHE | with a strategy chooser, readiness ruler and tobacco-cessation guide for Saudi practice. English and Arabic." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -248,8 +248,8 @@ def page():
 </body>
 </html>
 ''' % (CSS, I18N_CSS, nav_block(), hero, chips, secs, sources,
-       bi_block('<p>Built by a family physician for the family medicine community — free to use, share, and study from.</p><p>Developed from the AAFP review by Searight (2018) and the guidelines listed above.</p><p class="mono">Educational summary for clinicians. Verify medicine doses and service details against current local guidance and the SFDA formulary. The Arabic text is a draft awaiting native clinical review.</p>',
-                '<p>أعدّه طبيب أسرة لمجتمع طب الأسرة — للاستخدام والمشاركة والمذاكرة مجانًا.</p><p>بُني على مراجعة Searight في AAFP (2018) والإرشادات المذكورة أعلاه.</p><p class="mono">ملخص تعليمي للأطباء. تحقّق من جرعات الأدوية وتفاصيل الخدمات وفق الإرشادات المحلية الحالية ودليل الأدوية لدى هيئة الغذاء والدواء. النص العربي مسودة بانتظار مراجعة سريرية من متحدث أصلي.</p>'),
+       bi_block('<p>Built by a family physician for the family medicine community: free to use, share, and study from.</p><p>Developed from the AAFP review by Searight (2018) and the guidelines listed above.</p><p class="mono">Educational summary for clinicians. Verify medicine doses and service details against current local guidance and the SFDA formulary. The Arabic text is a draft awaiting native clinical review.</p>',
+                '<p>أعدّه طبيب أسرة لمجتمع طب الأسرة: للاستخدام والمشاركة والمذاكرة مجانًا.</p><p>بُني على مراجعة Searight في AAFP (2018) والإرشادات المذكورة أعلاه.</p><p class="mono">ملخص تعليمي للأطباء. تحقّق من جرعات الأدوية وتفاصيل الخدمات وفق الإرشادات المحلية الحالية ودليل الأدوية لدى هيئة الغذاء والدواء. النص العربي مسودة بانتظار مراجعة سريرية من متحدث أصلي.</p>'),
        TOOLS_JS, I18N_JS)
 
 if __name__ == '__main__':

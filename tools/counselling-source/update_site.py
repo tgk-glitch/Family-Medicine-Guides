@@ -18,10 +18,10 @@ a = idx.find('<!-- FMG-NAV:START -->'); b = idx.find('<!-- FMG-NAV:END -->') + l
 nav = idx[a:b]
 
 if 'counselling.html' not in nav:
-    # 1. live panel — after Mental Health row
+    # 1. live panel: after Mental Health row
     mh = row('mental-health.html', 'Mental Health', 'PHQ-9 · GAD-7 · ISI', '#5C4A8A')
     nav = once(nav, mh, mh + '\n' + row('counselling.html', 'Counselling', '5A’s · FRAMES · MI · BATHE · bilingual'), 'live mental row')
-    # 2. mental category panel — add before its Planned label
+    # 2. mental category panel: add before its Planned label
     i = nav.find('data-panel="cat-mental"'); j = nav.find('<div class="fmg-menu-section-label">Planned</div>', i)
     nav = nav[:j] + row('counselling.html', 'Counselling in family medicine', 'stages of change · MI · BATHE · strategy chooser') + '\n' + nav[j:]
     # 3. respiratory: smoking cessation planned -> live

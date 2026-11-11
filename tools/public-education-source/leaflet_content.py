@@ -1,4 +1,4 @@
-"""Patient leaflet content — three pilots, English and Arabic.
+"""Patient leaflet content: three pilots, English and Arabic.
 
 Each leaflet is a list of blocks. Block types:
   ('key', title, [items])          key-messages box at the top
@@ -31,7 +31,7 @@ LEAFLETS.append(dict(
     guide="categories.html#cat-heme",
     title_en="Low iron and anaemia",
     title_ar="نقص الحديد وفقر الدم",
-    sub_en="How to take your iron tablets so they work — and when to get help",
+    sub_en="How to take your iron tablets so they work, and when to get help",
     sub_ar="كيف تأخذ حبوب الحديد لتستفيد منها، ومتى تطلب المساعدة",
     card_en="Taking iron tablets well, iron-rich food, how long treatment lasts, and warning signs.",
     card_ar="طريقة أخذ حبوب الحديد، الأطعمة الغنية بالحديد، مدة العلاج، وعلامات الخطر.",
@@ -47,7 +47,7 @@ LEAFLETS.append(dict(
             "Keep <b>tea, coffee, milk and antacids</b> at least 2 hours away from your iron.",
             "Black or dark green stool is <b>normal</b> on iron.",
             "Keep taking iron for about <b>3 months after</b> your blood count is normal.",
-            "Keep iron tablets <b>away from children</b> — an overdose is dangerous.",
+            "Keep iron tablets <b>away from children</b>: an overdose is dangerous.",
         ]),
         ('h', "What is iron deficiency anaemia?"),
         ('p', "Your body uses iron to make haemoglobin, the part of the blood that carries oxygen. "
@@ -70,11 +70,11 @@ LEAFLETS.append(dict(
         ]),
         ('h', "How do I take my iron tablets?"),
         ('ul', [
-            "Take them as your doctor prescribed — <b>once a day or every other day</b>. Every other day works well for many people and is often easier on the stomach.",
+            "Take them as your doctor prescribed: <b>once a day or every other day</b>. Every other day works well for many people and is often easier on the stomach.",
             "Take them <b>1 hour before a meal</b>, with water or orange juice. Vitamin C helps your body take in iron.",
             "If they upset your stomach, take them with a small meal. Taking them with food is better than stopping.",
             "Leave <b>2 hours</b> between your iron and tea, coffee (including Arabic coffee), milk, calcium tablets, or antacids.",
-            "Constipation? Drink more water and eat more fibre. Tell your doctor if it continues — another type of iron may suit you better.",
+            "Constipation? Drink more water and eat more fibre. Tell your doctor if it continues: another type of iron may suit you better.",
         ]),
         ('break',),
         ('h', "How long will I take iron?"),
@@ -90,9 +90,9 @@ LEAFLETS.append(dict(
             ["Fish and seafood", "Fortified breakfast cereals"],
             ["", "Dates, raisins and dried apricots (a little)"],
         ]),
-        ('p', "Eat plant iron with vitamin C — lemon, orange, tomato or peppers. "
+        ('p', "Eat plant iron with vitamin C: lemon, orange, tomato or peppers. "
               "Food alone usually cannot fix anaemia. You still need the tablets."),
-        ('help', "Get help now — call 997 or go to the emergency department if you have:", [
+        ('help', "Get help now; call 997 or go to the emergency department if you have:", [
             "Chest pain, severe shortness of breath, or fainting.",
             "Vomiting blood.",
             "Black, sticky, tar-like stool with dizziness. (Stool from iron is dark but formed, and you feel well.)",
@@ -195,7 +195,7 @@ LEAFLETS.append(dict(
     sources=[
         "IDF-DAR Practical Guidelines: Diabetes and Ramadan. International Diabetes Federation & DAR International Alliance, 2021",
         "Afandi B, et al. The 2026 update of the IDF-DAR risk calculator for fasting in people with diabetes. J Diabetes Endocr Pract 2026;9(1)",
-        "American Diabetes Association. Standards of Care in Diabetes — 2026, Section 5 (Rec 5.32 and Table 5.3, pre-fasting risk assessment) and Section 6 (hypoglycemia). Diabetes Care 2026;49(Suppl 1)",
+        "American Diabetes Association. Standards of Care in Diabetes: 2026, Section 5 (Rec 5.32 and Table 5.3, pre-fasting risk assessment) and Section 6 (hypoglycemia). Diabetes Care 2026;49(Suppl 1)",
         "Johns Hopkins Aramco Healthcare. Managing diabetes during fasting in Ramadan (patient guidance)",
     ],
     en=[
@@ -216,7 +216,7 @@ LEAFLETS.append(dict(
         ('h', "How do I check my sugar while fasting?"),
         ('ul', [
             "A finger-prick test or a glucose sensor <b>does not break the fast</b>.",
-            "Check more often than usual — your doctor will tell you how often.",
+            "Check more often than usual: your doctor will tell you how often.",
             "Good times to check: before suhoor, mid-morning, midday, mid-afternoon, before iftar, 2 hours after iftar.",
             "Check <b>any time</b> you feel shaky, sweaty, confused, or unwell.",
         ]),
@@ -245,12 +245,12 @@ LEAFLETS.append(dict(
         ]),
         ('h', "What about my medicines?"),
         ('ul', [
-            "Some medicines need a <b>new dose or time</b> in Ramadan — especially insulin and tablets such as gliclazide or glimepiride.",
+            "Some medicines need a <b>new dose or time</b> in Ramadan, especially insulin and tablets such as gliclazide or glimepiride.",
             "Some tablets, such as dapagliflozin or empagliflozin, need extra care with fluids.",
             "If you have type 1 diabetes, <b>never stop insulin</b>.",
             "After Ramadan, go back to your usual doses as your doctor advised. Take care with Eid sweets.",
         ]),
-        ('help', "Get help now — call 997 or go to the emergency department if:", [
+        ('help', "Get help now; call 997 or go to the emergency department if:", [
             "Your sugar stays below 70 after two treatments, or you become confused or very drowsy.",
             "You vomit and cannot keep fluids down.",
             "High sugar comes with tummy pain, vomiting, or fast deep breathing.",
