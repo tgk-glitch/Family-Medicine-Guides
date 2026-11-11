@@ -524,16 +524,16 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 <div class="knum six-c"><div class="n">2</div><div class="l">treatment tracks (AIR/MART vs ICS+SABA)</div></div>
 </div>
 <div class="subhead"><span class="bar"></span>The wheezing-phenotype trap (both bands, but critical under 5)</div>
-<div class="callout trap">
+{% if site.showExamBlocks %}<div class="callout trap">
 <span class="ic">⚠️</span>
 <h4>Trap · Don't anchor on "viral-induced" vs "multiple-trigger" wheeze</h4>
 <p>Older teaching sorted preschool wheeze into tidy phenotypes (episodic viral wheeze vs multiple-trigger wheeze; transient vs persistent vs late-onset). GINA 2026 explicitly downgrades these: they have <b>poor predictive value</b>, overlap with non-asthma conditions, and some can only be applied <i>retrospectively</i>. Use them to describe, never to decide. The clinical job is to diagnose <b>this individual child</b> using the criteria, not to file them into a phenotype box.</p>
-</div>
-<div class="examq" data-q="1">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="examq" data-q="1">
 <div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 9-month-old has their <i>first-ever</i> episode of wheeze during a URTI, with crackles on auscultation. What is the single most likely diagnosis, and does this meet criteria for asthma?</span></div>
 <button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
 <div class="ans"><div class="ans-inner"><b>Bronchiolitis</b>: not asthma. A first wheeze under 12 months, especially with crackles, is bronchiolitis until proven otherwise. It fails asthma criteria on two counts: it is a single (not recurrent) episode, and crackles point to an alternative cause. GINA's rule of thumb: <b>the younger the child, the higher the probability of an alternative diagnosis.</b></div></div>
-</div>
+</div>{% endif %}
 </div>
 </section>
 <!-- ============ 2. ASSESSMENT ============ -->
@@ -576,16 +576,16 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 </div>
 </div>
 </div>
-<div class="callout hy">
+{% if site.showExamBlocks %}<div class="callout hy">
 <span class="ic">⚡</span>
 <h4>High-Yield · The single most specific sign in the young child</h4>
 <p><b>Audible wheeze, heard without a stethoscope, that recurs, and occurs during sleep or with activity/laughing/crying: is the most specific asthma sign in ≤5s.</b> But it must be <i>confirmed</i> at least once: directly by a clinician, via a video/audio recording, or by a caregiver who has proven they can tell wheeze from other noisy breathing.</p>
-</div>
-<div class="callout trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="callout trap">
 <span class="ic">⚠️</span>
 <h4>Trap · "Wheeze" is a loaded word</h4>
 <p>Caregivers use "wheeze" for <i>any</i> noisy breathing (nasal congestion, throat clearing, stridor (upper airway), or bronchial secretions (lower airway)) none of which is true bronchoconstriction. Never take reported "wheeze" at face value in a young child. Confirm it, or your diagnosis is built on sand.</p>
-</div>
+</div>{% endif %}
 </div>
 </section>
 <!-- ============ 3. EXAMINATION ============ -->
@@ -622,11 +622,11 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 <h4>Going Further · Red-flag exam findings that mean "not just asthma" (≤5y referral list, Box 10-5)</h4>
 <p>Any of these in a young child points to an <b>alternative diagnosis</b> and warrants investigation/referral: failure to thrive · neonatal or very-early onset (especially with failure to thrive) · vomiting with respiratory symptoms · <b>continuous wheeze, recurrent stridor, or a seal-like barking cough</b> (airway malacia) · no response to asthma meds · symptoms with no link to typical triggers like viral URTI · focal lung or cardiovascular signs, or finger clubbing · <b>hypoxemia (&lt;95%) when awake, outside an exacerbation.</b></p>
 </div>
-<div class="callout hy">
+{% if site.showExamBlocks %}<div class="callout hy">
 <span class="ic">⚡</span>
 <h4>High-Yield · A quiet chest is the loudest sign</h4>
 <p>During an acute episode, a <b>silent chest</b> is not reassurance: it means airflow is too low to generate a wheeze. Paired with agitation, drowsiness, or confusion (signs of cerebral hypoxemia), it is a life-threatening emergency in either band.</p>
-</div>
+</div>{% endif %}
 </div>
 </section>
 <!-- ============ 4. DIAGNOSIS ============ -->
@@ -664,21 +664,21 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 </div>
 </div>
 </div>
-<div class="callout trap">
+{% if site.showExamBlocks %}<div class="callout trap">
 <span class="ic">⚠️</span>
 <h4>Trap · Normal spirometry does NOT exclude asthma (6–11y)</h4>
 <p>Lung function is <b>variable by definition</b>: it can be completely normal between episodes. If suspicion is high and the first test is normal, repeat during symptoms, withhold bronchodilator first (SABA ≥4 h; long-acting 24–48 h), or move to challenge testing. One normal FEV₁ is not an acquittal.</p>
-</div>
-<div class="callout hy">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="callout hy">
 <span class="ic">⚡</span>
 <h4>High-Yield · The reversibility number differs by age</h4>
 <p><b>Children (6–11y): FEV₁ ≥12% predicted</b> defines a positive bronchodilator response: note it's "% predicted," and there is no absolute-mL requirement as in adults (where it's ≥12% <i>and</i> ≥200 mL). This is a classic exam discriminator.</p>
-</div>
-<div class="examq" data-q="2">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="examq" data-q="2">
 <div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 3-year-old has had two clinician-confirmed wheezing episodes this year and coughs at night between colds, but you cannot yet document a treatment response. What do you record, and what's the next step?</span></div>
 <button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
 <div class="ans"><div class="ans-inner">Record <b>"suspected asthma."</b> Criteria ① (recurrent episodes + interval symptoms) and ② (no alternative cause) are met, but ③ (documented treatment response) is not yet fulfilled. Next step: a <b>2–3 month trial of daily low-dose ICS + as-needed SABA</b>, ideally timed to the child's symptomatic season, then reassess. A convincing response confirms asthma; then <b>reduce ICS to the minimum effective dose.</b></div></div>
-</div>
+</div>{% endif %}
 <div class="subhead six-c"><span class="bar"></span>Tests that assist (mostly 6–11, limited use ≤5)</div>
 <div class="ddx-grid">
 <div class="ddx"><div class="clue">≥6 years, coached, visual incentives</div><div class="dx">Spirometry</div><div style="font-size:13px;color:var(--ink-soft);margin-top:6px">The workhorse for 6–11. Most ≤5s can't do reproducible maneuvers.</div></div>
@@ -710,11 +710,11 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 <div class="ddx"><div class="clue">Noisy breathing, feeding difficulties</div><div class="dx">Vascular ring</div></div>
 <div class="ddx"><div class="clue">Recurrent fever &amp; infections (incl. non-respiratory)</div><div class="dx">Primary immunodeficiency</div></div>
 </div>
-<div class="callout hy">
+{% if site.showExamBlocks %}<div class="callout hy">
 <span class="ic">⚡</span>
 <h4>High-Yield · Three pattern-recognition shortcuts</h4>
 <p><b>Sudden + unilateral wheeze → foreign body.</b> <b>Wet/productive cough as the only symptom → not asthma</b> (think PBB, CF, suppurative disease). <b>First wheeze &lt;12 months → bronchiolitis.</b> These three patterns defuse the most common "asthma" misdiagnoses on exams and in clinic.</p>
-</div>
+</div>{% endif %}
 <div class="callout analogy">
 <span class="ic">🔗</span>
 <h4>Analogy · Asthma is a diagnosis of pattern, not a single snapshot</h4>
@@ -762,11 +762,11 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 </div>
 </div>
 </div>
-<div class="callout trap">
+{% if site.showExamBlocks %}<div class="callout trap">
 <span class="ic">⚠️</span>
 <h4>Trap · The "SABA more than twice a week" line excludes pre-exercise dosing</h4>
 <p>When you count reliever use for control, <b>don't count a puff taken before sport</b>: that's prophylaxis, not rescue. And before ever stepping treatment up, confirm the symptoms are truly asthma, and that <b>inhaler technique and adherence are adequate</b>: the two commonest reasons for apparent "uncontrolled" asthma.</p>
-</div>
+</div>{% endif %}
 <div class="callout further">
 <span class="ic">🔎</span>
 <h4>Going Further · Future-risk factors (assessed even when symptoms look controlled)</h4>
@@ -877,11 +877,11 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 </div>
 </div>
 </div>
-<div class="callout hy">
+{% if site.showExamBlocks %}<div class="callout hy">
 <span class="ic">⚡</span>
 <h4>High-Yield · The one-line summary of the whole ladder</h4>
 <p><b>6–11:</b> anti-inflammatory reliever (ICS-formoterol) is now the preferred backbone, and MART runs Steps 3–5. <b>≤5:</b> plain <b>daily low-dose ICS is the preferred controller</b>, there is <b>no MART</b>, and the ladder is short: Step 3 is literally "double the low dose," Step 4 is "refer." Whenever control fails in either band, the first move is <b>not</b> escalation: it's checking <b>technique, adherence, diagnosis, and triggers.</b></p>
-</div>
+</div>{% endif %}
 <div class="subhead"><span class="bar"></span>ICS dosing: what "low dose" actually means (metered mcg/day)</div>
 <div class="sev-table" style="margin-bottom:6px">
 <table class="grid">
@@ -904,16 +904,16 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 </table>
 </div>
 <p style="font-size:12.5px;color:var(--ink-soft);font-style:italic">Not a table of potency equivalence. Switching between molecules at the "same" dose band can change potency: monitor stability after any change. In children, <b>a pMDI should always be used with a spacer.</b></p>
-<div class="callout trap">
+{% if site.showExamBlocks %}<div class="callout trap">
 <span class="ic">⚠️</span>
 <h4>Trap · "Low dose" is not interchangeable between drugs</h4>
 <p>These bands look tidy, but they do <b>not</b> imply equal potency. Swapping a child from "low-dose" drug A to "low-dose" drug B may quietly raise or lower their effective steroid exposure: destabilizing control or adding side-effect risk. Change one variable at a time and reassess.</p>
-</div>
-<div class="examq" data-q="3">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="examq" data-q="3">
 <div class="qhead"><span class="qbadge">Exam Q</span><span class="q">An 8-year-old on daily low-dose ICS still wakes twice weekly with cough and uses his reliever most days. Technique and adherence are confirmed good. What is the single preferred next step?</span></div>
 <button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
 <div class="ans"><div class="ans-inner">Step up to <b>low-dose ICS-formoterol MART</b> (Step 3 preferred): the same inhaler for daily maintenance <i>and</i> as-needed relief. Alternatives are low-dose ICS-LABA or medium-dose ICS with a PRN reliever. The stem deliberately pre-confirms technique and adherence so that escalation is the correct answer rather than the usual "recheck the basics first."</div></div>
-</div>
+</div>{% endif %}
 <div class="callout further">
 <span class="ic">🔎</span>
 <h4>Going Further · The montelukast (LTRA) counseling point</h4>
@@ -929,11 +929,11 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 <h2 id="the-exacerbation-grade-it-treat-it-know-when-to-transfer">The exacerbation: grade it, treat it, know when to transfer</h2>
 <p class="lead">Assess severity <b>while</b> you start treatment: never sequentially. GINA recommends a validated score; <b>PRAM</b> (Pediatric Respiratory Assessment Measure, validated ages 2–17) is the flagship. The severity <i>thresholds</i> differ by band: most importantly the respiratory-rate cut-off.</p>
 </div>
-<div class="callout hy">
+{% if site.showExamBlocks %}<div class="callout hy">
 <span class="ic">⚡</span>
 <h4>High-Yield · The age-specific vital-sign cut-offs</h4>
 <p>In <b>≤5 years</b>, the severe/transfer respiratory-rate flag is <b>&gt;40/min</b> (normal is &lt;40 in 1–5y; &lt;50 in infants 2–12 months). In the older/adult framework it's &gt;30/min. The <b>SpO₂ &lt;92% on room air</b> threshold is shared and is a hospital-transfer trigger in the young child. Remember pulse oximetry can <b>overestimate</b> saturation in children with dark skin.</p>
-</div>
+</div>{% endif %}
 <!-- Interactive PRAM -->
 <div class="subhead six-c"><span class="bar"></span>Interactive · Score the PRAM</div>
 <p style="font-size:14px;color:var(--ink-soft);margin-bottom:16px;max-width:70ch">Tap one option per row. The score, severity band, and the matching first-hour action update live. (PRAM ranges: 0–3 mild · 4–7 moderate · 8–12 severe.)</p>
@@ -1048,21 +1048,21 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 </div>
 </div>
 </div>
-<div class="callout trap">
+{% if site.showExamBlocks %}<div class="callout trap">
 <span class="ic">⚠️</span>
 <h4>Trap · Two "who does what" errors in the young child</h4>
 <p><b>(1)</b> GINA does <b>not</b> recommend caregiver-<i>initiated</i> oral corticosteroids at home for ≤5s: the evidence is weak and cumulative-OCS harm is real. <b>(2)</b> Seek same-day medical care if the child needs SABA <b>&lt;4-hourly</b> or on <b>&gt;3 occasions in 12 hours</b>, and urgent care if a single set of 4 puffs doesn't hold. These "seek care" triggers are frequently tested.</p>
-</div>
+</div>{% endif %}
 <div class="callout further">
 <span class="ic">🔎</span>
 <h4>Going Further · Immediate hospital-transfer criteria (≤5y, Box 12-3)</h4>
 <p><b>Transfer now</b> if any of: cyanosis · unable to speak or drink · <b>RR &gt;40/min</b> · <b>SpO₂ &lt;92%</b> on room air · quiet chest when dyspneic: <i>or</i> failure to respond to 4–6 salbutamol puffs given as separate puffs every 20 min ×3 over 1 hour, or persisting tachypnea despite three SABA sets. Add a low threshold for children <b>&lt;2 years</b> (dehydration + respiratory fatigue risk) and those with prior life-threatening episodes. Keep giving SABA, O₂, and start systemic steroids <b>during</b> transfer.</p>
 </div>
-<div class="examq" data-q="4">
+{% if site.showExamBlocks %}<div class="examq" data-q="4">
 <div class="qhead"><span class="qbadge">Exam Q</span><span class="q">A 4-year-old in the ED has SpO₂ 90%, RR 46, scalene retractions, and inspiratory + expiratory wheeze. Beyond oxygen and repeated salbutamol, name the two additional first-line drugs and one dosing caveat.</span></div>
 <button class="reveal-btn" onclick="tog(this)">▸ Reveal answer</button>
 <div class="ans"><div class="ans-inner">This is a <b>severe</b> exacerbation (SpO₂ &lt;92%, RR &gt;40). Add <b>ipratropium bromide</b> (4 puffs / 0.25 mg neb with each SABA set, up to 3×) and a <b>systemic corticosteroid</b>: prednisolone 1–2 mg/kg. <b>Caveat:</b> the OCS ceiling is age-banded: <b>max 30 mg for a 2–5-year-old</b> (20 mg if &lt;2y). Consider IV magnesium sulfate (≥2y) if severe/refractory, and arrange hospital transfer.</div></div>
-</div>
+</div>{% endif %}
 </div>
 </section>
 <!-- ============ 9. FOLLOW-UP ============ -->
@@ -1092,11 +1092,11 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 </div>
 </div>
 </div>
-<div class="callout hy">
+{% if site.showExamBlocks %}<div class="callout hy">
 <span class="ic">⚡</span>
 <h4>High-Yield · Before every step-up, run the four-item checklist</h4>
 <p><b>Diagnosis · Technique · Adherence · Triggers.</b> GINA repeats this at every escalation point in both bands. Most "treatment failure" is one of these four, not an inadequate drug. Step up the medication only after these are confirmed.</p>
-</div>
+</div>{% endif %}
 <div class="callout analogy">
 <span class="ic">🔗</span>
 <h4>Analogy · Controller dosing is a thermostat, not a light switch</h4>
@@ -1356,11 +1356,11 @@ footer .disc{font-style:italic;opacity:.8;max-width:66ch;margin:0 auto}
 <div class="knum six-c"><div class="n">&gt;35</div><div class="l">FeNO ppb supports Type-2 (children)</div></div>
 <div class="knum six-c"><div class="n">&gt;13%</div><div class="l">diurnal PEF variability (children)</div></div>
 </div>
-<div class="callout hy" style="margin-top:26px">
+{% if site.showExamBlocks %}<div class="callout hy" style="margin-top:26px">
 <span class="ic">⚡</span>
 <h4>High-Yield · If you remember only five things</h4>
 <p><b>1.</b> ≤5 = clinical diagnosis, 3 criteria, all required. <b>2.</b> 6–11 = objective variable airflow, reversibility FEV₁ ≥12% predicted. <b>3.</b> Preferred controller: low-dose ICS (≤5) vs ICS-formoterol AIR/MART (6–11); <b>no MART under 5.</b> <b>4.</b> Acute severe RR flag is <b>&gt;40 (≤5)</b> vs &gt;30 (older); SpO₂ &lt;92% transfers. <b>5.</b> Before any step-up: diagnosis, technique, adherence, triggers.</p>
-</div>
+</div>{% endif %}
 </div>
 </section>
 <section id="cact-sina" style="max-width:920px;margin:0 auto;padding:0 22px 10px;">

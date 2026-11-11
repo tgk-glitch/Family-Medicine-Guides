@@ -203,13 +203,13 @@ img{max-width:100%;height:auto;}
 <div class="wrap">
 <div class="legend">
 <h2 id="how-to-read-this-guide">How to read this guide</h2>
-<p class="sub">Five recurring boxes do the heavy lifting. Skim for the colour you need.</p>
+<p class="sub">{% if site.showExamBlocks %}Five{% else %}Two{% endif %} recurring boxes do the heavy lifting. Skim for the colour you need.</p>
 <div class="legend-grid">
 <div class="lg-item"><span class="lg-swatch" style="background:var(--c-analogy)"></span><div><b>Analogy</b><span>Makes the concept stick</span></div></div>
-<div class="lg-item"><span class="lg-swatch" style="background:var(--c-hy)"></span><div><b>High-Yield</b><span>Memorize this</span></div></div>
+{% if site.showExamBlocks %}<div class="lg-item"><span class="lg-swatch" style="background:var(--c-hy)"></span><div><b>High-Yield</b><span>Memorize this</span></div></div>
 <div class="lg-item"><span class="lg-swatch" style="background:var(--c-trap)"></span><div><b>Trap</b><span>Where you'll be caught out</span></div></div>
 <div class="lg-item"><span class="lg-swatch" style="background:var(--c-exam)"></span><div><b>Exam Q</b><span>Predictable question + answer</span></div></div>
-<div class="lg-item"><span class="lg-swatch" style="background:var(--c-further)"></span><div><b>Going Further</b><span>For the fellowship track</span></div></div>
+{% endif %}<div class="lg-item"><span class="lg-swatch" style="background:var(--c-further)"></span><div><b>Going Further</b><span>For the fellowship track</span></div></div>
 </div>
 </div>
 <details class="toc" open="">
@@ -242,8 +242,8 @@ img{max-width:100%;height:auto;}
 <a class="day" href="#day4"><span class="num">D4</span>End of Life &amp; Nutrition</a>
 <a href="#eol"><span class="num">4.1</span>End-of-life &amp; advance care planning</a>
 <a href="#malnutrition"><span class="num">4.2</span>Malnutrition</a>
-<a class="day" href="#appendix"><span class="num">A</span>Exam bank · traps · mnemonics</a>
-</div>
+{% if site.showExamBlocks %}<a class="day" href="#appendix"><span class="num">A</span>Exam bank · traps · mnemonics</a>
+{% endif %}</div>
 </details>
 <section class="part" id="big-picture">
 <p class="part-tag">Part 00 · The Spine</p>
@@ -270,14 +270,14 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the four questions that unlock the M's</span>
 <p>If you remember nothing else, remember the order: <strong>What Matters comes first and steers the other three.</strong> A statin, a continence drug, or a hip surgery is only "right" if it serves the destination the patient actually wants. The 4Ms organize care around <em>wellness and strengths</em>, not just disease.</p>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · "we already do the 4Ms"</span>
 <p>Most systems do <em>some</em> M's, <em>some</em> of the time, for <em>some</em> patients. Age-friendly means <strong>reliably</strong>: all four, all patients, all settings. The gap is rarely knowledge; it's consistency and documentation across hand-offs.</p>
-</div>
+</div>{% endif %}
 <div class="box further">
 <span class="box-label">Going Further · the deeper architecture</span>
 <p>The 4Ms are the practical face of two older ideas worth knowing for fellowship: <strong>homeostenosis</strong> (age-related narrowing of physiologic reserve: the real reason small insults cause big decompensations) and the <strong>geriatric syndromes</strong> (delirium, falls, frailty, incontinence, pressure injury: multifactorial states that don't fit one organ). The WHO's <em>ICOPE</em> model and the concept of <strong>intrinsic capacity</strong> push the same person-centered logic globally. The 4Ms are the bedside tool; these are the theory behind it.</p>
@@ -310,7 +310,7 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · atypical presentation is the rule, not the exception</span>
 <p>Older adults present through their <strong>weakest link</strong>, not the diseased organ. Memorize these classics:</p>
 <ul>
@@ -320,18 +320,18 @@ img{max-width:100%;height:auto;}
 <li><strong>Depression</strong> → somatic complaints &amp; cognitive slowing ("pseudodementia").</li>
 <li><strong>Acute abdomen</strong> → blunted pain &amp; guarding; deterioration outpaces exam findings.</li>
 </ul>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · "it's just old age"</span>
 <p>Ageism is a diagnostic error. Weight loss, falls, incontinence, confusion, and fatigue are <strong>not</strong> normal aging: they are signals of treatable disease or geriatric syndromes. Equally, the opposite trap exists: aggressively "fixing" benign age-related numbers (mild forgetfulness, asymptomatic bacteriuria, an isolated lab) generates harm. The skill is telling the two apart.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · predictable</span>
 <div class="qa">
 <p class="q">An 82-year-old woman is brought in confused and unsteady for 2 days. Temp 37.0 °C, WBC normal. What is the single best next step?</p>
 <details><summary></summary><div class="ans"><b>Work up for an acute medical cause of delirium: start with infection (urinalysis/culture, CXR), review meds, check hydration/electrolytes.</b> A normal temperature and WBC do <em>not</em> exclude infection in older adults. New confusion = delirium until proven otherwise; it is a medical emergency, not a psychiatric or "baseline dementia" label.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <div class="box further">
 <span class="box-label">Going Further</span>
 <p>Reserve loss is non-linear and organ-specific, which is why <strong>frailty</strong> (a measurable state of depleted reserve) predicts outcomes better than chronological age. Two older adults of the same age can sit at opposite ends of the fitness–frailty spectrum: the entire rationale for individualizing targets (DM, BP, lipids, cancer screening) rather than applying population guidelines by birth year.</p>
@@ -357,21 +357,21 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · function is the vital sign of geriatrics</span>
 <p><strong>The hierarchy of loss runs IADL → ADL.</strong> Complex tasks (managing money, medications) fail before basic ones (feeding, toileting). A new IADL deficit is an early warning (often the first visible sign of dementia, depression, or a new illness) long before an ADL is lost. <em>You can read function for free</em> by watching the patient: unbuttoning a shirt, rising from a chair, climbing onto the table.</p>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · the busy-clinic problem</span>
 <p>A full CGA is too long for one 15-minute visit. The fix is the <strong>"rolling" assessment</strong>: target one domain per visit and build the picture over time, plus patient-completed questionnaires before the appointment. Skipping it entirely because "there's no time" is how the falls, the missed dementia, and the unsafe home get missed.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · Katz vs Lawton</span>
 <div class="qa">
 <p class="q">A patient can no longer manage her own medications or finances but still bathes, dresses, and feeds herself. Which is impaired, ADL or IADL, and what does it suggest?</p>
 <details><summary></summary><div class="ans"><b>IADL impairment with preserved ADL.</b> Medication and money management are IADLs. Isolated IADL loss is an early, sensitive marker: prompt cognitive and mood screening and a safety review; it frequently heralds early dementia.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <p>The CGA's output is a unified <strong>problem list</strong>: medical, functional, nutritional, and social problems with proposed interventions: that the whole interdisciplinary team works from. That problem list <em>is</em> the deliverable.</p>
 </section>
 <section class="part" id="fourms" style="padding-top:10px">
@@ -397,10 +397,10 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the one-line difference</span>
 <p><strong>Delirium screening is mandatory in the hospital, not in the ambulatory setting.</strong> The clinic's Mentation focus shifts to <strong>dementia + depression</strong> screening. If a question contrasts settings, that's almost always the answer.</p>
-</div>
+</div>{% endif %}
 <div class="box further">
 <span class="box-label">Going Further · the evidence base for each M</span>
 <p>Each M rests on real trials worth a citation in a teaching session: delirium prevention via the multicomponent <strong>HELP</strong> programme (Inouye); early mobility reducing hospital-associated disability; deprescribing trials reducing falls and ADEs; and "What Matters" operationalized through <strong>Patient Priorities Care</strong> and the <strong>Serious Illness Conversation Guide</strong>. The 4Ms package these into something a whole system can run reliably.</p>
@@ -433,7 +433,7 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · Mini-Cog scoring (a perennial question)</span>
 <p>3-word recall (0–3) + clock-draw (normal/abnormal):</p>
 <ul>
@@ -442,22 +442,22 @@ img{max-width:100%;height:auto;}
 <li><strong>Recall 1–2</strong> → the <strong>clock decides</strong>: normal clock = negative, abnormal clock = positive.</li>
 </ul>
 <p>The clock asked for is "ten minutes after eleven o'clock (11:10)": a known trap that tests whether the patient maps "10" to the 2, not the 10.</p>
-</div>
-<div class="box hy">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · CAM = the delirium algorithm</span>
 <p>Delirium is present when you have <strong>(1) acute onset &amp; fluctuating course</strong> <em>AND</em> <strong>(2) inattention</strong>, <em>PLUS</em> either <strong>(3) disorganized thinking</strong> <em>OR</em> <strong>(4) altered level of consciousness</strong>. In shorthand: <span class="mono">1 + 2 + (3 or 4)</span>. Inattention is the cardinal, can't-skip feature.</p>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · screening ≠ diagnosing</span>
 <p>A positive Mini-Cog or PHQ-2 is a <strong>flag, not a diagnosis</strong>: it triggers a full work-up/referral, not a prescription. And the tools only work if used correctly and re-trained: in the IHI guide, an implausibly <em>low</em> delirium rate after rollout usually means the screen is being done wrong, not that delirium vanished.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · pick the tool</span>
 <div class="qa">
 <p class="q">For routine cognitive screening in a busy family-medicine clinic, including patients with limited English, which instrument is preferred and why?</p>
 <details><summary></summary><div class="ans"><b>Mini-Cog.</b> It is fast (~3 min), simple, accurate, and largely language-independent (3-word recall + clock-draw), making it the AAFP-preferred primary-care cognitive screen. Reserve MoCA/SLUMS for fuller characterization after a positive screen.</div></details>
 </div>
-</div>
+</div>{% endif %}
 </section>
 <section class="part" id="day2">
 <p class="part-tag">Day 2 · Monday</p>
@@ -484,10 +484,10 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · annual screening is now an explicit standard</span>
 <p>ADA 13.2: <strong>screen at least annually</strong> for the geriatric syndromes that diabetes both causes and is worsened by: <strong>cognitive impairment, depression, urinary incontinence, falls, persistent pain, and frailty</strong>: plus <strong>hypoglycemia</strong> and <strong>polypharmacy</strong>. This is a named recommendation, not a vague suggestion, and it is exactly the kind of "what should you screen for annually" question this material generates.</p>
-</div>
+</div>{% endif %}
 <p>Cognitive screening deserves its own emphasis here: cognitive impairment makes carb-counting, insulin-dose calculation, and hypoglycemia recognition all harder, which <em>increases</em> hypoglycemia risk, which then <em>worsens</em> cognition further. <strong>Annual screening (Mini-Cog/MoCA/MMSE) is indicated for all diabetics ≥65</strong>, and especially when self-care suddenly falters: insulin-dose errors, missed meals, missed doses, or new difficulty recognizing hypoglycemia.</p>
 <h4 class="sub">Step 2: set the target: the full framework</h4>
 <div class="tw">
@@ -502,10 +502,10 @@ img{max-width:100%;height:auto;}
 </table>
 </div>
 <p style="font-size:13.5px;color:var(--ink-soft);margin-top:-8px">*In the sickest group, drop the A1C chase entirely: manage glucose to <strong>avoid hypoglycemia and symptomatic hyperglycemia</strong>, nothing more. The same relaxation applies to lipid and antiplatelet therapy: benefit only if life expectancy ≥ the trial's time-frame to benefit.</p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the pattern that makes it stick</span>
 <p>As health worsens, every number <strong>relaxes upward</strong>: A1C 7→8→none, fasting floor rises 80→90→100, BP 130→130→140. The only thing that gets <em>tighter</em> is your vigilance about hypoglycemia and treatment burden.</p>
-</div>
+</div>{% endif %}
 <div class="box further">
 <span class="box-label">Going Further · when A1C itself lies to you</span>
 <p>A1C becomes <strong>unreliable</strong> in conditions common in older adults that alter red-cell turnover: <strong>end-stage kidney disease, recent significant blood loss, and erythropoietin therapy</strong> all distort it. In these patients, lean on <strong>blood glucose monitoring and/or CGM</strong> rather than A1C for goal-setting; fructosamine is a secondary option. There is also a validated tool worth knowing for the fellowship track: the <strong>LEAD</strong> (Life Expectancy for Older Adults with Diabetes) calculator, which helps anchor "is tight control worth it for this person" in data rather than gestalt.</p>
@@ -534,13 +534,13 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · the antibiotic that triggers a hypo</span>
 <p>A patient stable on glipizide for years is started on co-trimoxazole or a fluoroquinolone for a UTI, and lands hypoglycemic. Both drug classes <strong>potentiate sulfonylureas</strong>. Reduce or hold the sulfonylurea for the duration of the antibiotic course, and warn the patient.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">Step 5: simplify before you intensify</h4>
 <p>"Deintensification" and "simplification" are <em>different actions</em>; know the distinction: <strong>simplification</strong> reduces the complexity of a regimen (fewer injections, fewer fingersticks, no more sliding-scale math) without necessarily changing control; <strong>deintensification/deprescribing</strong> reduces the dose or stops a drug because the harms now outweigh the benefit. Both are endorsed, evidence-based, and safe: this is no longer a fringe idea.</p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the actual insulin-simplification algorithm (ADA Fig. 13.2)</span>
 <ol>
 <li>Change basal insulin timing from <strong>bedtime → morning</strong>.</li>
@@ -550,7 +550,7 @@ img{max-width:100%;height:auto;}
 <li>If on <strong>premixed insulin</strong>: switch to basal-only using ~70% of the total prior dose, given each morning.</li>
 <li>Never give rapid/short-acting insulin at bedtime. A simplified sliding scale can bridge the transition (e.g., 2 units for glucose &gt;250, 4 units for &gt;350) but should be <strong>stopped once not needed daily</strong>: it's a bridge, not a destination.</li>
 </ol>
-</div>
+</div>{% endif %}
 <h4 class="sub">Step 6: long-term care &amp; end of life: the three-tier framework</h4>
 <p>This is some of the most practically useful, and most testable, content in the whole module, because it gives you an actual algorithm for the conversation families always ask: <em>"should we keep treating his diabetes?"</em></p>
 <div class="tw">
@@ -564,21 +564,21 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the palliative-care diabetes recommendation, verbatim logic</span>
 <p>When palliative care is needed: <strong>strict glucose and BP control are not necessary</strong>; medication plans can be simplified; <strong>lipid-lowering intensity can be relaxed, and withdrawal of statins may be appropriate</strong> (a multicenter trial found statin withdrawal in palliative diabetes patients <em>improved</em> quality of life). The goal becomes comfort, dignity, and avoiding both hypoglycemia and symptomatic hyperglycemia/dehydration, not a number on a lab slip.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · the three-tier framework in action</span>
 <div class="qa">
 <p class="q">A 90-year-old with type 2 diabetes is enrolled in hospice with days-to-weeks prognosis and is taking little by mouth. Her family asks whether to continue her metformin and glipizide.</p>
 <details><summary></summary><div class="ans"><b>Discontinue both.</b> She fits the "dying" tier: with minimal oral intake, continuing oral agents (especially the hypoglycemia-prone glipizide) offers no benefit and real risk. If she develops symptomatic hyperglycemia, a small dose of basal insulin can be added for comfort, but routine glycemic agents should stop.</div></details>
 </div>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · the overtreated diabetic</span>
 <p>An A1C of <strong>6.2%</strong> in an 84-year-old on a sulfonylurea or insulin is not a triumph: it's <strong>overtreatment</strong> and a hypoglycemia time-bomb. The ADA explicitly lists overtreatment as a harm to avoid. "Good control" on the chart can mean the target itself is wrong for the person.</p>
-</div>
+</div>{% endif %}
 <h3 class="block" id="htn" style="margin-top:44px"><span class="kicker">2.2 · Pressure, carefully</span>Hypertension in older adults: in depth</h3>
 <h4 class="sub">The pathophysiology that changes everything</h4>
 <p>Younger hypertension is usually a problem of vascular <em>resistance</em>; older hypertension is usually a problem of vascular <em>stiffness</em>. Years of arterial wall changes (collagen deposition, elastin fragmentation) raise systolic pressure while diastolic pressure often <em>falls</em>; producing the classic geriatric pattern: <strong>isolated systolic hypertension with a widened pulse pressure</strong>. That same stiff system has blunted baroreceptor reflexes, which is precisely why these patients are so prone to <strong>orthostatic hypotension</strong> when you treat the systolic number.</p>
@@ -604,10 +604,10 @@ img{max-width:100%;height:auto;}
 <li><strong>Pseudohypertension</strong>: severely calcified, non-compressible brachial arteries can give a falsely high cuff reading. Suspect it when BP looks high but the patient has no end-organ damage and develops symptoms of hypotension at "normal" doses.</li>
 <li><strong>Orthostatic measurement, done properly:</strong> BP and pulse supine after 5 minutes rest, then again at 1 and 3 minutes standing. A drop of <span class="mono">≥20 mmHg systolic or ≥10 mmHg diastolic</span> (with or without symptoms) defines orthostatic hypotension. Do this <em>routinely</em> in anyone on antihypertensives, not just those who report dizziness.</li>
 </ul>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the J-curve</span>
 <p>Below a certain SBP (roughly &lt;120–130 in frail elders, lower in those with coronary disease), further lowering may <em>increase</em> cardiovascular events and falls: coronary perfusion in a stiff, atherosclerotic vessel depends on a minimum diastolic pressure. This is why "lower is always better" is false in this population, and why a standing BP, not just a seated one, should guide titration.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">Drug selection: first-line and the ones to avoid</h4>
 <div class="tw">
 <table>
@@ -620,17 +620,17 @@ img{max-width:100%;height:auto;}
 </table>
 </div>
 <p><strong>Resistant hypertension</strong> (uncontrolled on 3 agents including a diuretic) in older adults should prompt a search for the geriatric-specific contributors before adding a fourth drug: <strong>medication non-adherence</strong> (cost, pill burden, cognitive impairment), <strong>NSAID use</strong> (raises BP and blunts antihypertensive effect), <strong>obstructive sleep apnea</strong>, and <strong>true pseudohypertension</strong>. Only then consider spironolactone or another fourth-line agent.</p>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · treating the number, not the patient</span>
 <p>A clinic SBP of 168 in a frail 88-year-old triggers a reflex dose increase, but her standing BP is 110 and she's fallen twice this month. <strong>The standing pressure, not the seated one, is the one that puts her on the floor.</strong> Always pair an elevated reading with an orthostatic check before intensifying.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · pick the next move</span>
 <div class="qa">
 <p class="q">An 81-year-old on amlodipine and lisinopril has a clinic BP of 152/86 but reports two episodes of near-syncope on standing this week. Best next step?</p>
 <details><summary></summary><div class="ans"><b>Measure orthostatic BP before changing anything.</b> Near-syncope on standing suggests orthostatic hypotension, which intensifying therapy would worsen. If orthostatic drop is confirmed, consider deintensifying rather than adding a third agent for the clinic number alone.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <h3 class="block" id="ihd"><span class="kicker">2.3 · The aging heart</span>IHD, heart failure &amp; atrial fibrillation: in depth</h3>
 <h4 class="sub">Ischemic heart disease: secondary vs primary prevention is the whole story</h4>
 <p>For <strong>established ASCVD (secondary prevention)</strong>, evidence is strong and age-blind: START recommends a <strong>statin</strong> (unless end-of-life or established moderate–severe frailty), an <strong>ACE inhibitor</strong> for CAD, and a <strong>β-blocker</strong> for symptomatic CAD. This is the inverse of primary prevention (§2.4): here the error to avoid is <em>under</em>-treatment, not over-treatment.</p>
@@ -650,17 +650,17 @@ img{max-width:100%;height:auto;}
 <li><strong>Rate control</strong> is the default strategy for most older adults: β-blocker or a non-DHP CCB (only with preserved EF). <strong>Amiodarone</strong> is reserved for those with heart failure or significant LVH: its long half-life and multi-organ toxicity (thyroid, lung, liver) make it a poor general-purpose choice in frail elders.</li>
 <li><strong>Rhythm control</strong> (cardioversion, ablation) is reasonable in symptomatic patients with good functional status; age alone is not a contraindication to ablation, but procedural risk and recurrence rates should be discussed explicitly.</li>
 </ul>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · withholding anticoagulation "because they might fall"</span>
 <p>The classic error. A patient would need to fall <strong>roughly 295 times in one year</strong> for the bleeding risk to outweigh the stroke-prevention benefit of anticoagulation. Fall risk alone is <em>not</em> a reason to withhold a DOAC: modify the fall risk instead (deprescribe sedatives, strength/balance training, home safety).</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · choose the anticoagulant</span>
 <div class="qa">
 <p class="q">A 79-year-old with new non-valvular AF, CHA₂DS₂-VASc of 4, eGFR 55, and a history of two mechanical falls. Best anticoagulation choice?</p>
 <details><summary></summary><div class="ans"><b>Start a DOAC: apixaban is preferred.</b> The fall history is not a contraindication; address the falls instead. Warfarin would only be first-line for a mechanical valve, moderate–severe mitral stenosis, or eGFR &lt;15.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <div class="box further">
 <span class="box-label">Going Further · SPRINT vs the patient in front of you</span>
 <p><strong>SPRINT</strong> (and its ≥75 subgroup) showed intensive BP control (SBP &lt;120) reduced events even in fit older adults, but enrolled <em>community-dwelling, non-frail</em> people, excluded nursing-home residents, dementia, and those with orthostatic hypotension, and used unattended automated BP (reads ~5–10 mmHg lower than a standard clinic cuff). Don't extrapolate SPRINT to the frail patient it never studied.</p>
@@ -706,10 +706,10 @@ img{max-width:100%;height:auto;}
 <p>In a genuinely frail or very old patient where you and the patient decide treatment is worthwhile, <strong>starting at low-to-moderate intensity</strong> is a reasonable, pragmatic compromise: it captures most of the relative benefit with less risk of myalgia/intolerance, though guidelines don't mandate this.</p>
 <h4 class="sub">Why the usual risk calculator misleads you here</h4>
 <p>The Pooled Cohort Equations were built on populations that barely include anyone over 75. Past that age, they're dominated by the age term alone, ignore frailty/cognition/comorbidity, and ignore the <strong>competing risk of non-cardiovascular death</strong>: so they systematically <strong>overestimate</strong> the benefit of starting a statin in a frail 85-year-old.</p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · CAC scoring as the tie-breaker</span>
 <p><strong>Coronary artery calcium (CAC) scoring</strong> can refine the decision when risk is genuinely uncertain: <span class="mono">CAC = 0</span> identifies a very-low-risk patient in whom it's reasonable to <strong>withhold or even deprescribe</strong> a primary-prevention statin. A high CAC score pushes the decision the other way. This is the single most useful "extra test" in this whole topic.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">Putting a number on the decision: time-to-benefit vs life expectancy</h4>
 <p>The decision rule, stated plainly: if <strong>life expectancy &lt; time-to-benefit</strong> of the intervention, it's more likely to harm than help and generally shouldn't be started. If they're <strong>roughly equal</strong>, patient preference should decide. Estimating life expectancy is itself a skill:</p>
 <div class="tw">
@@ -736,10 +736,10 @@ img{max-width:100%;height:auto;}
 </ul>
 <h4 class="sub">Deprescribing: what actually happens when you stop</h4>
 <p>This is the part most clinicians get wrong by instinct: stopping a statin is not "safe by default." Three large observational cohorts (France, Denmark, Italy; combined N&gt;200,000) found statin <strong>discontinuation</strong> in primary-prevention patients was associated with a <strong>~30% relative increase</strong> in ASCVD events over the following 2–5 years compared with continuing. In the Danish cohort, that worked out to roughly <strong>1 excess major cardiovascular event per 112 people who discontinued, per year.</strong></p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · but at the actual end of life, stopping helps</span>
 <p>Kutner et al. randomized 381 people with <strong>life-limiting illness and &lt;1 year estimated survival</strong> (36% in hospice) to continue vs discontinue their statin. <strong>No difference</strong> in 60-day survival or cardiovascular events, but <strong>quality of life improved</strong> and medication costs fell in the group that stopped. <strong>The two findings aren't contradictory</strong>: they describe different patients: discontinuation carries real cardiovascular cost in relatively well primary-prevention patients, but is genuinely beneficial (less burden, same survival) once life expectancy is truly limited. Knowing which patient is in front of you is the entire skill.</p>
-</div>
+</div>{% endif %}
 <div class="box further">
 <span class="box-label">Going Further · how patients actually want this conversation framed</span>
 <p>Surveyed clinicians prioritize talking about <em>goals of therapy</em>; surveyed older patients more often prefer hearing about <em>risk of side effects</em> as the reason to stop. A qualitative study of clinicians, caregivers, and patients with dementia found people preferred explanations like: <em>"Our bodies change over time and certain medicines may no longer be needed,"</em> or <em>"These medications take years to have an effect, and I think we should focus on what can help you right now."</em> Worth having ready, verbatim, for your own deprescribing conversations.</p>
@@ -756,17 +756,17 @@ img{max-width:100%;height:auto;}
 </table>
 </div>
 <p>Among adults ≥75 in whom LDL-lowering for primary prevention is wanted: <strong>statins remain preferred</strong> given the overall evidence base, with <strong>ezetimibe as the leading alternative</strong> if statins are not tolerated, not advisable, or not preferred.</p>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · two mirror-image errors</span>
 <p><strong>Over-treating:</strong> starting a primary-prevention statin in a frail 88-year-old with 2-year life expectancy because a calculator said "high risk" (it always will: age dominates the input). <strong>Under-treating:</strong> reflexively stopping a statin in a robust, independent 80-year-old <em>with established coronary disease</em> just because of age. Function and prognosis decide, not the birthday.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · start, continue, or stop?</span>
 <div class="qa">
 <p class="q">A robust, independent 81-year-old with prior MI is doing well on atorvastatin and asks if he can stop "now that he's old." Your advice?</p>
 <details><summary></summary><div class="ans"><b>Continue it.</b> This is <em>secondary</em> prevention (established ASCVD): statin benefit is clear and age is not a reason to stop in a fit patient with good life expectancy. Deprescribing applies to <em>primary</em> prevention with limited life expectancy/frailty, not to robust patients with proven coronary disease.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <h3 class="block" id="integrate4ms"><span class="kicker">2.5 · The synthesis</span>Integrating the 4Ms into the chronic-disease plan</h3>
 <p>Day 1 gave you the 4Ms as a framework. Here's the part that actually changes a prescription: every chronic-disease decision above can be re-derived by running it through the same four questions. This is what the course timetable calls "integrate 4Ms in management plan," and it's the single best way to avoid the two mirror-image errors that run through this whole day: over-treating the fit and under-treating the robust.</p>
 <div class="tw">
@@ -781,10 +781,10 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the question that resolves most exam vignettes</span>
 <p>When a vignette gives you a number that looks "too good" (A1C 6.0%, LDL at goal on a high-intensity statin in a frail 90-year-old): don't congratulate the control. Ask: <strong>which M does achieving this number threaten?</strong> Tight glycemic control threatens Mentation/Mobility via hypoglycemia. An aggressive statin in someone with myalgia threatens Mobility directly. The "best answer" is almost always the one that protects the M being silently sacrificed.</p>
-</div>
+</div>{% endif %}
 <p>This is also the lens for resolving any apparent conflict between this guide's disease-specific sections: there is no single "right" BP or A1C number in the abstract: there is only the number that serves <em>this person's</em> What Matters without breaking their Mentation or Mobility. Hold that, and the rest of Day 2 is detail.</p>
 <h3 class="block" id="pt-falls"><span class="kicker">2.6 · The PT lecture</span>Physiotherapy's role in fall prevention</h3>
 <p>Falls get their full syndrome work-up in Day 3 (risk factors, screening, the multifactorial assessment). Here is the piece that specifically belongs to physiotherapy: <strong>what exercise, prescribed how, actually prevents falls</strong>: because "encourage exercise" is not a prescription, and the evidence is far more specific than that.</p>
@@ -799,30 +799,30 @@ img{max-width:100%;height:auto;}
 <li><strong>Functional/gait training</strong>: practicing the actual movements that cause falls (sit-to-stand, turning, stepping over obstacles, dual-tasking like walking while talking).</li>
 <li><strong>Aerobic exercise</strong>: supports the other three but has the weakest direct evidence for fall reduction on its own.</li>
 </ul>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the two named programmes worth knowing by name</span>
 <ul>
 <li><strong>Otago Exercise Programme</strong>: an individually prescribed, progressive home-based strength + balance programme (typically 3×/week, ~30 min, plus a walking plan), delivered/reviewed by a physiotherapist over several visits. One of the best-evidenced fall-prevention interventions in the literature: reduces falls by roughly a third in trial populations.</li>
 <li><strong>Tai Chi</strong>: group-based, slow controlled weight-shifting and balance challenge. Strong evidence for fall reduction, plus the added benefit of being enjoyable and socially engaging (which drives the adherence that makes any exercise programme actually work).</li>
 </ul>
-</div>
+</div>{% endif %}
 <h4 class="sub">When to refer to physiotherapy specifically</h4>
 <ul>
 <li>Positive fall-risk screen (TUG ≥12s, recent fall, gait/balance complaint) → PT referral for a <strong>individualized, progressive</strong> programme: generic pamphlets without supervision are far less effective than a PT-led plan.</li>
 <li>Post-fall, post-hospitalization, or post-fracture → PT for gait retraining and confidence-rebuilding (fear of falling itself causes deconditioning and further falls: a self-reinforcing cycle PT is well placed to interrupt).</li>
 <li>Frailty or sarcopenia (Day 2.7) → resistance-training component overlaps directly with the muscle-preservation prescription.</li>
 </ul>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · "stay seated to be safe"</span>
 <p>Restricting activity out of fear of falling is one of the most common, well-intentioned, and counterproductive instincts from families and even clinicians. Inactivity accelerates the strength and balance loss that <em>causes</em> falls: the safe instinct is almost always the wrong one. The evidence-based answer is supervised, progressive activity, not rest.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · which programme</span>
 <div class="qa">
 <p class="q">An 80-year-old with two falls in the past year and reduced quad strength is referred for fall prevention. Which intervention has the strongest evidence base?</p>
 <details><summary></summary><div class="ans"><b>An individualized, progressive strength-and-balance programme</b> (e.g., Otago) delivered by a physiotherapist: superior to generic advice or aerobic exercise alone, with the strongest fall-reduction evidence of any single intervention.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <h3 class="block" id="nutrition2"><span class="kicker">2.7 · Muscle is medicine</span>Nutrition, sarcopenia &amp; cancer prevention: in depth</h3>
 <p><strong>Sarcopenia</strong> is the age-related loss of muscle <em>mass and strength/function</em>. It affects roughly <strong>10–27% of community-dwelling adults ≥60</strong>, drives falls, fractures, frailty, respiratory impairment, cognitive decline, loss of independence, and worse outcomes from almost every acute illness, including cancer treatment, which is why this lecture pairs the two topics.</p>
 <div class="box analogy">
@@ -842,10 +842,10 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · SARC-F scoring</span>
 <p>Five self-reported items, each 0–2 points (Strength, Assistance walking, rise from Chair, climb Stairs, Falls) = <span class="mono">/10</span>. <strong>Score ≥4 → screen positive</strong>, proceed to formal strength/mass testing. AWGS also uses <strong>calf circumference &lt;34cm (men) / &lt;33cm (women)</strong> as an alternative low-cost community screening trigger.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">The nutritional prescription: exact numbers</h4>
 <div class="tw">
 <table>
@@ -860,10 +860,10 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · the protein gap nobody notices</span>
 <p>Population data show older men average only ~1.0 g/kg/day and older women ~0.9 g/kg/day, and <strong>half of older women fail to meet even the basic recommended intake</strong>. A patient can look like they're "eating fine" by volume while running a substantial protein deficit, especially if much of their diet is carbohydrate-based for cost or dental reasons. Ask specifically about protein sources, not just appetite.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">The cancer connection</h4>
 <p>Sarcopenia and cancer interact in both directions. Many older adults carry <strong>sarcopenic obesity</strong>: normal or high BMI masking critically low muscle mass: invisible unless you specifically assess strength/mass rather than weight alone. In oncology this matters acutely:</p>
 <ul>
@@ -872,21 +872,21 @@ img{max-width:100%;height:auto;}
 <li><strong>Cancer cachexia</strong> (a distinct, inflammation-driven wasting syndrome: anorexia, weight loss, systemic inflammation) compounds age-related sarcopenia and does not reverse with food alone; it needs treatment of the underlying malignancy and multimodal supportive care, not just calorie pushing.</li>
 <li><strong>"Prehabilitation"</strong>: structured exercise and protein optimization in the weeks before surgery or chemotherapy: is an emerging, increasingly evidence-supported strategy to blunt treatment-related muscle loss and improve outcomes.</li>
 </ul>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the prescription, summarized</span>
 <p>Resistance/strength training is the cornerstone intervention (more effective for muscle than aerobic exercise alone), paired with protein 1.0–1.2 (up to 1.5) g/kg/day, vitamin D 800–1000 IU/day, and a Mediterranean or DASH-style dietary pattern. Nutrition and exercise are <strong>complementary, not interchangeable</strong>: trials combining both outperform either alone.</p>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · the restrictive diet that backfires</span>
 <p>Tight "renal," "cardiac," or "diabetic" diets in a frail, sarcopenic elder are a classic iatrogenic driver of further muscle loss. <strong>In a frail patient, the goal is function, not weight loss</strong>: liberalize the diet, prioritize protein and adequate calories over a perfect sodium or sugar number.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · diagnose the stage</span>
 <div class="qa">
 <p class="q">A 78-year-old scores 5/10 on SARC-F. Grip strength testing is reduced. DXA shows low appendicular muscle mass. Gait speed is normal. What is the EWGSOP2 classification?</p>
 <details><summary></summary><div class="ans"><b>Confirmed sarcopenia</b> (not severe). Low strength = probable sarcopenia; adding low muscle mass on DXA = confirmed. Severe would additionally require low physical performance (e.g., slow gait speed), which is normal here.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <h3 class="block" id="communication"><span class="kicker">2.8 · The human skill, with the protocol behind it</span>Communicating diagnosis &amp; caregiver support: in depth</h3>
 <p>The diagnosis is only half the encounter; <em>how</em> you deliver it, and what you build around it afterward, determines whether the plan actually happens. The detailed protocol below comes from formal dementia-disclosure guidelines, but the skeleton (prepare, ask permission, disclose gradually, plan follow-up, support the dyad) transfers to breaking any serious diagnosis in family medicine.</p>
 <h4 class="sub">Before the appointment</h4>
@@ -905,10 +905,10 @@ img{max-width:100%;height:auto;}
 <li>Give only the <strong>immediately necessary</strong> information; deliberately delay non-urgent decisions to a follow-up visit. People cannot absorb a full care plan in the same breath as a diagnosis.</li>
 <li><strong>Emphasize what remains true and hopeful</strong> in an honest way: progression is often slow, symptomatic treatments exist, and active research continues: without overpromising a cure.</li>
 </ul>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the right to know, and the right not to</span>
 <p>People have <strong>both</strong> the right to know their diagnosis and the right not to know it. If a patient with capacity clearly states they don't want to be told, <strong>respect that</strong>: while ensuring the family/carers are supported to manage the practical consequences (e.g., driving, legal/financial decisions). If carers ask you to withhold the diagnosis <em>against</em> the patient's own wishes, that conflict is resolved through further conversation over time, not by simply complying with whichever party asked last.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">Responding to the emotional reaction</h4>
 <ul>
 <li>Allow time to process: don't fill silence with more facts.</li>
@@ -916,10 +916,10 @@ img{max-width:100%;height:auto;}
 <li>Balance <strong>hope and realism</strong>: name preserved abilities specifically, not just generic reassurance.</li>
 <li>Encourage continued <strong>social engagement</strong> and lifestyle measures (Mediterranean diet, exercise, social activity) as part of an ongoing-care narrative, not a one-time piece of advice.</li>
 </ul>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · missing the safety-net question</span>
 <p>People with a <strong>prior history of depression or self-harm</strong> carry an elevated risk of depression, self-harm, or suicidal ideation in the months following a dementia diagnosis. This reaction is believed to be uncommon but is a recognized risk that's easy to miss amid the logistics of a new diagnosis. Build in a deliberate check on mood and safety at this visit and the follow-up, and have a low threshold to offer counselling or a mental-health care plan alongside the dementia work-up: this is a named, formal recommendation, not just good instinct.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">The follow-up structure: what goes in which visit</h4>
 <p>Disclosure is never a single conversation. The recommended structure spreads information across <strong>2–3 follow-up consultations</strong>, with a review scheduled <strong>within 2 months</strong> of the specialist diagnosis:</p>
 <div class="cards">
@@ -938,19 +938,19 @@ img{max-width:100%;height:auto;}
 <li>If they can't find a word: <strong>suggest one</strong>, repeat the unfinished sentence with a likely word, or ask "Do you mean…?", then repeat/rephrase if still not understood.</li>
 <li>Use <strong>familiar, interesting material</strong> (photos, memorabilia) to sustain engagement and rapport.</li>
 </ul>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · validate, don't correct</span>
 <p>When a patient with dementia repeats a question or asserts something untrue (e.g., "when is my wife arriving" about a wife who has passed), the evidence-based response is to <strong>repeat part of what they said and add gently to it</strong>, or redirect with warmth, not to correct, argue, or quiz them on facts they've already lost access to. This single principle resolves most of the difficult communication scenarios you'll be tested on or face in clinic.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">Cultural and language considerations</h4>
 <p>Use <strong>professional interpreters or bilingual/bicultural staff</strong> throughout the pathway, especially during assessment, diagnosis disclosure, and consent, not just when a language barrier becomes obviously unmanageable. For Indigenous and culturally/linguistically diverse communities specifically, services should be <strong>culturally informed</strong>, involve family and community representatives in care planning, and recognize that decision-making in many cultures is <strong>family-centred</strong> rather than strictly individual: directly relevant in this region. This doesn't override the patient's right to know; it shapes <em>how</em> that right is exercised.</p>
-<div class="box exam">
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · the safety-net you might miss</span>
 <div class="qa">
 <p class="q">A 74-year-old with a history of major depression is newly diagnosed with Alzheimer's disease. Beyond the standard disclosure protocol, what specific additional step is recommended?</p>
 <details><summary></summary><div class="ans"><b>Explicitly assess mood and safety, and have a low threshold to offer counselling</b> (or a mental-health care plan / psychogeriatric referral). Patients with a prior history of depression or self-harm carry an elevated risk of depression, self-harm, or suicidal ideation in the months following a dementia diagnosis: a formally recognized risk, not just clinical intuition.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <p style="margin-top:26px;font-size:14.5px;color:var(--ink-soft)">→ Day 2 closes the chronic-disease, falls-physiotherapy, nutrition, and communication block. <strong>Day 3</strong> opens the engine room: deprescribing, the Beers/STOPP-START tools, the 3 Ds, and falls &amp; frailty.</p>
 </section>
 <section class="part" id="day3">
@@ -966,7 +966,7 @@ img{max-width:100%;height:auto;}
 </div>
 <h4 class="sub">The prescribing cascade: spot it and stop it</h4>
 <p>A drug causes a side-effect → the side-effect is mistaken for a new disease → a second drug is added to treat it. <em>Example:</em> a CCB causes ankle oedema → a diuretic is added → the diuretic causes incontinence → an anticholinergic bladder drug is added → the anticholinergic causes confusion and a fall. Four drugs, one original problem.</p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the deprescribing sequence</span>
 <ol>
 <li><strong>Reconcile</strong>: a full "brown-bag" review of everything (Rx, OTC, herbal).</li>
@@ -975,14 +975,14 @@ img{max-width:100%;height:auto;}
 <li><strong>Taper</strong> where withdrawal is a risk (benzodiazepines, opioids, gabapentinoids, β-blockers, PPIs, antidepressants) never stop these abruptly.</li>
 <li><strong>Monitor</strong>: watch for withdrawal or return of the original condition.</li>
 </ol>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · stopping cold turkey</span>
 <p>Benzodiazepines stopped abruptly → withdrawal seizures; long-term β-blockers → rebound tachycardia/ischemia; SSRIs → discontinuation syndrome; PPIs → rebound hyperacidity. Deprescribing ≠ abrupt cessation. <strong>Taper, and pick one drug at a time</strong> so you can attribute any change.</p>
-</div>
+</div>{% endif %}
 <h3 class="block" id="beers"><span class="kicker">3.2 · Engine one</span>The AGS Beers Criteria®</h3>
 <p>An <strong>explicit, consensus list</strong> of potentially inappropriate medications (PIMs) in adults <strong>≥65</strong>. It's organized into five tables: <strong>(1)</strong> PIMs to avoid in most older adults · <strong>(2)</strong> drug–disease/syndrome interactions · <strong>(3)</strong> drugs to use with caution · <strong>(4)</strong> drug–drug interactions to avoid · <strong>(5)</strong> drugs needing renal dose adjustment.</p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the "usually avoid" all-stars</span>
 <ul>
 <li><strong>First-generation antihistamines</strong> (diphenhydramine, hydroxyzine, chlorpheniramine): anticholinergic.</li>
@@ -994,12 +994,12 @@ img{max-width:100%;height:auto;}
 <li><strong>Peripheral α-1 blockers</strong> (doxazosin) for HTN · <strong>IR nifedipine</strong> · <strong>digoxin &gt;0.125 mg/day</strong>.</li>
 <li><strong>Antispasmodics &amp; bladder antimuscarinics</strong> (oxybutynin): anticholinergic burden.</li>
 </ul>
-</div>
+</div>{% endif %}
 <div class="box analogy">
 <span class="box-label">Analogy · the anticholinergic overdraft</span>
 <p>Think of acetylcholine as a bank balance the aging brain keeps low. Every anticholinergic drug (that antihistamine, that TCA, that bladder drug, that antipsychotic) is a withdrawal. Stack a few "small" ones and the account overdraws into the classic syndrome: <em>"blind as a bat, dry as a bone, red as a beet, mad as a hatter, hot as a hare"</em>, plus urinary retention, constipation, falls, and confusion. <strong>Burden is cumulative</strong>: it's the total, not any single drug, that tips the patient over.</p>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · drug–disease landmines (Beers Table 2)</span>
 <ul>
 <li><strong>Heart failure (reduced EF):</strong> avoid non-DHP CCBs (diltiazem, verapamil) &amp; NSAIDs.</li>
@@ -1007,11 +1007,11 @@ img{max-width:100%;height:auto;}
 <li><strong>History of falls/fractures:</strong> avoid benzodiazepines, Z-drugs, antipsychotics, TCAs, SSRIs/SNRIs, antiepileptics, opioids.</li>
 <li><strong>Parkinson's:</strong> avoid metoclopramide, prochlorperazine, most antipsychotics (quetiapine/clozapine/pimavanserin OK).</li>
 </ul>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · Beers is a flag, not a ban</span>
 <p>Beers identifies drugs whose <em>risk usually outweighs benefit</em>: it's a prompt to <strong>review and justify</strong>, not an absolute prohibition. A short course of an "avoid" drug for a clear indication can be appropriate. The error is reflexive prescribing of a PIM <em>and</em> reflexive stopping without thought. Also: don't treat Beers as covering everything: STOPP catches drug–drug and disease-context issues Beers misses, and START reminds you of <em>under</em>-prescribing.</p>
-</div>
+</div>{% endif %}
 </section>
 <section class="part" id="stopp" style="padding-top:10px">
 <h3 class="block" id="3-2-engine-two-stopp-start-v3"><span class="kicker">3.2 · Engine two</span>STOPP / START (v3)</h3>
@@ -1020,7 +1020,7 @@ img{max-width:100%;height:auto;}
 <li><strong>STOPP</strong>: <em>Screening Tool of Older Persons' Prescriptions</em>: drugs to <strong>stop</strong> (PIMs), organized by organ system and clinical context.</li>
 <li><strong>START</strong>: <em>Screening Tool to Alert to Right Treatment</em>: the mirror image: evidence-based drugs that have been wrongly <strong>omitted</strong>. (Beers never tells you what's <em>missing</em>.)</li>
 </ul>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · STOPP renal cut-offs (a guaranteed question)</span>
 <p>Stop / avoid these once eGFR drops below the threshold:</p>
 <div class="tw" style="margin-top:10px">
@@ -1037,8 +1037,8 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-</div>
-<div class="box hy">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · START: what you're forgetting to prescribe</span>
 <ul>
 <li><strong>Anticoagulant (DOAC)</strong> in AF. <strong>Statin</strong> + <strong>antiplatelet</strong> with established ASCVD.</li>
@@ -1047,14 +1047,14 @@ img{max-width:100%;height:auto;}
 <li><strong>Vaccines</strong> (Section L): <span class="mono">influenza annually · pneumococcal at least once · herpes zoster · SARS-CoV-2</span> per national schedule.</li>
 <li><strong>Laxative</strong> with any regular opioid; <strong>vitamin D</strong> in housebound/fallers.</li>
 </ul>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · the metformin number</span>
 <div class="qa">
 <p class="q">At what eGFR should metformin be stopped, and what is the feared complication?</p>
 <details><summary></summary><div class="ans"><b>Stop metformin when eGFR &lt; 30 mL/min</b> (and don't <em>start</em> below 45); the risk is <b>lactic acidosis</b>. Also hold it around iodinated contrast and during acute illness/dehydration.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <h3 class="block" id="alternatives"><span class="kicker">3.3 · The pocket card</span>Beers PIM → safer alternative</h3>
 <p>The 2025 AGS alternatives paper exists for one reason: stopping a bad drug isn't enough: you need the <em>safer</em> move (often non-pharmacologic). Memorize this column pair.</p>
 <div class="tw">
@@ -1101,10 +1101,10 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the two discriminators</span>
 <p><strong>1. Inattention + acute fluctuation = delirium</strong> until proven otherwise: it's a medical emergency, not a baseline. <strong>2. "Pseudodementia"</strong> = depression masquerading as dementia: the depressed patient <em>complains</em> of memory loss and answers "I don't know," whereas the demented patient <em>conceals</em> deficits and confabulates near-misses. When unsure, treat the depression and re-test cognition: improvement reveals the answer.</p>
-</div>
+</div>{% endif %}
 <h3 class="block" id="delirium"><span class="kicker">3.5 · The emergency</span>Delirium: acute confusional state</h3>
 <p>Delirium is acute brain failure, and it's <strong>common, dangerous, and largely preventable.</strong> One-third of medical inpatients over 70 develop it; up to 80% in the ICU. It is not benign: it <strong>triples mortality</strong>, lengthens stay by up to 10 days, and leaves ~<strong>25% with lasting cognitive deficits</strong> comparable to mild Alzheimer's. In the ICU, one-year survival falls roughly 10% for every day of delirium.</p>
 <h4 class="sub">Three faces, and the dangerous one is the quiet one</h4>
@@ -1113,10 +1113,10 @@ img{max-width:100%;height:auto;}
 <li><strong>Hypoactive (~30%)</strong>: withdrawn, drowsy, "pleasantly confused." <strong>Most missed, worst prognosis</strong> (mortality ~33% vs ~15% hyperactive).</li>
 <li><strong>Mixed (~65%)</strong>: fluctuates between the two.</li>
 </ul>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · the quiet patient is not "doing fine"</span>
 <p>The hypoactive patient who is calm and sleepy gets overlooked precisely because they're not causing trouble, and they're the one most likely to die. This is why you <strong>screen everyone</strong> (CAM / UB-CAM, q12h in hospital), not just the agitated.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">Hunt the cause: <span class="mono">DELIRIUM(S)</span></h4>
 <div class="cards">
 <div class="mini"><h5>D · Drugs</h5><p>New meds, anticholinergics, opioids, benzos, and <em>withdrawal</em> (alcohol, benzos).</p></div>
@@ -1129,21 +1129,21 @@ img{max-width:100%;height:auto;}
 <div class="mini"><h5>M · Metabolic</h5><p>Na⁺, Ca²⁺, glucose, uremia, thyroid.</p></div>
 <div class="mini"><h5>S · Subdural / CNS</h5><p>Subdural hematoma, CNS pathology.</p></div>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · prevention beats treatment (and there's no cure drug)</span>
 <p>Multicomponent <strong>non-pharmacologic</strong> prevention (Inouye/HELP) cuts delirium incidence by <strong>~44%</strong>: reorient (clocks, calendars, glasses, hearing aids), protect the <strong>sleep-wake cycle</strong>, mobilize early, treat pain ("analgesia first"), hydrate &amp; nourish, and <strong>avoid polypharmacy</strong>. There is <strong>no approved medication to treat delirium</strong>: and most psychoactive drugs make it worse.</p>
-</div>
-<div class="box hy">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · when (rarely) you must medicate</span>
 <p>Drugs are <em>only</em> for severe agitation that endangers the patient or others, or for productive psychotic symptoms: never as routine sedation. Then: <strong>low-dose haloperidol</strong> or a low-dose atypical (quetiapine), with cardiac monitoring (QT). <strong>Avoid benzodiazepines</strong>: they worsen delirium: <em>except</em> in alcohol/benzodiazepine withdrawal, where they are the treatment. Remember the <strong>TA-DA</strong> approach: <em>Tolerate, Anticipate, Don't Agitate.</em></p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · the agitated post-op patient</span>
 <div class="qa">
 <p class="q">A 78-year-old is agitated and pulling at lines on post-op day 1. After ensuring safety, what is the correct <em>first</em> management step?</p>
 <details><summary></summary><div class="ans"><b>Search for and treat the underlying cause</b> (pain, urinary retention, hypoxia, infection, drug effect, electrolytes) and apply non-pharmacologic measures (reorient, glasses/hearing aids, family, mobilize, protect sleep). Medication is a last resort for danger only, and never a benzodiazepine unless this is withdrawal.</div></details>
 </div>
-</div>
+</div>{% endif %}
 <div class="box further">
 <span class="box-label">Going Further</span>
 <p>Screening tools by setting: <strong>CAM-ICU</strong> / <strong>ICDSC</strong> (ventilated/ICU), <strong>3D-CAM</strong> &amp; <strong>Nu-DESC</strong> (general ward), <strong>CAM-S</strong> (adds severity). Perioperative <strong>dexmedetomidine</strong> reduces postoperative delirium (OR ~0.35), but routine <em>prophylactic</em> antipsychotics are not supported. The pathophysiology: neuroinflammation, cholinergic deficiency, and stress-axis dysregulation on a vulnerable (often demented) brain: explains why anticholinergics are so deliriogenic.</p>
@@ -1166,18 +1166,18 @@ img{max-width:100%;height:auto;}
 </div>
 <h4 class="sub">Work-up: first, exclude the reversible mimics</h4>
 <p>Screen (Mini-Cog or GPCOG) → if positive, characterize (MoCA &lt;26 · SLUMS ≤19). Then <strong>rule out treatable causes</strong> before labeling a progressive dementia: <strong>depression</strong> (pseudodementia), <strong>B12 deficiency</strong>, <strong>hypothyroidism (TSH)</strong>, medication effect, and <strong>normal-pressure hydrocephalus</strong> (the triad: <em>"wet, wobbly, wacky"</em>: urinary incontinence, gait apraxia, cognitive decline). Neuroimaging (CT/MRI) screens for structural/vascular causes and subdural.</p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · treatment, honestly</span>
 <ul>
 <li><strong>Cholinesterase inhibitors</strong> (donepezil, rivastigmine, galantamine): mild–moderate Alzheimer's; rivastigmine also for Lewy body/Parkinson's dementia. <em>Modest</em> symptomatic benefit, not disease-modifying.</li>
 <li><strong>Memantine</strong> (NMDA antagonist): moderate–severe; can combine with a cholinesterase inhibitor.</li>
 <li><strong>BPSD</strong> (agitation, psychosis): <strong>non-pharmacologic first</strong>: the <em>DICE</em> approach (Describe, Investigate, Create, Evaluate). Reserve antipsychotics for severe/dangerous/refractory symptoms, lowest dose, shortest time (↑ stroke &amp; mortality).</li>
 </ul>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · cholinesterase inhibitors &amp; the heart</span>
 <p>STOPP flags cholinesterase inhibitors in persistent bradycardia (&lt;60), heart block, or with rate-limiting drugs (β-blockers, digoxin, diltiazem/verapamil): risk of syncope &amp; falls. And in <strong>Lewy body dementia, conventional antipsychotics can be life-threatening</strong> (severe sensitivity): use quetiapine/clozapine/pimavanserin if absolutely needed.</p>
-</div>
+</div>{% endif %}
 <p>Disclosure honours the patient's <strong>right to know</strong> (Alzheimer Society): inform sensitively, identify a support person to be present, cover prognosis, treatment, and support, and use the diagnosis as the trigger for <strong>advance care planning</strong> while capacity remains. Honour an explicit wish <em>not</em> to know. And remember: dementia care is a <strong>dyad</strong>: support the caregiver as deliberately as the patient (see Day 2).</p>
 </section>
 <section class="part" id="falls" style="padding-top:10px">
@@ -1196,11 +1196,11 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · screen &amp; assess (AGS/BGS)</span>
 <p><strong>Ask every older adult about falls at least once a year.</strong> If they report a fall (or a gait/balance problem, or a positive <strong>TUG ≥12 s</strong>), do a <strong>multifactorial assessment</strong>. In hospital, use a validated tool (<strong>Morse Fall Scale</strong>: &lt;25 low, 25–45 moderate, &gt;45 high). The point of a score isn't the number: it's identifying which <em>modifiable</em> risk factors to act on.</p>
-</div>
-<div class="box hy">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the interventions that actually work</span>
 <ul>
 <li><strong>Exercise; strongest evidence:</strong> combined <strong>strength + balance</strong> training (Tai Chi, Otago programme). This is the headline intervention.</li>
@@ -1210,7 +1210,7 @@ img{max-width:100%;height:auto;}
 <li><strong>Vision</strong> correction; <strong>treat orthostatic hypotension</strong>; safe <strong>footwear</strong>; manage continence.</li>
 <li><strong>Treat osteoporosis</strong>: you can't prevent every fall, so reduce the fracture when one happens.</li>
 </ul>
-</div>
+</div>{% endif %}
 <h4 class="sub">Frailty: the master syndrome</h4>
 <p>Frailty is a state of <strong>depleted reserve</strong> that makes minor stressors cause disproportionate decline. Two models you should know:</p>
 <ul>
@@ -1221,17 +1221,17 @@ img{max-width:100%;height:auto;}
 <span class="box-label">Analogy · the frayed rope</span>
 <p>Two ropes hold the same weight: one new, one frayed. Add a small tug and only the frayed one snaps. Frailty <em>is</em> the fraying, which is why a frail elder decompensates from a UTI that a fit peer shrugs off, and why frailty (not age) should set how aggressively you treat, screen, and prescribe.</p>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · frailty is (partly) reversible</span>
 <p>The same levers run through everything in this course: <strong>resistance exercise + adequate protein (≥1.2 g/kg/day) + vitamin D</strong>, plus <strong>deprescribing</strong> and treating reversible contributors via a <strong>CGA</strong>. Gait speed alone (&lt;0.8 m/s) is a fast, powerful frailty signal: the "sixth vital sign."</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · the recurrent faller</span>
 <div class="qa">
 <p class="q">An 80-year-old on zolpidem and doxazosin has fallen twice this year. Beyond a multifactorial assessment, what two medication actions give the biggest risk reduction?</p>
 <details><summary></summary><div class="ans"><b>Deprescribe the zolpidem (Z-drug → sedation/falls)</b> and <b>stop/switch the doxazosin (α-blocker → orthostatic hypotension)</b>. Both are Beers/STOPP fall-risk PIMs. Pair with strength + balance exercise and a home-hazard review for the largest combined effect.</div></details>
 </div>
-</div>
+</div>{% endif %}
 </section>
 <section class="part" id="day4">
 <p class="part-tag">Day 4 · Wednesday</p>
@@ -1251,7 +1251,7 @@ img{max-width:100%;height:auto;}
 </tbody>
 </table>
 </div>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · the advance-care-planning toolkit</span>
 <ul>
 <li><strong>Do it early</strong>: while the patient has capacity (especially at a dementia diagnosis).</li>
@@ -1260,34 +1260,34 @@ img{max-width:100%;height:auto;}
 <li><strong>DNR/DNAR</strong> and <strong>POLST/MOLST</strong>: actionable medical orders for resuscitation and intensity.</li>
 <li><strong>The "surprise question":</strong> "Would I be surprised if this patient died in the next year?" If no → trigger goals-of-care conversation and palliative input.</li>
 </ul>
-</div>
-<div class="box hy">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · surrogate decision-making hierarchy</span>
 <p>When the patient can't decide: use <strong>substituted judgment</strong> first: decide as <em>the patient</em> would have, based on their known values/wishes. Only when those are unknown do you fall back to the <strong>best-interest</strong> standard. A surrogate's job is to channel the patient, not to substitute their own preference.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">Symptom management at the end of life</h4>
 <ul>
 <li><strong>Pain &amp; dyspnea:</strong> <strong>opioids</strong> are the mainstay: titrate to effect; fear of addiction is misplaced at end of life. Always co-prescribe a <strong>laxative</strong> (tolerance to constipation never develops). Oxygen only if hypoxic.</li>
 <li><strong>Terminal secretions ("death rattle"):</strong> reposition, reassure family; antimuscarinics if needed.</li>
 <li><strong>Terminal delirium / agitation, nausea, anxiety:</strong> treat reversible causes where consistent with goals; symptom-directed medication.</li>
 </ul>
-<div class="box trap">
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · culture is part of the plan, not an obstacle</span>
 <p>In this region especially, decisions are often <strong>family-centred</strong> and shaped by faith. Explore disclosure preferences, involve the family the patient wants involved, and integrate religious/cultural practices into comfort care. "Patient autonomy" doesn't mean isolating the patient from their family: it means honouring <em>how</em> this patient wants decisions made.</p>
-</div>
+</div>{% endif %}
 <div class="box further">
 <span class="box-label">Going Further</span>
 <p>Prognostication is a learnable skill: tools like <strong>ePrognosis</strong> and disease-specific indices beat clinician gestalt (which is reliably over-optimistic). Know the evidence that <strong>early palliative care</strong> improves quality of life and, in some cancers, even <em>survival</em> (Temel et al., NEJM 2010): palliative care is not "giving up," and integrating it early is best practice.</p>
 </div>
 <h3 class="block" id="malnutrition"><span class="kicker">4.2 · Fuel for a failing body</span>Recognizing &amp; treating malnutrition</h3>
 <p>Malnutrition in older adults is common, under-recognized, and a powerful predictor of falls, infection, delayed healing, longer admissions, and death: locked in a vicious cycle with <strong>sarcopenia</strong> (see Day 2). Screen actively; weight loss is never "just aging."</p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · screen &amp; size it up</span>
 <p>Use the <strong>MNA</strong> (Mini Nutritional Assessment): <span class="mono">12–14 normal · 8–11 at risk · ≤7 malnourished</span> (or MUST). Red flags: unintentional weight loss (≥5% in a month / ≥10% in 6 months), low BMI, poor intake, sarcopenia.</p>
-</div>
+</div>{% endif %}
 <h4 class="sub">Why are they not eating?: <span class="mono">MEALS ON WHEELS</span></h4>
 <p>The classic mnemonic for reversible causes of weight loss in elders: <strong>M</strong>edications · <strong>E</strong>motional (depression) · <strong>A</strong>norexia/Alcohol · <strong>L</strong>ate-life paranoia · <strong>S</strong>wallowing problems · <strong>O</strong>ral/dental problems · <strong>N</strong>o money · <strong>W</strong>andering (dementia) · <strong>H</strong>yper/hypo-metabolism (thyroid) · <strong>E</strong>nteric (malabsorption) · <strong>E</strong>ating difficulties · <strong>L</strong>ow-salt/low-cholesterol restrictive diets · <strong>S</strong>ocial isolation / shopping problems.</p>
-<div class="box hy">
+{% if site.showExamBlocks %}<div class="box hy">
 <span class="box-label">High-Yield · how to treat it (in order)</span>
 <ol>
 <li><strong>Fix the reversible cause</strong> (depression, oral/dental, dysphagia, meds causing anorexia, social/financial barriers).</li>
@@ -1296,20 +1296,20 @@ img{max-width:100%;height:auto;}
 <li><strong>Oral nutritional supplements</strong> when food alone falls short (between meals, so they don't replace it).</li>
 <li>Watch for <strong>refeeding syndrome</strong> (hypophosphatemia) when re-nourishing the severely depleted: go slow, replace electrolytes.</li>
 </ol>
-</div>
-<div class="box trap">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box trap">
 <span class="box-label">Trap · the feeding tube in advanced dementia</span>
 <p>One of the most important EOL teaching points: in <strong>advanced dementia</strong>, PEG/tube feeding does <strong>not</strong> prolong survival, prevent aspiration, heal pressure ulcers, or improve comfort, and adds burden (restraints, infections, agitation). <strong>Careful hand-feeding / comfort feeding is preferred.</strong> This is a frequent exam item and a real-world family conversation: the answer is comfort feeding, not a tube.</p>
-</div>
-<div class="box exam">
+</div>{% endif %}
+{% if site.showExamBlocks %}<div class="box exam">
 <span class="box-label">Exam Q · the family request</span>
 <div class="qa">
 <p class="q">The family of a patient with end-stage dementia who is eating little asks for a feeding tube "so she doesn't starve." Best response?</p>
 <details><summary></summary><div class="ans"><b>Recommend careful hand-feeding / comfort feeding rather than a PEG tube.</b> In advanced dementia, tube feeding does not improve survival, aspiration, pressure ulcers, or comfort, and increases harm. Explore the family's fears with empathy, reframe around comfort and What Matters, and treat any reversible contributor, but the evidence-based answer is comfort feeding.</div></details>
 </div>
-</div>
+</div>{% endif %}
 </section>
-<section class="part" id="appendix">
+{% if site.showExamBlocks %}<section class="part" id="appendix">
 <p class="part-tag">Appendix</p>
 <h2 class="part-title" id="exam-bank-traps-the-numbers">Exam bank · traps · the numbers</h2>
 <p class="part-sub">Rapid revision for the Day-4 MCQ and beyond. Tap any question to reveal the answer.</p>
@@ -1363,7 +1363,7 @@ img{max-width:100%;height:auto;}
 <div class="mini"><h5>Vaccines (START)</h5><p>Influenza yearly · pneumococcal ≥once · herpes zoster · SARS-CoV-2.</p></div>
 </div>
 <p style="margin-top:28px;font-size:15px;color:var(--ink-soft)">That's the full four-day arc: assessment → chronic disease → medication safety &amp; the brain → end of life. Run the 4Ms on every older adult, individualize by frailty rather than age, deprescribe with intent, and let <strong>What Matters</strong> set the destination. Good luck on the MCQ.</p>
-</section>
+</section>{% endif %}
 </div>
 <footer>
 <div class="wrap">

@@ -1,0 +1,128 @@
+{
+ "note": "Search entries removed while site.showExamBlocks is false. To restore: set the flag to true in src/_data/site.json and add these entries back to src/search-index.js.",
+ "removed": [
+  {
+   "guide": "geriatrics.html",
+   "guideTitle": "Geriatrics",
+   "tag": "#1F5C55",
+   "id": "exam-bank-traps-the-numbers",
+   "heading": "Exam bank · traps · the numbers",
+   "snippet": "Rapid revision for the Day-4 MCQ and beyond. Tap any question to reveal the answer."
+  },
+  {
+   "guide": "geriatrics.html",
+   "guideTitle": "Geriatrics",
+   "tag": "#1F5C55",
+   "id": "a-rapid-fire-predictable-question-bank",
+   "heading": "A · Rapid-fire Predictable question bank",
+   "snippet": "Exam Q · twelve high-probability items 1. The 4Ms are…? What Matters, Medication, Mentation, Mobility: assessed and acted on, reliably, for every older adult. 2. First step when a"
+  },
+  {
+   "guide": "geriatrics.html",
+   "guideTitle": "Geriatrics",
+   "tag": "#1F5C55",
+   "id": "b-the-greatest-hits-traps-compilation",
+   "heading": "B · The greatest hits Traps compilation",
+   "snippet": "Trap · don't get caught A normal creatinine hides a low eGFR (low muscle mass) → drug overdosing. Always estimate eGFR. No fever / normal WBC does not exclude serious infection in "
+  },
+  {
+   "guide": "geriatrics.html",
+   "guideTitle": "Geriatrics",
+   "tag": "#1F5C55",
+   "id": "c-cheat-codes-numbers-mnemonics",
+   "heading": "C · Cheat codes Numbers & mnemonics",
+   "snippet": "DELIRIUM(S) Drugs · Eyes/ears · Low O₂ · Infection · Retention · Ictal/liver · Under-hydration · Metabolic · Subdural: the causes to hunt. MEALS ON WHEELS Reversible causes of wei"
+  },
+  {
+   "guide": "counselling.html",
+   "guideTitle": "Counselling",
+   "tag": "#9C4F2E",
+   "id": "foundations-traps",
+   "heading": "Common traps · Counselling in family medicine",
+   "snippet": "The fixing reflex: lecturing and arguing for change. It reliably increases resistance. “You should…”: patients respond better to “I recommend…”. Question stacking; three …",
+   "headingAr": "أخطاء شائعة · الإرشاد في طب الأسرة",
+   "snippetAr": "نزعة الإصلاح: الوعظ والجدال لصالح التغيير، وهي تزيد المقاومة بشكل ثابت. «يجب عليك…»: يستجيب المرضى أفضل لعبارة «أنا أنصحك…». تكديس الأسئلة؛ ثلاثة أسئلة متتالية تحوّل الإرشاد …",
+   "kw": "row turns interrogation cancels whatever assuming documenting stated clinician starts zero came troubles questions agreed know stage reasons next patient’s ask plan patient",
+   "kwAr": "استجواب تُلغي قبلها افتراض يزعج اسأله التوثيق وأسباب بكلماته والخطة عليها؛ فيبدأ التالي الصفر المتفق للمرحلة عدم تعرف لكن أنك الطبيب استخدم أكثر إلى المريض"
+  },
+  {
+   "guide": "counselling.html",
+   "guideTitle": "Counselling",
+   "tag": "#9C4F2E",
+   "id": "foundations-exam",
+   "heading": "Board pearl; counselling stations · Counselling in family medicine",
+   "snippet": "Examiners in SCFHS counselling stations look for the same skeleton every time: introduce and ask permission → explore ideas, concerns and expectations → assess readiness → give …",
+   "headingAr": "لؤلؤة البورد؛ محطات الإرشاد · الإرشاد في طب الأسرة",
+   "snippetAr": "يبحث الممتحنون في محطات الإرشاد بالهيئة السعودية للتخصصات الصحية عن الهيكل نفسه كل مرة: التعريف بالنفس وطلب الإذن ← استكشاف أفكار المريض ومخاوفه وتوقعاته ← تقييم الاستعداد ← تقديم …",
+   "kw": "chunks safety-net aloud answer jargon well-placed reflection paragraph facts lecturing soe changes approach scores shared small check avoid say understanding agree follow-up stage name arrange why information plan change",
+   "kwAr": "دفعات التحقق مشتركة شبكة الأمان الاختبار الشفهي سمِّ صراحة، واذكر أسلوبك المصطلحات المعقدة والوعظ؛ عاكسة مكانها تكسب درجات فقرة الفهم صغيرة soe تغيّر معلومات الاتفاق ترتيب المتابعة تجنّب عبارة المعلومة مرحلة واحدة خطة لماذا التغيير أكثر على"
+  },
+  {
+   "guide": "counselling.html",
+   "guideTitle": "Counselling",
+   "tag": "#9C4F2E",
+   "id": "stages-traps",
+   "heading": "Traps · Stages of change",
+   "snippet": "Pushing information at a precontemplator: it lowers openness to anything you say next. Labelling the patient “not ready” and never raising it again. Ask, briefly, at every visit. …",
+   "headingAr": "أخطاء · مراحل التغيير",
+   "snippetAr": "دفع المعلومات نحو مريض في مرحلة ما قبل التفكير: يقلل تقبّله لأي شيء تقوله بعدها. وصم المريض بأنه «غير مستعد» وعدم فتح الموضوع مجددًا. اسأل باختصار في كل زيارة. اعتبار الهفوة …",
+   "kw": "treating lapse failure yours patient’s",
+   "kwAr": "فشلًا فشلك فشل"
+  },
+  {
+   "guide": "counselling.html",
+   "guideTitle": "Counselling",
+   "tag": "#9C4F2E",
+   "id": "five-as-traps",
+   "heading": "Traps · The Five A’s",
+   "snippet": "Stopping after Advise. Without Assist and Arrange, the visit is a lecture. Generic advice. Link it to the presenting complaint or a number the patient cares about (HbA1c, blood …",
+   "headingAr": "أخطاء · الخطوات الخمس (5A’s)",
+   "snippetAr": "التوقف بعد «انصح». بلا «ساعد» و«رتِّب» تصبح الزيارة محاضرة. النصيحة العامة. اربطها بسبب الزيارة أو برقم يهمّ المريض (السكر التراكمي، ضغط الدم، ذروة الجريان). السؤال عن السجائر فقط …",
+   "kw": "flow unrecorded unless peak vapes medwakh smokeless asking shisha cigarettes pressure tobacco name",
+   "kwAr": "والسيجارة تُوثَّق تسمِّها والمدواخ والتبغ الإلكترونية المُدخَّن الشيشة غير"
+  },
+  {
+   "guide": "counselling.html",
+   "guideTitle": "Counselling",
+   "tag": "#9C4F2E",
+   "id": "frames-traps",
+   "heading": "Traps · FRAMES",
+   "snippet": "Feedback used as a scare tactic: fear without a plan produces avoidance. A “menu” with one acceptable option is an ultimatum, and patients notice. Skipping self-efficacy; …",
+   "headingAr": "أخطاء · FRAMES",
+   "snippetAr": "استخدام التغذية الراجعة للتخويف: الخوف بلا خطة يولّد التجنّب. «قائمة خيارات» بخيار واحد مقبول هي إنذار، والمرضى يلاحظون ذلك. إهمال الكفاءة الذاتية؛ المعلومة بلا ثقة نادرًا ما …",
+   "kw": "rarely becomes confidence action information",
+   "kwAr": "تتحول فعل إلى"
+  },
+  {
+   "guide": "counselling.html",
+   "guideTitle": "Counselling",
+   "tag": "#9C4F2E",
+   "id": "mi-traps",
+   "heading": "Traps · Motivational interviewing",
+   "snippet": "Closed question after closed question. Arguing for change: it pulls sustain talk out of the patient. Thinking MI simply means “being nice”. It is directional: you are listening …",
+   "headingAr": "أخطاء · المقابلة التحفيزية",
+   "snippetAr": "سؤال مغلق يتلوه سؤال مغلق. الجدال لصالح التغيير: يستخرج من المريض حديث الاستمرار. الظن أن المقابلة التحفيزية تعني «اللطف» فقط. هي موجَّهة: أنت تصغي لحديث التغيير وتقوّيه. سؤال …",
+   "kw": "haven’t invites defence strengthening stopped want asking why ask",
+   "kwAr": "تتوقف؟ يدعو للدفاع ترغب ذلك؟ لماذا اسأل"
+  },
+  {
+   "guide": "counselling.html",
+   "guideTitle": "Counselling",
+   "tag": "#9C4F2E",
+   "id": "mi-exam",
+   "heading": "Board pearl; the MI station · Motivational interviewing",
+   "snippet": "Score points visibly: open with an open question; use at least two reflections; ask permission before information; elicit the patient’s own reasons; finish with a summary and …",
+   "headingAr": "لؤلؤة البورد؛ محطة المقابلة التحفيزية · المقابلة التحفيزية",
+   "snippetAr": "اكسب الدرجات بوضوح: ابدأ بسؤال مفتوح؛ استخدم عبارتين عاكستين على الأقل؛ اطلب الإذن قبل المعلومة؛ استخرج أسباب المريض الخاصة؛ واختم بتلخيص وسؤال «ماذا تحب أن تفعل بعد ذلك؟» إن قاوم …",
+   "kw": "simulated pushes reflect never argue emphasise it’s choice decision back next patient",
+   "kwAr": "المُحاكي فاعكس كلامه وأكّد حرية تجادل أبدًا الاختيار ولا قرارك القرار"
+  }
+ ],
+ "changed": [
+  {
+   "guide": "geriatrics.html",
+   "id": "how-to-read-this-guide",
+   "original": "\"snippet\": \"Five recurring boxes do the heavy lifting. Skim for the colour you need. Analogy Makes the concept stick High-Yield Memorize this Trap Where you'll be caught out Exam Q Predictable\""
+  }
+ ]
+}
